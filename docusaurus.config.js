@@ -51,13 +51,19 @@ const config = {
         items: [
           {
             type: 'doc',
-            docId: 'intro',
+            docId: 'about',
             position: 'left',
-            label: 'Tutorial',
+            label: 'About'
           },
           {
-            href: 'https://github.com/jmperafan',
-            label: 'GitHub',
+            type: 'doc',
+            docId: 'intro',
+            position: 'left',
+            label: 'Courses',
+          },
+          {
+            href: 'https://youtube.com/juanalytics',
+            label: 'YouTube',
             position: 'right',
           },
         ],
