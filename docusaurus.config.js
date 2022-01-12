@@ -60,6 +60,12 @@ const config = {
             docId: 'intro',
             position: 'left',
             label: 'Courses',
+          },          
+          {
+            type: 'doc',
+            docId: 'certifications',
+            position: 'left',
+            label: 'Certifications',
           },
           {
             href: 'https://youtube.com/juanalytics',
@@ -73,6 +79,7 @@ const config = {
         links: [
           {
             title: 'Quick Links',
+            position: 'left',
             items: [
               {
                 label: 'Courses',
@@ -86,6 +93,7 @@ const config = {
           },
           {
             title: 'Social',
+            position: 'left',
             items: [
               {
                 label: 'LinkedIn',
