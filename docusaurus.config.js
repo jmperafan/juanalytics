@@ -6,15 +6,15 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'Juanalytcs',
-  tagline: 'Freelance Analytics Work',
+  title: 'Juanalytics',
+  tagline: 'Analytics Engineer',
   url: 'https://juanalytics.com',
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
-  organizationName: 'Juanalytics', // Usually your GitHub org/user name.
-  projectName: 'Juanalytics Website', // Usually your repo name.
+  organizationName: 'Juanalytics',
+  projectName: 'Juanalytics Website',
 
   presets: [
     [
@@ -23,14 +23,12 @@ const config = {
       ({
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
-          // Please change this to your repo.
-          editUrl: 'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+          editUrl: 'https://github.com/jmperafan/juanalytics',
         },
         blog: {
           showReadingTime: true,
-          // Please change this to your repo.
           editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+            'https://github.com/jmperafan/juanalytics',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
@@ -52,39 +50,24 @@ const config = {
           {
             type: 'doc',
             docId: 'about',
-            position: 'left',
             label: 'About'
-          },
-          {
-            type: 'doc',
-            docId: 'intro',
-            position: 'left',
-            label: 'Courses',
-          },          
+          },        
           {
             type: 'doc',
             docId: 'certifications',
-            position: 'left',
             label: 'Certifications',
           },
           {
             href: 'https://youtube.com/juanalytics',
             label: 'YouTube',
-            position: 'right',
           },
         ],
       },
       footer: {
-        style: 'dark',
         links: [
           {
             title: 'Quick Links',
-            position: 'left',
             items: [
-              {
-                label: 'Courses',
-                to: '/docs/courses',
-              },
               {
                 label: 'Blog',
                 to: '/blog',
@@ -93,7 +76,6 @@ const config = {
           },
           {
             title: 'Social',
-            position: 'left',
             items: [
               {
                 label: 'LinkedIn',
