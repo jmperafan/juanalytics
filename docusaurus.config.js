@@ -51,6 +51,11 @@ const config = {
             type: 'doc',
             docId: 'about',
             label: 'About'
+          }, 
+          {
+            type: 'doc',
+            docId: 'courses/courses',
+            label: 'Courses'
           },        
           {
             type: 'doc',
@@ -71,7 +76,12 @@ const config = {
               {
                 label: 'Blog',
                 to: '/blog',
+              },              
+              {
+                label: 'Courses',
+                to: '/docs/courses',
               },
+              
             ],
           },
           {
