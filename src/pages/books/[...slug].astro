@@ -1,0 +1,65 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+export async function getStaticPaths() {
+  const books = await getCollection('books');
+  return books.map((book) => ({
+    params: { slug: book.slug },
+    props: book,
+  }));
+}
+
+const book = Astro.props;
+const { Content } = await book.render();
+---
+
+<BaseLayout title={book.data.title} description={book.data.description}>
+  <article style="padding: 4rem 0;">
+    <div class="container" style="max-width: 900px;">
+      <div style="display: grid; grid-template-columns: 300px 1fr; gap: 3rem; margin-bottom: 3rem;">
+        {book.data.coverImage ? (
+          <img src={book.data.coverImage} alt={book.data.title} style="width: 100%; border-radius: 0.5rem; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);" />
+        ) : (
+          <div style="width: 100%; height: 450px; background: var(--color-bg-secondary); display: flex; align-items: center; justify-content: center; border-radius: 0.5rem;">
+            <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+              <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+            </svg>
+          </div>
+        )}
+
+        <div>
+          <h1 style="margin-bottom: 1rem;">{book.data.title}</h1>
+          {book.data.publisher && (
+            <p style="color: var(--color-primary); font-size: 1.125rem; font-weight: 600; margin-bottom: 0.75rem;">{book.data.publisher}</p>
+          )}
+          <p style="color: var(--color-text-light); margin-bottom: 1.5rem;">
+            Published: {book.data.pubDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+          </p>
+
+          {book.data.coAuthors && book.data.coAuthors.length > 0 && (
+            <div style="margin-bottom: 1.5rem;">
+              <h3 style="font-size: 1rem; margin-bottom: 0.5rem;">Co-Authors:</h3>
+              <p style="color: var(--color-text-light);">{book.data.coAuthors.join(', ')}</p>
+            </div>
+          )}
+
+          {book.data.amazonUrl && (
+            <a href={book.data.amazonUrl} target="_blank" class="button" style="display: inline-block; margin-top: 1rem;">
+              View on Amazon →
+            </a>
+          )}
+        </div>
+      </div>
+
+      <div style="line-height: 1.8; font-size: 1.0625rem;">
+        <Content />
+      </div>
+
+      <div style="margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--color-border);">
+        <a href="/books" style="color: var(--color-primary);">← Back to books</a>
+      </div>
+    </div>
+  </article>
+</BaseLayout>

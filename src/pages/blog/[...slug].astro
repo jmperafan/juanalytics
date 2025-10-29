@@ -1,0 +1,50 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+export async function getStaticPaths() {
+  const blogs = await getCollection('blog');
+  return blogs.map((post) => ({
+    params: { slug: post.slug },
+    props: post,
+  }));
+}
+
+const post = Astro.props;
+const { Content } = await post.render();
+---
+
+<BaseLayout title={post.data.title} description={post.data.description}>
+  <article style="padding: 4rem 0;">
+    <div class="container" style="max-width: 800px;">
+      {post.data.heroImage && (
+        <img src={post.data.heroImage} alt={post.data.title} style="width: 100%; height: 400px; object-fit: cover; border-radius: 0.5rem; margin-bottom: 2rem;" />
+      )}
+
+      <h1 style="margin-bottom: 1rem;">{post.data.title}</h1>
+
+      <div style="color: var(--color-text-light); margin-bottom: 2rem; display: flex; gap: 1rem; align-items: center;">
+        <time>{post.data.pubDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+        {post.data.updatedDate && (
+          <span>• Updated {post.data.updatedDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+        )}
+      </div>
+
+      {post.data.tags && post.data.tags.length > 0 && (
+        <div style="margin-bottom: 2rem; display: flex; gap: 0.5rem; flex-wrap: wrap;">
+          {post.data.tags.map((tag) => (
+            <span style="background: var(--color-primary); color: white; padding: 0.25rem 0.75rem; border-radius: 1rem; font-size: 0.85rem;">{tag}</span>
+          ))}
+        </div>
+      )}
+
+      <div style="line-height: 1.8; font-size: 1.1rem;">
+        <Content />
+      </div>
+
+      <div style="margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--color-border);">
+        <a href="/blog" style="color: var(--color-primary);">← Back to blog</a>
+      </div>
+    </div>
+  </article>
+</BaseLayout>

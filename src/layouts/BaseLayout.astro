@@ -1,0 +1,58 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = "Portfolio of Juan Manuel Perafan - Analytics Engineer, dbt Community Award Recipient, and Data Community Organizer" } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <header>
+      <nav class="container" style="padding: 1.5rem 1rem; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--color-border);">
+        <a href="/" style="display: flex; align-items: center; gap: 0.75rem; text-decoration: none;">
+          <img src="/logo.png" alt="Juanalytics Logo" style="height: 70px; width: auto;" />
+          <span style="font-size: 1.125rem; font-weight: 600; color: var(--color-text);">Juanalytics</span>
+        </a>
+        <div style="display: flex; gap: 2rem; align-items: center;">
+          <a href="/talks" style="color: var(--color-text); font-weight: 500;">Conferences</a>
+          <a href="/videos" style="color: var(--color-text); font-weight: 500;">Videos</a>
+          <a href="/podcasts" style="color: var(--color-text); font-weight: 500;">Podcasts</a>
+          <a href="/blog" style="color: var(--color-text); font-weight: 500;">Blog</a>
+          <a href="/books" style="color: var(--color-text); font-weight: 500;">Books</a>
+          <a href="/about" style="color: var(--color-text); font-weight: 500;">About</a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <slot />
+    </main>
+
+    <footer style="margin-top: 4rem; padding: 2rem 0; border-top: 1px solid var(--color-border); text-align: center; color: var(--color-text-light);">
+      <div class="container">
+        <p>&copy; {new Date().getFullYear()} Juan Manuel Perafan. All rights reserved.</p>
+        <div style="margin-top: 1rem; display: flex; justify-content: center; gap: 1.5rem;">
+          <a href="https://www.linkedin.com/in/jmperafan/" target="_blank">LinkedIn</a>
+          <a href="https://github.com/jmperafan" target="_blank">GitHub</a>
+          <a href="https://linktr.ee/juanalytics" target="_blank">Linktree</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

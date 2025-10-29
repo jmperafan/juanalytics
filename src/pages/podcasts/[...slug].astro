@@ -1,0 +1,63 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+export async function getStaticPaths() {
+  const podcasts = await getCollection('podcasts');
+  return podcasts.map((podcast) => ({
+    params: { slug: podcast.slug },
+    props: podcast,
+  }));
+}
+
+const podcast = Astro.props;
+const { Content } = await podcast.render();
+---
+
+<BaseLayout title={podcast.data.title} description={podcast.data.description}>
+  <article style="padding: 4rem 0;">
+    <div class="container" style="max-width: 800px;">
+      <h1 style="margin-bottom: 1rem;">{podcast.data.title}</h1>
+
+      {(podcast.data.podcastName || podcast.data.episode) && (
+        <p style="color: var(--color-primary); font-weight: 600; font-size: 1.1rem; margin-bottom: 0.5rem;">
+          {podcast.data.podcastName && podcast.data.podcastName}
+          {podcast.data.podcastName && podcast.data.episode && ' • '}
+          {podcast.data.episode && `Episode ${podcast.data.episode}`}
+        </p>
+      )}
+
+      <div style="color: var(--color-text-light); margin-bottom: 2rem; display: flex; gap: 1rem; align-items: center;">
+        <time>{podcast.data.pubDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+        {podcast.data.duration && (
+          <span>• {podcast.data.duration}</span>
+        )}
+      </div>
+
+      {podcast.data.tags && podcast.data.tags.length > 0 && (
+        <div style="margin-bottom: 2rem; display: flex; gap: 0.5rem; flex-wrap: wrap;">
+          {podcast.data.tags.map((tag) => (
+            <span style="background: var(--color-primary); color: white; padding: 0.25rem 0.75rem; border-radius: 1rem; font-size: 0.85rem;">{tag}</span>
+          ))}
+        </div>
+      )}
+
+      {podcast.data.audioUrl && (
+        <div style="margin-bottom: 2rem;">
+          <audio controls style="width: 100%; border-radius: 0.5rem;">
+            <source src={podcast.data.audioUrl} type="audio/mpeg" />
+            Your browser does not support the audio element.
+          </audio>
+        </div>
+      )}
+
+      <div style="line-height: 1.8; font-size: 1.1rem;">
+        <Content />
+      </div>
+
+      <div style="margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--color-border);">
+        <a href="/podcasts" style="color: var(--color-primary);">← Back to podcasts</a>
+      </div>
+    </div>
+  </article>
+</BaseLayout>
