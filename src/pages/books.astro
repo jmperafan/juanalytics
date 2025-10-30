@@ -27,7 +27,7 @@ const books = content.books.map(book => ({
       ) : (
         <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.5rem;">
           {books.map((book) => (
-            <a href={`/books/${book.slug}`} class="card" style="padding: 0; overflow: hidden; display: flex; flex-direction: column;">
+            <a href={book.data.amazonUrl} target="_blank" rel="noopener noreferrer" class="card" style="padding: 0; overflow: hidden; display: flex; flex-direction: column;">
               {book.data.coverImage ? (
                 <div style="width: 100%; height: 400px; background: var(--color-bg-secondary); display: flex; align-items: center; justify-content: center;">
                   <img src={book.data.coverImage} alt={book.data.title} style="height: 100%; width: auto; object-fit: contain;" />

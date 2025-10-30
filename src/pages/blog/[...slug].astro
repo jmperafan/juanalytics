@@ -47,4 +47,25 @@ const { Content } = await post.render();
       </div>
     </div>
   </article>
+
+  <script>
+    // Make external links (non-YouTube) open in a new tab
+    document.addEventListener('DOMContentLoaded', () => {
+      const contentDiv = document.querySelector('article .container > div[style*="line-height"]');
+      if (contentDiv) {
+        const links = contentDiv.querySelectorAll('a');
+        links.forEach((link) => {
+          const href = link.getAttribute('href');
+          // Check if it's an external link (starts with http/https)
+          if (href && (href.startsWith('http://') || href.startsWith('https://'))) {
+            // Check if it's NOT a YouTube link (those are handled separately in video pages)
+            if (!href.includes('youtube.com') && !href.includes('youtu.be')) {
+              link.setAttribute('target', '_blank');
+              link.setAttribute('rel', 'noopener noreferrer');
+            }
+          }
+        });
+      }
+    });
+  </script>
 </BaseLayout>

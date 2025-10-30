@@ -22,7 +22,11 @@ const allPodcasts = content.podcasts.map(podcast => ({
 // SQL Lingua Franca episodes have titles with pattern "Name - Topic"
 const sqlLinguaFranca = allPodcasts
   .filter(p => p.data.title.includes(' - '))
-  .sort((a, b) => (b.data.episode || 0) - (a.data.episode || 0));
+  .sort((a, b) => {
+    const episodeA = typeof a.data.episode === 'number' ? a.data.episode : 0;
+    const episodeB = typeof b.data.episode === 'number' ? b.data.episode : 0;
+    return episodeB - episodeA;
+  });
 const guestAppearances = allPodcasts
   .filter(p => !p.data.title.includes(' - '))
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
@@ -55,7 +59,7 @@ const guestAppearances = allPodcasts
               <h2 style="font-size: 1.75rem; margin-bottom: 1.5rem;">Guest Appearances</h2>
               <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.5rem;">
                 {guestAppearances.map((podcast) => (
-              <a href={`/podcasts/${podcast.slug}`} class="card podcast-card" data-tags={JSON.stringify(podcast.data.tags || [])} data-type="guest-appearance" style="padding: 0; overflow: hidden; display: flex; flex-direction: column;">
+              <a href={podcast.data.audioUrl} target="_blank" rel="noopener noreferrer" class="card podcast-card" data-tags={JSON.stringify(podcast.data.tags || [])} data-type="guest-appearance" style="padding: 0; overflow: hidden; display: flex; flex-direction: column;">
                 {podcast.data.thumbnail ? (
                   <img src={podcast.data.thumbnail} alt={podcast.data.title} style="width: 100%; height: 200px; object-fit: cover;" />
                 ) : (
@@ -96,7 +100,7 @@ const guestAppearances = allPodcasts
           <h2 style="font-size: 1.75rem; margin-bottom: 1.5rem;">SQL Lingua Franca</h2>
           <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.5rem;">
             {sqlLinguaFranca.map((podcast) => (
-              <a href={`/podcasts/${podcast.slug}`} class="card podcast-card" data-tags={JSON.stringify(podcast.data.tags || [])} data-type="sql-lingua-franca" style="padding: 0; overflow: hidden; display: flex; flex-direction: column;">
+              <a href={podcast.data.audioUrl} target="_blank" rel="noopener noreferrer" class="card podcast-card" data-tags={JSON.stringify(podcast.data.tags || [])} data-type="sql-lingua-franca" style="padding: 0; overflow: hidden; display: flex; flex-direction: column;">
                 {podcast.data.thumbnail ? (
                   <img src={podcast.data.thumbnail} alt={podcast.data.title} style="width: 100%; height: 200px; object-fit: cover;" />
                 ) : (
