@@ -1,4 +1,4 @@
-name: Update YouTube Videos
+name: update-youtube-videos
 
 on:
   # Run every Monday at 9 AM UTC
