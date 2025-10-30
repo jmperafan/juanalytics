@@ -1,1 +1,1202 @@
-[]
+[
+  {
+    "video_id": "_ElJVYsqjsw",
+    "title": "SQL Lingua Franca #16 - Sarah Levy - Data Governance vs. AI",
+    "description": "🎙️ ⁠Sarah Levy: Co-Founder & CEO at Euno\n\nhttps://euno.ai\n\nIn this episode of SQL Lingua Franca, Sarah Levy, co-founder and CEO of Yuno, discusses data model governance, semantic layers, and the path to AI adoption. She outlines the challenges of managing inconsistent business logic, the limitations of data catalogs, and the importance of metric utilization in driving governance decisions.\n\nThe conversation covers the balance between analyst flexibility and centralized control, the shortcomings of existing observability tools, and the shift of dbt modeling responsibilities back to engineers. Sarah also shares findings from interviews with over 300 data teams and emphasizes the often-overlooked role of senior analysts in delivering business value.",
+    "published_date": "2025-06-20",
+    "thumbnail_url": "https://i.ytimg.com/vi/_ElJVYsqjsw/maxresdefault.jpg",
+    "video_url": "https://www.youtube.com/watch?v=_ElJVYsqjsw",
+    "channel_title": "Juanalytics",
+    "type": "podcast",
+    "tags": [
+      "podcast"
+    ]
+  },
+  {
+    "video_id": "QG-cvSACuj4",
+    "title": "Talk about Developer Experience",
+    "description": "📺 Full Episode: https://youtu.be/51BPZkOsmKw",
+    "published_date": "2025-05-07",
+    "thumbnail_url": "https://i.ytimg.com/vi/QG-cvSACuj4/maxresdefault.jpg",
+    "video_url": "https://www.youtube.com/watch?v=QG-cvSACuj4",
+    "channel_title": "Juanalytics",
+    "type": "podcast",
+    "tags": [
+      "podcast"
+    ]
+  },
+  {
+    "video_id": "IJ2BqTUIvM4",
+    "title": "Developer Experience",
+    "description": "📺 Full Episode: https://youtu.be/51BPZkOsmKw",
+    "published_date": "2025-05-07",
+    "thumbnail_url": "https://i.ytimg.com/vi/IJ2BqTUIvM4/maxresdefault.jpg",
+    "video_url": "https://www.youtube.com/watch?v=IJ2BqTUIvM4",
+    "channel_title": "Juanalytics",
+    "type": "podcast",
+    "tags": [
+      "podcast"
+    ]
+  },
+  {
+    "video_id": "xghnemtDnto",
+    "title": "SQL Lingua Franca #15 - Dumky de Wilde - Hot Takes Special",
+    "description": "🎙️ ⁠Dumky de Wilde: Analytics Engineer at Xebia\n\nIn this podcast episode, the host welcomes Dumky, an analytics engineer from Amsterdam and co-author of Fundamentals of Analytics Engineering. Dumky shares his journey in the data world, discussing his background, experiences, and the evolving landscape of analytics engineering. This special \"Hot Takes\" edition dives into bold opinions on SQL, modern data tooling, and the role of analytics professionals in an ever-changing industry.\n\nDuring the episode, we explore common misconceptions in analytics, the challenges of working with modern data stacks, and the relevance of SQL in an AI-driven world. Dumky emphasizes the importance of software engineering principles in analytics, the need for critical thinking in data work, and how professionals can adapt to new technologies. Whether you're an experienced data practitioner or just starting, this episode offers thought-provoking insights and practical takeaways.",
+    "published_date": "2025-01-30",
+    "thumbnail_url": "https://i.ytimg.com/vi/xghnemtDnto/maxresdefault.jpg",
+    "video_url": "https://www.youtube.com/watch?v=xghnemtDnto",
+    "channel_title": "Juanalytics",
+    "type": "podcast",
+    "tags": [
+      "podcast"
+    ]
+  },
+  {
+    "video_id": "v5VuX9az9Wo",
+    "title": "SQL Lingua Franca #14 - Lasse Benninga - Open Source Software in Data",
+    "description": "🎙️ ⁠Lasse Benninga: Analytics Engineer at Xebia\n\nIn this podcast episode, the host introduces Lasse, an analytics engineer from Utrecht with a diverse background in software engineering and data analytics. Lasse shares his journey into the data world, highlighting his experiences transitioning from software development to analytics engineering, including his work on predictive maintenance for KLM's aircraft fleet. \n\nDuring the episode, we discussed the importance of understanding data quality, the challenges faced when working with large datasets, and the value of collaboration within mature data teams. Lasse emphasizes the significance of personal projects in developing skills and the role of open-source contributions in the analytics community.",
+    "published_date": "2025-01-23",
+    "thumbnail_url": "https://i.ytimg.com/vi/v5VuX9az9Wo/maxresdefault.jpg",
+    "video_url": "https://www.youtube.com/watch?v=v5VuX9az9Wo",
+    "channel_title": "Juanalytics",
+    "type": "podcast",
+    "tags": [
+      "podcast"
+    ]
+  },
+  {
+    "video_id": "7Mbeq8NQxwo",
+    "title": "SQL Lingua Franca #13 - Guillermo Sanchez - The Evolution of Analytics Engineering",
+    "description": "🎙️ ⁠Guillermo Sanchez: Principal Analytics Engineer at Xebia\n\nIn this episode of SQL Lingua Franca, we explore the dynamic shifts in analytics engineering over the past four years. Together, they dive into the transformation of the modern data stack, from traditional tools like dbt to innovative platforms like SQLMesh. They also touch on the cutting-edge developments at Databricks and discuss how these advancements are reshaping the role of analytics engineers.\n\nTune in to hear expert insights, practical advice, and thought-provoking discussions that bridge the gap between theory and real-world application. Whether you're a seasoned data professional or just stepping into analytics, this episode offers valuable perspectives on the future of data and analytics engineering.",
+    "published_date": "2024-12-11",
+    "thumbnail_url": "https://i.ytimg.com/vi/7Mbeq8NQxwo/maxresdefault.jpg",
+    "video_url": "https://www.youtube.com/watch?v=7Mbeq8NQxwo",
+    "channel_title": "Juanalytics",
+    "type": "podcast",
+    "tags": [
+      "podcast"
+    ]
+  },
+  {
+    "video_id": "1KFGmaPsqa8",
+    "title": "SQL Lingua Franca #12 - Thomas in't Veld - Data Maturity & The Future of Analytics",
+    "description": "🎙️ ⁠Thomas in't Veld: CEO & Co-Founder at Tasman Analytics\n\nIn this episode of SQL Lingua Franca, Thomas shares actionable strategies for helping companies advance their data maturity. From moving beyond basic dashboards to building scalable data systems, he explains how businesses can use composable architectures and modern tools to gain actionable insights faster.\n\nThomas discusses common challenges, such as balancing quick iterations with long-term data strategy and avoiding \"project hell,\" where teams get stuck in endless feedback cycles. He also explores how the role of analysts is changing with automation, focusing on deeper business-driven analysis instead of routine reporting.\n\nWhether you're setting up your first data team or scaling your data capabilities, this episode offers practical advice for making data a true driver of business success.",
+    "published_date": "2024-11-19",
+    "thumbnail_url": "https://i.ytimg.com/vi/1KFGmaPsqa8/maxresdefault.jpg",
+    "video_url": "https://www.youtube.com/watch?v=1KFGmaPsqa8",
+    "channel_title": "Juanalytics",
+    "type": "podcast",
+    "tags": [
+      "podcast"
+    ]
+  },
+  {
+    "video_id": "5uq9Z3kA88c",
+    "title": "The Power of Testing in Software Development",
+    "description": "📺 Full Episode: https://youtu.be/51BPZkOsmKw\n\nIn this video, we discuss why thorough testing is essential for managing large codebases and ensuring project success. Our guest shares insights on the value of integrating tests, from simplifying documentation to reducing risks in code modifications. With proper testing in place, developers can confidently innovate without worrying about breaking existing code. We also cover how testing supports learning new technologies and accelerates development by allowing small-scale experiments. Discover why investing in testing is crucial for building robust, adaptable software systems.",
+    "published_date": "2024-11-18",
+    "thumbnail_url": "https://i.ytimg.com/vi/5uq9Z3kA88c/maxresdefault.jpg",
+    "video_url": "https://www.youtube.com/watch?v=5uq9Z3kA88c",
+    "channel_title": "Juanalytics",
+    "type": "podcast",
+    "tags": [
+      "podcast"
+    ]
+  },
+  {
+    "video_id": "zstl0w0SNkM",
+    "title": "AI in Society: Who is responsible for the risks?",
+    "description": "📺 Full Episode: https://youtu.be/7GZ0duzksaM\n\nIn this episode, we discuss the intersection of AI and society, touching on the ethical challenges and responsibilities that come with advancing technology. From self-driving cars to AI-generated art, we explore how these tools impact daily life and raise questions about accountability, regulation, and the potential consequences of rapid AI development.",
+    "published_date": "2024-11-15",
+    "thumbnail_url": "https://i.ytimg.com/vi/zstl0w0SNkM/maxresdefault.jpg",
+    "video_url": "https://www.youtube.com/watch?v=zstl0w0SNkM",
+    "channel_title": "Juanalytics",
+    "type": "podcast",
+    "tags": [
+      "podcast"
+    ]
+  },
+  {
+    "video_id": "IHBdkflNSYw",
+    "title": "Multidisciplinary teams for Responsible AI",
+    "description": "📺 Full Episode: https://youtu.be/7GZ0duzksaM\n\nThis video explores the importance of forming diverse, multidisciplinary teams to implement AI responsibly in organizations. From data governance and privacy to policy design, we discuss how combining expertise across fields helps organizations create robust, ethical AI solutions. Our guest shares insights on essential team roles, industry benchmarks, and regulatory considerations that drive responsible AI practices. Discover how to balance innovation with accountability, and why establishing a strong data foundation is critical for sustainable AI development.",
+    "published_date": "2024-11-14",
+    "thumbnail_url": "https://i.ytimg.com/vi/IHBdkflNSYw/maxresdefault.jpg",
+    "video_url": "https://www.youtube.com/watch?v=IHBdkflNSYw",
+    "channel_title": "Juanalytics",
+    "type": "podcast",
+    "tags": [
+      "podcast"
+    ]
+  },
+  {
+    "video_id": "HONockIRwfQ",
+    "title": "What does it mean to adopt AI responsibly?",
+    "description": "📺 Full Episode: https://youtu.be/7GZ0duzksaM\n\nIn this video, we dive into the practical steps organizations can take to implement AI responsibly. Our expert guest discusses key strategies, starting with defining ethical guiding principles tailored to company values, followed by the technical and organizational phases of AI integration. From data governance to multidisciplinary assessments, learn how to operationalize AI in a way that aligns with your business’s ethical standards. Whether you're just starting out or looking to refine your approach, this video offers essential insights into managing AI deployment effectively.",
+    "published_date": "2024-11-13",
+    "thumbnail_url": "https://i.ytimg.com/vi/HONockIRwfQ/maxresdefault.jpg",
+    "video_url": "https://www.youtube.com/watch?v=HONockIRwfQ",
+    "channel_title": "Juanalytics",
+    "type": "podcast",
+    "tags": [
+      "podcast"
+    ]
+  },
+  {
+    "video_id": "7GZ0duzksaM",
+    "title": "SQL Lingua Franca #11 - Mariam Halfhide - Responsible AI",
+    "description": "🎙️ ⁠Mariam Halfhide: Practice Lead Responsible AI at Xebia\n\nPodcast mentioned in the episode: https://open.spotify.com/episode/2LNwwgJqOMKHOqdvwmLxqd?si=8Q4gocFiTFe_57rAzKWLdA\n\nIn this episode of SQL Lingua Franca, Mariam Halfhide, a data strategy expert, shares practical insights on integrating responsible AI into business operations. She explains how organizations can define ethical principles, implement governance frameworks, and address challenges like AI bias and privacy risks. Mariam also discusses real-world examples, such as the misuse of biometric data and the potential dangers of deepfakes.\n\nTune in to learn how businesses can align their AI strategies with core values, navigate regulatory requirements, and build multidisciplinary teams to manage risks effectively. Whether you're a tech professional or interested in the societal impact of AI, this episode offers actionable advice for using AI responsibly.",
+    "published_date": "2024-11-06",
+    "thumbnail_url": "https://i.ytimg.com/vi/7GZ0duzksaM/maxresdefault.jpg",
+    "video_url": "https://www.youtube.com/watch?v=7GZ0duzksaM",
+    "channel_title": "Juanalytics",
+    "type": "podcast",
+    "tags": [
+      "podcast"
+    ]
+  },
+  {
+    "video_id": "2LiFCRDacEs",
+    "title": "Sound Engineers are like Data Engineers - SQL Lingua Franca #6",
+    "description": "📺 Full Episode: https://youtu.be/Sl5jEuxJ9G0\n\nIn this video, Luuk reflects on his unique career journey from the music industry to IT recruitment. He discusses how his experience as a music producer and sound engineer translated into skills that are valuable in data engineering. Luuk highlights that both sound engineers and data engineers share key traits, such as attention to detail, a passion for experimenting with new tools, and the drive to constantly learn. He also emphasizes the importance of sharing knowledge, noting how teaching others helped him grow in both fields.\n\nLuuk explains that, much like in data engineering, working as a sound engineer involves a deep understanding of the technical aspects of the tools used. This love for the technical side made his transition to IT recruitment easier, as he was already familiar with many of the concepts. He encourages others to embrace knowledge sharing, as it not only helps the community but also leads to personal growth and new insights.",
+    "published_date": "2024-10-07",
+    "thumbnail_url": "https://i.ytimg.com/vi/2LiFCRDacEs/maxresdefault.jpg",
+    "video_url": "https://www.youtube.com/watch?v=2LiFCRDacEs",
+    "channel_title": "Juanalytics",
+    "type": "podcast",
+    "tags": [
+      "podcast"
+    ]
+  },
+  {
+    "video_id": "m0H6Ye3Im9w",
+    "title": "Tips to recruit data people - SQL Lingua Franca #6",
+    "description": "📺 Full Episode: https://youtu.be/Sl5jEuxJ9G0\n\nIn this video, Luuk shares expert tips on recruiting data professionals and how it differs from hiring for other roles. He explains that data candidates can easily showcase their skills through portfolios, GitHub repositories, or technical assessments, allowing recruiters to quickly determine their technical proficiency. Luuk also emphasizes the importance of highlighting exciting projects and opportunities within the company, as top data professionals are often drawn to teams where they can learn from others and work on cutting-edge technology.\n\nWhen it comes to non-technical roles, such as managers, Luuk notes that evaluating qualities like networking and communication skills can be more subjective. To address this, he suggests creating clear, standardized definitions of what the company is looking for in these roles, ensuring consistency across interviews. This approach helps remove personal bias and provides a structured way to assess candidates for traits that are harder to measure.",
+    "published_date": "2024-10-07",
+    "thumbnail_url": "https://i.ytimg.com/vi/m0H6Ye3Im9w/maxresdefault.jpg",
+    "video_url": "https://www.youtube.com/watch?v=m0H6Ye3Im9w",
+    "channel_title": "Juanalytics",
+    "type": "podcast",
+    "tags": [
+      "podcast"
+    ]
+  },
+  {
+    "video_id": "EMCFacR1LlY",
+    "title": "SQL Lingua Franca #10 - Ruben Huidekoper - Analytics Engineering",
+    "description": "🎙️ ⁠Ruben Huidekoper: Analytics Engineer at Xebia\n\nIn this episode of the SQL Lingua Franca podcast, guest Ruben Huidekoper shares his journey as an analytics engineer. He talks about the broad scope of the role, which involves translating business needs into technical data solutions, working on data modeling, and overseeing pipelines. Ruben emphasizes the versatility of the job, as it requires both strong technical skills and the ability to communicate effectively with stakeholders, making sure the data solutions align with business goals.\n\nRuben also discusses the key traits that can help someone thrive in this field, particularly the need for curiosity and a willingness to continuously learn new tools and technologies. He reflects on the evolving nature of analytics engineering, which often overlaps with other data roles, offering flexibility and growth for those in the profession. This episode is a great listen for anyone considering a career in data or looking to understand more about the role of analytics engineers.",
+    "published_date": "2024-10-07",
+    "thumbnail_url": "https://i.ytimg.com/vi/EMCFacR1LlY/maxresdefault.jpg",
+    "video_url": "https://www.youtube.com/watch?v=EMCFacR1LlY",
+    "channel_title": "Juanalytics",
+    "type": "podcast",
+    "tags": [
+      "podcast"
+    ]
+  },
+  {
+    "video_id": "6ZNyVNqkVMk",
+    "title": "Biases in Recruitment - SQL Lingua Franca #6",
+    "description": "📺 Full Episode: https://youtu.be/Sl5jEuxJ9G0\n\nIn this podcast episode, we explore biases in recruitment, focusing on the challenges of creating fair and inclusive hiring practices. The guest, an experienced recruiter, discusses how to prioritize essential skills and traits such as a growth mindset and trainability over rigid qualifications, while addressing common biases based on culture, race, or language. They share examples of discriminatory hiring practices and emphasize the need for transparency in the recruitment process to ensure fairness. The conversation also highlights the importance of diversity not just at entry levels, but in senior management, stressing that everyone should have equal opportunities for growth within a company. If you're interested in improving diversity and inclusivity in the workplace, this episode offers practical insights on how to minimize biases in hiring and promote a more balanced organizational culture.",
+    "published_date": "2024-09-26",
+    "thumbnail_url": "https://i.ytimg.com/vi/6ZNyVNqkVMk/maxresdefault.jpg",
+    "video_url": "https://www.youtube.com/watch?v=6ZNyVNqkVMk",
+    "channel_title": "Juanalytics",
+    "type": "podcast",
+    "tags": [
+      "podcast"
+    ]
+  },
+  {
+    "video_id": "1Oqx90s_Q1g",
+    "title": "SQL Lingua Franca #7 - Impostor Syndrom in Data Professionals",
+    "description": "",
+    "published_date": "2024-09-24",
+    "thumbnail_url": "https://i.ytimg.com/vi/1Oqx90s_Q1g/maxresdefault.jpg",
+    "video_url": "https://www.youtube.com/watch?v=1Oqx90s_Q1g",
+    "channel_title": "Juanalytics",
+    "type": "video",
+    "tags": []
+  },
+  {
+    "video_id": "4LRaIzbAta4",
+    "title": "SQL Lingua Franca #7 - The difference between a medior and a senior data professional",
+    "description": "",
+    "published_date": "2024-09-23",
+    "thumbnail_url": "https://i.ytimg.com/vi/4LRaIzbAta4/maxresdefault.jpg",
+    "video_url": "https://www.youtube.com/watch?v=4LRaIzbAta4",
+    "channel_title": "Juanalytics",
+    "type": "video",
+    "tags": []
+  },
+  {
+    "video_id": "PHWXCrswbW4",
+    "title": "SQL Lingua Franca #9 - Travis Dent - DevOps & Project Management",
+    "description": "🎙️ ⁠Travis Dent: Data Engineer at Xebia\n\nIn this episode, Travis, an experienced professional in data engineering and DevOps, shares his journey from robotics to data analytics. The discussion covers the importance of DevOps practices in data projects, addressing challenges like long-running pipelines and changing data schemas. Travis emphasizes the cultural aspects of DevOps, including collaboration, automation, and continuous improvement, while also touching on different levels of DevOps knowledge for data professionals.\n\nThe conversation explores how project management and clear vision contribute to successful data initiatives. Travis and the host discuss how the data field can learn from other industries like aviation and construction, particularly reliability and alerting. The episode concludes with practical recommendations for listeners looking to enhance their DevOps skills, including book suggestions and online resources, making it valuable for data professionals aiming to improve their operational practices.",
+    "published_date": "2024-09-21",
+    "thumbnail_url": "https://i.ytimg.com/vi/PHWXCrswbW4/maxresdefault.jpg",
+    "video_url": "https://www.youtube.com/watch?v=PHWXCrswbW4",
+    "channel_title": "Juanalytics",
+    "type": "podcast",
+    "tags": [
+      "podcast"
+    ]
+  },
+  {
+    "video_id": "_ZIMoo-GL_U",
+    "title": "KPI Masterclass - SQL Lingua Franca #7",
+    "description": "📺 Full Episode: https://youtu.be/A5TOnCdsJlo\n\nThis segment discusses the importance of Key Performance Indicators (KPIs) in regulatory compliance for fintech companies. The guest explains that regulators use these KPIs to assess if processes are running effectively. Key points include:\n\nKPI definition is sensitive, as companies must commit to achieving certain metrics regularly.\nThere's a need to balance stakeholder desires for numerous KPIs with realistic compliance expectations.\nGood KPIs are reasonable, reflect the overall process health, and are typically few in number (3-4 for IT processes).\nExamples of effective KPIs include response time and resolution time for incident management.\nIt's important to consider how KPIs correlate with each other and avoid focusing on one metric at the expense of others.\nBad KPIs can include unrealistic targets or metrics that don't fairly represent process performance.\n\nThe discussion emphasizes the importance of choosing KPIs carefully, understanding their implications, and providing context when reporting results. It also touches on the challenges of working with ratios and the need to present data in a meaningful, actionable way.",
+    "published_date": "2024-09-20",
+    "thumbnail_url": "https://i.ytimg.com/vi/_ZIMoo-GL_U/maxresdefault.jpg",
+    "video_url": "https://www.youtube.com/watch?v=_ZIMoo-GL_U",
+    "channel_title": "Juanalytics",
+    "type": "podcast",
+    "tags": [
+      "podcast"
+    ]
+  },
+  {
+    "video_id": "agY7sY_uBuQ",
+    "title": "SQL Lingua Franca #6 - The Mindset of a Great Engineer",
+    "description": "",
+    "published_date": "2024-09-19",
+    "thumbnail_url": "https://i.ytimg.com/vi/agY7sY_uBuQ/maxresdefault.jpg",
+    "video_url": "https://www.youtube.com/watch?v=agY7sY_uBuQ",
+    "channel_title": "Juanalytics",
+    "type": "video",
+    "tags": []
+  },
+  {
+    "video_id": "-9jert716ag",
+    "title": "SQL Lingua Franca #6 - The Importance of Diversity in Corporate Leadership",
+    "description": "",
+    "published_date": "2024-09-18",
+    "thumbnail_url": "https://i.ytimg.com/vi/-9jert716ag/maxresdefault.jpg",
+    "video_url": "https://www.youtube.com/watch?v=-9jert716ag",
+    "channel_title": "Juanalytics",
+    "type": "video",
+    "tags": []
+  },
+  {
+    "video_id": "JejxXEMd568",
+    "title": "SQL Lingua Franca #6 - Proving Your Value as a Tech Worker",
+    "description": "",
+    "published_date": "2024-09-15",
+    "thumbnail_url": "https://i.ytimg.com/vi/JejxXEMd568/maxresdefault.jpg",
+    "video_url": "https://www.youtube.com/watch?v=JejxXEMd568",
+    "channel_title": "Juanalytics",
+    "type": "video",
+    "tags": []
+  },
+  {
+    "video_id": "flioeaQinoQ",
+    "title": "SQL Lingua Franca #6 - Your Culture Should Never be a Weakness",
+    "description": "",
+    "published_date": "2024-09-14",
+    "thumbnail_url": "https://i.ytimg.com/vi/flioeaQinoQ/maxresdefault.jpg",
+    "video_url": "https://www.youtube.com/watch?v=flioeaQinoQ",
+    "channel_title": "Juanalytics",
+    "type": "video",
+    "tags": []
+  },
+  {
+    "video_id": "_IlJ2pWqsYE",
+    "title": "SQL Lingua Franca #6 - Be Yourself During Interviews",
+    "description": "",
+    "published_date": "2024-09-13",
+    "thumbnail_url": "https://i.ytimg.com/vi/_IlJ2pWqsYE/maxresdefault.jpg",
+    "video_url": "https://www.youtube.com/watch?v=_IlJ2pWqsYE",
+    "channel_title": "Juanalytics",
+    "type": "podcast",
+    "tags": [
+      "podcast"
+    ]
+  },
+  {
+    "video_id": "0E45mNDvN4s",
+    "title": "Becoming a volunteer for Django Girls - SQL Lingua Franca #7",
+    "description": "📺 Full Episode: https://youtu.be/A5TOnCdsJlo\n\nDjango Girls: https://djangogirls.org/en/amsterdam/\n\nIn this podcast segment, we discuss ways to get involved with Django Girls beyond attending as a participant. Our guest encourages experienced Python programmers to consider volunteering as coaches for the workshops. Here's what potential coaches should know:\n\n1. Coach applications are open and can be found on the Django Girls website.\n2. Coaching is on a volunteer basis (unpaid).\n3. Knowledge of Python is sufficient - familiarity with Django is not required, as coaches can prepare using available tutorials.\n4. The workshops provide an opportunity to support the goal of bringing more women into IT.\n\nFor companies interested in supporting Django Girls:\n1. Sponsorship opportunities are available for upcoming and future workshops.\n2. Sponsors can provide financial support or offer their space to host events.\n3. Workshops are organized every six months, so there are recurring opportunities to get involved.\n\nIf you're an experienced Python developer or represent a company that wants to support diversity in tech, consider reaching out to Django Girls Amsterdam. Whether through coaching or sponsorship, your involvement can help make programming more accessible to women in your community.",
+    "published_date": "2024-09-12",
+    "thumbnail_url": "https://i.ytimg.com/vi/0E45mNDvN4s/maxresdefault.jpg",
+    "video_url": "https://www.youtube.com/watch?v=0E45mNDvN4s",
+    "channel_title": "Juanalytics",
+    "type": "podcast",
+    "tags": [
+      "podcast"
+    ]
+  },
+  {
+    "video_id": "l_RyrKIZX20",
+    "title": "You should sign up for Django Girls  - SQL Lingua Franca #7",
+    "description": "📺 Full Episode: https://youtu.be/A5TOnCdsJlo\n\nDjango Girls: https://djangogirls.org/en/amsterdam/\n\nIn this podcast excerpt, we discuss Django Girls, a non-profit organization offering free programming workshops for women. Our guest, a workshop coach and organizer, explains how these one-day events teach Python programming to beginners. Participants learn to create a basic web application using the Django framework, along with an introduction to Git version control and website deployment. The workshops are designed for women who are new to coding or unsure if programming is for them. We cover the workshop's structure, the tools used (all free or open-source), and how it gives participants a taste of a developer's job. If you're a woman interested in trying programming, or know someone who might be, this episode provides useful information about upcoming workshops and how to get involved. With a shortage of tech professionals, initiatives like Django Girls aim to introduce more people to potential careers in programming.",
+    "published_date": "2024-09-12",
+    "thumbnail_url": "https://i.ytimg.com/vi/l_RyrKIZX20/maxresdefault.jpg",
+    "video_url": "https://www.youtube.com/watch?v=l_RyrKIZX20",
+    "channel_title": "Juanalytics",
+    "type": "podcast",
+    "tags": [
+      "podcast"
+    ]
+  },
+  {
+    "video_id": "txkH9Bh2mbw",
+    "title": "SQL Lingua Franca #6 - How Quitting My Job Led Me to IT Recruitment",
+    "description": "",
+    "published_date": "2024-09-12",
+    "thumbnail_url": "https://i.ytimg.com/vi/txkH9Bh2mbw/maxresdefault.jpg",
+    "video_url": "https://www.youtube.com/watch?v=txkH9Bh2mbw",
+    "channel_title": "Juanalytics",
+    "type": "video",
+    "tags": []
+  },
+  {
+    "video_id": "CHIkFFc_hCA",
+    "title": "SQL Lingua Franca #6 How a Python Script Helped Secure an Amsterdam Rental",
+    "description": "",
+    "published_date": "2024-09-11",
+    "thumbnail_url": "https://i.ytimg.com/vi/CHIkFFc_hCA/maxresdefault.jpg",
+    "video_url": "https://www.youtube.com/watch?v=CHIkFFc_hCA",
+    "channel_title": "Juanalytics",
+    "type": "video",
+    "tags": []
+  },
+  {
+    "video_id": "FelO2Zaetos",
+    "title": "SQL Lingua Franca #8 - Pádraic Slattery - Mature Data Teams",
+    "description": "🎙️ ⁠Pádraic Slattery: Principal Analytics Engineer at Xebia\n\ndbt beyond the basics: https://github.com/pgoslatara/dbt-beyond-the-basics\n\nIn this episode, Padraic shares his background, starting from mechanical engineering and transitioning into data analysis and data engineering roles. He dives into a GitHub repository he created called \"dbt Beyond the Basics\", showcasing CI/CD best practices for working with dbt.\n\nPadraic explains his Airflow-based approach to orchestrating data pipelines, including techniques to improve fault tolerance. He also shares his thoughts on potential debt feature requests and emphasizes the importance of building a strong data engineering culture. Finally, we discussed how the listeners can help improve your organization's data maturity in three months, focusing on onboarding, CI/CD practices, and team self-sufficiency.",
+    "published_date": "2024-09-11",
+    "thumbnail_url": "https://i.ytimg.com/vi/FelO2Zaetos/maxresdefault.jpg",
+    "video_url": "https://www.youtube.com/watch?v=FelO2Zaetos",
+    "channel_title": "Juanalytics",
+    "type": "podcast",
+    "tags": [
+      "podcast"
+    ]
+  },
+  {
+    "video_id": "A5TOnCdsJlo",
+    "title": "SQL Lingua Franca #7 - Ksenia Iakovleva - KPIs & Django Girls",
+    "description": "🎙️ ⁠Ksenia Iakovleva: IT Service Manager at flatexDEGIRO\n\nDjango Girls: https://djangogirls.org/en/amsterdam/\n\nIn this episode, Ksenia discusses her transition from journalism to data analysis in the Netherlands' financial sector. She delves into the challenges of working in a regulated industry, the importance of thoughtful KPI selection, and the balance between meeting regulatory requirements and maintaining meaningful metrics. Emphasizing the need for KPIs that accurately reflect process goals without pushing for unrealistic targets.\n\nThe conversation then shifts to Ksenia's involvement with Django Girls, an international non-profit introducing women to programming. She describes the free one-day Python workshops and offers advice for those entering or advancing in data roles, stressing the importance of hands-on projects. The episode concludes with an invitation for experienced Python developers to volunteer as Django Girls coaches.",
+    "published_date": "2024-09-01",
+    "thumbnail_url": "https://i.ytimg.com/vi/A5TOnCdsJlo/maxresdefault.jpg",
+    "video_url": "https://www.youtube.com/watch?v=A5TOnCdsJlo",
+    "channel_title": "Juanalytics",
+    "type": "podcast",
+    "tags": [
+      "podcast"
+    ]
+  },
+  {
+    "video_id": "Sl5jEuxJ9G0",
+    "title": "SQL Lingua Franca #6 - Luuk Feitsma - Recruiting Data Professionals",
+    "description": "🎙️ ⁠Luuk Feitsma: Head of Recruitment\n\nIn this episode, Luuk shares his diverse professional journey, starting in the music industry as a producer and DJ before transitioning into the IT recruitment sector, where he now serves as the head of recruitment.\n\nThe conversation covers a range of topics related to recruitment, including the unique challenges of hiring data professionals versus other roles, the current volatility in the tech job market, the importance of company culture and purpose in attracting talent, strategies for assessing \"soft skills\" during the hiring process, addressing bias and fairness in recruitment, and the impact of AI on recruitment workflows.",
+    "published_date": "2024-08-26",
+    "thumbnail_url": "https://i.ytimg.com/vi/Sl5jEuxJ9G0/maxresdefault.jpg",
+    "video_url": "https://www.youtube.com/watch?v=Sl5jEuxJ9G0",
+    "channel_title": "Juanalytics",
+    "type": "podcast",
+    "tags": [
+      "podcast"
+    ]
+  },
+  {
+    "video_id": "b5GxfuGGtLw",
+    "title": "SQL Lingua Franca #5 - Listen to your users, not to the people who pay for your product",
+    "description": "",
+    "published_date": "2024-08-17",
+    "thumbnail_url": "https://i.ytimg.com/vi/b5GxfuGGtLw/maxresdefault.jpg",
+    "video_url": "https://www.youtube.com/watch?v=b5GxfuGGtLw",
+    "channel_title": "Juanalytics",
+    "type": "video",
+    "tags": []
+  },
+  {
+    "video_id": "6LVWQGonaA4",
+    "title": "SQL Lingua Franca #5 - How does the week of a Community Advocate look?",
+    "description": "",
+    "published_date": "2024-08-16",
+    "thumbnail_url": "https://i.ytimg.com/vi/6LVWQGonaA4/maxresdefault.jpg",
+    "video_url": "https://www.youtube.com/watch?v=6LVWQGonaA4",
+    "channel_title": "Juanalytics",
+    "type": "video",
+    "tags": []
+  },
+  {
+    "video_id": "CiMVywHnz44",
+    "title": "SQL Lingua Franca #5 - What is a Developer Advocate?",
+    "description": "",
+    "published_date": "2024-08-15",
+    "thumbnail_url": "https://i.ytimg.com/vi/CiMVywHnz44/maxresdefault.jpg",
+    "video_url": "https://www.youtube.com/watch?v=CiMVywHnz44",
+    "channel_title": "Juanalytics",
+    "type": "video",
+    "tags": []
+  },
+  {
+    "video_id": "OtL_JHJQk_8",
+    "title": "SQL Lingua Franca #5 - LLMs are not hallucinating, they are just guessing",
+    "description": "",
+    "published_date": "2024-08-14",
+    "thumbnail_url": "https://i.ytimg.com/vi/OtL_JHJQk_8/maxresdefault.jpg",
+    "video_url": "https://www.youtube.com/watch?v=OtL_JHJQk_8",
+    "channel_title": "Juanalytics",
+    "type": "video",
+    "tags": []
+  },
+  {
+    "video_id": "j4kiKteorKo",
+    "title": "SQL Lingua Franca #5 - AI can change lives (for good and for bad)",
+    "description": "",
+    "published_date": "2024-08-13",
+    "thumbnail_url": "https://i.ytimg.com/vi/j4kiKteorKo/maxresdefault.jpg",
+    "video_url": "https://www.youtube.com/watch?v=j4kiKteorKo",
+    "channel_title": "Juanalytics",
+    "type": "video",
+    "tags": []
+  },
+  {
+    "video_id": "IwYWK5pmf1s",
+    "title": "SQL Lingua Franca #5 - It feels like every company is trying to cram AI to their products",
+    "description": "",
+    "published_date": "2024-08-12",
+    "thumbnail_url": "https://i.ytimg.com/vi/IwYWK5pmf1s/maxresdefault.jpg",
+    "video_url": "https://www.youtube.com/watch?v=IwYWK5pmf1s",
+    "channel_title": "Juanalytics",
+    "type": "video",
+    "tags": []
+  },
+  {
+    "video_id": "jaoGFMFM7zc",
+    "title": "SQL Lingua Franca #5 - Daniel Herrera - Product Advocacy & GenAI",
+    "description": "🎙️ ⁠Daniel Herrera: Principal Developer Advocate at Teradata\n\nToddler: https://github.com/Teradata/toddler\n\nIn this episode, we explore the global data landscape with Daniel Herrera, a developer advocate at Teradata. Daniel shares his unique journey from Guatemala to Taiwan and Europe, offering insights into how data practices and IT cultures differ across continents. The conversation covers the evolution of Taiwan's tech industry, Teradata's role in big data solutions, and practical advice on data modeling and understanding business needs.\n\nThroughout the discussion, Daniel provides valuable perspectives on transitioning from social sciences to a tech career, cultural nuances in data engineering, and the challenges and opportunities presented by AI and machine learning. He offers practical tips for identifying valuable use cases for generative AI in business and shares insights from his work on the 'toddler' library project for question generation.",
+    "published_date": "2024-08-11",
+    "thumbnail_url": "https://i.ytimg.com/vi/jaoGFMFM7zc/maxresdefault.jpg",
+    "video_url": "https://www.youtube.com/watch?v=jaoGFMFM7zc",
+    "channel_title": "Juanalytics",
+    "type": "podcast",
+    "tags": [
+      "podcast"
+    ]
+  },
+  {
+    "video_id": "M2Bq7PORMo4",
+    "title": "Good Data transformations are like IKEA furniture - SQL Lingua Franca #1",
+    "description": "📺 Full Episode: https://youtu.be/I1tKn4ZT4No\n\nDiscover why simplicity and modularity in data transformations are key to building effective, scalable data pipelines. Learn how to make your code as accessible and efficient as IKEA furniture assembly! We cover:\n\n- Writing readable, understandable code\n- Modular design for better maintenance\n- Breaking down complex transformations\n- Benefits of code review",
+    "published_date": "2024-08-10",
+    "thumbnail_url": "https://i.ytimg.com/vi/M2Bq7PORMo4/maxresdefault.jpg",
+    "video_url": "https://www.youtube.com/watch?v=M2Bq7PORMo4",
+    "channel_title": "Juanalytics",
+    "type": "podcast",
+    "tags": [
+      "podcast"
+    ]
+  },
+  {
+    "video_id": "1lhOI9ZHJ6w",
+    "title": "What beginners get wrong about data transformations - SQL Lingua Franca #1",
+    "description": "📺 Full Episode: https://youtu.be/I1tKn4ZT4No\n\nHere's a suggested description for the YouTube video based on the transcript:\nWhat beginners get wrong about data transformations - SQL Lingua Franca #1\nIn this video, we discuss common mistakes beginners make when dealing with data transformations, an essential part of every data job. Key points covered:\n\nThe importance of clear and descriptive naming conventions for CTEs, functions, and tables\nWhy beginners often overcomplicate names and how to avoid this\nThe challenge of finding the right balance between specific and generic function names\nThe value of code refactoring to improve clarity and reusability\n\nWhether you're new to data transformations or an experienced professional, this video offers insights to help you write cleaner, more understandable code. Join us as we explore best practices and common pitfalls in the world of data transformations.",
+    "published_date": "2024-08-09",
+    "thumbnail_url": "https://i.ytimg.com/vi/1lhOI9ZHJ6w/maxresdefault.jpg",
+    "video_url": "https://www.youtube.com/watch?v=1lhOI9ZHJ6w",
+    "channel_title": "Juanalytics",
+    "type": "podcast",
+    "tags": [
+      "podcast"
+    ]
+  },
+  {
+    "video_id": "B1RO1UFl0mY",
+    "title": "How to document data work - SQL Lingua Franca #1",
+    "description": "📺 Full Episode: https://youtu.be/I1tKn4ZT4No\n\nDiscover essential tips for effective data documentation in this informative video. Learn why documenting the \"why\" behind your code is crucial, and how to approach documentation in data pipelines. The discussion covers best practices, including documenting early in the process, involving stakeholders, and the importance of clear communication. Gain insights on balancing technical details with business needs, and understand how proper documentation can enhance data project value and usability. Whether you're a data professional or manager, this video offers practical advice to improve your data documentation practices.",
+    "published_date": "2024-08-08",
+    "thumbnail_url": "https://i.ytimg.com/vi/B1RO1UFl0mY/maxresdefault.jpg",
+    "video_url": "https://www.youtube.com/watch?v=B1RO1UFl0mY",
+    "channel_title": "Juanalytics",
+    "type": "podcast",
+    "tags": [
+      "podcast"
+    ]
+  },
+  {
+    "video_id": "7gAQxU22quo",
+    "title": "SQL Lingua Franca #1 - Modularization Makes Your Code Easier to Test!",
+    "description": "",
+    "published_date": "2024-08-07",
+    "thumbnail_url": "https://i.ytimg.com/vi/7gAQxU22quo/maxresdefault.jpg",
+    "video_url": "https://www.youtube.com/watch?v=7gAQxU22quo",
+    "channel_title": "Juanalytics",
+    "type": "video",
+    "tags": []
+  },
+  {
+    "video_id": "QclvKwX9UI4",
+    "title": "SQL Lingua Franca #4 - CI/CD can become a burden if you do too much fancy stuff",
+    "description": "",
+    "published_date": "2024-08-06",
+    "thumbnail_url": "https://i.ytimg.com/vi/QclvKwX9UI4/maxresdefault.jpg",
+    "video_url": "https://www.youtube.com/watch?v=QclvKwX9UI4",
+    "channel_title": "Juanalytics",
+    "type": "video",
+    "tags": []
+  },
+  {
+    "video_id": "tryVBM7xqV8",
+    "title": "SQL Lingua Franca #4 - Transitioning from Analyst to Analytics Engineering",
+    "description": "",
+    "published_date": "2024-08-05",
+    "thumbnail_url": "https://i.ytimg.com/vi/tryVBM7xqV8/maxresdefault.jpg",
+    "video_url": "https://www.youtube.com/watch?v=tryVBM7xqV8",
+    "channel_title": "Juanalytics",
+    "type": "video",
+    "tags": []
+  },
+  {
+    "video_id": "WYXv2OOY3x4",
+    "title": "SQL Lingua Franca #4 - dbt Takes Away a lot of the Traditional SQL Painpoints",
+    "description": "",
+    "published_date": "2024-08-04",
+    "thumbnail_url": "https://i.ytimg.com/vi/WYXv2OOY3x4/maxresdefault.jpg",
+    "video_url": "https://www.youtube.com/watch?v=WYXv2OOY3x4",
+    "channel_title": "Juanalytics",
+    "type": "video",
+    "tags": []
+  },
+  {
+    "video_id": "kyqPdpvaH34",
+    "title": "SQL Lingua Franca #4 - Data Lineage: The Key to Effective Data Management",
+    "description": "",
+    "published_date": "2024-08-03",
+    "thumbnail_url": "https://i.ytimg.com/vi/kyqPdpvaH34/maxresdefault.jpg",
+    "video_url": "https://www.youtube.com/watch?v=kyqPdpvaH34",
+    "channel_title": "Juanalytics",
+    "type": "video",
+    "tags": []
+  },
+  {
+    "video_id": "2QfFq46pjpk",
+    "title": "SQL Lingua Franca #4 - Easy Techniques to Write Documentation Efficiently",
+    "description": "",
+    "published_date": "2024-08-02",
+    "thumbnail_url": "https://i.ytimg.com/vi/2QfFq46pjpk/maxresdefault.jpg",
+    "video_url": "https://www.youtube.com/watch?v=2QfFq46pjpk",
+    "channel_title": "Juanalytics",
+    "type": "video",
+    "tags": []
+  },
+  {
+    "video_id": "DMuWN-pcURw",
+    "title": "SQL Lingua Franca #4 - Jovan Gligorevic - Productionizing dbt",
+    "description": "🎙️ ⁠Jovan Gligorevic: Data Engineer at Bitpanda\n\nIn this episode, we explore the productionization of dbt (data build tool) with our guest, Jovan Gligorevic. The conversation delves into strategies for effectively deploying dbt, including using software engineering best practices, CI/CD pipelines, and orchestration tools. \n\nJovan emphasizes the importance of balancing speed of development with adherence to best practices and data security requirements. He also offers practical advice on improving the dbt deployment process, highlighting how these improvements can increase productivity and data quality in analytics engineering teams. The discussion covers topics such as pre-commit hooks, testing strategies, and the integration of dbt with tools like Airflow and Cosmos for efficient orchestration.",
+    "published_date": "2024-08-01",
+    "thumbnail_url": "https://i.ytimg.com/vi/DMuWN-pcURw/maxresdefault.jpg",
+    "video_url": "https://www.youtube.com/watch?v=DMuWN-pcURw",
+    "channel_title": "Juanalytics",
+    "type": "podcast",
+    "tags": [
+      "podcast"
+    ]
+  },
+  {
+    "video_id": "qvt3K8HvXKo",
+    "title": "Concrete tips to become better at data modeling - SQL Lingua Franca #2",
+    "description": "📺 Full Episode: https://youtu.be/OV5wvvsM5z0\n\nLooking to enhance your data modeling skills? This video offers practical advice from an expert in the field. Learn actionable tips to improve your data modeling abilities, including starting your own projects, using open-source tools, and staying open-minded about different techniques. Discover the importance of continuous learning, networking, and hands-on practice. Whether you're a beginner or looking to refine your skills, this video provides valuable insights to help you advance in the world of data modeling.",
+    "published_date": "2024-07-31",
+    "thumbnail_url": "https://i.ytimg.com/vi/qvt3K8HvXKo/maxresdefault.jpg",
+    "video_url": "https://www.youtube.com/watch?v=qvt3K8HvXKo",
+    "channel_title": "Juanalytics",
+    "type": "podcast",
+    "tags": [
+      "podcast"
+    ]
+  },
+  {
+    "video_id": "-e0WGvGdT0E",
+    "title": "How to spot an expert at data modeling - SQL Lingua Franca #2",
+    "description": "📺 Full Episode: https://youtu.be/OV5wvvsM5z0\n\nDive into the world of data modeling expertise with this insightful discussion. Learn what to look for when hiring a data modeling expert, including their understanding of various modeling techniques and ability to adapt to different business needs. Explore the importance of conceptual, logical, and physical data modeling, and why a balanced approach is crucial. Whether you're a data professional or involved in hiring, this video offers valuable perspectives on the skills and mindset needed for effective data modeling in today's diverse data landscape.",
+    "published_date": "2024-07-30",
+    "thumbnail_url": "https://i.ytimg.com/vi/-e0WGvGdT0E/maxresdefault.jpg",
+    "video_url": "https://www.youtube.com/watch?v=-e0WGvGdT0E",
+    "channel_title": "Juanalytics",
+    "type": "podcast",
+    "tags": [
+      "podcast"
+    ]
+  },
+  {
+    "video_id": "JVO6syo-QOY",
+    "title": "SQL Lingua Franca #3 - Healthcare Has Some Interesting Data Challenges",
+    "description": "",
+    "published_date": "2024-07-29",
+    "thumbnail_url": "https://i.ytimg.com/vi/JVO6syo-QOY/maxresdefault.jpg",
+    "video_url": "https://www.youtube.com/watch?v=JVO6syo-QOY",
+    "channel_title": "Juanalytics",
+    "type": "video",
+    "tags": []
+  },
+  {
+    "video_id": "HgTnXYi7eAo",
+    "title": "What is an Analytics Engineer? - SQL Lingua Franca #2",
+    "description": "📺 Full Episode: https://youtu.be/OV5wvvsM5z0\n\nWhat is an Analytics Engineer? In this insightful discussion, we explore the emerging role of Analytics Engineers in modern data teams. Learn how these professionals bridge the gap between data engineering and business analysis, applying software engineering best practices to data transformation. Discover the unique skills and mindset required for this role, and how it's reshaping the data industry. Whether you're a data professional or just curious about the evolving data landscape, this video offers valuable insights into the world of Analytics Engineering.",
+    "published_date": "2024-07-29",
+    "thumbnail_url": "https://i.ytimg.com/vi/HgTnXYi7eAo/maxresdefault.jpg",
+    "video_url": "https://www.youtube.com/watch?v=HgTnXYi7eAo",
+    "channel_title": "Juanalytics",
+    "type": "podcast",
+    "tags": [
+      "podcast"
+    ]
+  },
+  {
+    "video_id": "fuJfbT5wTM4",
+    "title": "SQL Lingua Franca #3 - Query Performance in Snowflake",
+    "description": "",
+    "published_date": "2024-07-27",
+    "thumbnail_url": "https://i.ytimg.com/vi/fuJfbT5wTM4/maxresdefault.jpg",
+    "video_url": "https://www.youtube.com/watch?v=fuJfbT5wTM4",
+    "channel_title": "Juanalytics",
+    "type": "video",
+    "tags": []
+  },
+  {
+    "video_id": "aS4lFfhW8M0",
+    "title": "SQL Lingua Franca #2  - Not every data person has what it takes to be a data modeler",
+    "description": "",
+    "published_date": "2024-07-26",
+    "thumbnail_url": "https://i.ytimg.com/vi/aS4lFfhW8M0/maxresdefault.jpg",
+    "video_url": "https://www.youtube.com/watch?v=aS4lFfhW8M0",
+    "channel_title": "Juanalytics",
+    "type": "video",
+    "tags": []
+  },
+  {
+    "video_id": "0WKEGwsUdZM",
+    "title": "SQL Lingua Franca #3 -  Why Coverage Is a Useless Software Testing Metric",
+    "description": "",
+    "published_date": "2024-07-26",
+    "thumbnail_url": "https://i.ytimg.com/vi/0WKEGwsUdZM/maxresdefault.jpg",
+    "video_url": "https://www.youtube.com/watch?v=0WKEGwsUdZM",
+    "channel_title": "Juanalytics",
+    "type": "video",
+    "tags": []
+  },
+  {
+    "video_id": "Jtlp-3HRSb0",
+    "title": "SQL Lingua Franca #3 - How to Reciprocate When Discussing Data",
+    "description": "",
+    "published_date": "2024-07-25",
+    "thumbnail_url": "https://i.ytimg.com/vi/Jtlp-3HRSb0/maxresdefault.jpg",
+    "video_url": "https://www.youtube.com/watch?v=Jtlp-3HRSb0",
+    "channel_title": "Juanalytics",
+    "type": "video",
+    "tags": []
+  },
+  {
+    "video_id": "GjSpsf1FWow",
+    "title": "SQL Lingua Franca #3 - Legacy Systems are Holding Your Business Back",
+    "description": "",
+    "published_date": "2024-07-23",
+    "thumbnail_url": "https://i.ytimg.com/vi/GjSpsf1FWow/maxresdefault.jpg",
+    "video_url": "https://www.youtube.com/watch?v=GjSpsf1FWow",
+    "channel_title": "Juanalytics",
+    "type": "video",
+    "tags": []
+  },
+  {
+    "video_id": "DgIoosVurZY",
+    "title": "SQL Lingua Franca #3 - Explain your value as a data professional",
+    "description": "",
+    "published_date": "2024-07-22",
+    "thumbnail_url": "https://i.ytimg.com/vi/DgIoosVurZY/maxresdefault.jpg",
+    "video_url": "https://www.youtube.com/watch?v=DgIoosVurZY",
+    "channel_title": "Juanalytics",
+    "type": "video",
+    "tags": []
+  },
+  {
+    "video_id": "51BPZkOsmKw",
+    "title": "SQL Lingua Franca #3 - Tony Zeljković - Developer Experience",
+    "description": "🎙️ ⁠Tony Zeljković: Data Engineer at Full scale bioinformatics\n\nIn this episode, we explore the developer experience in data engineering with our guest, Tony. The conversation delves into strategies for enhancing developer experience, including the use of dev containers, proper system design with loose coupling, and effective testing practices. \n\nTony emphasizes the significance of stakeholder management and understanding different perspectives in data projects. He also offers practical advice on improving the overall developer experience, highlighting how these improvements can increase productivity and value in data engineering teams.",
+    "published_date": "2024-07-21",
+    "thumbnail_url": "https://i.ytimg.com/vi/51BPZkOsmKw/maxresdefault.jpg",
+    "video_url": "https://www.youtube.com/watch?v=51BPZkOsmKw",
+    "channel_title": "Juanalytics",
+    "type": "podcast",
+    "tags": [
+      "podcast"
+    ]
+  },
+  {
+    "video_id": "hVZEf7Chit4",
+    "title": "SQL Lingua Franca #2 - Writing \"Fundamentals of Analytics Engineering\"",
+    "description": "Check out the book \"Fundamentals Of Analytics Engineering\": https://www.amazon.com/Fundamentals-Analytics-Engineering-End-End-ebook/dp/B0CWR79K4M",
+    "published_date": "2024-07-19",
+    "thumbnail_url": "https://i.ytimg.com/vi/hVZEf7Chit4/maxresdefault.jpg",
+    "video_url": "https://www.youtube.com/watch?v=hVZEf7Chit4",
+    "channel_title": "Juanalytics",
+    "type": "video",
+    "tags": []
+  },
+  {
+    "video_id": "RBqjUE4PUBE",
+    "title": "SQL Lingua Franca #2 - What is an Analytics Engineer",
+    "description": "",
+    "published_date": "2024-07-17",
+    "thumbnail_url": "https://i.ytimg.com/vi/RBqjUE4PUBE/maxresdefault.jpg",
+    "video_url": "https://www.youtube.com/watch?v=RBqjUE4PUBE",
+    "channel_title": "Juanalytics",
+    "type": "video",
+    "tags": []
+  },
+  {
+    "video_id": "wYG-deGWUTY",
+    "title": "SQL Lingua Franca #2 - Data Has an Impact on People",
+    "description": "",
+    "published_date": "2024-07-15",
+    "thumbnail_url": "https://i.ytimg.com/vi/wYG-deGWUTY/maxresdefault.jpg",
+    "video_url": "https://www.youtube.com/watch?v=wYG-deGWUTY",
+    "channel_title": "Juanalytics",
+    "type": "video",
+    "tags": []
+  },
+  {
+    "video_id": "ZO5oW5K-gaM",
+    "title": "SQL Lingua Franca #2 - Upskilling with Zero Cost Tools",
+    "description": "",
+    "published_date": "2024-07-13",
+    "thumbnail_url": "https://i.ytimg.com/vi/ZO5oW5K-gaM/maxresdefault.jpg",
+    "video_url": "https://www.youtube.com/watch?v=ZO5oW5K-gaM",
+    "channel_title": "Juanalytics",
+    "type": "video",
+    "tags": []
+  },
+  {
+    "video_id": "OV5wvvsM5z0",
+    "title": "SQL Lingua Franca #2 - Ricardo Granados Lopez - Data Modeling",
+    "description": "🎙️ ⁠Ricardo Granados Lopez: Analytics Engineer at Xebia\n\nIn this episode, we delve into the world of data careers and analytics engineering. Our guest, Ricardo Granados, shares his journey from medicine and industrial engineering to analytics.\n\nThe conversation explores the evolution of data roles, particularly the emergence of analytics engineering as a bridge between data engineering and data analysis. \n\nWe also touch on critical aspects of data work, including data modeling, the challenges of working with different data environments, and the importance of data quality and governance.\n\nThe discussion highlights the often-overlooked human aspects of data projects, the evolving nature of data platforms, and the importance of continuous learning and practical experience in data modeling and analytics.",
+    "published_date": "2024-07-12",
+    "thumbnail_url": "https://i.ytimg.com/vi/OV5wvvsM5z0/maxresdefault.jpg",
+    "video_url": "https://www.youtube.com/watch?v=OV5wvvsM5z0",
+    "channel_title": "Juanalytics",
+    "type": "podcast",
+    "tags": [
+      "podcast"
+    ]
+  },
+  {
+    "video_id": "jJ-xNNVUlPw",
+    "title": "SQL Lingua Franca #1 - Our Mission is to be Obsolete",
+    "description": "",
+    "published_date": "2024-07-11",
+    "thumbnail_url": "https://i.ytimg.com/vi/jJ-xNNVUlPw/maxresdefault.jpg",
+    "video_url": "https://www.youtube.com/watch?v=jJ-xNNVUlPw",
+    "channel_title": "Juanalytics",
+    "type": "video",
+    "tags": []
+  },
+  {
+    "video_id": "D3Ntz0ZNpl8",
+    "title": "SQL Lingua Franca #1 - Being Replaceable is Hard",
+    "description": "",
+    "published_date": "2024-07-10",
+    "thumbnail_url": "https://i.ytimg.com/vi/D3Ntz0ZNpl8/maxresdefault.jpg",
+    "video_url": "https://www.youtube.com/watch?v=D3Ntz0ZNpl8",
+    "channel_title": "Juanalytics",
+    "type": "video",
+    "tags": []
+  },
+  {
+    "video_id": "dNDDMoVvhZY",
+    "title": "SQL Lingua Franca #1 - Bashing on Dashboards",
+    "description": "",
+    "published_date": "2024-07-09",
+    "thumbnail_url": "https://i.ytimg.com/vi/dNDDMoVvhZY/maxresdefault.jpg",
+    "video_url": "https://www.youtube.com/watch?v=dNDDMoVvhZY",
+    "channel_title": "Juanalytics",
+    "type": "video",
+    "tags": []
+  },
+  {
+    "video_id": "LNLAwV2SIG8",
+    "title": "SQL Lingua Franca #1 - The Power of Simplicity in Data Manipulation",
+    "description": "",
+    "published_date": "2024-07-08",
+    "thumbnail_url": "https://i.ytimg.com/vi/LNLAwV2SIG8/maxresdefault.jpg",
+    "video_url": "https://www.youtube.com/watch?v=LNLAwV2SIG8",
+    "channel_title": "Juanalytics",
+    "type": "video",
+    "tags": []
+  },
+  {
+    "video_id": "I1tKn4ZT4No",
+    "title": "SQL Lingua Franca #1 - Fanny Kassapian - Data Transformations",
+    "description": "🎙️ ⁠Fanny Kassapian⁠: Principal Consultant at Xebia\n\nIn this episode, we dive into the world of data transformations. Our guest, ⁠Fanny Kassapian⁠, shares insights on creating efficient, scalable, and user-friendly data pipelines, drawing unexpected parallels with IKEA furniture assembly. We also explore key principles such as code readability, modularity, and the art of documentation, debunking common misconceptions along the way.\n\nThe conversation touches on often-overlooked aspects of data work, including the importance of naming conventions, the power of well-designed dashboards, and the challenges of replicating real-world scenarios in data education.",
+    "published_date": "2024-07-04",
+    "thumbnail_url": "https://i.ytimg.com/vi/I1tKn4ZT4No/maxresdefault.jpg",
+    "video_url": "https://www.youtube.com/watch?v=I1tKn4ZT4No",
+    "channel_title": "Juanalytics",
+    "type": "podcast",
+    "tags": [
+      "podcast"
+    ]
+  },
+  {
+    "video_id": "9eiYoB21uuo",
+    "title": "Juan Manuel Perafan: The fine art of organizing Meetups | Big Data Summit Warsaw 2023",
+    "description": "Meetups are a great way to upskill your team, create internal/external data communities, improve your leadership skills, and hire new talent. In fact, the tech world is famous for its vibrant meetups and conferences. In this talk, demystify the organization of meetups. From finding sponsors, getting world-class speakers, and attracting a relevant audience.",
+    "published_date": "2023-09-13",
+    "thumbnail_url": "https://i.ytimg.com/vi/9eiYoB21uuo/maxresdefault.jpg",
+    "video_url": "https://www.youtube.com/watch?v=9eiYoB21uuo",
+    "channel_title": "Juanalytics",
+    "type": "video",
+    "tags": []
+  },
+  {
+    "video_id": "RVxU9tYB6-o",
+    "title": "Juan Manuel Perafan: 7 Habits of Highly Latin People | TED-XKE 2022",
+    "description": "My company organized a TED-like event and I gave a short talk. It has absolute nothing to do with data, but I am uploading it to this channel, just to be able to share it.",
+    "published_date": "2022-12-01",
+    "thumbnail_url": "https://i.ytimg.com/vi/RVxU9tYB6-o/maxresdefault.jpg",
+    "video_url": "https://www.youtube.com/watch?v=RVxU9tYB6-o",
+    "channel_title": "Juanalytics",
+    "type": "video",
+    "tags": []
+  },
+  {
+    "video_id": "Qvw1dfPOLrk",
+    "title": "Reading Data Books - Part 1: 3 tool-agnostic, data books you should read!",
+    "description": "Here are 3 tool-agnostic, data books that I would recommend to any data professional. \n\nDear Data by Giorgia Lupi and Stefanie Posavec: http://www.dear-data.com/theproject\n\nFundamentals of Data Visualization by Claus O. Wilke: https://clauswilke.com/dataviz/\n\nData Pipelines Pocket Reference by James Densmore: https://www.oreilly.com/library/view/data-pipelines-pocket/9781492087823/",
+    "published_date": "2021-12-30",
+    "thumbnail_url": "https://i.ytimg.com/vi/Qvw1dfPOLrk/maxresdefault.jpg",
+    "video_url": "https://www.youtube.com/watch?v=Qvw1dfPOLrk",
+    "channel_title": "Juanalytics",
+    "type": "video",
+    "tags": []
+  },
+  {
+    "video_id": "2jAVlI9RZqs",
+    "title": "Dashboard Review: Episode #4 (Tableau) with Ward Eiling",
+    "description": "On this video, I give feedback to Ward Eiling on his dashboard. \n\nHere is the link to her dashboard: https://public.tableau.com/app/profile/ward.eiling\n\nIf you enjoyed these tips and you would like feedback on one of your dashboards, just get in touch with me and I will feature them in my next video.",
+    "published_date": "2021-11-08",
+    "thumbnail_url": "https://i.ytimg.com/vi/2jAVlI9RZqs/maxresdefault.jpg",
+    "video_url": "https://www.youtube.com/watch?v=2jAVlI9RZqs",
+    "channel_title": "Juanalytics",
+    "type": "podcast",
+    "tags": [
+      "podcast"
+    ]
+  },
+  {
+    "video_id": "gyA3xBr8tbo",
+    "title": "The Problem with Tableau & Power BI",
+    "description": "I love how Tableau & Power BI are constantly pushing each other to become better tools. Both of these tools come with an army of shiny features. But I believe could still learn a lot from DevOps and programming best practices (to learn more look for DataOps).",
+    "published_date": "2021-08-26",
+    "thumbnail_url": "https://i.ytimg.com/vi/gyA3xBr8tbo/maxresdefault.jpg",
+    "video_url": "https://www.youtube.com/watch?v=gyA3xBr8tbo",
+    "channel_title": "Juanalytics",
+    "type": "video",
+    "tags": []
+  },
+  {
+    "video_id": "aBNLPaCChn8",
+    "title": "The Problems with KPI's (Key Performance Indicators)",
+    "description": "KPI's are an invaluable tool to track the progress of your organization. But they can be a double-edge sword and here are 3 reasons why.",
+    "published_date": "2021-08-16",
+    "thumbnail_url": "https://i.ytimg.com/vi/aBNLPaCChn8/maxresdefault.jpg",
+    "video_url": "https://www.youtube.com/watch?v=aBNLPaCChn8",
+    "channel_title": "Juanalytics",
+    "type": "video",
+    "tags": []
+  },
+  {
+    "video_id": "ZFXN0-pr9s4",
+    "title": "The Problem with Open-Source Dashboarding Tools",
+    "description": "As soon as programmer hear about the cost of a tool like Tableau or Power BI, their first instinct is to look for an open-source alternative. So far, I haven't found a good one. Open-source alternatives generally fall behind in, at least, 1 of the 3 aspects I mention during this video.",
+    "published_date": "2021-08-08",
+    "thumbnail_url": "https://i.ytimg.com/vi/ZFXN0-pr9s4/maxresdefault.jpg",
+    "video_url": "https://www.youtube.com/watch?v=ZFXN0-pr9s4",
+    "channel_title": "Juanalytics",
+    "type": "video",
+    "tags": []
+  },
+  {
+    "video_id": "rvIuheMjXzA",
+    "title": "Tableau Calculation Mastery: Unpivoting & Last Date with Data",
+    "description": "In this tutorial I show you how to combine two advanced formulas. The first one is how to unpivot a column (turn one column into multiple) using LODs. The second I show you how to calculate the last date containing data.",
+    "published_date": "2021-07-13",
+    "thumbnail_url": "https://i.ytimg.com/vi/rvIuheMjXzA/maxresdefault.jpg",
+    "video_url": "https://www.youtube.com/watch?v=rvIuheMjXzA",
+    "channel_title": "Juanalytics",
+    "type": "video",
+    "tags": []
+  },
+  {
+    "video_id": "qbbX5hRjGNc",
+    "title": "Power BI Hacks: Evenly-Spaced Tables",
+    "description": "Have you ever tried to evenly space the columns of a table or a matrix? You know, just like in Excel. Only to find out this is not possible out of the box? Well, today I share how to get it done. The hacky way.",
+    "published_date": "2021-07-06",
+    "thumbnail_url": "https://i.ytimg.com/vi/qbbX5hRjGNc/maxresdefault.jpg",
+    "video_url": "https://www.youtube.com/watch?v=qbbX5hRjGNc",
+    "channel_title": "Juanalytics",
+    "type": "video",
+    "tags": []
+  },
+  {
+    "video_id": "Qo2FQxuh9Ks",
+    "title": "Power Query Tips: SQL Script from Files (part 2)",
+    "description": "In the last video, I showed you how to modify your query based on a SQL script. Now we are taking it one step forward and turn it into a function that bulk loads multiple SQL scripts. \n\nIf you haven't checked part 1, here is the link: https://youtu.be/rVoj_wPmg7w",
+    "published_date": "2021-06-29",
+    "thumbnail_url": "https://i.ytimg.com/vi/Qo2FQxuh9Ks/maxresdefault.jpg",
+    "video_url": "https://www.youtube.com/watch?v=Qo2FQxuh9Ks",
+    "channel_title": "Juanalytics",
+    "type": "video",
+    "tags": []
+  },
+  {
+    "video_id": "rVoj_wPmg7w",
+    "title": "Power Query Tips: SQL Script from Files (part 1)",
+    "description": "In this video, I show you how to modify your query based on a SQL script. Normally, you would need to copy and paste the code any time you change the script. But with some M magic, we can point Power Query directly at the file.",
+    "published_date": "2021-06-23",
+    "thumbnail_url": "https://i.ytimg.com/vi/rVoj_wPmg7w/maxresdefault.jpg",
+    "video_url": "https://www.youtube.com/watch?v=rVoj_wPmg7w",
+    "channel_title": "Juanalytics",
+    "type": "video",
+    "tags": []
+  },
+  {
+    "video_id": "hGWWgwoROc8",
+    "title": "Mastering Power Query: Part 5 (Jedi)",
+    "description": "This is the fifth and final video in a series of Power Query tutorials. In this video, I show you how to turn an M script into a reusable function. True M mastery comes from making your work robust and re-usable.",
+    "published_date": "2021-06-15",
+    "thumbnail_url": "https://i.ytimg.com/vi/hGWWgwoROc8/maxresdefault.jpg",
+    "video_url": "https://www.youtube.com/watch?v=hGWWgwoROc8",
+    "channel_title": "Juanalytics",
+    "type": "video",
+    "tags": []
+  },
+  {
+    "video_id": "tMXMEDTBAEM",
+    "title": "Mastering Power Query: Part 4 (Pro)",
+    "description": "This is the fourth video in a series of Power Query tutorials. In this video, I show you how to use the Advanced Editor and some M language commands to make your Power Query work more robust. Watch the next videos in the series to learn more about functions.",
+    "published_date": "2021-06-08",
+    "thumbnail_url": "https://i.ytimg.com/vi/tMXMEDTBAEM/hqdefault.jpg",
+    "video_url": "https://www.youtube.com/watch?v=tMXMEDTBAEM",
+    "channel_title": "Juanalytics",
+    "type": "video",
+    "tags": []
+  },
+  {
+    "video_id": "4HSnBRfqk9c",
+    "title": "SQL Tutorial: Working with NULL values in T-SQL",
+    "description": "In this video, I walk you through a use case in which I had NULL values, empty strings, and a variable number of spaces. I show you my line of reasoning and walk you through the formulas I used, before reaching the ultimate solution.",
+    "published_date": "2021-06-08",
+    "thumbnail_url": "https://i.ytimg.com/vi/4HSnBRfqk9c/maxresdefault.jpg",
+    "video_url": "https://www.youtube.com/watch?v=4HSnBRfqk9c",
+    "channel_title": "Juanalytics",
+    "type": "video",
+    "tags": []
+  },
+  {
+    "video_id": "V-cnwii9Rdk",
+    "title": "SQL Tutorial: Using SQLFiddle",
+    "description": "SQLFiddle is a great tool if you want to test your SQL scripts. It is 100% web-based, you can use multiple SQL dialects, and it is easy to use. I personally use it to test my scripts with values that are not in my data (yet).\n\nLink: http://sqlfiddle.com/",
+    "published_date": "2021-06-08",
+    "thumbnail_url": "https://i.ytimg.com/vi/V-cnwii9Rdk/maxresdefault.jpg",
+    "video_url": "https://www.youtube.com/watch?v=V-cnwii9Rdk",
+    "channel_title": "Juanalytics",
+    "type": "video",
+    "tags": []
+  },
+  {
+    "video_id": "Tp3AR7x5Jq8",
+    "title": "Mastering Power Query: Part 3 (Advanced)",
+    "description": "This is the third video in a series of Power Query tutorials. In this video, I show you how to use the Advanced Editor and some M language commands to make your Power Query work more robust.",
+    "published_date": "2021-06-04",
+    "thumbnail_url": "https://i.ytimg.com/vi/Tp3AR7x5Jq8/hqdefault.jpg",
+    "video_url": "https://www.youtube.com/watch?v=Tp3AR7x5Jq8",
+    "channel_title": "Juanalytics",
+    "type": "video",
+    "tags": []
+  },
+  {
+    "video_id": "jqkVLAB49oE",
+    "title": "Power Query: Using M to make your work reusable (Advanced)",
+    "description": "Power Query allows us to clean data with just some clicks. But you need to get your hands dirty with the M language to make your work truly re-usable. In this tutorial I walk you through a real-world use case.",
+    "published_date": "2021-05-19",
+    "thumbnail_url": "https://i.ytimg.com/vi/jqkVLAB49oE/maxresdefault.jpg",
+    "video_url": "https://www.youtube.com/watch?v=jqkVLAB49oE",
+    "channel_title": "Juanalytics",
+    "type": "video",
+    "tags": []
+  },
+  {
+    "video_id": "4ypWcdDPsr4",
+    "title": "How to build a Tableau portfolio?",
+    "description": "Are you looking for a Tableau job at the moment? Here are is some inspiration on how to make a Tableau Portfolio using Tableau Public.\n\nLink: https://public.tableau.com/app/profile/jmperafan",
+    "published_date": "2021-05-11",
+    "thumbnail_url": "https://i.ytimg.com/vi/4ypWcdDPsr4/maxresdefault.jpg",
+    "video_url": "https://www.youtube.com/watch?v=4ypWcdDPsr4",
+    "channel_title": "Juanalytics",
+    "type": "video",
+    "tags": []
+  },
+  {
+    "video_id": "TtgKyTvFcBE",
+    "title": "Mastering Power Query: Part 2 (Intermediate)",
+    "description": "This is the second video in a series of Power Query tutorials. In this video, I show you some best practices and how to avoid some nasty habits like renaming columns or leaving the change types in your steps. Watch the next videos in the series to learn more advanced tricks.",
+    "published_date": "2021-05-07",
+    "thumbnail_url": "https://i.ytimg.com/vi/TtgKyTvFcBE/maxresdefault.jpg",
+    "video_url": "https://www.youtube.com/watch?v=TtgKyTvFcBE",
+    "channel_title": "Juanalytics",
+    "type": "video",
+    "tags": []
+  },
+  {
+    "video_id": "JQeG6Ic3z_A",
+    "title": "DON’T become a Data Scientist in 2021!!!!",
+    "description": "Data Science is the sexiest job of the 21st century... Well, this is only partially true and it mostly applies for experienced Data Science. The first 3 to 5 years are not that great (compared to other data jobs).\n\nThis is just my opinion, I don't mean to discourage anybody currently pursuing a career as a data scientist. But I have heard a very similar story a lot and I think you all deserve to make informed decisions.",
+    "published_date": "2021-05-04",
+    "thumbnail_url": "https://i.ytimg.com/vi/JQeG6Ic3z_A/maxresdefault.jpg",
+    "video_url": "https://www.youtube.com/watch?v=JQeG6Ic3z_A",
+    "channel_title": "Juanalytics",
+    "type": "video",
+    "tags": []
+  },
+  {
+    "video_id": "5Ln2osFZLoA",
+    "title": "Mastering Power Query: Part 1 (Beginners)",
+    "description": "This is the first video in a series of Power Query tutorials. In this video, I show you how to get the job done (even if it wasn't always the best way possible). Watch the next videos in the series to learn more advanced tricks.",
+    "published_date": "2021-05-03",
+    "thumbnail_url": "https://i.ytimg.com/vi/5Ln2osFZLoA/maxresdefault.jpg",
+    "video_url": "https://www.youtube.com/watch?v=5Ln2osFZLoA",
+    "channel_title": "Juanalytics",
+    "type": "video",
+    "tags": []
+  },
+  {
+    "video_id": "oSZe2UV0sNs",
+    "title": "Using R script visuals in Power BI",
+    "description": "Power BI makes it possible to embed R and Python visuals inside of your reports. Using this feature can add different levels of complexity, but it can be a game changer for those visualizations that are impossible or difficult to remake using Power BI.",
+    "published_date": "2021-04-25",
+    "thumbnail_url": "https://i.ytimg.com/vi/oSZe2UV0sNs/maxresdefault.jpg",
+    "video_url": "https://www.youtube.com/watch?v=oSZe2UV0sNs",
+    "channel_title": "Juanalytics",
+    "type": "video",
+    "tags": []
+  },
+  {
+    "video_id": "foulJr8hxmE",
+    "title": "Sentiment Analysis with Alteryx (Using the R tool)!",
+    "description": "In this video, I show how to use the R tool in Alteryx to do sentiment analysis. Then, we turn it into a macro so that it can be further re-used. \n\nThis is not an R tutorial and I don't explain sentiment analysis in detail, the focus of the video is show how to create tools in Alteryx.",
+    "published_date": "2021-04-21",
+    "thumbnail_url": "https://i.ytimg.com/vi/foulJr8hxmE/maxresdefault.jpg",
+    "video_url": "https://www.youtube.com/watch?v=foulJr8hxmE",
+    "channel_title": "Juanalytics",
+    "type": "video",
+    "tags": []
+  },
+  {
+    "video_id": "TUeaBLVIFjc",
+    "title": "Dashboard Review: Episode #3 (Tableau) with Vijayalakshmi Kalidindi",
+    "description": "On this video, I give feedback to Vijayalakshmi Kalidindi on her dashboard. \n\nHere is the link to her dashboard: https://public.tableau.com/profile/vijayalakshmi.kalidindi#!/vizhome/Jordan-vs-LeBronMavenChallenge/Dashboard2\n\nIf you enjoyed these tips and you would like feedback on one of your dashboards, just get in touch with me and I will feature them in my next video.",
+    "published_date": "2021-04-20",
+    "thumbnail_url": "https://i.ytimg.com/vi/TUeaBLVIFjc/maxresdefault.jpg",
+    "video_url": "https://www.youtube.com/watch?v=TUeaBLVIFjc",
+    "channel_title": "Juanalytics",
+    "type": "podcast",
+    "tags": [
+      "podcast"
+    ]
+  },
+  {
+    "video_id": "3UpWJEhHOdI",
+    "title": "5 Google Sheets Tricks you might not know!",
+    "description": "I cannot make it personally to the XKE, so I have decided to make a video as a replacement for my talk. I hope you can learn one thing or two from this video.",
+    "published_date": "2021-04-12",
+    "thumbnail_url": "https://i.ytimg.com/vi/3UpWJEhHOdI/maxresdefault.jpg",
+    "video_url": "https://www.youtube.com/watch?v=3UpWJEhHOdI",
+    "channel_title": "Juanalytics",
+    "type": "video",
+    "tags": []
+  },
+  {
+    "video_id": "ut_q99apv2w",
+    "title": "Dashboard Review: Episode #2 (Tableau) with Vijayalakshmi Kalidindi",
+    "description": "On this video, I give feedback to Vijayalakshmi Kalidindi on her dashboard. \n\nHere is the link to her dashboard: https://public.tableau.com/profile/vijayalakshmi.kalidindi#!/\n\nIf you enjoyed these tips and you would like feedback on one of your dashboards, just get in touch with me and I will feature them in my next video.",
+    "published_date": "2021-03-09",
+    "thumbnail_url": "https://i.ytimg.com/vi/ut_q99apv2w/maxresdefault.jpg",
+    "video_url": "https://www.youtube.com/watch?v=ut_q99apv2w",
+    "channel_title": "Juanalytics",
+    "type": "podcast",
+    "tags": [
+      "podcast"
+    ]
+  },
+  {
+    "video_id": "tRzYfKrhJz4",
+    "title": "Dashboard Review: Episode #1 (Tableau) with Vilma Stasiute",
+    "description": "On this video, I give feedback to Vilma Stasiute on her dashboard. \n\nHere is the link to her dashboard: https://public.tableau.com/profile/vilma7846#!/vizhome/MavenAnalyticsMarketingChallenge_16141688789160/Dashboard2\n\nIf you enjoyed these tips and you would like feedback on one of your dashboards, just get in touch with me and I will feature them in my next video.",
+    "published_date": "2021-03-04",
+    "thumbnail_url": "https://i.ytimg.com/vi/tRzYfKrhJz4/maxresdefault.jpg",
+    "video_url": "https://www.youtube.com/watch?v=tRzYfKrhJz4",
+    "channel_title": "Juanalytics",
+    "type": "podcast",
+    "tags": [
+      "podcast"
+    ]
+  },
+  {
+    "video_id": "nmfsoncAK3M",
+    "title": "Using Google Sheets to Scrape Web data",
+    "description": "This video teaches you how to use the =IMPORTHTML() formula from Google Sheets to extract data from a website.",
+    "published_date": "2019-11-01",
+    "thumbnail_url": "https://i.ytimg.com/vi/nmfsoncAK3M/maxresdefault.jpg",
+    "video_url": "https://www.youtube.com/watch?v=nmfsoncAK3M",
+    "channel_title": "Juanalytics",
+    "type": "video",
+    "tags": []
+  },
+  {
+    "video_id": "rhi2KChl2Gw",
+    "title": "Tableau Calculation Mastery: 3 Ways to Split Columns",
+    "description": "In this video I show you how to split a column in Tableau using 3 methods: 1) The easy way with Split 2) The Excel way with Find, Len, Left, and Right 3) The hard way with Regular Expressions",
+    "published_date": "2019-11-01",
+    "thumbnail_url": "https://i.ytimg.com/vi/rhi2KChl2Gw/maxresdefault.jpg",
+    "video_url": "https://www.youtube.com/watch?v=rhi2KChl2Gw",
+    "channel_title": "Juanalytics",
+    "type": "video",
+    "tags": []
+  },
+  {
+    "video_id": "E1pOuSccfYY",
+    "title": "Tableau Fun: Using Unicode characters instead of Custom Shapes",
+    "description": "If your two axes are occupied, you can also use Unicode characters in your calculations as if they were custom shapes.",
+    "published_date": "2019-10-23",
+    "thumbnail_url": "https://i.ytimg.com/vi/E1pOuSccfYY/maxresdefault.jpg",
+    "video_url": "https://www.youtube.com/watch?v=E1pOuSccfYY",
+    "channel_title": "Juanalytics",
+    "type": "video",
+    "tags": []
+  },
+  {
+    "video_id": "oxDMC8jAMFY",
+    "title": "Tableau Time Series: How many in a certain moment?",
+    "description": "How many members did the club have at a certain moment in time? The answer to this question is not as straightforward as you might think. In this video, I show you a solution to this problem. \n\nIn a transactional database, it is common to find a start date and an end date. Think of the date a product arrives at your warehouse and the day it is delivered. In this case, we have a dataset with members of a club.",
+    "published_date": "2019-10-19",
+    "thumbnail_url": "https://i.ytimg.com/vi/oxDMC8jAMFY/maxresdefault.jpg",
+    "video_url": "https://www.youtube.com/watch?v=oxDMC8jAMFY",
+    "channel_title": "Juanalytics",
+    "type": "video",
+    "tags": []
+  },
+  {
+    "video_id": "1VgE-DvfjFs",
+    "title": "Excel-like Absolute Reference in Tableau",
+    "description": "When Excel users start learning Tableau, they are always curious about how to calculate an absolute reference. In Tableau and in SQL, this is a bit more difficult, but it is also possible. This tutorial shows you how.",
+    "published_date": "2019-10-19",
+    "thumbnail_url": "https://i.ytimg.com/vi/1VgE-DvfjFs/maxresdefault.jpg",
+    "video_url": "https://www.youtube.com/watch?v=1VgE-DvfjFs",
+    "channel_title": "Juanalytics",
+    "type": "video",
+    "tags": []
+  }
+]
