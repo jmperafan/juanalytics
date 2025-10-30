@@ -2,18 +2,49 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import YouTubeThumbnail from '../components/YouTubeThumbnail.astro';
 import { getCollection } from 'astro:content';
+import { readContentYAML } from '../utils/yamlParser';
 
+// Get content from YAML (videos and podcasts)
+const content = await readContentYAML();
+
+// Get blogs from Astro content collections
 const recentBlogs = (await getCollection('blog')).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 ).slice(0, 3);
 
-const recentVideos = (await getCollection('videos')).sort(
-  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
-).slice(0, 3);
+// Get recent videos from YAML
+const recentVideos = content.videos
+  .map(video => ({
+    data: {
+      title: video.title,
+      description: video.description,
+      pubDate: video.date,
+      videoUrl: video.url,
+      thumbnail: video.thumbnail,
+      platform: (video.platform as 'youtube' | 'vimeo' | 'other') || 'youtube',
+      tags: video.tags,
+    }
+  }))
+  .slice(0, 3);
 
-const recentPodcasts = (await getCollection('podcasts'))
-  .filter((podcast) => podcast.data.type === 'guest')
-  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+// Get recent guest podcast appearances from YAML (excluding SQL Lingua Franca)
+const recentPodcasts = content.podcasts
+  .filter(p => !p.title.includes(' - ')) // Filter out SQL Lingua Franca episodes (they have " - " pattern)
+  .map(podcast => ({
+    slug: podcast.url.split('/').pop() || '',
+    data: {
+      title: podcast.title,
+      description: podcast.description,
+      pubDate: podcast.date,
+      podcastName: podcast.podcast || podcast.extra2 || '',
+      audioUrl: podcast.url,
+      duration: podcast.duration,
+      episode: podcast.episode || (podcast.extra1 ? parseInt(podcast.extra1) : undefined),
+      thumbnail: podcast.thumbnail,
+      type: (podcast.extra1 && parseInt(podcast.extra1) > 0) ? 'own' : 'guest',
+      tags: podcast.tags,
+    }
+  }))
   .slice(0, 3);
 ---
 
@@ -57,7 +88,7 @@ const recentPodcasts = (await getCollection('podcasts'))
         </div>
         <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.5rem;">
           {recentPodcasts.map((podcast) => (
-            <a href={`/podcasts/${podcast.slug}`} class="card" style="padding: 0; overflow: hidden; display: flex; flex-direction: column;">
+            <a href={podcast.data.audioUrl} target="_blank" rel="noopener noreferrer" class="card" style="padding: 0; overflow: hidden; display: flex; flex-direction: column;">
               {podcast.data.thumbnail ? (
                 <img src={podcast.data.thumbnail} alt={podcast.data.title} style="width: 100%; height: 200px; object-fit: cover;" />
               ) : (
@@ -72,16 +103,10 @@ const recentPodcasts = (await getCollection('podcasts'))
               )}
               <div style="padding: 1.5rem; flex: 1; display: flex; flex-direction: column;">
                 <h3 style="margin-bottom: 0.5rem; font-size: 1.125rem; line-height: 1.4;">{podcast.data.title}</h3>
-                {(podcast.data.podcastName || podcast.data.episode) && (
-                  <p style="color: var(--color-primary); font-weight: 600; font-size: 0.875rem; margin-bottom: 0.75rem;">
-                    {podcast.data.podcastName && podcast.data.podcastName}
-                    {podcast.data.podcastName && podcast.data.episode && ' • '}
-                    {podcast.data.episode && `Episode ${podcast.data.episode}`}
-                  </p>
-                )}
                 <p style="color: var(--color-text-light); font-size: 0.875rem; margin-bottom: 0.75rem;">
                   {podcast.data.pubDate.toISOString().split('T')[0]}
-                  {podcast.data.duration && ` • ${podcast.data.duration}`}
+                  {podcast.data.podcastName && ` • ${podcast.data.podcastName}`}
+                  {podcast.data.episode && ` - Episode ${podcast.data.episode}`}
                 </p>
                 <p style="color: var(--color-text-light); font-size: 0.9375rem; line-height: 1.6; flex: 1; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">{podcast.data.description}</p>
               </div>
@@ -104,7 +129,7 @@ const recentPodcasts = (await getCollection('podcasts'))
           {recentVideos.map((video) => (
             <a href={`/videos/${video.slug}`} class="card" style="padding: 0; overflow: hidden; display: flex; flex-direction: column; background: var(--color-bg);">
               {video.data.videoUrl ? (
-                <YouTubeThumbnail videoUrl={video.data.videoUrl} alt={video.data.title} />
+                <YouTubeThumbnail videoUrl={video.data.videoUrl} alt={video.data.title} thumbnail={video.data.thumbnail} />
               ) : video.data.thumbnail ? (
                 <img src={video.data.thumbnail} alt={video.data.title} style="width: 100%; height: 200px; object-fit: cover;" />
               ) : (

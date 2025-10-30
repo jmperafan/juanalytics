@@ -41,19 +41,26 @@ const talks = content.talks.map(talk => ({
           </div>
           {/* Content grid */}
           <div id="talks-grid" style="flex: 1; display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.5rem;">
-            {talks.map((talk) => (
-              <div
+            {talks.map((talk) => {
+              const isYouTubeUrl = talk.data.videoUrl && (talk.data.videoUrl.includes('youtube') || talk.data.videoUrl.includes('youtu.be'));
+              const CardElement = isYouTubeUrl ? 'div' : 'a';
+              const linkProps = !isYouTubeUrl && talk.data.videoUrl ? { href: talk.data.videoUrl, target: '_blank', rel: 'noopener noreferrer' } : {};
+
+              return (
+              <CardElement
+                {...linkProps}
                 class="card talk-card"
                 data-tags={JSON.stringify(talk.data.tags || [])}
                 data-video-url={talk.data.videoUrl || ''}
                 data-has-video={talk.data.videoUrl ? 'true' : 'false'}
+                data-is-youtube={isYouTubeUrl ? 'true' : 'false'}
                 style="padding: 0; overflow: hidden; display: flex; flex-direction: column; transition: transform 0.2s, box-shadow 0.2s;"
               >
                 <div class="video-thumbnail-container" style="position: relative; width: 100%; height: 200px; background: #000; cursor: pointer;">
                   {talk.data.videoUrl && talk.data.videoUrl.includes('youtube') ? (
                     <>
                       <div class="video-thumbnail" style="width: 100%; height: 100%; position: relative;">
-                        <YouTubeThumbnail videoUrl={talk.data.videoUrl} alt={talk.data.title} />
+                        <YouTubeThumbnail videoUrl={talk.data.videoUrl} alt={talk.data.title} thumbnail={talk.data.thumbnail} />
                         <div class="play-button" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 64px; height: 64px; background: rgba(255, 0, 0, 0.9); border-radius: 50%; display: flex; align-items: center; justify-content: center; pointer-events: none; transition: all 0.2s;">
                           <svg width="28" height="28" viewBox="0 0 24 24" fill="white" style="margin-left: 4px; pointer-events: none;">
                             <polygon points="5 3 19 12 5 21 5 3"></polygon>
@@ -111,8 +118,9 @@ const talks = content.talks.map(talk => ({
                     </div>
                   )}
                 </div>
-              </div>
-            ))}
+              </CardElement>
+              );
+            })}
           </div>
         </div>
       )}
@@ -199,40 +207,45 @@ const talks = content.talks.map(talk => ({
         });
       });
 
-      // Video thumbnail clicks - play inline
+      // Video thumbnail clicks - play inline for YouTube only
       talkCards.forEach(card => {
-        const thumbnailContainer = card.querySelector('.video-thumbnail-container');
-        const thumbnail = card.querySelector('.video-thumbnail');
-        const playerContainer = card.querySelector('.video-player');
+        const isYouTube = card.getAttribute('data-is-youtube') === 'true';
 
-        if (thumbnailContainer && thumbnail && playerContainer) {
-          thumbnailContainer.addEventListener('click', (e) => {
-            e.stopPropagation();
+        // Only add click handler for YouTube videos
+        if (isYouTube) {
+          const thumbnailContainer = card.querySelector('.video-thumbnail-container');
+          const thumbnail = card.querySelector('.video-thumbnail');
+          const playerContainer = card.querySelector('.video-player');
 
-            const videoUrl = card.getAttribute('data-video-url');
+          if (thumbnailContainer && thumbnail && playerContainer) {
+            thumbnailContainer.addEventListener('click', (e) => {
+              e.stopPropagation();
 
-            if (videoUrl) {
-              const embedUrl = getEmbedUrl(videoUrl);
+              const videoUrl = card.getAttribute('data-video-url');
 
-              if (embedUrl) {
-                // Hide thumbnail and show player
-                (thumbnail as HTMLElement).style.display = 'none';
-                (playerContainer as HTMLElement).style.display = 'block';
+              if (videoUrl) {
+                const embedUrl = getEmbedUrl(videoUrl);
 
-                // Create and insert iframe
-                const iframe = document.createElement('iframe');
-                iframe.src = embedUrl;
-                iframe.style.width = '100%';
-                iframe.style.height = '100%';
-                iframe.style.border = 'none';
-                iframe.setAttribute('allowfullscreen', '');
-                iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
+                if (embedUrl) {
+                  // Hide thumbnail and show player
+                  (thumbnail as HTMLElement).style.display = 'none';
+                  (playerContainer as HTMLElement).style.display = 'block';
 
-                playerContainer.innerHTML = '';
-                playerContainer.appendChild(iframe);
+                  // Create and insert iframe
+                  const iframe = document.createElement('iframe');
+                  iframe.src = embedUrl;
+                  iframe.style.width = '100%';
+                  iframe.style.height = '100%';
+                  iframe.style.border = 'none';
+                  iframe.setAttribute('allowfullscreen', '');
+                  iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
+
+                  playerContainer.innerHTML = '';
+                  playerContainer.appendChild(iframe);
+                }
               }
-            }
-          });
+            });
+          }
         }
       });
     });

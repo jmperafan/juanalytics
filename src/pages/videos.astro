@@ -51,7 +51,7 @@ const videos = content.videos.map(video => ({
                   {video.data.videoUrl ? (
                     <>
                       <div class="video-thumbnail" style="width: 100%; height: 100%; position: relative;">
-                        <YouTubeThumbnail videoUrl={video.data.videoUrl} alt={video.data.title} />
+                        <YouTubeThumbnail videoUrl={video.data.videoUrl} alt={video.data.title} thumbnail={video.data.thumbnail} />
                         <div class="play-button" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 64px; height: 64px; background: rgba(255, 0, 0, 0.9); border-radius: 50%; display: flex; align-items: center; justify-content: center; pointer-events: none; transition: all 0.2s;">
                           <svg width="28" height="28" viewBox="0 0 24 24" fill="white" style="margin-left: 4px; pointer-events: none;">
                             <polygon points="5 3 19 12 5 21 5 3"></polygon>

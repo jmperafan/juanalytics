@@ -2,9 +2,10 @@
 interface Props {
   videoUrl: string;
   alt: string;
+  thumbnail?: string;
 }
 
-const { videoUrl, alt } = Astro.props;
+const { videoUrl, alt, thumbnail } = Astro.props;
 
 // Extract YouTube video ID from various URL formats
 function getYouTubeVideoId(url: string): string | null {
@@ -22,10 +23,15 @@ function getYouTubeVideoId(url: string): string | null {
   return null;
 }
 
+// Use provided thumbnail if available, otherwise generate from video ID
 const videoId = getYouTubeVideoId(videoUrl);
-const thumbnailUrl = videoId ? `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg` : null;
+const thumbnailUrl = thumbnail || (videoId ? `https://img.youtube.com/vi/${videoId}/hqdefault.jpg` : null);
 ---
 
 {thumbnailUrl && (
-  <img src={thumbnailUrl} alt={alt} style="width: 100%; height: 200px; object-fit: cover; pointer-events: none;" />
+  <img
+    src={thumbnailUrl}
+    alt={alt}
+    style="width: 100%; height: 200px; object-fit: cover; pointer-events: none;"
+  />
 )}

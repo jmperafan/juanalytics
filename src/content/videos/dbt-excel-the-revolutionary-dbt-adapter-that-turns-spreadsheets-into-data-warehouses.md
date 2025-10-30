@@ -5,7 +5,7 @@ description: 'Welcome to dbt-excel, the revolutionary dbt adapter that combines 
 ...'
 pubDate: 2023-03-30
 videoUrl: 'https://www.youtube.com/watch?v=35JelBDhvnE'
-thumbnail: 'https://i.ytimg.com/vi/35JelBDhvnE/hqdefault.jpg'
+thumbnail: 'https://i.ytimg.com/vi/35JelBDhvnE/maxresdefault.jpg'
 platform: 'youtube'
 tags: []
 duration: '04:27'
