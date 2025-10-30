@@ -19,11 +19,12 @@ const allPodcasts = content.podcasts.map(podcast => ({
   }
 }));
 
-const ownPodcasts = allPodcasts
-  .filter(p => p.data.type === 'own')
+// SQL Lingua Franca episodes have titles with pattern "Name - Topic"
+const sqlLinguaFranca = allPodcasts
+  .filter(p => p.data.title.includes(' - '))
   .sort((a, b) => (b.data.episode || 0) - (a.data.episode || 0));
 const guestAppearances = allPodcasts
-  .filter(p => p.data.type === 'guest')
+  .filter(p => !p.data.title.includes(' - '))
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 ---
 
@@ -48,13 +49,13 @@ const guestAppearances = allPodcasts
 
         {/* Content area */}
         <div style="flex: 1;">
-          {/* My Podcast Section */}
-          {ownPodcasts.length > 0 && (
-            <div style="margin-bottom: 4rem;" id="my-podcast-section">
-              <h2 style="font-size: 1.75rem; margin-bottom: 1.5rem;">My Podcast</h2>
+          {/* Guest Appearances Section */}
+          {guestAppearances.length > 0 && (
+            <div style="margin-bottom: 4rem;" id="guest-section">
+              <h2 style="font-size: 1.75rem; margin-bottom: 1.5rem;">Guest Appearances</h2>
               <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.5rem;">
-                {ownPodcasts.map((podcast) => (
-              <a href={`/podcasts/${podcast.slug}`} class="card podcast-card" data-tags={JSON.stringify(podcast.data.tags || [])} data-type="own" style="padding: 0; overflow: hidden; display: flex; flex-direction: column;">
+                {guestAppearances.map((podcast) => (
+              <a href={`/podcasts/${podcast.slug}`} class="card podcast-card" data-tags={JSON.stringify(podcast.data.tags || [])} data-type="guest-appearance" style="padding: 0; overflow: hidden; display: flex; flex-direction: column;">
                 {podcast.data.thumbnail ? (
                   <img src={podcast.data.thumbnail} alt={podcast.data.title} style="width: 100%; height: 200px; object-fit: cover;" />
                 ) : (
@@ -95,13 +96,13 @@ const guestAppearances = allPodcasts
         </div>
       )}
 
-      {/* Guest Appearances Section */}
-      {guestAppearances.length > 0 && (
-        <div id="guest-section">
-          <h2 style="font-size: 1.75rem; margin-bottom: 1.5rem;">Guest Appearances</h2>
+      {/* SQL Lingua Franca Section */}
+      {sqlLinguaFranca.length > 0 && (
+        <div id="sql-lingua-franca-section">
+          <h2 style="font-size: 1.75rem; margin-bottom: 1.5rem;">SQL Lingua Franca</h2>
           <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.5rem;">
-            {guestAppearances.map((podcast) => (
-              <a href={`/podcasts/${podcast.slug}`} class="card podcast-card" data-tags={JSON.stringify(podcast.data.tags || [])} data-type="guest" style="padding: 0; overflow: hidden; display: flex; flex-direction: column;">
+            {sqlLinguaFranca.map((podcast) => (
+              <a href={`/podcasts/${podcast.slug}`} class="card podcast-card" data-tags={JSON.stringify(podcast.data.tags || [])} data-type="sql-lingua-franca" style="padding: 0; overflow: hidden; display: flex; flex-direction: column;">
                 {podcast.data.thumbnail ? (
                   <img src={podcast.data.thumbnail} alt={podcast.data.title} style="width: 100%; height: 200px; object-fit: cover;" />
                 ) : (
@@ -142,7 +143,7 @@ const guestAppearances = allPodcasts
         </div>
       )}
 
-          {ownPodcasts.length === 0 && guestAppearances.length === 0 && (
+          {sqlLinguaFranca.length === 0 && guestAppearances.length === 0 && (
             <p style="color: var(--color-text-light); font-size: 1.1rem;">No podcast episodes yet. Check back soon!</p>
           )}
         </div>
@@ -155,7 +156,7 @@ const guestAppearances = allPodcasts
       const filterButtons = document.querySelectorAll('.filter-tag');
       const podcastCards = document.querySelectorAll('.podcast-card');
       const contentTags = document.querySelectorAll('.content-tag');
-      const myPodcastSection = document.getElementById('my-podcast-section');
+      const sqlLinguaFrancaSection = document.getElementById('sql-lingua-franca-section');
       const guestSection = document.getElementById('guest-section');
 
       function filterByTag(tag: string) {
@@ -173,7 +174,7 @@ const guestAppearances = allPodcasts
           }
         });
 
-        let ownVisible = 0;
+        let sqlLinguaFrancaVisible = 0;
         let guestVisible = 0;
 
         podcastCards.forEach(card => {
@@ -182,16 +183,16 @@ const guestAppearances = allPodcasts
 
           if (tag === 'all' || cardTags.includes(tag)) {
             (card as HTMLElement).style.display = 'flex';
-            if (cardType === 'own') ownVisible++;
-            if (cardType === 'guest') guestVisible++;
+            if (cardType === 'sql-lingua-franca') sqlLinguaFrancaVisible++;
+            if (cardType === 'guest-appearance') guestVisible++;
           } else {
             (card as HTMLElement).style.display = 'none';
           }
         });
 
         // Hide section headers if no items are visible
-        if (myPodcastSection) {
-          (myPodcastSection as HTMLElement).style.display = ownVisible > 0 ? 'block' : 'none';
+        if (sqlLinguaFrancaSection) {
+          (sqlLinguaFrancaSection as HTMLElement).style.display = sqlLinguaFrancaVisible > 0 ? 'block' : 'none';
         }
         if (guestSection) {
           (guestSection as HTMLElement).style.display = guestVisible > 0 ? 'block' : 'none';

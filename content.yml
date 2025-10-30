@@ -226,7 +226,7 @@ videos:
   tags: [tableau, business intelligence]
 sql_lingua_franca:
 - url: https://www.youtube.com/watch?v=_ElJVYsqjsw
-  title: 'SQL Lingua Franca #16 - Sarah Levy - Data Governance vs. AI'
+  title: 'Sarah Levy - Data Governance vs. AI'
   date: '2025-06-20'
   podcast: SQL Lingua Franca
   episode: '16'
@@ -240,7 +240,7 @@ sql_lingua_franca:
   - data strategy
   - artificial intelligence
 - url: https://www.youtube.com/watch?v=xghnemtDnto
-  title: 'SQL Lingua Franca #15 - Dumky de Wilde - Hot Takes Special'
+  title: 'Dumky de Wilde - Hot Takes Special'
   date: '2025-01-30'
   podcast: SQL Lingua Franca
   episode: '15'
@@ -413,7 +413,7 @@ guest_appearances:
   - analytics engineering
   - career development
 - url: https://www.youtube.com/watch?v=TLv3B9dSoVU
-  title: Data Democratization - Webinar with Juan Manuel Perafan and Bram Ochsendorf
+  title: Data Democratization
   date: '2022-01-19'
   description: Embracing analytics throughout an organization can fuel innovation,
     business agility, and growth, making data integral to many modern business strategies.
@@ -431,12 +431,12 @@ guest_appearances:
   duration: '57:42'
   thumbnail: https://i.ytimg.com/vi/TSyDOcTuZig/maxresdefault.jpg
   tags: [career development]
-- url: https://www.linkedin.com/events/7176978813732487169/
+- url: https://www.youtube.com/watch?v=C7ykn5_tVGw
   title: Data Governance for Analytics Engineering
   podcast: Select Star
   date: '2024-03-29'
   description: Join Juan Manuel Perafan, Analytics Engineer at Xebia and Shinji Kim, Founder and CEO at Select Star, to discuss the fundamentals of analytics engineering and data governance that all analytics engineering teams need to consider.
-  thumbnail: https://www.linkedin.com/events/7176978813732487169/
+  thumbnail: https://i.ytimg.com/vi/C7ykn5_tVGw/maxresdefault.jpg
   tags: ['analytics engineering', 'data governance']
 - url: https://www.dataengineeringpodcast.com/episodepage/exploring-the-design-and-benefits-of-the-modern-data-stack
   title: Exploring The Design And Benefits Of The Modern Data Stack
@@ -453,16 +453,17 @@ guest_appearances:
   duration: '27:52'
   description: Dutch webinar - discover how Tableau transforms Formula 1 data into
     powerful visualisations and race-winning insights.
+  thumbnail: https://www.tableau.com/sites/default/files/hero-backgrounds/1366x455_web_summerofsports_967604_1_0.jpg
   tags:
   - tableau
   - data analysis
 talks:
 - url: https://coalesce.getdbt.com/event/21662b38-2c17-4c10-9dd7-964fd652ab44/agenda?session=bdc32ba0-e8c3-4a28-bae4-9f97ef75713a
-  title: Onboarding junior analytics engineers
+  title: Onboarding Junior Analytics Engineers
   description: Sharing insights and strategies for effectively onboarding junior analytics
     engineers.
   date: 2025-10-14
-  thumbnail: https://media.licdn.com/dms/image/v2/D4E10AQEND2SXUYBCAg/image-shrink_1280/B4EZmE6wvMIMAU-/0/1758871621011?e=1762470000&v=beta&t=romadSe7tMEQL3MAHy-YrR3p2i8NY3Wgzzce6VHF2J4
+  thumbnail: https://media.licdn.com/dms/image/v2/D4E10AQEND2SXUYBCAg/image-shrink_1280/B4EZmE6wvMIMAU-/0/1758871621011?e=2147483647&v=beta&t=Jnsw1wrRgLJWqBlNWefzsgc6m8VoP0gdA93iOT_dhIY
   tags: [dbt, analytics engineering, career development]
   event: Coalesce 2025
   location: Las Vegas, NV
@@ -599,6 +600,7 @@ talks:
   title: 'Power BI vs Tableau: The Ultimate BI Tool for mature data organizations'
   date: '2022-10-27'
   description: 'In this talk, we will compare the most widely used BI tools in the market from the perspective of a mature data organization'
+  thumbnail: https://godatafest.com/wp-content/uploads/2021/08/godatafest-2021-tunein.jpg
   tags:
   - power bi
   - tableau
