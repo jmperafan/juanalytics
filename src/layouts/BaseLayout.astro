@@ -7,6 +7,9 @@ interface Props {
 }
 
 const { title, description = "Portfolio of Juan Manuel Perafan - Analytics Engineer, dbt Community Award Recipient, and Data Community Organizer" } = Astro.props;
+
+// Get base path for GitHub Pages
+const base = import.meta.env.BASE_URL;
 ---
 
 <!doctype html>
@@ -25,17 +28,17 @@ const { title, description = "Portfolio of Juan Manuel Perafan - Analytics Engin
   <body>
     <header>
       <nav class="container" style="padding: 1.5rem 1rem; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--color-border);">
-        <a href="/" style="display: flex; align-items: center; gap: 0.75rem; text-decoration: none;">
-          <img src="/logo.png" alt="Juanalytics Logo" style="height: 70px; width: auto;" />
+        <a href={base + "/"} style="display: flex; align-items: center; gap: 0.75rem; text-decoration: none;">
+          <img src={base + "/logo.png"} alt="Juanalytics Logo" style="height: 70px; width: auto;" />
           <span style="font-size: 1.125rem; font-weight: 600; color: var(--color-text);">Juanalytics</span>
         </a>
         <div style="display: flex; gap: 2rem; align-items: center;">
-          <a href="/talks" style="color: var(--color-text); font-weight: 500;">Conferences</a>
-          <a href="/videos" style="color: var(--color-text); font-weight: 500;">Videos</a>
-          <a href="/podcasts" style="color: var(--color-text); font-weight: 500;">Podcasts</a>
-          <a href="/blog" style="color: var(--color-text); font-weight: 500;">Blog</a>
-          <a href="/books" style="color: var(--color-text); font-weight: 500;">Books</a>
-          <a href="/about" style="color: var(--color-text); font-weight: 500;">About</a>
+          <a href={base + "/talks"} style="color: var(--color-text); font-weight: 500;">Conferences</a>
+          <a href={base + "/videos"} style="color: var(--color-text); font-weight: 500;">Videos</a>
+          <a href={base + "/podcasts"} style="color: var(--color-text); font-weight: 500;">Podcasts</a>
+          <a href={base + "/blog"} style="color: var(--color-text); font-weight: 500;">Blog</a>
+          <a href={base + "/books"} style="color: var(--color-text); font-weight: 500;">Books</a>
+          <a href={base + "/about"} style="color: var(--color-text); font-weight: 500;">About</a>
         </div>
       </nav>
     </header>
