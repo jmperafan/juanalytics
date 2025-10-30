@@ -1,0 +1,35 @@
+[
+  {
+    "video_id": "dQw4w9WgXcQ",
+    "title": "Introduction to Analytics Engineering with dbt",
+    "description": "In this video, we explore the fundamentals of analytics engineering and how dbt transforms the way data teams work. We'll cover key concepts, best practices, and walk through a real-world example.",
+    "published_date": "2024-01-15",
+    "thumbnail_url": "https://i.ytimg.com/vi/dQw4w9WgXcQ/maxresdefault.jpg",
+    "video_url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+    "channel_title": "Juanalytics",
+    "type": "video",
+    "tags": ["dbt", "analytics-engineering", "tutorial", "data-transformation"]
+  },
+  {
+    "video_id": "XyZ123abCdE",
+    "title": "The Data Career Podcast - Episode 5: Breaking into Analytics",
+    "description": "In this episode, I sit down with industry experts to discuss how to break into the analytics field, what skills you need, and common mistakes to avoid. We also answer listener questions about certifications and portfolio projects.",
+    "published_date": "2024-02-01",
+    "thumbnail_url": "https://i.ytimg.com/vi/XyZ123abCdE/maxresdefault.jpg",
+    "video_url": "https://www.youtube.com/watch?v=XyZ123abCdE",
+    "channel_title": "Juanalytics",
+    "type": "podcast",
+    "tags": ["career", "analytics", "data-engineering", "interview"]
+  },
+  {
+    "video_id": "aBc456DeFgH",
+    "title": "Building Your First Data Pipeline",
+    "description": "Learn how to build a production-ready data pipeline from scratch. We'll cover data ingestion, transformation, testing, and deployment using modern data stack tools.",
+    "published_date": "2024-02-10",
+    "thumbnail_url": "https://i.ytimg.com/vi/aBc456DeFgH/maxresdefault.jpg",
+    "video_url": "https://www.youtube.com/watch?v=aBc456DeFgH",
+    "channel_title": "Juanalytics",
+    "type": "video",
+    "tags": ["data-pipeline", "tutorial", "beginner", "etl"]
+  }
+]

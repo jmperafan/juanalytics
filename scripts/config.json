@@ -1,0 +1,25 @@
+{
+  "channel": {
+    "handle": "@juanalytics",
+    "comment": "Your YouTube channel handle or use 'channel_id' instead"
+  },
+  "auto_classification": {
+    "enabled": true,
+    "rules": {
+      "podcast": {
+        "keywords": ["podcast", "episode", "interview", "conversation"],
+        "tags": ["podcast"]
+      },
+      "video": {
+        "default": true,
+        "tags": []
+      }
+    },
+    "comment": "Videos are auto-classified based on title keywords"
+  },
+  "schedule": {
+    "cron": "0 9 * * 1",
+    "description": "Every Monday at 9 AM UTC",
+    "comment": "Modify the cron schedule in .github/workflows/update-youtube-videos.yml"
+  }
+}
