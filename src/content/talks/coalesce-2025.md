@@ -5,7 +5,7 @@ event: 'Coalesce 2025'
 eventUrl: 'https://coalesce.getdbt.com'
 date: 2025-10-01
 location: 'Las Vegas, NV'
-tags: ['dbt', 'analytics engineering', 'career']
+tags: ['dbt', 'analytics engineering', 'career development']
 ---
 
 Presentation at Coalesce 2025 about onboarding junior analytics engineers.

@@ -4,7 +4,7 @@ description: 'Learn how to leverage R script visuals in Power BI to create advan
 pubDate: 2023-06-20
 videoUrl: 'https://www.youtube.com/watch?v=YOUR_VIDEO_ID'
 platform: 'youtube'
-tags: ['power-bi', 'r', 'visualization', 'tutorial']
+tags: ['power bi', 'r', 'data visualization']
 ---
 
 # Using R Script Visuals in Power BI

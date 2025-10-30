@@ -6,7 +6,7 @@ podcastName: 'Data Career Transformations'
 episode: 17
 duration: '52:30'
 type: 'guest'
-tags: ['career', 'analytics engineering']
+tags: ['analytics engineering', 'career development']
 ---
 
 # Episode 17: From Psychology to Analytics Engineering

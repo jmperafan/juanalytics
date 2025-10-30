@@ -4,7 +4,7 @@ description: 'Comparing Power BI and Tableau for mature data teams with specific
 event: 'GoDataFest'
 date: 2022-10-15
 location: 'Mexico'
-tags: ['Power BI', 'Tableau', 'Business Intelligence']
+tags: ['power bi', 'tableau', 'business intelligence']
 ---
 
 Talk comparing Power BI and Tableau at GoDataFest 2022.

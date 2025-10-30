@@ -4,7 +4,7 @@ description: 'Preparing your organization for successful self-service BI adoptio
 event: 'Tech Talks Antwerpen'
 date: 2019-05-15
 location: 'Antwerpen, Belgium'
-tags: ['Business Intelligence']
+tags: ['business intelligence']
 ---
 
 Talk about self-service BI preparation at Tech Talks Antwerpen 2019.

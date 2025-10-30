@@ -4,7 +4,7 @@ description: 'Learn the fundamentals of dbt (data build tool) and start building
 pubDate: 2024-01-10
 videoUrl: 'https://www.youtube.com/watch?v=YOUR_VIDEO_ID'
 platform: 'youtube'
-tags: ['dbt', 'tutorial', 'beginner', 'analytics-engineering']
+tags: ['dbt', 'analytics engineering']
 ---
 
 # Getting Started with dbt

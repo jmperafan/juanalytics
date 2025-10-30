@@ -5,7 +5,7 @@ pubDate: 2025-01-15
 podcastName: 'Data Career Transformation'
 episode: 17
 type: 'guest'
-tags: ['career', 'analytics engineering']
+tags: ['analytics engineering', 'career development']
 ---
 
 Guest appearance on Data Career Transformation podcast discussing the transition from psychology to analytics engineering.

@@ -5,7 +5,7 @@ pubDate: 2021-07-20
 podcastName: 'Data Engineering Podcast'
 episode: 203
 type: 'guest'
-tags: ['data engineering', 'analytics engineering', 'modern data stack']
+tags: ['data engineering', 'analytics engineering']
 ---
 
 Guest appearance on Data Engineering Podcast episode 203.

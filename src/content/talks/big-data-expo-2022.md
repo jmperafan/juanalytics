@@ -4,7 +4,7 @@ description: 'A practical roadmap for organizations to achieve data maturity and
 event: 'Big Data Expo'
 date: 2022-09-20
 location: 'Netherlands'
-tags: ['data maturity', 'strategy']
+tags: ['data strategy']
 ---
 
 Talk about the roadmap to data maturity at Big Data Expo 2022.

@@ -2,7 +2,7 @@
 title: 'Welcome to Juanalytics'
 description: 'Welcome to my new portfolio site where I share my thoughts on analytics engineering, dbt, and building data communities.'
 pubDate: 2024-01-15
-tags: ['welcome', 'analytics-engineering', 'dbt']
+tags: ['analytics engineering', 'dbt']
 ---
 
 # Welcome to Juanalytics!

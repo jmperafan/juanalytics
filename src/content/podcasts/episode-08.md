@@ -6,7 +6,7 @@ podcastName: 'Your Podcast Name'
 episode: 8
 duration: '00:00'
 type: 'own'
-tags: ['analytics', 'data']
+tags: ['analytics engineering']
 ---
 
 # Episode 8
