@@ -39,7 +39,7 @@ function getYouTubeEmbedUrl(url: string) {
         </div>
       )}
 
-      {video.data.platform === 'youtube' && (
+      {video.data.videoUrl && video.data.platform === 'youtube' && (
         <div style="position: relative; padding-bottom: 56.25%; height: 0; margin-bottom: 2rem;">
           <iframe
             src={getYouTubeEmbedUrl(video.data.videoUrl)}
@@ -50,9 +50,15 @@ function getYouTubeEmbedUrl(url: string) {
         </div>
       )}
 
-      {video.data.platform !== 'youtube' && (
+      {video.data.videoUrl && video.data.platform !== 'youtube' && (
         <div style="margin-bottom: 2rem;">
           <a href={video.data.videoUrl} target="_blank" class="button">Watch Video</a>
+        </div>
+      )}
+
+      {!video.data.videoUrl && (
+        <div style="margin-bottom: 2rem; padding: 2rem; background: var(--color-bg-secondary); border-radius: 0.5rem; text-align: center; color: var(--color-text-light);">
+          <p>Video URL not available yet.</p>
         </div>
       )}
 
