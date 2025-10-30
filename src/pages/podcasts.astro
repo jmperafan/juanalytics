@@ -1,8 +1,8 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { readContentCSV } from '../utils/csvParser';
+import { readContentYAML } from '../utils/yamlParser';
 
-const content = await readContentCSV();
+const content = await readContentYAML();
 const allPodcasts = content.podcasts.map(podcast => ({
   slug: podcast.url.split('/').pop() || '',
   data: {

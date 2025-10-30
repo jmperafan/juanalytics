@@ -7,7 +7,7 @@
     "enabled": true,
     "rules": {
       "podcast": {
-        "keywords": ["podcast", "episode", "interview", "conversation", "sql lingua franca"],
+        "keywords": ["podcast", "episode", "sql lingua franca"],
         "tags": ["podcast"]
       },
       "video": {

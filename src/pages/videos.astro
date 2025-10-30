@@ -1,9 +1,9 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import YouTubeThumbnail from '../components/YouTubeThumbnail.astro';
-import { readContentCSV } from '../utils/csvParser';
+import { readContentYAML } from '../utils/yamlParser';
 
-const content = await readContentCSV();
+const content = await readContentYAML();
 const videos = content.videos.map(video => ({
   data: {
     title: video.title,
@@ -11,7 +11,7 @@ const videos = content.videos.map(video => ({
     pubDate: video.date,
     videoUrl: video.url,
     thumbnail: video.thumbnail,
-    platform: (video.extra1 as 'youtube' | 'vimeo' | 'other') || 'youtube',
+    platform: (video.platform as 'youtube' | 'vimeo' | 'other') || 'youtube',
     tags: video.tags,
   }
 }));

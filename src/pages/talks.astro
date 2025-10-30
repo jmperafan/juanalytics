@@ -1,9 +1,9 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import YouTubeThumbnail from '../components/YouTubeThumbnail.astro';
-import { readContentCSV } from '../utils/csvParser';
+import { readContentYAML } from '../utils/yamlParser';
 
-const content = await readContentCSV();
+const content = await readContentYAML();
 const talks = content.talks.map(talk => ({
   data: {
     title: talk.title,
