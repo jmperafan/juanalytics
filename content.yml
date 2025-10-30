@@ -430,7 +430,7 @@ guest_appearances:
     for 5 years.
   duration: '57:42'
   thumbnail: https://i.ytimg.com/vi/TSyDOcTuZig/maxresdefault.jpg
-  tags: []
+  tags: [career development]
 - url: https://www.linkedin.com/events/7176978813732487169/
   title: Data Governance for Analytics Engineering
   podcast: Select Star
@@ -583,7 +583,7 @@ talks:
   description: In this talk, we will explore the various testing capabilities that dbt offers
     to ensure data quality and reliability..
   thumbnail: https://secure.meetupstatic.com/photos/event/9/4/6/9/600_502956469.jpeg
-  tags: [dbt, testing, programming]
+  tags: [dbt, programming]
   event: Budapest dbt Meetup
   location: Budapest, Hungary
 - url: https://www.meetup.com/berlin-dbt-meetup/events/310533963/?eventOrigin=group_events_list
@@ -592,7 +592,7 @@ talks:
   description: In this talk, I will share some insights and strategies for effectively
     onboarding junior analytics engineers.
   thumbnail: https://secure.meetupstatic.com/photos/event/d/a/d/1/600_497696017.jpeg
-  tags: []
+  tags: [analytics engineering, career development]
   event: Berlin dbt Meetup
   location: Berlin, Germany
 - url: https://godatafest.com/broadcasts/power-bi-vs-tableau/
