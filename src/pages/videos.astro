@@ -1,11 +1,20 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import YouTubeThumbnail from '../components/YouTubeThumbnail.astro';
-import { getCollection } from 'astro:content';
+import { readContentCSV } from '../utils/csvParser';
 
-const videos = (await getCollection('videos')).sort(
-  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
-);
+const content = await readContentCSV();
+const videos = content.videos.map(video => ({
+  data: {
+    title: video.title,
+    description: video.description,
+    pubDate: video.date,
+    videoUrl: video.url,
+    thumbnail: video.thumbnail,
+    platform: (video.extra1 as 'youtube' | 'vimeo' | 'other') || 'youtube',
+    tags: video.tags,
+  }
+}));
 ---
 
 <BaseLayout title="Videos | Juanalytics">
@@ -31,18 +40,36 @@ const videos = (await getCollection('videos')).sort(
           {/* Content grid */}
           <div id="videos-grid" style="flex: 1; display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.5rem;">
             {videos.map((video) => (
-              <a href={`/videos/${video.slug}`} class="card video-card" data-tags={JSON.stringify(video.data.tags || [])} style="padding: 0; overflow: hidden; display: flex; flex-direction: column;">
-                {video.data.videoUrl ? (
-                  <YouTubeThumbnail videoUrl={video.data.videoUrl} alt={video.data.title} />
-                ) : video.data.thumbnail ? (
-                  <img src={video.data.thumbnail} alt={video.data.title} style="width: 100%; height: 200px; object-fit: cover;" />
-                ) : (
-                  <div style="width: 100%; height: 200px; background: var(--color-bg-secondary); display: flex; align-items: center; justify-content: center; color: var(--color-text-light);">
-                    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                      <polygon points="5 3 19 12 5 21 5 3"></polygon>
-                    </svg>
-                  </div>
-                )}
+              <div
+                class="card video-card"
+                data-tags={JSON.stringify(video.data.tags || [])}
+                data-video-url={video.data.videoUrl || ''}
+                data-platform={video.data.platform || 'youtube'}
+                style="padding: 0; overflow: hidden; display: flex; flex-direction: column; transition: transform 0.2s, box-shadow 0.2s;"
+              >
+                <div class="video-thumbnail-container" style="position: relative; width: 100%; height: 200px; background: #000; cursor: pointer;">
+                  {video.data.videoUrl ? (
+                    <>
+                      <div class="video-thumbnail" style="width: 100%; height: 100%; position: relative;">
+                        <YouTubeThumbnail videoUrl={video.data.videoUrl} alt={video.data.title} />
+                        <div class="play-button" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 64px; height: 64px; background: rgba(255, 0, 0, 0.9); border-radius: 50%; display: flex; align-items: center; justify-content: center; pointer-events: none; transition: all 0.2s;">
+                          <svg width="28" height="28" viewBox="0 0 24 24" fill="white" style="margin-left: 4px; pointer-events: none;">
+                            <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                          </svg>
+                        </div>
+                      </div>
+                      <div class="video-player" style="display: none; width: 100%; height: 100%;"></div>
+                    </>
+                  ) : video.data.thumbnail ? (
+                    <img src={video.data.thumbnail} alt={video.data.title} style="width: 100%; height: 100%; object-fit: cover;" />
+                  ) : (
+                    <div style="width: 100%; height: 100%; background: var(--color-bg-secondary); display: flex; align-items: center; justify-content: center; color: var(--color-text-light);">
+                      <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                      </svg>
+                    </div>
+                  )}
+                </div>
                 <div style="padding: 1.5rem; flex: 1; display: flex; flex-direction: column;">
                   <h3 style="margin-bottom: 0.75rem; font-size: 1.125rem; line-height: 1.4;">{video.data.title}</h3>
                   <p style="color: var(--color-text-light); font-size: 0.875rem; margin-bottom: 0.75rem;">
@@ -57,7 +84,7 @@ const videos = (await getCollection('videos')).sort(
                     </div>
                   )}
                 </div>
-              </a>
+              </div>
             ))}
           </div>
         </div>
@@ -66,6 +93,36 @@ const videos = (await getCollection('videos')).sort(
   </section>
 
   <script>
+    function extractYouTubeId(url: string): string | null {
+      const patterns = [
+        /(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([^&\s]+)/,
+        /youtube\.com\/shorts\/([^&\s]+)/
+      ];
+
+      for (const pattern of patterns) {
+        const match = url.match(pattern);
+        if (match) return match[1];
+      }
+
+      return null;
+    }
+
+    function extractVimeoId(url: string): string | null {
+      const match = url.match(/vimeo\.com\/(\d+)/);
+      return match ? match[1] : null;
+    }
+
+    function getEmbedUrl(videoUrl: string, platform: string): string {
+      if (platform === 'youtube' || videoUrl.includes('youtube.com') || videoUrl.includes('youtu.be')) {
+        const videoId = extractYouTubeId(videoUrl);
+        return videoId ? `https://www.youtube.com/embed/${videoId}` : '';
+      } else if (platform === 'vimeo' || videoUrl.includes('vimeo.com')) {
+        const videoId = extractVimeoId(videoUrl);
+        return videoId ? `https://player.vimeo.com/video/${videoId}` : '';
+      }
+      return videoUrl;
+    }
+
     document.addEventListener('DOMContentLoaded', () => {
       const filterButtons = document.querySelectorAll('.filter-tag');
       const videoCards = document.querySelectorAll('.video-card');
@@ -119,6 +176,44 @@ const videos = (await getCollection('videos')).sort(
           filterByTag(tagName);
         });
       });
+
+      // Video thumbnail clicks - play inline
+      videoCards.forEach(card => {
+        const thumbnailContainer = card.querySelector('.video-thumbnail-container');
+        const thumbnail = card.querySelector('.video-thumbnail');
+        const playerContainer = card.querySelector('.video-player');
+
+        if (thumbnailContainer && thumbnail && playerContainer) {
+          thumbnailContainer.addEventListener('click', (e) => {
+            e.stopPropagation();
+
+            const videoUrl = card.getAttribute('data-video-url');
+            const platform = card.getAttribute('data-platform') || 'youtube';
+
+            if (videoUrl) {
+              const embedUrl = getEmbedUrl(videoUrl, platform);
+
+              if (embedUrl) {
+                // Hide thumbnail and show player
+                (thumbnail as HTMLElement).style.display = 'none';
+                (playerContainer as HTMLElement).style.display = 'block';
+
+                // Create and insert iframe
+                const iframe = document.createElement('iframe');
+                iframe.src = embedUrl;
+                iframe.style.width = '100%';
+                iframe.style.height = '100%';
+                iframe.style.border = 'none';
+                iframe.setAttribute('allowfullscreen', '');
+                iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
+
+                playerContainer.innerHTML = '';
+                playerContainer.appendChild(iframe);
+              }
+            }
+          });
+        }
+      });
     });
   </script>
 
@@ -131,6 +226,14 @@ const videos = (await getCollection('videos')).sort(
       background: var(--color-primary) !important;
       color: white !important;
       border-color: var(--color-primary) !important;
+    }
+    .video-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    }
+    .video-thumbnail-container:hover .play-button {
+      transform: translate(-50%, -50%) scale(1.1);
+      background: rgba(255, 0, 0, 1);
     }
   </style>
 </BaseLayout>

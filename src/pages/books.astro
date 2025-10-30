@@ -1,10 +1,21 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { getCollection } from 'astro:content';
+import { readContentCSV } from '../utils/csvParser';
 
-const books = (await getCollection('books')).sort(
-  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
-);
+const content = await readContentCSV();
+const books = content.books.map(book => ({
+  slug: book.url.split('/').pop() || '',
+  data: {
+    title: book.title,
+    description: book.description,
+    pubDate: book.date,
+    coverImage: book.thumbnail,
+    amazonUrl: book.url,
+    publisher: book.extra1 || '',
+    coAuthors: book.extra2 ? book.extra2.split(';').map(a => a.trim()) : [],
+    tags: book.tags,
+  }
+}));
 ---
 
 <BaseLayout title="Books | Juanalytics">
@@ -18,9 +29,11 @@ const books = (await getCollection('books')).sort(
           {books.map((book) => (
             <a href={`/books/${book.slug}`} class="card" style="padding: 0; overflow: hidden; display: flex; flex-direction: column;">
               {book.data.coverImage ? (
-                <img src={book.data.coverImage} alt={book.data.title} style="width: 100%; height: 200px; object-fit: cover;" />
+                <div style="width: 100%; height: 400px; background: var(--color-bg-secondary); display: flex; align-items: center; justify-content: center;">
+                  <img src={book.data.coverImage} alt={book.data.title} style="height: 100%; width: auto; object-fit: contain;" />
+                </div>
               ) : (
-                <div style="width: 100%; height: 200px; background: var(--color-bg-secondary); display: flex; align-items: center; justify-content: center; color: var(--color-text-light);">
+                <div style="width: 100%; height: 400px; background: var(--color-bg-secondary); display: flex; align-items: center; justify-content: center; color: var(--color-text-light);">
                   <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
                     <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>

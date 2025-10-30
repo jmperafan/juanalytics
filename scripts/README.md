@@ -1,226 +1,219 @@
-# YouTube Channel Scraper Scripts
+# Content Management Scripts
 
-This folder contains Python scripts to automatically scrape video data from your YouTube channel and generate content for your Astro site.
+This directory contains scripts to manage content for the Juanalytics website.
 
-**NO API KEY REQUIRED!** This uses YouTube's free RSS feeds.
+## Workflow Overview
 
-## Three Approaches
+The workflow for adding new content is:
 
-### 1. GitHub Action (RECOMMENDED - Fully Automated!)
+1. **Add URLs manually** to `content.csv` (first 2 columns: `type` and `url`)
+2. **Run enrichment script** to fetch metadata automatically
+3. **Run generation script** to create markdown files for the website
+4. **Review and adjust** generated files as needed
 
-- ⚡ **Automatic weekly updates** via GitHub Action
-- Scrapes videos, auto-classifies, creates PRs
-- Zero maintenance - just review and merge!
-- See [GITHUB_ACTION.md](GITHUB_ACTION.md)
+## Quick Start
 
-### 2. Quick Start (RSS - Free, No API Key)
-
-- Get your 15 most recent videos instantly
-- Perfect for small channels or getting started
-- See [QUICK_START.md](QUICK_START.md)
-
-### 3. Complete Workflow (API + RSS)
-
-- Get ALL videos once with API (free tier)
-- Then use RSS for ongoing updates
-- Best for channels with many videos
-- See [INCREMENTAL_WORKFLOW.md](INCREMENTAL_WORKFLOW.md)
-
-## Overview
-
-The workflow consists of two main steps:
-
-1. **Scrape YouTube data** - Fetch video metadata from your YouTube channel
-2. **Generate content files** - Convert the data into markdown files for your site
-
-## Prerequisites
-
-1. **Python 3.7+** installed on your system
-2. **Your YouTube Channel ID or Handle** (e.g., @yourhandle)
-
-### Finding Your Channel ID
-
-#### Method 1: From Your Channel URL
-
-- If your URL is `youtube.com/@yourhandle`, you have a handle
-- If your URL is `youtube.com/channel/UCxxxxxx`, that's your channel ID
-
-#### Method 2: Let the Script Find It
-
-- Just use your handle with `--channel-handle @yourhandle`
-- The script will automatically look up your channel ID
-
-## Installation
-
-1. Navigate to the scripts folder:
-
-   ```bash
-   cd scripts
-   ```
-
-2. Install Python dependencies:
-
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-## Usage
-
-### Step 1: Scrape YouTube Channel Data
-
-Run the scraper to fetch videos from your YouTube channel:
+### 1. Install Dependencies
 
 ```bash
-python youtube_scraper.py --channel-handle @YourChannelHandle
+cd scripts
+pip install -r requirements.txt
 ```
 
-**Options:**
+### 2. Set Up API Keys
 
-- `--channel-handle`: Your YouTube handle (e.g., @juanalytics)
-- `--channel-id`: Alternative to handle, use channel ID (e.g., UCxxxxxx)
-- `--output`: Output JSON file name (default: `youtube_data.json`)
-
-**Example:**
+Create a `.env` file in the project root:
 
 ```bash
-python youtube_scraper.py --channel-handle @juanalytics --output my_videos.json
+cp .env.example .env
 ```
 
-This will create a JSON file with your video data.
+Edit `.env` and add your YouTube Data API key:
 
-**Note:** RSS feeds return the most recent 15 videos. If you need more videos, you can get a free YouTube Data API key from [Google Cloud Console](https://console.cloud.google.com/) and use the official API (50 videos with free tier).
-
-### Step 2: Classify Your Videos
-
-Open the generated JSON file (e.g., `youtube_data.json`) and update each video:
-
-1. **Set the `type` field**: `"video"` or `"podcast"`
-2. **Add relevant tags**: Update the `tags` array with relevant keywords
-
-**Example JSON entry:**
-
-```json
-{
-  "video_id": "dQw4w9WgXcQ",
-  "title": "Introduction to dbt",
-  "description": "Learn the basics of dbt...",
-  "published_date": "2024-01-15",
-  "thumbnail_url": "https://i.ytimg.com/vi/...",
-  "video_url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-  "channel_title": "Juanalytics",
-  "type": "video",
-  "tags": ["dbt", "analytics-engineering", "tutorial"]
-}
+```
+YOUTUBE_API_KEY=your_api_key_here
 ```
 
-### Step 3: Generate Content Files
+Get a free API key at: https://console.cloud.google.com/apis/credentials
 
-Once you've classified your videos, generate the markdown files:
+### 3. Add Content URLs
+
+Edit `content.csv` and add new rows with just `type` and `url`:
+
+```csv
+type,url,modify,title,date,duration,description,thumbnail,tags,extra1,extra2
+video,https://www.youtube.com/watch?v=YOUR_VIDEO_ID,,,,,,,,,
+podcast,https://www.youtube.com/watch?v=ANOTHER_ID,,,,,,,,,
+talk,https://www.meetup.com/event/12345,,,,,,,,,
+```
+
+Supported types: `video`, `podcast`, `talk`, `book`
+
+**About the `modify` column:**
+- Leave **empty** (default) - Script will enrich only if fields are missing
+- Set to **FALSE** - Lock the row, script will never modify it (use when you've customized the content)
+- Set to **TRUE** - Force refresh, script will overwrite all fields with fresh metadata (automatically changes to FALSE after enrichment)
+
+### 4. Enrich Content
+
+Run the enrichment script to automatically fetch metadata:
 
 ```bash
-python generate_content.py --input youtube_data.json
+python scripts/enrich_content.py
 ```
 
-**Options:**
+This will:
+- Fetch titles, descriptions, thumbnails, dates, and durations
+- **NEVER modify** the `type` and `url` columns (protected)
+- Skip already-enriched rows
+- Work with YouTube, Meetup, and other URLs
 
-- `--input` (required): Input JSON file from step 1
-- `--content-dir`: Path to content directory (default: `../src/content`)
-- `--overwrite`: Overwrite existing markdown files
+### 5. Generate Markdown Files
 
-**Example:**
+Convert the CSV to markdown files:
 
 ```bash
-python generate_content.py --input my_videos.json --overwrite
+python scripts/generate_markdown.py
 ```
 
-This will create markdown files in:
+This will:
+- Create markdown files in `src/content/{videos,podcasts,talks,books}/`
+- Skip existing files (won't overwrite)
+- Use proper frontmatter for Astro
 
-- `src/content/videos/` for videos
-- `src/content/podcasts/` for podcasts
+### 6. Review and Deploy
 
-### Step 4: Review and Publish
+1. Review generated files in `src/content/`
+2. Manually add tags or adjust descriptions if needed
+3. Test locally: `npm run dev`
+4. Commit and push
 
-1. Review the generated markdown files
-2. Make any manual edits as needed
-3. Commit the changes to your repository
-4. Deploy your site
+## Main Scripts
 
-## File Structure
+### `enrich_content.py`
 
-```text
-scripts/
-├── README.md                 # This file
-├── requirements.txt          # Python dependencies (RSS version)
-├── youtube_scraper.py       # YouTube RSS scraper (NO API KEY)
-├── youtube_scraper_api.py   # YouTube API scraper (OPTIONAL, needs API key)
-├── generate_content.py      # Markdown content generator
-├── example_data.json        # Example JSON format
-└── youtube_data.json        # Generated data (gitignored)
+Enriches `content.csv` with metadata from various sources.
+
+**Features:**
+- YouTube Data API integration for full metadata
+- Generic web scraping for other URLs
+- Protected columns (never modifies `type` and `url`)
+- Respects the `modify` column for fine-grained control
+- Skips already-complete rows (unless modify=TRUE)
+
+**Usage:**
+```bash
+python scripts/enrich_content.py
+```
+
+**Modify Column Behavior:**
+- `modify` is **empty**: Only enriches if fields are missing
+- `modify` is **FALSE**: Locks the row, never enriches (protects your custom content)
+- `modify` is **TRUE**: Forces refresh, overwrites all fields, then sets to FALSE
+
+### `generate_markdown.py`
+
+Generates markdown files from enriched CSV data.
+
+**Features:**
+- Creates files in appropriate directories
+- Skips existing files by default
+- Generates proper frontmatter for Astro
+- Slugifies titles for filenames
+
+**Usage:**
+```bash
+python scripts/generate_markdown.py
+
+# Force overwrite existing files
+python scripts/generate_markdown.py --force
+```
+
+## CSV Format
+
+The `content.csv` file has the following columns:
+
+| Column | Description | Protected | Required |
+|--------|-------------|-----------|----------|
+| `type` | Content type (video/podcast/talk/book) | ✅ Yes | ✅ Yes |
+| `url` | Content URL | ✅ Yes | ✅ Yes |
+| `modify` | Control enrichment (empty/FALSE/TRUE) | ❌ No | ❌ Optional |
+| `title` | Content title | ❌ No | ✅ Yes |
+| `date` | Publication date (YYYY-MM-DD) | ❌ No | ⚠️ Recommended |
+| `duration` | Duration (HH:MM:SS or MM:SS) | ❌ No | ⚠️ Recommended |
+| `description` | Short description | ❌ No | ⚠️ Recommended |
+| `thumbnail` | Thumbnail URL | ❌ No | ⚠️ Recommended |
+| `tags` | Semicolon-separated tags | ❌ No | ⚠️ Recommended |
+| `extra1` | Type-specific field | ❌ No | ❌ Optional |
+| `extra2` | Type-specific field | ❌ No | ❌ Optional |
+
+**Protected columns** are NEVER modified by scripts - they must be set manually.
+
+**Modify column values:**
+- **Empty** (default): Enrich only if fields are missing
+- **FALSE**: Lock row - never enrich (protects your customizations)
+- **TRUE**: Force refresh - overwrite all fields with fresh metadata
+
+**Extra fields by type:**
+- **Videos**: `extra1` = platform (youtube/vimeo), `extra2` = unused
+- **Podcasts**: `extra1` = episode number, `extra2` = podcast name
+- **Talks**: `extra1` = event name, `extra2` = location
+- **Books**: `extra1` = publisher, `extra2` = co-authors (semicolon-separated)
+
+## Legacy Scripts
+
+The following scripts are kept for reference but are superseded by the new workflow:
+
+- `content-management/enrichCSV.js` - Old Node.js enrichment (use `enrich_content.py`)
+- `content-management/scrapeYouTubeChannel.js` - Old channel scraper (use `enrich_content.py`)
+- `content-management/extractToCSV.js` - Old markdown-to-CSV converter (no longer needed)
+- `youtube_scraper.py`, `youtube_scraper_api.py` - Old Python scrapers (use `enrich_content.py`)
+- `generate_content.py` - Old content generator (use `generate_markdown.py`)
+- `merge_videos.py`, `auto_classify.py`, `cleanup_shorts.py` - Old maintenance scripts
+
+You can safely delete these if you don't need them.
+
+## Troubleshooting
+
+### "YOUTUBE_API_KEY not found"
+
+Make sure you have:
+1. Created a `.env` file in the project root
+2. Added `YOUTUBE_API_KEY=your_key` to it
+3. Got an API key from Google Cloud Console
+
+### "Error: content.csv not found"
+
+Make sure you're running the scripts from the project root directory:
+```bash
+cd /path/to/Juanalytics
+python scripts/enrich_content.py
+```
+
+### YouTube API quota exceeded
+
+The free tier allows 10,000 quota units per day. Each video lookup uses ~3 units.
+
+If you exceed the quota:
+- Wait 24 hours for reset
+- Process content in batches
+- Consider requesting a quota increase from Google
+
+### Missing dependencies
+
+Install all required packages:
+```bash
+pip install -r scripts/requirements.txt
 ```
 
 ## Tips
 
-- **RSS Limitation**: RSS feeds only return 15 videos. For more videos, consider using the YouTube Data API (free tier allows 50 videos)
-- **Backup**: Keep your JSON file as a backup before generating content
-- **Incremental Updates**: To add only new videos, you can manually remove already-processed entries from the JSON file
-- **Custom Fields**: You can manually add custom fields to the JSON and update the `generate_content.py` script to use them
+1. **Batch Processing**: Add multiple URLs at once, then run enrichment once
+2. **Tags**: Tags are used for filtering on the website - add relevant ones!
+3. **Descriptions**: Keep them concise (under 200 characters works best)
+4. **Manual Edits**: You can edit CSV values manually - scripts won't overwrite them
+5. **Git**: Commit the CSV file so you have a history of changes
 
-## Troubleshooting
+## Contributing
 
-### "Channel not found" error
-
-- Double-check your channel handle or ID
-- Try using the channel ID directly instead of the handle
-- Verify the channel is public
-
-### No videos found
-
-- Make sure your channel has public videos
-- Check if the RSS feed works directly: `https://www.youtube.com/feeds/videos.xml?channel_id=YOUR_CHANNEL_ID`
-
-### Import errors
-
-- Make sure you've installed dependencies: `pip install -r requirements.txt`
-- Check your Python version: `python --version` (should be 3.7+)
-
-## Advanced Usage
-
-### Getting More Than 15 Videos
-
-If you need more than 15 videos, you have two options:
-
-#### Option 1: Use YouTube Data API (Recommended)
-
-1. Get a free API key from [Google Cloud Console](https://console.cloud.google.com/)
-2. The free tier allows 10,000 quota units per day
-3. Install additional dependencies: `pip install google-api-python-client google-auth`
-4. Use the API scraper: `python youtube_scraper_api.py --api-key YOUR_KEY --channel-handle @yourhandle`
-
-#### Option 2: Manual Batching
-
-1. Run the scraper periodically (e.g., weekly)
-2. Merge the new JSON data with your existing data
-3. This way you build up a complete history over time
-
-### Automation
-
-You can automate this workflow with a cron job or GitHub Action to periodically:
-
-1. Scrape new videos
-2. Auto-classify based on patterns (e.g., title keywords)
-3. Generate content
-4. Create a pull request
-
-## Limitations
-
-- RSS feeds only return the 15 most recent videos
-- Descriptions in RSS feeds may be truncated
-- No view counts, likes, or other engagement metrics
-- For more data, use the official YouTube Data API
-
-## Support
-
-For issues or questions:
-
-- Check the [YouTube RSS documentation](https://developers.google.com/youtube/v3/guides/implementation/subscribing)
-- Review your site's content structure in `src/content/`
+If you add new URL types or improve the scripts, please update this README!

@@ -1,11 +1,27 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { getCollection } from 'astro:content';
+import { readContentCSV } from '../utils/csvParser';
 
-const allPodcasts = await getCollection('podcasts');
+const content = await readContentCSV();
+const allPodcasts = content.podcasts.map(podcast => ({
+  slug: podcast.url.split('/').pop() || '',
+  data: {
+    title: podcast.title,
+    description: podcast.description,
+    pubDate: podcast.date,
+    podcastName: podcast.extra2 || '',
+    audioUrl: podcast.url,
+    duration: podcast.duration,
+    episode: podcast.extra1 ? parseInt(podcast.extra1) : undefined,
+    thumbnail: podcast.thumbnail,
+    type: (podcast.extra1 && parseInt(podcast.extra1) > 0) ? 'own' : 'guest',
+    tags: podcast.tags,
+  }
+}));
+
 const ownPodcasts = allPodcasts
   .filter(p => p.data.type === 'own')
-  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+  .sort((a, b) => (b.data.episode || 0) - (a.data.episode || 0));
 const guestAppearances = allPodcasts
   .filter(p => p.data.type === 'guest')
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());

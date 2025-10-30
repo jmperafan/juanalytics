@@ -1,2 +1,12 @@
-requests==2.31.0
-feedparser==6.0.11
+# Python requirements for content management scripts
+
+# YouTube Data API
+google-api-python-client>=2.100.0
+google-auth>=2.23.0
+google-auth-httplib2>=0.1.1
+
+# HTTP requests for web scraping
+requests>=2.31.0
+
+# Environment variable management
+python-dotenv>=1.0.0

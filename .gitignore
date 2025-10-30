@@ -33,3 +33,6 @@ __pycache__/
 # scripts data files (keep config.json only)
 scripts/*.json
 !scripts/config.json
+
+# Claude Code directory
+.claude/
