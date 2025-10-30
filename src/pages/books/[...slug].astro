@@ -35,7 +35,7 @@ const { Content } = await book.render();
             <p style="color: var(--color-primary); font-size: 1.125rem; font-weight: 600; margin-bottom: 0.75rem;">{book.data.publisher}</p>
           )}
           <p style="color: var(--color-text-light); margin-bottom: 1.5rem;">
-            Published: {book.data.pubDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+            Published: {book.data.pubDate.toISOString().split('T')[0]}
           </p>
 
           {book.data.coAuthors && book.data.coAuthors.length > 0 && (

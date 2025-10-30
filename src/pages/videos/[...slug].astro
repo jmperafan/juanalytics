@@ -28,7 +28,7 @@ function getYouTubeEmbedUrl(url: string) {
       <h1 style="margin-bottom: 1rem;">{video.data.title}</h1>
 
       <div style="color: var(--color-text-light); margin-bottom: 2rem;">
-        <time>{video.data.pubDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+        <time>{video.data.pubDate.toISOString().split('T')[0]}</time>
       </div>
 
       {video.data.tags && video.data.tags.length > 0 && (

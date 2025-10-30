@@ -8,10 +8,10 @@ const talks = content.talks.map(talk => ({
   data: {
     title: talk.title,
     description: talk.description,
-    event: talk.extra1 || '',
+    event: talk.event || talk.extra1 || '',
     eventUrl: talk.url,
     date: talk.date,
-    location: talk.extra2 || '',
+    location: talk.location || talk.extra2 || '',
     videoUrl: talk.url,
     thumbnail: talk.thumbnail,
     tags: talk.tags,
@@ -76,10 +76,31 @@ const talks = content.talks.map(talk => ({
                 </div>
                 <div style="padding: 1.5rem; flex: 1; display: flex; flex-direction: column;">
                   <h3 style="margin-bottom: 0.75rem; font-size: 1.125rem; line-height: 1.4;">{talk.data.title}</h3>
-                  <p style="color: var(--color-primary); font-size: 0.875rem; font-weight: 600; margin-bottom: 0.5rem;">{talk.data.event}</p>
-                  <p style="color: var(--color-text-light); font-size: 0.875rem; margin-bottom: 0.75rem;">
-                    {talk.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
-                    {talk.data.location && ` • ${talk.data.location}`}
+                  <p style="color: var(--color-primary); font-size: 0.875rem; font-weight: 600; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                      <line x1="16" y1="2" x2="16" y2="6"></line>
+                      <line x1="8" y1="2" x2="8" y2="6"></line>
+                      <line x1="3" y1="10" x2="21" y2="10"></line>
+                    </svg>
+                    {talk.data.event}
+                  </p>
+                  <p style="color: var(--color-text-light); font-size: 0.875rem; margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem;">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <circle cx="12" cy="12" r="10"></circle>
+                      <polyline points="12 6 12 12 16 14"></polyline>
+                    </svg>
+                    {talk.data.date.toISOString().split('T')[0]}
+                    {talk.data.location && (
+                      <>
+                        <span style="margin: 0 0.25rem;">•</span>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                          <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                          <circle cx="12" cy="10" r="3"></circle>
+                        </svg>
+                        {talk.data.location}
+                      </>
+                    )}
                   </p>
                   <p style="color: var(--color-text-light); font-size: 0.9375rem; line-height: 1.6; flex: 1; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">{talk.data.description}</p>
                   {talk.data.tags && talk.data.tags.length > 0 && (

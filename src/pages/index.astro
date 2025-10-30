@@ -80,7 +80,7 @@ const recentPodcasts = (await getCollection('podcasts'))
                   </p>
                 )}
                 <p style="color: var(--color-text-light); font-size: 0.875rem; margin-bottom: 0.75rem;">
-                  {podcast.data.pubDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+                  {podcast.data.pubDate.toISOString().split('T')[0]}
                   {podcast.data.duration && ` • ${podcast.data.duration}`}
                 </p>
                 <p style="color: var(--color-text-light); font-size: 0.9375rem; line-height: 1.6; flex: 1; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">{podcast.data.description}</p>
@@ -117,7 +117,7 @@ const recentPodcasts = (await getCollection('podcasts'))
               <div style="padding: 1.5rem; flex: 1; display: flex; flex-direction: column;">
                 <h3 style="margin-bottom: 0.75rem; font-size: 1.125rem; line-height: 1.4;">{video.data.title}</h3>
                 <p style="color: var(--color-text-light); font-size: 0.875rem; margin-bottom: 0.75rem;">
-                  {video.data.pubDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+                  {video.data.pubDate.toISOString().split('T')[0]}
                 </p>
                 <p style="color: var(--color-text-light); font-size: 0.9375rem; line-height: 1.6; flex: 1; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">{video.data.description}</p>
               </div>
@@ -149,7 +149,7 @@ const recentPodcasts = (await getCollection('podcasts'))
               <div style="padding: 1.5rem; flex: 1; display: flex; flex-direction: column;">
                 <h3 style="margin-bottom: 0.75rem; font-size: 1.125rem; line-height: 1.4;">{post.data.title}</h3>
                 <p style="color: var(--color-text-light); font-size: 0.875rem; margin-bottom: 0.75rem;">
-                  {post.data.pubDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+                  {post.data.pubDate.toISOString().split('T')[0]}
                 </p>
                 <p style="color: var(--color-text-light); font-size: 0.9375rem; line-height: 1.6; flex: 1; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">{post.data.description}</p>
               </div>

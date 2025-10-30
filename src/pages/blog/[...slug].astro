@@ -24,9 +24,9 @@ const { Content } = await post.render();
       <h1 style="margin-bottom: 1rem;">{post.data.title}</h1>
 
       <div style="color: var(--color-text-light); margin-bottom: 2rem; display: flex; gap: 1rem; align-items: center;">
-        <time>{post.data.pubDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+        <time>{post.data.pubDate.toISOString().split('T')[0]}</time>
         {post.data.updatedDate && (
-          <span>• Updated {post.data.updatedDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+          <span>• Updated {post.data.updatedDate.toISOString().split('T')[0]}</span>
         )}
       </div>
 

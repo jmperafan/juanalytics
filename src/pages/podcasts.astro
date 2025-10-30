@@ -9,10 +9,10 @@ const allPodcasts = content.podcasts.map(podcast => ({
     title: podcast.title,
     description: podcast.description,
     pubDate: podcast.date,
-    podcastName: podcast.extra2 || '',
+    podcastName: podcast.podcast || podcast.extra2 || '',
     audioUrl: podcast.url,
     duration: podcast.duration,
-    episode: podcast.extra1 ? parseInt(podcast.extra1) : undefined,
+    episode: podcast.episode || (podcast.extra1 ? parseInt(podcast.extra1) : undefined),
     thumbnail: podcast.thumbnail,
     type: (podcast.extra1 && parseInt(podcast.extra1) > 0) ? 'own' : 'guest',
     tags: podcast.tags,
@@ -70,16 +70,10 @@ const guestAppearances = allPodcasts
                 )}
                 <div style="padding: 1.5rem; flex: 1; display: flex; flex-direction: column;">
                   <h3 style="margin-bottom: 0.5rem; font-size: 1.125rem; line-height: 1.4;">{podcast.data.title}</h3>
-                  {(podcast.data.podcastName || podcast.data.episode) && (
-                    <p style="color: var(--color-primary); font-weight: 600; font-size: 0.875rem; margin-bottom: 0.75rem;">
-                      {podcast.data.podcastName && podcast.data.podcastName}
-                      {podcast.data.podcastName && podcast.data.episode && ' • '}
-                      {podcast.data.episode && `Episode ${podcast.data.episode}`}
-                    </p>
-                  )}
                   <p style="color: var(--color-text-light); font-size: 0.875rem; margin-bottom: 0.75rem;">
-                    {podcast.data.pubDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
-                    {podcast.data.duration && ` • ${podcast.data.duration}`}
+                    {podcast.data.pubDate.toISOString().split('T')[0]}
+                    {podcast.data.podcastName && ` • ${podcast.data.podcastName}`}
+                    {podcast.data.episode && ` - Episode ${podcast.data.episode}`}
                   </p>
                   <p style="color: var(--color-text-light); font-size: 0.9375rem; line-height: 1.6; flex: 1; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">{podcast.data.description}</p>
                   {podcast.data.tags && podcast.data.tags.length > 0 && (
@@ -125,7 +119,7 @@ const guestAppearances = allPodcasts
                     </p>
                   )}
                   <p style="color: var(--color-text-light); font-size: 0.875rem; margin-bottom: 0.75rem;">
-                    {podcast.data.pubDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+                    {podcast.data.pubDate.toISOString().split('T')[0]}
                     {podcast.data.duration && ` • ${podcast.data.duration}`}
                   </p>
                   <p style="color: var(--color-text-light); font-size: 0.9375rem; line-height: 1.6; flex: 1; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">{podcast.data.description}</p>

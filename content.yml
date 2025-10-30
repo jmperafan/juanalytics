@@ -486,7 +486,7 @@ talks:
   thumbnail: https://i.ytimg.com/vi/e7cGqsqLkmU/maxresdefault.jpg
   tags:
   - community building
-  event: The Linux Foundation Open Source Summit Europe 2023
+  event: The Linux Foundation OS Summit 2023
   location: Bilbao, Spain
 - url: https://www.youtube.com/watch?v=9eiYoB21uuo
   title: 'The fine art of organizing Meetups'
@@ -521,7 +521,7 @@ talks:
   thumbnail: https://i.ytimg.com/vi/RVxU9tYB6-o/maxresdefault.jpg
   tags:
   - community building
-  event: XKE 2022
+  event: Xebia TEDxKE
   location: Amersfoort, The Netherlands
 - url: https://www.youtube.com/watch?v=zDr6vgq2cdY
   title: Lo que no sabías que se podía hacer en Tableau
@@ -624,6 +624,8 @@ talks:
   description: In this talk, we will explore three underrated use cases of the dbt Semantic Layer that can help you get more value out of your data models and improve collaboration between data teams and business users.
   thumbnail: https://secure.meetupstatic.com/photos/event/1/8/5/a/600_528486234.jpeg
   tags: [dbt, data strategy]
+  event: dbt Global Circuit Series
+  location: San Francisco, CA
 - url: https://www.eventbrite.co.uk/e/insights-in-data-visualization-tickets-58093188290
   title: 'Self-service BI: your preparation before the whole organization jumps in'
   date: '2019-03-28'

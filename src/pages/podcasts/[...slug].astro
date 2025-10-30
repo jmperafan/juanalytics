@@ -28,7 +28,7 @@ const { Content } = await podcast.render();
       )}
 
       <div style="color: var(--color-text-light); margin-bottom: 2rem; display: flex; gap: 1rem; align-items: center;">
-        <time>{podcast.data.pubDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+        <time>{podcast.data.pubDate.toISOString().split('T')[0]}</time>
         {podcast.data.duration && (
           <span>• {podcast.data.duration}</span>
         )}

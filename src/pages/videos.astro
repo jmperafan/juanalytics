@@ -73,7 +73,7 @@ const videos = content.videos.map(video => ({
                 <div style="padding: 1.5rem; flex: 1; display: flex; flex-direction: column;">
                   <h3 style="margin-bottom: 0.75rem; font-size: 1.125rem; line-height: 1.4;">{video.data.title}</h3>
                   <p style="color: var(--color-text-light); font-size: 0.875rem; margin-bottom: 0.75rem;">
-                    {video.data.pubDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+                    {video.data.pubDate.toISOString().split('T')[0]}
                   </p>
                   <p style="color: var(--color-text-light); font-size: 0.9375rem; line-height: 1.6; margin-bottom: 1rem; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">{video.data.description}</p>
                   {video.data.tags && video.data.tags.length > 0 && (
