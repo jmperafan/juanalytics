@@ -5,6 +5,6 @@ import sitemap from '@astrojs/sitemap';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://jmperafan.github.io',
-  base: '/Juanalytics',
+  base: '/Juanalytics/',
   integrations: [mdx(), sitemap()],
 });
