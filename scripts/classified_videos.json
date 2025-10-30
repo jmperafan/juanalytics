@@ -10,7 +10,8 @@
     "type": "podcast",
     "tags": [
       "podcast"
-    ]
+    ],
+    "duration_seconds": 3752
   },
   {
     "video_id": "QG-cvSACuj4",
@@ -23,7 +24,8 @@
     "type": "podcast",
     "tags": [
       "podcast"
-    ]
+    ],
+    "duration_seconds": 685
   },
   {
     "video_id": "IJ2BqTUIvM4",
@@ -36,7 +38,8 @@
     "type": "podcast",
     "tags": [
       "podcast"
-    ]
+    ],
+    "duration_seconds": 430
   },
   {
     "video_id": "xghnemtDnto",
@@ -49,7 +52,8 @@
     "type": "podcast",
     "tags": [
       "podcast"
-    ]
+    ],
+    "duration_seconds": 3908
   },
   {
     "video_id": "v5VuX9az9Wo",
@@ -62,7 +66,8 @@
     "type": "podcast",
     "tags": [
       "podcast"
-    ]
+    ],
+    "duration_seconds": 3770
   },
   {
     "video_id": "7Mbeq8NQxwo",
@@ -75,7 +80,8 @@
     "type": "podcast",
     "tags": [
       "podcast"
-    ]
+    ],
+    "duration_seconds": 3573
   },
   {
     "video_id": "1KFGmaPsqa8",
@@ -88,7 +94,8 @@
     "type": "podcast",
     "tags": [
       "podcast"
-    ]
+    ],
+    "duration_seconds": 3963
   },
   {
     "video_id": "5uq9Z3kA88c",
@@ -101,7 +108,8 @@
     "type": "podcast",
     "tags": [
       "podcast"
-    ]
+    ],
+    "duration_seconds": 251
   },
   {
     "video_id": "zstl0w0SNkM",
@@ -114,7 +122,8 @@
     "type": "podcast",
     "tags": [
       "podcast"
-    ]
+    ],
+    "duration_seconds": 729
   },
   {
     "video_id": "IHBdkflNSYw",
@@ -127,7 +136,8 @@
     "type": "podcast",
     "tags": [
       "podcast"
-    ]
+    ],
+    "duration_seconds": 416
   },
   {
     "video_id": "HONockIRwfQ",
@@ -140,7 +150,8 @@
     "type": "podcast",
     "tags": [
       "podcast"
-    ]
+    ],
+    "duration_seconds": 369
   },
   {
     "video_id": "7GZ0duzksaM",
@@ -153,7 +164,8 @@
     "type": "podcast",
     "tags": [
       "podcast"
-    ]
+    ],
+    "duration_seconds": 3364
   },
   {
     "video_id": "2LiFCRDacEs",
@@ -166,7 +178,8 @@
     "type": "podcast",
     "tags": [
       "podcast"
-    ]
+    ],
+    "duration_seconds": 246
   },
   {
     "video_id": "m0H6Ye3Im9w",
@@ -179,7 +192,8 @@
     "type": "podcast",
     "tags": [
       "podcast"
-    ]
+    ],
+    "duration_seconds": 426
   },
   {
     "video_id": "EMCFacR1LlY",
@@ -192,7 +206,8 @@
     "type": "podcast",
     "tags": [
       "podcast"
-    ]
+    ],
+    "duration_seconds": 3258
   },
   {
     "video_id": "6ZNyVNqkVMk",
@@ -205,29 +220,8 @@
     "type": "podcast",
     "tags": [
       "podcast"
-    ]
-  },
-  {
-    "video_id": "1Oqx90s_Q1g",
-    "title": "SQL Lingua Franca #7 - Impostor Syndrom in Data Professionals",
-    "description": "",
-    "published_date": "2024-09-24",
-    "thumbnail_url": "https://i.ytimg.com/vi/1Oqx90s_Q1g/maxresdefault.jpg",
-    "video_url": "https://www.youtube.com/watch?v=1Oqx90s_Q1g",
-    "channel_title": "Juanalytics",
-    "type": "video",
-    "tags": []
-  },
-  {
-    "video_id": "4LRaIzbAta4",
-    "title": "SQL Lingua Franca #7 - The difference between a medior and a senior data professional",
-    "description": "",
-    "published_date": "2024-09-23",
-    "thumbnail_url": "https://i.ytimg.com/vi/4LRaIzbAta4/maxresdefault.jpg",
-    "video_url": "https://www.youtube.com/watch?v=4LRaIzbAta4",
-    "channel_title": "Juanalytics",
-    "type": "video",
-    "tags": []
+    ],
+    "duration_seconds": 566
   },
   {
     "video_id": "PHWXCrswbW4",
@@ -240,7 +234,8 @@
     "type": "podcast",
     "tags": [
       "podcast"
-    ]
+    ],
+    "duration_seconds": 3448
   },
   {
     "video_id": "_ZIMoo-GL_U",
@@ -253,64 +248,8 @@
     "type": "podcast",
     "tags": [
       "podcast"
-    ]
-  },
-  {
-    "video_id": "agY7sY_uBuQ",
-    "title": "SQL Lingua Franca #6 - The Mindset of a Great Engineer",
-    "description": "",
-    "published_date": "2024-09-19",
-    "thumbnail_url": "https://i.ytimg.com/vi/agY7sY_uBuQ/maxresdefault.jpg",
-    "video_url": "https://www.youtube.com/watch?v=agY7sY_uBuQ",
-    "channel_title": "Juanalytics",
-    "type": "video",
-    "tags": []
-  },
-  {
-    "video_id": "-9jert716ag",
-    "title": "SQL Lingua Franca #6 - The Importance of Diversity in Corporate Leadership",
-    "description": "",
-    "published_date": "2024-09-18",
-    "thumbnail_url": "https://i.ytimg.com/vi/-9jert716ag/maxresdefault.jpg",
-    "video_url": "https://www.youtube.com/watch?v=-9jert716ag",
-    "channel_title": "Juanalytics",
-    "type": "video",
-    "tags": []
-  },
-  {
-    "video_id": "JejxXEMd568",
-    "title": "SQL Lingua Franca #6 - Proving Your Value as a Tech Worker",
-    "description": "",
-    "published_date": "2024-09-15",
-    "thumbnail_url": "https://i.ytimg.com/vi/JejxXEMd568/maxresdefault.jpg",
-    "video_url": "https://www.youtube.com/watch?v=JejxXEMd568",
-    "channel_title": "Juanalytics",
-    "type": "video",
-    "tags": []
-  },
-  {
-    "video_id": "flioeaQinoQ",
-    "title": "SQL Lingua Franca #6 - Your Culture Should Never be a Weakness",
-    "description": "",
-    "published_date": "2024-09-14",
-    "thumbnail_url": "https://i.ytimg.com/vi/flioeaQinoQ/maxresdefault.jpg",
-    "video_url": "https://www.youtube.com/watch?v=flioeaQinoQ",
-    "channel_title": "Juanalytics",
-    "type": "video",
-    "tags": []
-  },
-  {
-    "video_id": "_IlJ2pWqsYE",
-    "title": "SQL Lingua Franca #6 - Be Yourself During Interviews",
-    "description": "",
-    "published_date": "2024-09-13",
-    "thumbnail_url": "https://i.ytimg.com/vi/_IlJ2pWqsYE/maxresdefault.jpg",
-    "video_url": "https://www.youtube.com/watch?v=_IlJ2pWqsYE",
-    "channel_title": "Juanalytics",
-    "type": "podcast",
-    "tags": [
-      "podcast"
-    ]
+    ],
+    "duration_seconds": 1040
   },
   {
     "video_id": "0E45mNDvN4s",
@@ -323,7 +262,8 @@
     "type": "podcast",
     "tags": [
       "podcast"
-    ]
+    ],
+    "duration_seconds": 101
   },
   {
     "video_id": "l_RyrKIZX20",
@@ -336,29 +276,8 @@
     "type": "podcast",
     "tags": [
       "podcast"
-    ]
-  },
-  {
-    "video_id": "txkH9Bh2mbw",
-    "title": "SQL Lingua Franca #6 - How Quitting My Job Led Me to IT Recruitment",
-    "description": "",
-    "published_date": "2024-09-12",
-    "thumbnail_url": "https://i.ytimg.com/vi/txkH9Bh2mbw/maxresdefault.jpg",
-    "video_url": "https://www.youtube.com/watch?v=txkH9Bh2mbw",
-    "channel_title": "Juanalytics",
-    "type": "video",
-    "tags": []
-  },
-  {
-    "video_id": "CHIkFFc_hCA",
-    "title": "SQL Lingua Franca #6 How a Python Script Helped Secure an Amsterdam Rental",
-    "description": "",
-    "published_date": "2024-09-11",
-    "thumbnail_url": "https://i.ytimg.com/vi/CHIkFFc_hCA/maxresdefault.jpg",
-    "video_url": "https://www.youtube.com/watch?v=CHIkFFc_hCA",
-    "channel_title": "Juanalytics",
-    "type": "video",
-    "tags": []
+    ],
+    "duration_seconds": 253
   },
   {
     "video_id": "FelO2Zaetos",
@@ -371,7 +290,8 @@
     "type": "podcast",
     "tags": [
       "podcast"
-    ]
+    ],
+    "duration_seconds": 3390
   },
   {
     "video_id": "A5TOnCdsJlo",
@@ -384,7 +304,8 @@
     "type": "podcast",
     "tags": [
       "podcast"
-    ]
+    ],
+    "duration_seconds": 3280
   },
   {
     "video_id": "Sl5jEuxJ9G0",
@@ -397,73 +318,8 @@
     "type": "podcast",
     "tags": [
       "podcast"
-    ]
-  },
-  {
-    "video_id": "b5GxfuGGtLw",
-    "title": "SQL Lingua Franca #5 - Listen to your users, not to the people who pay for your product",
-    "description": "",
-    "published_date": "2024-08-17",
-    "thumbnail_url": "https://i.ytimg.com/vi/b5GxfuGGtLw/maxresdefault.jpg",
-    "video_url": "https://www.youtube.com/watch?v=b5GxfuGGtLw",
-    "channel_title": "Juanalytics",
-    "type": "video",
-    "tags": []
-  },
-  {
-    "video_id": "6LVWQGonaA4",
-    "title": "SQL Lingua Franca #5 - How does the week of a Community Advocate look?",
-    "description": "",
-    "published_date": "2024-08-16",
-    "thumbnail_url": "https://i.ytimg.com/vi/6LVWQGonaA4/maxresdefault.jpg",
-    "video_url": "https://www.youtube.com/watch?v=6LVWQGonaA4",
-    "channel_title": "Juanalytics",
-    "type": "video",
-    "tags": []
-  },
-  {
-    "video_id": "CiMVywHnz44",
-    "title": "SQL Lingua Franca #5 - What is a Developer Advocate?",
-    "description": "",
-    "published_date": "2024-08-15",
-    "thumbnail_url": "https://i.ytimg.com/vi/CiMVywHnz44/maxresdefault.jpg",
-    "video_url": "https://www.youtube.com/watch?v=CiMVywHnz44",
-    "channel_title": "Juanalytics",
-    "type": "video",
-    "tags": []
-  },
-  {
-    "video_id": "OtL_JHJQk_8",
-    "title": "SQL Lingua Franca #5 - LLMs are not hallucinating, they are just guessing",
-    "description": "",
-    "published_date": "2024-08-14",
-    "thumbnail_url": "https://i.ytimg.com/vi/OtL_JHJQk_8/maxresdefault.jpg",
-    "video_url": "https://www.youtube.com/watch?v=OtL_JHJQk_8",
-    "channel_title": "Juanalytics",
-    "type": "video",
-    "tags": []
-  },
-  {
-    "video_id": "j4kiKteorKo",
-    "title": "SQL Lingua Franca #5 - AI can change lives (for good and for bad)",
-    "description": "",
-    "published_date": "2024-08-13",
-    "thumbnail_url": "https://i.ytimg.com/vi/j4kiKteorKo/maxresdefault.jpg",
-    "video_url": "https://www.youtube.com/watch?v=j4kiKteorKo",
-    "channel_title": "Juanalytics",
-    "type": "video",
-    "tags": []
-  },
-  {
-    "video_id": "IwYWK5pmf1s",
-    "title": "SQL Lingua Franca #5 - It feels like every company is trying to cram AI to their products",
-    "description": "",
-    "published_date": "2024-08-12",
-    "thumbnail_url": "https://i.ytimg.com/vi/IwYWK5pmf1s/maxresdefault.jpg",
-    "video_url": "https://www.youtube.com/watch?v=IwYWK5pmf1s",
-    "channel_title": "Juanalytics",
-    "type": "video",
-    "tags": []
+    ],
+    "duration_seconds": 3389
   },
   {
     "video_id": "jaoGFMFM7zc",
@@ -476,7 +332,8 @@
     "type": "podcast",
     "tags": [
       "podcast"
-    ]
+    ],
+    "duration_seconds": 2951
   },
   {
     "video_id": "M2Bq7PORMo4",
@@ -489,7 +346,8 @@
     "type": "podcast",
     "tags": [
       "podcast"
-    ]
+    ],
+    "duration_seconds": 931
   },
   {
     "video_id": "1lhOI9ZHJ6w",
@@ -502,7 +360,8 @@
     "type": "podcast",
     "tags": [
       "podcast"
-    ]
+    ],
+    "duration_seconds": 184
   },
   {
     "video_id": "B1RO1UFl0mY",
@@ -515,73 +374,8 @@
     "type": "podcast",
     "tags": [
       "podcast"
-    ]
-  },
-  {
-    "video_id": "7gAQxU22quo",
-    "title": "SQL Lingua Franca #1 - Modularization Makes Your Code Easier to Test!",
-    "description": "",
-    "published_date": "2024-08-07",
-    "thumbnail_url": "https://i.ytimg.com/vi/7gAQxU22quo/maxresdefault.jpg",
-    "video_url": "https://www.youtube.com/watch?v=7gAQxU22quo",
-    "channel_title": "Juanalytics",
-    "type": "video",
-    "tags": []
-  },
-  {
-    "video_id": "QclvKwX9UI4",
-    "title": "SQL Lingua Franca #4 - CI/CD can become a burden if you do too much fancy stuff",
-    "description": "",
-    "published_date": "2024-08-06",
-    "thumbnail_url": "https://i.ytimg.com/vi/QclvKwX9UI4/maxresdefault.jpg",
-    "video_url": "https://www.youtube.com/watch?v=QclvKwX9UI4",
-    "channel_title": "Juanalytics",
-    "type": "video",
-    "tags": []
-  },
-  {
-    "video_id": "tryVBM7xqV8",
-    "title": "SQL Lingua Franca #4 - Transitioning from Analyst to Analytics Engineering",
-    "description": "",
-    "published_date": "2024-08-05",
-    "thumbnail_url": "https://i.ytimg.com/vi/tryVBM7xqV8/maxresdefault.jpg",
-    "video_url": "https://www.youtube.com/watch?v=tryVBM7xqV8",
-    "channel_title": "Juanalytics",
-    "type": "video",
-    "tags": []
-  },
-  {
-    "video_id": "WYXv2OOY3x4",
-    "title": "SQL Lingua Franca #4 - dbt Takes Away a lot of the Traditional SQL Painpoints",
-    "description": "",
-    "published_date": "2024-08-04",
-    "thumbnail_url": "https://i.ytimg.com/vi/WYXv2OOY3x4/maxresdefault.jpg",
-    "video_url": "https://www.youtube.com/watch?v=WYXv2OOY3x4",
-    "channel_title": "Juanalytics",
-    "type": "video",
-    "tags": []
-  },
-  {
-    "video_id": "kyqPdpvaH34",
-    "title": "SQL Lingua Franca #4 - Data Lineage: The Key to Effective Data Management",
-    "description": "",
-    "published_date": "2024-08-03",
-    "thumbnail_url": "https://i.ytimg.com/vi/kyqPdpvaH34/maxresdefault.jpg",
-    "video_url": "https://www.youtube.com/watch?v=kyqPdpvaH34",
-    "channel_title": "Juanalytics",
-    "type": "video",
-    "tags": []
-  },
-  {
-    "video_id": "2QfFq46pjpk",
-    "title": "SQL Lingua Franca #4 - Easy Techniques to Write Documentation Efficiently",
-    "description": "",
-    "published_date": "2024-08-02",
-    "thumbnail_url": "https://i.ytimg.com/vi/2QfFq46pjpk/maxresdefault.jpg",
-    "video_url": "https://www.youtube.com/watch?v=2QfFq46pjpk",
-    "channel_title": "Juanalytics",
-    "type": "video",
-    "tags": []
+    ],
+    "duration_seconds": 686
   },
   {
     "video_id": "DMuWN-pcURw",
@@ -594,7 +388,8 @@
     "type": "podcast",
     "tags": [
       "podcast"
-    ]
+    ],
+    "duration_seconds": 2967
   },
   {
     "video_id": "qvt3K8HvXKo",
@@ -607,7 +402,8 @@
     "type": "podcast",
     "tags": [
       "podcast"
-    ]
+    ],
+    "duration_seconds": 200
   },
   {
     "video_id": "-e0WGvGdT0E",
@@ -620,18 +416,8 @@
     "type": "podcast",
     "tags": [
       "podcast"
-    ]
-  },
-  {
-    "video_id": "JVO6syo-QOY",
-    "title": "SQL Lingua Franca #3 - Healthcare Has Some Interesting Data Challenges",
-    "description": "",
-    "published_date": "2024-07-29",
-    "thumbnail_url": "https://i.ytimg.com/vi/JVO6syo-QOY/maxresdefault.jpg",
-    "video_url": "https://www.youtube.com/watch?v=JVO6syo-QOY",
-    "channel_title": "Juanalytics",
-    "type": "video",
-    "tags": []
+    ],
+    "duration_seconds": 583
   },
   {
     "video_id": "HgTnXYi7eAo",
@@ -644,73 +430,8 @@
     "type": "podcast",
     "tags": [
       "podcast"
-    ]
-  },
-  {
-    "video_id": "fuJfbT5wTM4",
-    "title": "SQL Lingua Franca #3 - Query Performance in Snowflake",
-    "description": "",
-    "published_date": "2024-07-27",
-    "thumbnail_url": "https://i.ytimg.com/vi/fuJfbT5wTM4/maxresdefault.jpg",
-    "video_url": "https://www.youtube.com/watch?v=fuJfbT5wTM4",
-    "channel_title": "Juanalytics",
-    "type": "video",
-    "tags": []
-  },
-  {
-    "video_id": "aS4lFfhW8M0",
-    "title": "SQL Lingua Franca #2  - Not every data person has what it takes to be a data modeler",
-    "description": "",
-    "published_date": "2024-07-26",
-    "thumbnail_url": "https://i.ytimg.com/vi/aS4lFfhW8M0/maxresdefault.jpg",
-    "video_url": "https://www.youtube.com/watch?v=aS4lFfhW8M0",
-    "channel_title": "Juanalytics",
-    "type": "video",
-    "tags": []
-  },
-  {
-    "video_id": "0WKEGwsUdZM",
-    "title": "SQL Lingua Franca #3 -  Why Coverage Is a Useless Software Testing Metric",
-    "description": "",
-    "published_date": "2024-07-26",
-    "thumbnail_url": "https://i.ytimg.com/vi/0WKEGwsUdZM/maxresdefault.jpg",
-    "video_url": "https://www.youtube.com/watch?v=0WKEGwsUdZM",
-    "channel_title": "Juanalytics",
-    "type": "video",
-    "tags": []
-  },
-  {
-    "video_id": "Jtlp-3HRSb0",
-    "title": "SQL Lingua Franca #3 - How to Reciprocate When Discussing Data",
-    "description": "",
-    "published_date": "2024-07-25",
-    "thumbnail_url": "https://i.ytimg.com/vi/Jtlp-3HRSb0/maxresdefault.jpg",
-    "video_url": "https://www.youtube.com/watch?v=Jtlp-3HRSb0",
-    "channel_title": "Juanalytics",
-    "type": "video",
-    "tags": []
-  },
-  {
-    "video_id": "GjSpsf1FWow",
-    "title": "SQL Lingua Franca #3 - Legacy Systems are Holding Your Business Back",
-    "description": "",
-    "published_date": "2024-07-23",
-    "thumbnail_url": "https://i.ytimg.com/vi/GjSpsf1FWow/maxresdefault.jpg",
-    "video_url": "https://www.youtube.com/watch?v=GjSpsf1FWow",
-    "channel_title": "Juanalytics",
-    "type": "video",
-    "tags": []
-  },
-  {
-    "video_id": "DgIoosVurZY",
-    "title": "SQL Lingua Franca #3 - Explain your value as a data professional",
-    "description": "",
-    "published_date": "2024-07-22",
-    "thumbnail_url": "https://i.ytimg.com/vi/DgIoosVurZY/maxresdefault.jpg",
-    "video_url": "https://www.youtube.com/watch?v=DgIoosVurZY",
-    "channel_title": "Juanalytics",
-    "type": "video",
-    "tags": []
+    ],
+    "duration_seconds": 715
   },
   {
     "video_id": "51BPZkOsmKw",
@@ -723,51 +444,8 @@
     "type": "podcast",
     "tags": [
       "podcast"
-    ]
-  },
-  {
-    "video_id": "hVZEf7Chit4",
-    "title": "SQL Lingua Franca #2 - Writing \"Fundamentals of Analytics Engineering\"",
-    "description": "Check out the book \"Fundamentals Of Analytics Engineering\": https://www.amazon.com/Fundamentals-Analytics-Engineering-End-End-ebook/dp/B0CWR79K4M",
-    "published_date": "2024-07-19",
-    "thumbnail_url": "https://i.ytimg.com/vi/hVZEf7Chit4/maxresdefault.jpg",
-    "video_url": "https://www.youtube.com/watch?v=hVZEf7Chit4",
-    "channel_title": "Juanalytics",
-    "type": "video",
-    "tags": []
-  },
-  {
-    "video_id": "RBqjUE4PUBE",
-    "title": "SQL Lingua Franca #2 - What is an Analytics Engineer",
-    "description": "",
-    "published_date": "2024-07-17",
-    "thumbnail_url": "https://i.ytimg.com/vi/RBqjUE4PUBE/maxresdefault.jpg",
-    "video_url": "https://www.youtube.com/watch?v=RBqjUE4PUBE",
-    "channel_title": "Juanalytics",
-    "type": "video",
-    "tags": []
-  },
-  {
-    "video_id": "wYG-deGWUTY",
-    "title": "SQL Lingua Franca #2 - Data Has an Impact on People",
-    "description": "",
-    "published_date": "2024-07-15",
-    "thumbnail_url": "https://i.ytimg.com/vi/wYG-deGWUTY/maxresdefault.jpg",
-    "video_url": "https://www.youtube.com/watch?v=wYG-deGWUTY",
-    "channel_title": "Juanalytics",
-    "type": "video",
-    "tags": []
-  },
-  {
-    "video_id": "ZO5oW5K-gaM",
-    "title": "SQL Lingua Franca #2 - Upskilling with Zero Cost Tools",
-    "description": "",
-    "published_date": "2024-07-13",
-    "thumbnail_url": "https://i.ytimg.com/vi/ZO5oW5K-gaM/maxresdefault.jpg",
-    "video_url": "https://www.youtube.com/watch?v=ZO5oW5K-gaM",
-    "channel_title": "Juanalytics",
-    "type": "video",
-    "tags": []
+    ],
+    "duration_seconds": 3211
   },
   {
     "video_id": "OV5wvvsM5z0",
@@ -780,51 +458,8 @@
     "type": "podcast",
     "tags": [
       "podcast"
-    ]
-  },
-  {
-    "video_id": "jJ-xNNVUlPw",
-    "title": "SQL Lingua Franca #1 - Our Mission is to be Obsolete",
-    "description": "",
-    "published_date": "2024-07-11",
-    "thumbnail_url": "https://i.ytimg.com/vi/jJ-xNNVUlPw/maxresdefault.jpg",
-    "video_url": "https://www.youtube.com/watch?v=jJ-xNNVUlPw",
-    "channel_title": "Juanalytics",
-    "type": "video",
-    "tags": []
-  },
-  {
-    "video_id": "D3Ntz0ZNpl8",
-    "title": "SQL Lingua Franca #1 - Being Replaceable is Hard",
-    "description": "",
-    "published_date": "2024-07-10",
-    "thumbnail_url": "https://i.ytimg.com/vi/D3Ntz0ZNpl8/maxresdefault.jpg",
-    "video_url": "https://www.youtube.com/watch?v=D3Ntz0ZNpl8",
-    "channel_title": "Juanalytics",
-    "type": "video",
-    "tags": []
-  },
-  {
-    "video_id": "dNDDMoVvhZY",
-    "title": "SQL Lingua Franca #1 - Bashing on Dashboards",
-    "description": "",
-    "published_date": "2024-07-09",
-    "thumbnail_url": "https://i.ytimg.com/vi/dNDDMoVvhZY/maxresdefault.jpg",
-    "video_url": "https://www.youtube.com/watch?v=dNDDMoVvhZY",
-    "channel_title": "Juanalytics",
-    "type": "video",
-    "tags": []
-  },
-  {
-    "video_id": "LNLAwV2SIG8",
-    "title": "SQL Lingua Franca #1 - The Power of Simplicity in Data Manipulation",
-    "description": "",
-    "published_date": "2024-07-08",
-    "thumbnail_url": "https://i.ytimg.com/vi/LNLAwV2SIG8/maxresdefault.jpg",
-    "video_url": "https://www.youtube.com/watch?v=LNLAwV2SIG8",
-    "channel_title": "Juanalytics",
-    "type": "video",
-    "tags": []
+    ],
+    "duration_seconds": 3390
   },
   {
     "video_id": "I1tKn4ZT4No",
@@ -837,7 +472,8 @@
     "type": "podcast",
     "tags": [
       "podcast"
-    ]
+    ],
+    "duration_seconds": 3075
   },
   {
     "video_id": "9eiYoB21uuo",
@@ -848,7 +484,8 @@
     "video_url": "https://www.youtube.com/watch?v=9eiYoB21uuo",
     "channel_title": "Juanalytics",
     "type": "video",
-    "tags": []
+    "tags": [],
+    "duration_seconds": 1747
   },
   {
     "video_id": "RVxU9tYB6-o",
@@ -859,7 +496,8 @@
     "video_url": "https://www.youtube.com/watch?v=RVxU9tYB6-o",
     "channel_title": "Juanalytics",
     "type": "video",
-    "tags": []
+    "tags": [],
+    "duration_seconds": 304
   },
   {
     "video_id": "Qvw1dfPOLrk",
@@ -870,7 +508,8 @@
     "video_url": "https://www.youtube.com/watch?v=Qvw1dfPOLrk",
     "channel_title": "Juanalytics",
     "type": "video",
-    "tags": []
+    "tags": [],
+    "duration_seconds": 229
   },
   {
     "video_id": "2jAVlI9RZqs",
@@ -883,7 +522,8 @@
     "type": "podcast",
     "tags": [
       "podcast"
-    ]
+    ],
+    "duration_seconds": 610
   },
   {
     "video_id": "gyA3xBr8tbo",
@@ -894,7 +534,8 @@
     "video_url": "https://www.youtube.com/watch?v=gyA3xBr8tbo",
     "channel_title": "Juanalytics",
     "type": "video",
-    "tags": []
+    "tags": [],
+    "duration_seconds": 404
   },
   {
     "video_id": "aBNLPaCChn8",
@@ -905,7 +546,8 @@
     "video_url": "https://www.youtube.com/watch?v=aBNLPaCChn8",
     "channel_title": "Juanalytics",
     "type": "video",
-    "tags": []
+    "tags": [],
+    "duration_seconds": 460
   },
   {
     "video_id": "ZFXN0-pr9s4",
@@ -916,7 +558,8 @@
     "video_url": "https://www.youtube.com/watch?v=ZFXN0-pr9s4",
     "channel_title": "Juanalytics",
     "type": "video",
-    "tags": []
+    "tags": [],
+    "duration_seconds": 361
   },
   {
     "video_id": "rvIuheMjXzA",
@@ -927,7 +570,8 @@
     "video_url": "https://www.youtube.com/watch?v=rvIuheMjXzA",
     "channel_title": "Juanalytics",
     "type": "video",
-    "tags": []
+    "tags": [],
+    "duration_seconds": 615
   },
   {
     "video_id": "qbbX5hRjGNc",
@@ -938,7 +582,8 @@
     "video_url": "https://www.youtube.com/watch?v=qbbX5hRjGNc",
     "channel_title": "Juanalytics",
     "type": "video",
-    "tags": []
+    "tags": [],
+    "duration_seconds": 193
   },
   {
     "video_id": "Qo2FQxuh9Ks",
@@ -949,7 +594,8 @@
     "video_url": "https://www.youtube.com/watch?v=Qo2FQxuh9Ks",
     "channel_title": "Juanalytics",
     "type": "video",
-    "tags": []
+    "tags": [],
+    "duration_seconds": 428
   },
   {
     "video_id": "rVoj_wPmg7w",
@@ -960,7 +606,8 @@
     "video_url": "https://www.youtube.com/watch?v=rVoj_wPmg7w",
     "channel_title": "Juanalytics",
     "type": "video",
-    "tags": []
+    "tags": [],
+    "duration_seconds": 545
   },
   {
     "video_id": "hGWWgwoROc8",
@@ -971,7 +618,8 @@
     "video_url": "https://www.youtube.com/watch?v=hGWWgwoROc8",
     "channel_title": "Juanalytics",
     "type": "video",
-    "tags": []
+    "tags": [],
+    "duration_seconds": 540
   },
   {
     "video_id": "tMXMEDTBAEM",
@@ -982,7 +630,8 @@
     "video_url": "https://www.youtube.com/watch?v=tMXMEDTBAEM",
     "channel_title": "Juanalytics",
     "type": "video",
-    "tags": []
+    "tags": [],
+    "duration_seconds": 517
   },
   {
     "video_id": "4HSnBRfqk9c",
@@ -993,7 +642,8 @@
     "video_url": "https://www.youtube.com/watch?v=4HSnBRfqk9c",
     "channel_title": "Juanalytics",
     "type": "video",
-    "tags": []
+    "tags": [],
+    "duration_seconds": 574
   },
   {
     "video_id": "V-cnwii9Rdk",
@@ -1004,7 +654,8 @@
     "video_url": "https://www.youtube.com/watch?v=V-cnwii9Rdk",
     "channel_title": "Juanalytics",
     "type": "video",
-    "tags": []
+    "tags": [],
+    "duration_seconds": 254
   },
   {
     "video_id": "Tp3AR7x5Jq8",
@@ -1015,7 +666,8 @@
     "video_url": "https://www.youtube.com/watch?v=Tp3AR7x5Jq8",
     "channel_title": "Juanalytics",
     "type": "video",
-    "tags": []
+    "tags": [],
+    "duration_seconds": 505
   },
   {
     "video_id": "jqkVLAB49oE",
@@ -1026,7 +678,8 @@
     "video_url": "https://www.youtube.com/watch?v=jqkVLAB49oE",
     "channel_title": "Juanalytics",
     "type": "video",
-    "tags": []
+    "tags": [],
+    "duration_seconds": 891
   },
   {
     "video_id": "4ypWcdDPsr4",
@@ -1037,7 +690,8 @@
     "video_url": "https://www.youtube.com/watch?v=4ypWcdDPsr4",
     "channel_title": "Juanalytics",
     "type": "video",
-    "tags": []
+    "tags": [],
+    "duration_seconds": 459
   },
   {
     "video_id": "TtgKyTvFcBE",
@@ -1048,7 +702,8 @@
     "video_url": "https://www.youtube.com/watch?v=TtgKyTvFcBE",
     "channel_title": "Juanalytics",
     "type": "video",
-    "tags": []
+    "tags": [],
+    "duration_seconds": 473
   },
   {
     "video_id": "JQeG6Ic3z_A",
@@ -1059,7 +714,8 @@
     "video_url": "https://www.youtube.com/watch?v=JQeG6Ic3z_A",
     "channel_title": "Juanalytics",
     "type": "video",
-    "tags": []
+    "tags": [],
+    "duration_seconds": 499
   },
   {
     "video_id": "5Ln2osFZLoA",
@@ -1070,7 +726,8 @@
     "video_url": "https://www.youtube.com/watch?v=5Ln2osFZLoA",
     "channel_title": "Juanalytics",
     "type": "video",
-    "tags": []
+    "tags": [],
+    "duration_seconds": 488
   },
   {
     "video_id": "oSZe2UV0sNs",
@@ -1081,7 +738,8 @@
     "video_url": "https://www.youtube.com/watch?v=oSZe2UV0sNs",
     "channel_title": "Juanalytics",
     "type": "video",
-    "tags": []
+    "tags": [],
+    "duration_seconds": 437
   },
   {
     "video_id": "foulJr8hxmE",
@@ -1092,7 +750,8 @@
     "video_url": "https://www.youtube.com/watch?v=foulJr8hxmE",
     "channel_title": "Juanalytics",
     "type": "video",
-    "tags": []
+    "tags": [],
+    "duration_seconds": 1275
   },
   {
     "video_id": "TUeaBLVIFjc",
@@ -1105,7 +764,8 @@
     "type": "podcast",
     "tags": [
       "podcast"
-    ]
+    ],
+    "duration_seconds": 840
   },
   {
     "video_id": "3UpWJEhHOdI",
@@ -1116,7 +776,8 @@
     "video_url": "https://www.youtube.com/watch?v=3UpWJEhHOdI",
     "channel_title": "Juanalytics",
     "type": "video",
-    "tags": []
+    "tags": [],
+    "duration_seconds": 302
   },
   {
     "video_id": "ut_q99apv2w",
@@ -1129,7 +790,8 @@
     "type": "podcast",
     "tags": [
       "podcast"
-    ]
+    ],
+    "duration_seconds": 842
   },
   {
     "video_id": "tRzYfKrhJz4",
@@ -1142,7 +804,8 @@
     "type": "podcast",
     "tags": [
       "podcast"
-    ]
+    ],
+    "duration_seconds": 631
   },
   {
     "video_id": "nmfsoncAK3M",
@@ -1153,7 +816,8 @@
     "video_url": "https://www.youtube.com/watch?v=nmfsoncAK3M",
     "channel_title": "Juanalytics",
     "type": "video",
-    "tags": []
+    "tags": [],
+    "duration_seconds": 297
   },
   {
     "video_id": "rhi2KChl2Gw",
@@ -1164,7 +828,8 @@
     "video_url": "https://www.youtube.com/watch?v=rhi2KChl2Gw",
     "channel_title": "Juanalytics",
     "type": "video",
-    "tags": []
+    "tags": [],
+    "duration_seconds": 1166
   },
   {
     "video_id": "E1pOuSccfYY",
@@ -1175,7 +840,8 @@
     "video_url": "https://www.youtube.com/watch?v=E1pOuSccfYY",
     "channel_title": "Juanalytics",
     "type": "video",
-    "tags": []
+    "tags": [],
+    "duration_seconds": 291
   },
   {
     "video_id": "oxDMC8jAMFY",
@@ -1186,7 +852,8 @@
     "video_url": "https://www.youtube.com/watch?v=oxDMC8jAMFY",
     "channel_title": "Juanalytics",
     "type": "video",
-    "tags": []
+    "tags": [],
+    "duration_seconds": 363
   },
   {
     "video_id": "1VgE-DvfjFs",
@@ -1197,6 +864,7 @@
     "video_url": "https://www.youtube.com/watch?v=1VgE-DvfjFs",
     "channel_title": "Juanalytics",
     "type": "video",
-    "tags": []
+    "tags": [],
+    "duration_seconds": 505
   }
 ]

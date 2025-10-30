@@ -7,7 +7,7 @@
     "enabled": true,
     "rules": {
       "podcast": {
-        "keywords": ["podcast", "episode", "interview", "conversation"],
+        "keywords": ["podcast", "episode", "interview", "conversation", "sql lingua franca"],
         "tags": ["podcast"]
       },
       "video": {
@@ -15,7 +15,7 @@
         "tags": []
       }
     },
-    "comment": "Videos are auto-classified based on title keywords"
+    "comment": "Videos are auto-classified based on title keywords. 'SQL Lingua Franca' videos are podcasts."
   },
   "schedule": {
     "cron": "0 9 * * 1",

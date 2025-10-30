@@ -91,6 +91,7 @@ class YouTubeScraperAPI:
             videos = []
             next_page_token = None
             page_count = 0
+            shorts_filtered = 0
 
             print("Fetching videos (this may take a moment for large channels)...")
 
@@ -105,19 +106,34 @@ class YouTubeScraperAPI:
                     pageToken=next_page_token
                 ).execute()
 
+                # Get video IDs from this batch to fetch durations
+                video_ids = [item['snippet']['resourceId']['videoId'] for item in playlist_response['items']]
+
+                # Fetch video details including duration
+                video_details = self._get_video_details(video_ids)
+
                 batch_count = len(playlist_response['items'])
                 for item in playlist_response['items']:
-                    video_data = self._extract_video_data(item)
+                    video_id = item['snippet']['resourceId']['videoId']
+                    duration = video_details.get(video_id, {}).get('duration', 0)
+
+                    # Filter out YouTube Shorts (videos under 60 seconds)
+                    if duration > 0 and duration < 60:
+                        shorts_filtered += 1
+                        continue
+
+                    video_data = self._extract_video_data(item, duration)
                     videos.append(video_data)
 
-                print(f"  Page {page_count}: Got {batch_count} videos (total so far: {len(videos)})")
+                print(f"  Page {page_count}: Got {batch_count} videos, filtered {shorts_filtered} Shorts (total so far: {len(videos)})")
 
                 next_page_token = playlist_response.get('nextPageToken')
 
                 if not next_page_token:
                     break
 
-            print(f"\n✓ Successfully fetched ALL {len(videos)} videos from the channel!")
+            print(f"\n✓ Successfully fetched {len(videos)} videos from the channel!")
+            print(f"✓ Filtered out {shorts_filtered} YouTube Shorts")
             return videos
 
         except HttpError as e:
@@ -127,7 +143,64 @@ class YouTubeScraperAPI:
             print(f"An error occurred: {e}")
             raise
 
-    def _extract_video_data(self, item: Dict) -> Dict:
+    def _get_video_details(self, video_ids: List[str]) -> Dict:
+        """
+        Fetch video details including duration for multiple videos.
+
+        Args:
+            video_ids: List of video IDs
+
+        Returns:
+            Dictionary mapping video_id to video details
+        """
+        try:
+            # Fetch video details (max 50 per request)
+            videos_response = self.youtube.videos().list(
+                part='contentDetails',
+                id=','.join(video_ids)
+            ).execute()
+
+            video_details = {}
+            for video in videos_response.get('items', []):
+                video_id = video['id']
+                duration_iso = video['contentDetails']['duration']
+
+                # Convert ISO 8601 duration to seconds
+                duration_seconds = self._parse_duration(duration_iso)
+                video_details[video_id] = {'duration': duration_seconds}
+
+            return video_details
+
+        except HttpError as e:
+            print(f"Error fetching video details: {e}")
+            return {}
+
+    def _parse_duration(self, duration_iso: str) -> int:
+        """
+        Parse ISO 8601 duration to seconds.
+
+        Args:
+            duration_iso: Duration in ISO 8601 format (e.g., PT1H2M10S)
+
+        Returns:
+            Duration in seconds
+        """
+        import re
+
+        # Parse ISO 8601 duration format (PT1H2M10S)
+        pattern = r'PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?'
+        match = re.match(pattern, duration_iso)
+
+        if not match:
+            return 0
+
+        hours = int(match.group(1) or 0)
+        minutes = int(match.group(2) or 0)
+        seconds = int(match.group(3) or 0)
+
+        return hours * 3600 + minutes * 60 + seconds
+
+    def _extract_video_data(self, item: Dict, duration: int = 0) -> Dict:
         """
         Extract relevant data from a playlist item.
 
@@ -164,6 +237,7 @@ class YouTubeScraperAPI:
             'thumbnail_url': thumbnail_url,
             'video_url': f"https://www.youtube.com/watch?v={snippet.get('resourceId', {}).get('videoId', '')}",
             'channel_title': snippet.get('channelTitle', ''),
+            'duration_seconds': duration,
             'type': '',  # To be filled manually: 'video' or 'podcast'
             'tags': []  # To be filled manually
         }
