@@ -527,7 +527,7 @@ talks:
   date: '2021-12-09'
   description: 'Spanish talk demostration some lesser known functionalities of Tableau.'
   duration: 01:15:55
-  thumbnail: https://i.ytimg.com/vi/zDr6vgq2cdY/hqdefault.jpg
+  thumbnail: https://i.ytimg.com/vi/zDr6vgq2cdY/maxresdefault.jpg
   tags: [tableau, data visualization]
   event: Latino/a/x Tableau User Group
   location: Virtual
@@ -582,7 +582,7 @@ talks:
   date: '2024-09-25'
   description: In this talk, we will explore the various testing capabilities that dbt offers
     to ensure data quality and reliability..
-  thumbnail: https://drive.google.com/file/d/1gx7G26whXQfAQWref46XOlpkzM_6g84D/view?usp=sharing
+  thumbnail: https://secure.meetupstatic.com/photos/event/9/4/6/9/600_502956469.jpeg
   tags: [dbt, testing, programming]
   event: Budapest dbt Meetup
   location: Budapest, Hungary
