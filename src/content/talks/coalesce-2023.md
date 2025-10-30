@@ -5,7 +5,7 @@ event: 'Coalesce 2023'
 eventUrl: 'https://coalesce.getdbt.com/'
 date: 2023-10-15
 location: 'San Diego, CA'
-tags: ['dbt', 'performance', 'coalesce', 'conference']
+tags: ['dbt', 'performance tuning']
 ---
 
 # dbt Performance Optimization Tips

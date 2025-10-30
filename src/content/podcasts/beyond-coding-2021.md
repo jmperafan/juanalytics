@@ -5,7 +5,7 @@ pubDate: 2021-08-15
 podcastName: 'Beyond Coding'
 episode: 17
 type: 'guest'
-tags: ['career', 'data', 'analytics']
+tags: ['career']
 ---
 
 Guest appearance on Beyond Coding podcast episode 17.

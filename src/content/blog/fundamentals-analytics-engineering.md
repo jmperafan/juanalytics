@@ -1,8 +1,8 @@
 ---
 title: 'Fundamentals of Analytics Engineering: My Book is Out!'
 description: 'Excited to share that my book on Analytics Engineering is now available! Learn about building end-to-end analytics solutions with modern tools and best practices.'
-pubDate: 2024-01-20
-tags: ['analytics-engineering', 'dbt', 'book', 'data']
+pubDate: 2024-03-20
+tags: ['analytics engineering', 'dbt', 'book', 'data']
 ---
 
 # Fundamentals of Analytics Engineering

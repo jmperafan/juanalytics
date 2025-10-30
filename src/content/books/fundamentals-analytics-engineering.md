@@ -5,7 +5,7 @@ pubDate: 2024-01-01
 publisher: 'Packt Publishing'
 amazonUrl: 'https://www.amazon.com/author/jmperafan'
 coAuthors: []
-tags: ['analytics-engineering', 'dbt', 'data-modeling', 'book']
+tags: ['analytics engineering']
 ---
 
 # Fundamentals of Analytics Engineering

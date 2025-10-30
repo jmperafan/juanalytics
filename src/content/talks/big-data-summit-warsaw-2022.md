@@ -4,7 +4,7 @@ description: 'Common pitfalls and forgotten requirements in dashboard scoping pr
 event: 'Big Data Summit Warsaw'
 date: 2022-11-10
 location: 'Warsaw, Poland'
-tags: ['dashboards', 'scoping', 'project management']
+tags: ['dashboards', 'project management']
 ---
 
 Talk about dashboard scoping at Big Data Summit Warsaw 2022.

@@ -4,7 +4,7 @@ description: 'Exploring useful dbt packages that enhance the Snowflake user expe
 event: 'Snowflake User Group Netherlands'
 date: 2025-03-15
 location: 'Netherlands'
-tags: ['dbt', 'snowflake', 'packages']
+tags: ['dbt', 'snowflake']
 ---
 
 Talk about dbt packages for Snowflake users at the Snowflake User Group Netherlands.

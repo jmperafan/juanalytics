@@ -4,7 +4,7 @@ description: 'Deep dive into dbt testing best practices and common pitfalls to a
 event: 'Budapest dbt Meetup #6'
 date: 2024-11-15
 location: 'Budapest, Hungary'
-tags: ['dbt', 'testing', 'best practices']
+tags: ['dbt', 'testing']
 ---
 
 Talk about dbt testing best practices and pitfalls at Budapest dbt Meetup.
