@@ -11,9 +11,10 @@ const recentVideos = (await getCollection('videos')).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 ).slice(0, 3);
 
-const recentPodcasts = (await getCollection('podcasts')).sort(
-  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
-).slice(0, 3);
+const recentPodcasts = (await getCollection('podcasts'))
+  .filter((podcast) => podcast.data.type === 'guest')
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 3);
 ---
 
 <BaseLayout title="Juanalytics - Juan Manuel Perafan">
@@ -46,30 +47,43 @@ const recentPodcasts = (await getCollection('podcasts')).sort(
     </div>
   </section>
 
-  <!-- Recent Blog Posts -->
-  {recentBlogs.length > 0 && (
+  <!-- Recent Podcasts (Guest Appearances) -->
+  {recentPodcasts.length > 0 && (
     <section style="padding: 4rem 0;">
       <div class="container">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
-          <h2>Recent Blog Posts</h2>
-          <a href="/blog">View all →</a>
+          <h2>Recent Podcast Guest Appearances</h2>
+          <a href="/podcasts">View all →</a>
         </div>
         <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.5rem;">
-          {recentBlogs.map((post) => (
-            <a href={`/blog/${post.slug}`} class="card" style="padding: 0; overflow: hidden; display: flex; flex-direction: column;">
-              {post.data.heroImage ? (
-                <img src={post.data.heroImage} alt={post.data.title} style="width: 100%; height: 200px; object-fit: cover;" />
+          {recentPodcasts.map((podcast) => (
+            <a href={`/podcasts/${podcast.slug}`} class="card" style="padding: 0; overflow: hidden; display: flex; flex-direction: column;">
+              {podcast.data.thumbnail ? (
+                <img src={podcast.data.thumbnail} alt={podcast.data.title} style="width: 100%; height: 200px; object-fit: cover;" />
               ) : (
                 <div style="width: 100%; height: 200px; background: var(--color-bg-secondary); display: flex; align-items: center; justify-content: center; color: var(--color-text-light);">
-                  <p style="font-size: 0.875rem; padding: 1rem; text-align: center;">Add heroImage in frontmatter</p>
+                  <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path>
+                    <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+                    <line x1="12" y1="19" x2="12" y2="23"></line>
+                    <line x1="8" y1="23" x2="16" y2="23"></line>
+                  </svg>
                 </div>
               )}
               <div style="padding: 1.5rem; flex: 1; display: flex; flex-direction: column;">
-                <h3 style="margin-bottom: 0.75rem; font-size: 1.125rem; line-height: 1.4;">{post.data.title}</h3>
+                <h3 style="margin-bottom: 0.5rem; font-size: 1.125rem; line-height: 1.4;">{podcast.data.title}</h3>
+                {(podcast.data.podcastName || podcast.data.episode) && (
+                  <p style="color: var(--color-primary); font-weight: 600; font-size: 0.875rem; margin-bottom: 0.75rem;">
+                    {podcast.data.podcastName && podcast.data.podcastName}
+                    {podcast.data.podcastName && podcast.data.episode && ' • '}
+                    {podcast.data.episode && `Episode ${podcast.data.episode}`}
+                  </p>
+                )}
                 <p style="color: var(--color-text-light); font-size: 0.875rem; margin-bottom: 0.75rem;">
-                  {post.data.pubDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+                  {podcast.data.pubDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+                  {podcast.data.duration && ` • ${podcast.data.duration}`}
                 </p>
-                <p style="color: var(--color-text-light); font-size: 0.9375rem; line-height: 1.6; flex: 1; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">{post.data.description}</p>
+                <p style="color: var(--color-text-light); font-size: 0.9375rem; line-height: 1.6; flex: 1; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">{podcast.data.description}</p>
               </div>
             </a>
           ))}
@@ -114,43 +128,30 @@ const recentPodcasts = (await getCollection('podcasts')).sort(
     </section>
   )}
 
-  <!-- Recent Podcasts -->
-  {recentPodcasts.length > 0 && (
+  <!-- Recent Blog Posts -->
+  {recentBlogs.length > 0 && (
     <section style="padding: 4rem 0;">
       <div class="container">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
-          <h2>Recent Podcasts</h2>
-          <a href="/podcasts">View all →</a>
+          <h2>Recent Blog Posts</h2>
+          <a href="/blog">View all →</a>
         </div>
         <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.5rem;">
-          {recentPodcasts.map((podcast) => (
-            <a href={`/podcasts/${podcast.slug}`} class="card" style="padding: 0; overflow: hidden; display: flex; flex-direction: column;">
-              {podcast.data.thumbnail ? (
-                <img src={podcast.data.thumbnail} alt={podcast.data.title} style="width: 100%; height: 200px; object-fit: cover;" />
+          {recentBlogs.map((post) => (
+            <a href={`/blog/${post.slug}`} class="card" style="padding: 0; overflow: hidden; display: flex; flex-direction: column;">
+              {post.data.heroImage ? (
+                <img src={post.data.heroImage} alt={post.data.title} style="width: 100%; height: 200px; object-fit: cover;" />
               ) : (
                 <div style="width: 100%; height: 200px; background: var(--color-bg-secondary); display: flex; align-items: center; justify-content: center; color: var(--color-text-light);">
-                  <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path>
-                    <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
-                    <line x1="12" y1="19" x2="12" y2="23"></line>
-                    <line x1="8" y1="23" x2="16" y2="23"></line>
-                  </svg>
+                  <p style="font-size: 0.875rem; padding: 1rem; text-align: center;">Add heroImage in frontmatter</p>
                 </div>
               )}
               <div style="padding: 1.5rem; flex: 1; display: flex; flex-direction: column;">
-                <h3 style="margin-bottom: 0.5rem; font-size: 1.125rem; line-height: 1.4;">{podcast.data.title}</h3>
-                {(podcast.data.podcastName || podcast.data.episode) && (
-                  <p style="color: var(--color-primary); font-weight: 600; font-size: 0.875rem; margin-bottom: 0.75rem;">
-                    {podcast.data.podcastName && podcast.data.podcastName}
-                    {podcast.data.podcastName && podcast.data.episode && ' • '}
-                    {podcast.data.episode && `Episode ${podcast.data.episode}`}
-                  </p>
-                )}
+                <h3 style="margin-bottom: 0.75rem; font-size: 1.125rem; line-height: 1.4;">{post.data.title}</h3>
                 <p style="color: var(--color-text-light); font-size: 0.875rem; margin-bottom: 0.75rem;">
-                  {podcast.data.pubDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
-                  {podcast.data.duration && ` • ${podcast.data.duration}`}
+                  {post.data.pubDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
                 </p>
-                <p style="color: var(--color-text-light); font-size: 0.9375rem; line-height: 1.6; flex: 1; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">{podcast.data.description}</p>
+                <p style="color: var(--color-text-light); font-size: 0.9375rem; line-height: 1.6; flex: 1; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">{post.data.description}</p>
               </div>
             </a>
           ))}

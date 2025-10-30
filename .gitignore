@@ -23,3 +23,12 @@ pnpm-debug.log*
 
 # jetbrains setting folders
 .idea/
+
+# python
+.venv/
+__pycache__/
+*.pyc
+
+# scripts data files (keep config.json only)
+scripts/*.json
+!scripts/config.json
