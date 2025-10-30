@@ -6,6 +6,7 @@ publisher: 'Packt Publishing'
 amazonUrl: 'https://www.amazon.com/author/jmperafan'
 coAuthors: []
 tags: ['analytics engineering']
+coverImage: 'https://content.packt.com/_/image/original/B19305/cover_image.jpg'
 ---
 
 # Fundamentals of Analytics Engineering
