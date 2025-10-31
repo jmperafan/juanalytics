@@ -147,10 +147,15 @@ img {
     min-width: 100% !important;
   }
 
-  /* Center profile image */
+  /* Center profile image and make it bigger on mobile */
   section > .container > div > div[style*="flex-shrink: 0"] {
     display: flex;
     justify-content: center;
+  }
+
+  section > .container > div > div[style*="flex-shrink: 0"] img {
+    width: 200px !important;
+    height: 200px !important;
   }
 
   /* Make specialty list 2 columns (3 items each side) on mobile */
