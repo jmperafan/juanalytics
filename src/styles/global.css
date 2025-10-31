@@ -135,6 +135,53 @@ img {
   .card {
     padding: 1.25rem;
   }
+
+  /* Hero section responsive */
+  section > .container > div[style*="display: flex"] {
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center;
+  }
+
+  section > .container > div > div[style*="min-width: 400px"] {
+    min-width: 100% !important;
+  }
+
+  /* Center profile image */
+  section > .container > div > div[style*="flex-shrink: 0"] {
+    display: flex;
+    justify-content: center;
+  }
+
+  /* Make specialty list single column */
+  ul[style*="grid-template-columns: repeat(2, 1fr)"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Make "What I Do" cards single column on small screens */
+  div[style*="grid-template-columns: repeat(auto-fit, minmax(220px, 1fr))"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Make "Let's Work Together" grid responsive */
+  div[style*="grid-template-columns: repeat(3, 1fr)"] {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
+  }
+
+  /* Hide sidebar filters on mobile */
+  div[style*="width: 200px"] {
+    display: none !important;
+  }
+
+  /* Make content area full-width when sidebar is hidden */
+  section > div > div[style*="display: flex; gap: 2rem"] {
+    flex-direction: column !important;
+  }
+
+  section > div > div[style*="display: flex; gap: 2rem"] > div[style*="flex: 1"] {
+    width: 100% !important;
+  }
 }
 
 /* Mobile phones */
@@ -185,43 +232,41 @@ img {
     display: block;
   }
 
-  .nav-links {
-    display: none;
+  /* Hide desktop nav links on mobile - target by id */
+  #nav-links {
+    display: none !important;
     position: absolute;
     top: 100%;
     left: 0;
     right: 0;
     background: var(--color-bg);
     border-bottom: 1px solid var(--color-border);
-    flex-direction: column;
+    flex-direction: column !important;
     gap: 0 !important;
     padding: 0;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     z-index: 1000;
+    align-items: stretch !important;
   }
 
-  .nav-links.active {
-    display: flex;
+  #nav-links.active {
+    display: flex !important;
   }
 
-  .nav-links a {
-    padding: 1rem 1.5rem;
+  #nav-links a {
+    padding: 1rem 1.5rem !important;
     border-top: 1px solid var(--color-border);
-    display: block;
+    display: block !important;
     width: 100%;
+    text-align: left !important;
   }
 
-  .nav-links a:first-child {
+  #nav-links a:first-child {
     border-top: none;
   }
 
   nav {
     position: relative;
-  }
-
-  /* Hide desktop nav links on mobile */
-  nav > div[style*="display: flex"] {
-    display: none !important;
   }
 }
 
