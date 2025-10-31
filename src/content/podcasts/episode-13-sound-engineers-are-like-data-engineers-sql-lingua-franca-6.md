@@ -2,7 +2,7 @@
 title: 'Episode 13 - Sound Engineers are like Data Engineers - SQL Lingua Franca #6'
 description: '📺 Full Episode: https://youtu.be/Sl5jEuxJ9G0  In this video, Luuk reflects on his unique career journey from the music industry to IT recruitment. He discusses how his experience as a music producer a...'
 pubDate: 2024-10-07
-podcastName: 'Juanalytics Podcast'
+podcastName: 'SQL Lingua Franca'
 episode: 13
 duration: '00:00'
 type: 'own'

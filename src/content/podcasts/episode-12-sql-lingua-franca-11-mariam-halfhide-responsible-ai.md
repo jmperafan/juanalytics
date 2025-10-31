@@ -2,7 +2,7 @@
 title: 'Episode 12 - SQL Lingua Franca #11 - Mariam Halfhide - Responsible AI'
 description: '🎙️ ⁠Mariam Halfhide: Practice Lead Responsible AI at Xebia  Podcast mentioned in the episode: https://open.spotify.com/episode/2LNwwgJqOMKHOqdvwmLxqd?si=8Q4gocFiTFe_57rAzKWLdA  In this episode of SQL ...'
 pubDate: 2024-11-06
-podcastName: 'Juanalytics Podcast'
+podcastName: 'SQL Lingua Franca'
 episode: 12
 duration: '00:00'
 type: 'own'

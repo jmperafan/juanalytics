@@ -2,7 +2,7 @@
 title: 'Episode 5 - SQL Lingua Franca #14 - Lasse Benninga - Open Source Software in Data'
 description: '🎙️ ⁠Lasse Benninga: Analytics Engineer at Xebia  In this podcast episode, the host introduces Lasse, an analytics engineer from Utrecht with a diverse background in software engineering and data analy...'
 pubDate: 2025-01-23
-podcastName: 'Juanalytics Podcast'
+podcastName: 'SQL Lingua Franca'
 episode: 5
 duration: '00:00'
 type: 'own'

@@ -2,7 +2,7 @@
 title: 'Episode 7 - SQL Lingua Franca #12 - Thomas in''t Veld - Data Maturity & The Future of Analytics'
 description: '🎙️ ⁠Thomas in''t Veld: CEO & Co-Founder at Tasman Analytics  In this episode of SQL Lingua Franca, Thomas shares actionable strategies for helping companies advance their data maturity. From moving bey...'
 pubDate: 2024-11-19
-podcastName: 'Juanalytics Podcast'
+podcastName: 'SQL Lingua Franca'
 episode: 7
 duration: '00:00'
 type: 'own'

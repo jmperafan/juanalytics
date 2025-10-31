@@ -2,7 +2,7 @@
 title: 'Episode 2 - Talk about Developer Experience'
 description: '📺 Full Episode: https://youtu.be/51BPZkOsmKw...'
 pubDate: 2025-05-07
-podcastName: 'Juanalytics Podcast'
+podcastName: 'SQL Lingua Franca'
 episode: 2
 duration: '00:00'
 type: 'own'

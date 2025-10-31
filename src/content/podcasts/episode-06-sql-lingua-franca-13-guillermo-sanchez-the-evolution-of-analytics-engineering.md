@@ -2,7 +2,7 @@
 title: 'Episode 6 - SQL Lingua Franca #13 - Guillermo Sanchez - The Evolution of Analytics Engineering'
 description: '🎙️ ⁠Guillermo Sanchez: Principal Analytics Engineer at Xebia  In this episode of SQL Lingua Franca, we explore the dynamic shifts in analytics engineering over the past four years. Together, they dive...'
 pubDate: 2024-12-11
-podcastName: 'Juanalytics Podcast'
+podcastName: 'SQL Lingua Franca'
 episode: 6
 duration: '00:00'
 type: 'own'

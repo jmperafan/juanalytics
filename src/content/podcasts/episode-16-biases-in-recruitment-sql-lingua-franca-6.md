@@ -2,7 +2,7 @@
 title: 'Episode 16 - Biases in Recruitment - SQL Lingua Franca #6'
 description: '📺 Full Episode: https://youtu.be/Sl5jEuxJ9G0  In this podcast episode, we explore biases in recruitment, focusing on the challenges of creating fair and inclusive hiring practices. The guest, an exper...'
 pubDate: 2024-09-26
-podcastName: 'Juanalytics Podcast'
+podcastName: 'SQL Lingua Franca'
 episode: 16
 duration: '00:00'
 type: 'own'

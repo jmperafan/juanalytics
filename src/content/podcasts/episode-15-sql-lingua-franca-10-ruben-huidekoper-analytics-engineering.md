@@ -2,7 +2,7 @@
 title: 'Episode 15 - SQL Lingua Franca #10 - Ruben Huidekoper - Analytics Engineering'
 description: '🎙️ ⁠Ruben Huidekoper: Analytics Engineer at Xebia  In this episode of the SQL Lingua Franca podcast, guest Ruben Huidekoper shares his journey as an analytics engineer. He talks about the broad scope ...'
 pubDate: 2024-10-07
-podcastName: 'Juanalytics Podcast'
+podcastName: 'SQL Lingua Franca'
 episode: 15
 duration: '00:00'
 type: 'own'

@@ -2,7 +2,7 @@
 title: 'Episode 9 - AI in Society: Who is responsible for the risks?'
 description: '📺 Full Episode: https://youtu.be/7GZ0duzksaM  In this episode, we discuss the intersection of AI and society, touching on the ethical challenges and responsibilities that come with advancing technolog...'
 pubDate: 2024-11-15
-podcastName: 'Juanalytics Podcast'
+podcastName: 'SQL Lingua Franca'
 episode: 9
 duration: '00:00'
 type: 'own'

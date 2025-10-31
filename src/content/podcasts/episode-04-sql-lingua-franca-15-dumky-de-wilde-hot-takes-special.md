@@ -2,7 +2,7 @@
 title: 'Episode 4 - SQL Lingua Franca #15 - Dumky de Wilde - Hot Takes Special'
 description: '🎙️ ⁠Dumky de Wilde: Analytics Engineer at Xebia  In this podcast episode, the host welcomes Dumky, an analytics engineer from Amsterdam and co-author of Fundamentals of Analytics Engineering. Dumky sh...'
 pubDate: 2025-01-30
-podcastName: 'Juanalytics Podcast'
+podcastName: 'SQL Lingua Franca'
 episode: 4
 duration: '00:00'
 type: 'own'

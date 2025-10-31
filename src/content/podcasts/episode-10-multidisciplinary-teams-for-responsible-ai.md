@@ -2,7 +2,7 @@
 title: 'Episode 10 - Multidisciplinary teams for Responsible AI'
 description: '📺 Full Episode: https://youtu.be/7GZ0duzksaM  This video explores the importance of forming diverse, multidisciplinary teams to implement AI responsibly in organizations. From data governance and priv...'
 pubDate: 2024-11-14
-podcastName: 'Juanalytics Podcast'
+podcastName: 'SQL Lingua Franca'
 episode: 10
 duration: '00:00'
 type: 'own'

@@ -2,7 +2,7 @@
 title: 'Episode 8 - The Power of Testing in Software Development'
 description: '📺 Full Episode: https://youtu.be/51BPZkOsmKw  In this video, we discuss why thorough testing is essential for managing large codebases and ensuring project success. Our guest shares insights on the va...'
 pubDate: 2024-11-18
-podcastName: 'Juanalytics Podcast'
+podcastName: 'SQL Lingua Franca'
 episode: 8
 duration: '00:00'
 type: 'own'

@@ -2,7 +2,7 @@
 title: 'Episode 1 - SQL Lingua Franca #16 - Sarah Levy - Data Governance vs. AI'
 description: '🎙️ ⁠Sarah Levy: Co-Founder & CEO at Euno  https://euno.ai  In this episode of SQL Lingua Franca, Sarah Levy, co-founder and CEO of Yuno, discusses data model governance, semantic layers, and the path ...'
 pubDate: 2025-06-20
-podcastName: 'Juanalytics Podcast'
+podcastName: 'SQL Lingua Franca'
 episode: 1
 duration: '00:00'
 type: 'own'

@@ -2,7 +2,7 @@
 title: 'Episode 14 - Tips to recruit data people - SQL Lingua Franca #6'
 description: '📺 Full Episode: https://youtu.be/Sl5jEuxJ9G0  In this video, Luuk shares expert tips on recruiting data professionals and how it differs from hiring for other roles. He explains that data candidates c...'
 pubDate: 2024-10-07
-podcastName: 'Juanalytics Podcast'
+podcastName: 'SQL Lingua Franca'
 episode: 14
 duration: '00:00'
 type: 'own'

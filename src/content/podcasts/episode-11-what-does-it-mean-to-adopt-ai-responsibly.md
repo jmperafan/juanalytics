@@ -2,7 +2,7 @@
 title: 'Episode 11 - What does it mean to adopt AI responsibly?'
 description: '📺 Full Episode: https://youtu.be/7GZ0duzksaM  In this video, we dive into the practical steps organizations can take to implement AI responsibly. Our expert guest discusses key strategies, starting wi...'
 pubDate: 2024-11-13
-podcastName: 'Juanalytics Podcast'
+podcastName: 'SQL Lingua Franca'
 episode: 11
 duration: '00:00'
 type: 'own'
