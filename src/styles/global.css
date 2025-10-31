@@ -287,11 +287,18 @@ img {
 
   /* Make header sticky on mobile */
   header {
-    position: sticky;
+    position: fixed;
     top: 0;
+    left: 0;
+    right: 0;
     z-index: 1001;
     background: var(--color-bg);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Add padding to body to prevent content from going under fixed header */
+  body {
+    padding-top: 90px;
   }
 }
 
