@@ -153,9 +153,20 @@ img {
     justify-content: center;
   }
 
-  /* Make specialty list single column */
+  /* Make specialty list 2 columns (3 items each side) on mobile */
   ul[style*="grid-template-columns: repeat(2, 1fr)"] {
-    grid-template-columns: 1fr !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 0.5rem 0.75rem !important;
+  }
+
+  /* Make list items smaller on mobile */
+  ul[style*="grid-template-columns: repeat(2, 1fr)"] li {
+    font-size: 0.875rem !important;
+  }
+
+  ul[style*="grid-template-columns: repeat(2, 1fr)"] li svg {
+    width: 14px !important;
+    height: 14px !important;
   }
 
   /* Make "What I Do" cards single column on small screens */
