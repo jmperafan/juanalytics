@@ -12,6 +12,9 @@ export async function getStaticPaths() {
 
 const post = Astro.props;
 const { Content } = await post.render();
+
+// Get base path for GitHub Pages
+const base = import.meta.env.BASE_URL;
 ---
 
 <BaseLayout title={post.data.title} description={post.data.description}>
@@ -43,7 +46,7 @@ const { Content } = await post.render();
       </div>
 
       <div style="margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--color-border);">
-        <a href="/blog" style="color: var(--color-primary);">← Back to blog</a>
+        <a href={base + "blog"} style="color: var(--color-primary);">← Back to blog</a>
       </div>
     </div>
   </article>
