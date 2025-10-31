@@ -116,7 +116,7 @@ const base = import.meta.env.BASE_URL;
       <h2 style="font-size: 2rem; margin-bottom: 2.5rem; color: var(--color-text); font-weight: 700; text-align: center;">What You'll Find Here</h2>
 
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; margin-bottom: 3rem;">
-        <a href="/talks" style="display: flex; align-items: flex-start; gap: 1rem; padding: 1.5rem; background: var(--color-bg); border-radius: 8px; border: 1px solid var(--color-border); text-decoration: none; transition: border-color 0.2s;">
+        <a href={base + "talks"} style="display: flex; align-items: flex-start; gap: 1rem; padding: 1.5rem; background: var(--color-bg); border-radius: 8px; border: 1px solid var(--color-border); text-decoration: none; transition: border-color 0.2s;">
           <div style="flex-shrink: 0; color: var(--color-primary);">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
@@ -129,7 +129,7 @@ const base = import.meta.env.BASE_URL;
           </div>
         </a>
 
-        <a href="/videos" style="display: flex; align-items: flex-start; gap: 1rem; padding: 1.5rem; background: var(--color-bg); border-radius: 8px; border: 1px solid var(--color-border); text-decoration: none; transition: border-color 0.2s;">
+        <a href={base + "videos"} style="display: flex; align-items: flex-start; gap: 1rem; padding: 1.5rem; background: var(--color-bg); border-radius: 8px; border: 1px solid var(--color-border); text-decoration: none; transition: border-color 0.2s;">
           <div style="flex-shrink: 0; color: var(--color-primary);">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <polygon points="5 3 19 12 5 21 5 3"></polygon>
@@ -141,7 +141,7 @@ const base = import.meta.env.BASE_URL;
           </div>
         </a>
 
-        <a href="/podcasts" style="display: flex; align-items: flex-start; gap: 1rem; padding: 1.5rem; background: var(--color-bg); border-radius: 8px; border: 1px solid var(--color-border); text-decoration: none; transition: border-color 0.2s;">
+        <a href={base + "podcasts"} style="display: flex; align-items: flex-start; gap: 1rem; padding: 1.5rem; background: var(--color-bg); border-radius: 8px; border: 1px solid var(--color-border); text-decoration: none; transition: border-color 0.2s;">
           <div style="flex-shrink: 0; color: var(--color-primary);">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path>
@@ -156,7 +156,7 @@ const base = import.meta.env.BASE_URL;
           </div>
         </a>
 
-        <a href="/blog" style="display: flex; align-items: flex-start; gap: 1rem; padding: 1.5rem; background: var(--color-bg); border-radius: 8px; border: 1px solid var(--color-border); text-decoration: none; transition: border-color 0.2s;">
+        <a href={base + "blog"} style="display: flex; align-items: flex-start; gap: 1rem; padding: 1.5rem; background: var(--color-bg); border-radius: 8px; border: 1px solid var(--color-border); text-decoration: none; transition: border-color 0.2s;">
           <div style="flex-shrink: 0; color: var(--color-primary);">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"></path>
@@ -211,7 +211,7 @@ const base = import.meta.env.BASE_URL;
           </div>
         </div>
         <div style="margin-top: 2rem;">
-          <a href="/about" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.875rem 1.75rem; background: var(--color-primary); color: white; text-decoration: none; border-radius: 6px; font-weight: 600; transition: background 0.2s;">
+          <a href={base + "about"} style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.875rem 1.75rem; background: var(--color-primary); color: white; text-decoration: none; border-radius: 6px; font-weight: 600; transition: background 0.2s;">
             Get in Touch
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -229,7 +229,7 @@ const base = import.meta.env.BASE_URL;
       <div class="container">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
           <h2>Recent Podcast Guest Appearances</h2>
-          <a href="/podcasts">View all →</a>
+          <a href={base + "podcasts"}>View all →</a>
         </div>
         <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.5rem;">
           {recentPodcasts.map((podcast) => (
@@ -268,7 +268,7 @@ const base = import.meta.env.BASE_URL;
       <div class="container">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
           <h2>Recent Videos</h2>
-          <a href="/videos">View all →</a>
+          <a href={base + "videos"}>View all →</a>
         </div>
         <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.5rem;">
           {recentVideos.map((video) => (
@@ -304,11 +304,11 @@ const base = import.meta.env.BASE_URL;
       <div class="container">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
           <h2>Recent Blog Posts</h2>
-          <a href="/blog">View all →</a>
+          <a href={base + "blog"}>View all →</a>
         </div>
         <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.5rem;">
           {recentBlogs.map((post) => (
-            <a href={`/blog/${post.slug}`} class="card" style="padding: 0; overflow: hidden; display: flex; flex-direction: column;">
+            <a href={`${base}blog/${post.slug}`} class="card" style="padding: 0; overflow: hidden; display: flex; flex-direction: column;">
               {post.data.heroImage ? (
                 <img src={post.data.heroImage} alt={post.data.title} style="width: 100%; height: 200px; object-fit: cover;" />
               ) : (
