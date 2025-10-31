@@ -46,34 +46,179 @@ const recentPodcasts = content.podcasts
     }
   }))
   .slice(0, 3);
+
+// Get base path for GitHub Pages
+const base = import.meta.env.BASE_URL;
 ---
 
 <BaseLayout title="Juanalytics - Juan Manuel Perafan">
   <!-- Hero Section -->
   <section style="padding: 5rem 0 4rem; background: var(--color-bg);">
-    <div class="container" style="max-width: 900px; text-align: center;">
-      <h1 style="font-size: 3rem; margin-bottom: 1.25rem; color: var(--color-text); font-weight: 700; letter-spacing: -0.03em;">Juan Manuel Perafan</h1>
-      <p style="font-size: 1.25rem; color: var(--color-text-light); line-height: 1.6; font-weight: 400;">
-        Analytics Engineer | dbt Community Award Recipient | Data Community Organizer
-      </p>
+    <div class="container" style="max-width: 1000px;">
+      <div style="display: flex; align-items: center; gap: 3rem; flex-wrap: wrap;">
+        <div style="flex-shrink: 0;">
+          <img src={base + "profile_photo.png"} alt="Juan Manuel Perafan" style="width: 180px; height: 180px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);" />
+        </div>
+        <div style="flex: 1; min-width: 400px;">
+          <h1 style="font-size: 3rem; margin-bottom: 1rem; color: var(--color-text); font-weight: 700; letter-spacing: -0.02em;">Juan Manuel Perafan</h1>
+          <p style="font-size: 1.25rem; color: var(--color-text-light); line-height: 1.5; margin-bottom: 1.5rem;">
+            Analytics Engineer | Community Advocate | Author | Speaker
+          </p>
+          <p style="font-size: 1.0625rem; color: var(--color-text); line-height: 1.7; margin-bottom: 1rem;">
+            Welcome to my portfolio of content: talks, videos, podcasts, and blog posts. I specialize in:
+          </p>
+          <ul style="list-style: none; padding: 0; margin: 0 0 2rem 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.5rem;">
+            <li style="color: var(--color-text); font-size: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+              Analytics Engineering
+            </li>
+            <li style="color: var(--color-text); font-size: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+              dbt
+            </li>
+            <li style="color: var(--color-text); font-size: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+              Data Modeling
+            </li>
+            <li style="color: var(--color-text); font-size: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+              SQL
+            </li>
+            <li style="color: var(--color-text); font-size: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+              Data Visualization
+            </li>
+            <li style="color: var(--color-text); font-size: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+              Data Governance
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- About Preview -->
-  <section style="padding: 5rem 0; background: var(--color-bg); border-top: 1px solid var(--color-border);">
-    <div class="container" style="max-width: 800px;">
-      <h2 style="margin-bottom: 2rem; font-size: 2rem; text-align: center;">About Me</h2>
-      <p style="font-size: 1.125rem; color: var(--color-text); line-height: 1.8; margin-bottom: 1.5rem;">
-        I'm an Analytics Engineer with over 8 years of experience helping organizations build robust data platforms and cultivate data-driven cultures. My expertise spans analytics engineering, data visualization, and building scalable data solutions with modern tools like dbt, Snowflake, and Tableau.
-      </p>
-      <p style="font-size: 1.125rem; color: var(--color-text); line-height: 1.8; margin-bottom: 1.5rem;">
-        As a 2024 dbt Community Award Recipient, I'm passionate about sharing knowledge and building communities. I organize the Amsterdam dbt Meetup, Analytics Engineering Meetup, and Netherlands Data Visualization Meetup, bringing together data professionals to learn and grow together.
-      </p>
-      <div style="background: var(--color-bg-secondary); padding: 2rem; border-radius: 0.5rem; border-left: 4px solid var(--color-primary); margin-top: 2rem;">
-        <h3 style="font-size: 1.25rem; margin-bottom: 1rem; color: var(--color-text);">Available for Speaking & Training</h3>
-        <p style="font-size: 1.0625rem; color: var(--color-text-light); line-height: 1.8;">
-          I'm available to speak at conferences and meetups, and to lead training sessions for data teams. Whether you need someone to deliver a keynote on analytics engineering best practices, run a hands-on dbt workshop, or train your team on modern data stack tools, I'd love to help. Reach out if you're interested in collaborating!
+  <!-- What I Do -->
+  <section style="padding: 4rem 0; background: var(--color-bg-secondary); border-top: 1px solid var(--color-border);">
+    <div class="container" style="max-width: 1000px;">
+      <h2 style="font-size: 2rem; margin-bottom: 2.5rem; color: var(--color-text); font-weight: 700; text-align: center;">What You'll Find Here</h2>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; margin-bottom: 3rem;">
+        <a href="/talks" style="display: flex; align-items: flex-start; gap: 1rem; padding: 1.5rem; background: var(--color-bg); border-radius: 8px; border: 1px solid var(--color-border); text-decoration: none; transition: border-color 0.2s;">
+          <div style="flex-shrink: 0; color: var(--color-primary);">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+              <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+            </svg>
+          </div>
+          <div>
+            <h3 style="font-size: 1.125rem; margin-bottom: 0.375rem; color: var(--color-text); font-weight: 600;">Conference Talks</h3>
+            <p style="color: var(--color-text-light); font-size: 0.9375rem; line-height: 1.5; margin: 0;">Presentations from conferences and meetups</p>
+          </div>
+        </a>
+
+        <a href="/videos" style="display: flex; align-items: flex-start; gap: 1rem; padding: 1.5rem; background: var(--color-bg); border-radius: 8px; border: 1px solid var(--color-border); text-decoration: none; transition: border-color 0.2s;">
+          <div style="flex-shrink: 0; color: var(--color-primary);">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="5 3 19 12 5 21 5 3"></polygon>
+            </svg>
+          </div>
+          <div>
+            <h3 style="font-size: 1.125rem; margin-bottom: 0.375rem; color: var(--color-text); font-weight: 600;">Video Tutorials</h3>
+            <p style="color: var(--color-text-light); font-size: 0.9375rem; line-height: 1.5; margin: 0;">Technical deep dives and how-tos</p>
+          </div>
+        </a>
+
+        <a href="/podcasts" style="display: flex; align-items: flex-start; gap: 1rem; padding: 1.5rem; background: var(--color-bg); border-radius: 8px; border: 1px solid var(--color-border); text-decoration: none; transition: border-color 0.2s;">
+          <div style="flex-shrink: 0; color: var(--color-primary);">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path>
+              <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+              <line x1="12" y1="19" x2="12" y2="23"></line>
+              <line x1="8" y1="23" x2="16" y2="23"></line>
+            </svg>
+          </div>
+          <div>
+            <h3 style="font-size: 1.125rem; margin-bottom: 0.375rem; color: var(--color-text); font-weight: 600;">Podcast Appearances</h3>
+            <p style="color: var(--color-text-light); font-size: 0.9375rem; line-height: 1.5; margin: 0;">Conversations about data and community</p>
+          </div>
+        </a>
+
+        <a href="/blog" style="display: flex; align-items: flex-start; gap: 1rem; padding: 1.5rem; background: var(--color-bg); border-radius: 8px; border: 1px solid var(--color-border); text-decoration: none; transition: border-color 0.2s;">
+          <div style="flex-shrink: 0; color: var(--color-primary);">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"></path>
+              <polyline points="14 2 14 8 20 8"></polyline>
+            </svg>
+          </div>
+          <div>
+            <h3 style="font-size: 1.125rem; margin-bottom: 0.375rem; color: var(--color-text); font-weight: 600;">Blog Posts</h3>
+            <p style="color: var(--color-text-light); font-size: 0.9375rem; line-height: 1.5; margin: 0;">Articles on analytics engineering</p>
+          </div>
+        </a>
+      </div>
+
+      <!-- Speaking & Training -->
+      <div style="background: var(--color-bg); border: 2px solid var(--color-primary); border-radius: 12px; padding: 2.5rem; margin-top: 3rem;">
+        <h3 style="font-size: 1.75rem; margin-bottom: 1.25rem; color: var(--color-text); font-weight: 700;">Available for Speaking & Training</h3>
+        <p style="font-size: 1.0625rem; color: var(--color-text); line-height: 1.7; margin-bottom: 2rem;">
+          I'm available to speak at your next conference, meetup, or corporate event, and to train your team on analytics engineering, dbt, and the modern data stack. Whether you need a keynote speaker, a technical workshop, or ongoing mentorship for your data team, let's talk!
         </p>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
+          <div>
+            <h4 style="font-size: 1.125rem; margin-bottom: 0.75rem; color: var(--color-text); font-weight: 600; display: flex; align-items: center; gap: 0.5rem;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path>
+                <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+                <line x1="12" y1="19" x2="12" y2="23"></line>
+                <line x1="8" y1="23" x2="16" y2="23"></line>
+              </svg>
+              Speaking
+            </h4>
+            <ul style="list-style: none; padding: 0; margin: 0; color: var(--color-text-light); font-size: 0.9375rem; line-height: 1.8;">
+              <li>• Conference keynotes</li>
+              <li>• Technical talks</li>
+              <li>• Panel discussions</li>
+              <li>• Meetup presentations</li>
+            </ul>
+          </div>
+          <div>
+            <h4 style="font-size: 1.125rem; margin-bottom: 0.75rem; color: var(--color-text); font-weight: 600; display: flex; align-items: center; gap: 0.5rem;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+              </svg>
+              Training & Mentorship
+            </h4>
+            <ul style="list-style: none; padding: 0; margin: 0; color: var(--color-text-light); font-size: 0.9375rem; line-height: 1.8;">
+              <li>• Hands-on dbt workshops</li>
+              <li>• Team training programs</li>
+              <li>• Analytics engineering best practices</li>
+              <li>• Custom curriculum development</li>
+            </ul>
+          </div>
+        </div>
+        <div style="margin-top: 2rem;">
+          <a href="/about" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.875rem 1.75rem; background: var(--color-primary); color: white; text-decoration: none; border-radius: 6px; font-weight: 600; transition: background 0.2s;">
+            Get in Touch
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </a>
+        </div>
       </div>
     </div>
   </section>
@@ -127,7 +272,7 @@ const recentPodcasts = content.podcasts
         </div>
         <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.5rem;">
           {recentVideos.map((video) => (
-            <a href={`/videos/${video.slug}`} class="card" style="padding: 0; overflow: hidden; display: flex; flex-direction: column; background: var(--color-bg);">
+            <a href={video.data.videoUrl} target="_blank" rel="noopener noreferrer" class="card" style="padding: 0; overflow: hidden; display: flex; flex-direction: column; background: var(--color-bg);">
               {video.data.videoUrl ? (
                 <YouTubeThumbnail videoUrl={video.data.videoUrl} alt={video.data.title} thumbnail={video.data.thumbnail} />
               ) : video.data.thumbnail ? (
