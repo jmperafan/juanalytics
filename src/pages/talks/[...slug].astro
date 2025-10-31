@@ -12,6 +12,7 @@ export async function getStaticPaths() {
 
 const talk = Astro.props;
 const { Content } = await talk.render();
+const base = import.meta.env.BASE_URL;
 
 // Extract YouTube video ID for embedding
 function getYouTubeEmbedUrl(url: string) {
@@ -75,7 +76,7 @@ function getYouTubeEmbedUrl(url: string) {
       )}
 
       <div style="margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--color-border);">
-        <a href="/talks" style="color: var(--color-primary);">← Back to talks</a>
+        <a href={base + "talks"} style="color: var(--color-primary);">← Back to talks</a>
       </div>
     </div>
   </article>
