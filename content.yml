@@ -476,7 +476,7 @@ talks:
   description: Sharing insights and strategies for effectively onboarding junior analytics
     engineers.
   date: 2025-10-14
-  thumbnail: https://media.licdn.com/dms/image/v2/D4E10AQEND2SXUYBCAg/image-shrink_1280/B4EZmE6wvMIMAU-/0/1758871621011?e=2147483647&v=beta&t=Jnsw1wrRgLJWqBlNWefzsgc6m8VoP0gdA93iOT_dhIY
+  thumbnail: https://placehold.co/600x400/FF6B35/FFFFFF?text=Coalesce+2025
   tags: [dbt, analytics engineering, career development]
   event: Coalesce 2025
   location: Las Vegas, NV
@@ -541,7 +541,7 @@ talks:
   date: '2021-12-09'
   description: 'Spanish talk demostration some lesser known functionalities of Tableau.'
   duration: 01:15:55
-  thumbnail: https://i.ytimg.com/vi/zDr6vgq2cdY/maxresdefault.jpg
+  thumbnail: https://i.ytimg.com/vi/zDr6vgq2cdY/hqdefault.jpg
   tags: [tableau, data visualization]
   event: Latino/a/x Tableau User Group
   location: Virtual
@@ -596,7 +596,7 @@ talks:
   date: '2024-09-25'
   description: In this talk, we will explore the various testing capabilities that dbt offers
     to ensure data quality and reliability..
-  thumbnail: https://secure.meetupstatic.com/photos/event/9/4/6/9/600_502956469.jpeg
+  thumbnail: https://placehold.co/600x400/FF6B35/FFFFFF?text=Budapest+dbt+Meetup
   tags: [dbt, programming]
   event: Budapest dbt Meetup
   location: Budapest, Hungary
