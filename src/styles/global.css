@@ -171,11 +171,13 @@ img {
   cursor: pointer;
   padding: 0.5rem;
   color: var(--color-text);
+  z-index: 1001;
 }
 
 .mobile-menu-toggle svg {
-  width: 24px;
-  height: 24px;
+  width: 28px;
+  height: 28px;
+  stroke-width: 2;
 }
 
 @media (max-width: 768px) {
@@ -194,7 +196,8 @@ img {
     flex-direction: column;
     gap: 0 !important;
     padding: 0;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
   }
 
   .nav-links.active {
@@ -205,6 +208,7 @@ img {
     padding: 1rem 1.5rem;
     border-top: 1px solid var(--color-border);
     display: block;
+    width: 100%;
   }
 
   .nav-links a:first-child {
@@ -213,5 +217,21 @@ img {
 
   nav {
     position: relative;
+  }
+
+  /* Hide desktop nav links on mobile */
+  nav > div[style*="display: flex"] {
+    display: none !important;
+  }
+}
+
+/* Ensure logo stays visible and sized properly on mobile */
+@media (max-width: 480px) {
+  nav img {
+    height: 50px !important;
+  }
+
+  nav span {
+    font-size: 1rem !important;
   }
 }
