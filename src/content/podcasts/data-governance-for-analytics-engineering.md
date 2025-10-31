@@ -8,7 +8,7 @@ tags:
 - analytics engineering
 - data governance
 audioUrl: https://www.youtube.com/watch?v=C7ykn5_tVGw
-podcast: Select Star
+podcastName: Select Star
 thumbnail: https://i.ytimg.com/vi/C7ykn5_tVGw/maxresdefault.jpg
 ---
 
