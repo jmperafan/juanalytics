@@ -32,7 +32,12 @@ const base = import.meta.env.BASE_URL;
           <img src={base + "logo.png"} alt="Juanalytics Logo" style="height: 70px; width: auto;" />
           <span style="font-size: 1.125rem; font-weight: 600; color: var(--color-text);">Juanalytics</span>
         </a>
-        <div style="display: flex; gap: 2rem; align-items: center;">
+        <button class="mobile-menu-toggle" aria-label="Toggle menu" id="mobile-menu-toggle">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+        <div class="nav-links" id="nav-links" style="display: flex; gap: 2rem; align-items: center;">
           <a href={base + "talks"} style="color: var(--color-text); font-weight: 500;">Conferences</a>
           <a href={base + "videos"} style="color: var(--color-text); font-weight: 500;">Videos</a>
           <a href={base + "podcasts"} style="color: var(--color-text); font-weight: 500;">Podcasts</a>
@@ -42,6 +47,13 @@ const base = import.meta.env.BASE_URL;
         </div>
       </nav>
     </header>
+
+    <script>
+      document.getElementById('mobile-menu-toggle')?.addEventListener('click', () => {
+        const navLinks = document.getElementById('nav-links');
+        navLinks?.classList.toggle('active');
+      });
+    </script>
 
     <main>
       <slot />
