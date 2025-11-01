@@ -1,25 +1,15 @@
 :root {
-  /* Minimalist color scheme - clean and subtle */
+  /* Dark blue color scheme - applied for all users */
   --color-primary: #2563eb;        /* Clean blue accent */
   --color-secondary: #7c3aed;      /* Purple accent */
   --color-accent: #f59e0b;         /* Subtle orange for highlights */
-  --color-text: #111827;           /* Near black for readability */
-  --color-text-light: #6b7280;     /* Muted gray for secondary text */
-  --color-bg: #ffffff;             /* Pure white background */
-  --color-bg-secondary: #f9fafb;   /* Subtle gray for cards */
-  --color-border: #e5e7eb;         /* Light gray borders */
+  --color-text: #f9fafb;           /* Light text on dark background */
+  --color-text-light: #9ca3af;     /* Muted gray for secondary text */
+  --color-bg: #0f172a;             /* Dark blue background */
+  --color-bg-secondary: #1e293b;   /* Slightly lighter blue for cards */
+  --color-border: #334155;         /* Border color for dark theme */
   --max-width: 1200px;
   --spacing: 1rem;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --color-text: #f9fafb;
-    --color-text-light: #9ca3af;
-    --color-bg: #0f172a;
-    --color-bg-secondary: #1e293b;
-    --color-border: #334155;
-  }
 }
 
 * {
