@@ -6,8 +6,6 @@ heroImage: 'sql-for-data-analytics-cover.jpg'
 tags: ["sql", "career development"]
 ---
 
-# Book Review: SQL for Data Analytics (4th Edition)
-
 Packt sent me an early release copy of [SQL for Data Analytics](https://www.packtpub.com/en-us/product/sql-for-data-analytics-9781836646259), a book I'd never heard of before. I am not part of the objective audience for such a book (it is probably written for people who want to become analysts). But I was intrigued since I spent most of this year teaching SQL to beginners, so I was curious about the authors' approach.
 
 After reading the book and working through the exercises, I can confidently recommend it as a great resource for anyone learning SQL. Here's why I think it's worth checking out.

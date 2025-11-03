@@ -6,8 +6,6 @@ heroImage: 'logo_resized.png'
 tags: []
 ---
 
-# Welcome to Juanalytics!
-
 I'm excited to launch this new space where I'll be sharing my journey and insights in the world of analytics engineering, data visualization, and community building.
 
 ## What to Expect
