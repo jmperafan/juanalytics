@@ -16,6 +16,10 @@ What I really appreciated about this book is how it balances theory with hands-o
 
 As a SQL instructor, I know we all have different learning styles. I'm not sure there's an objectively better method, but I do know we each need to find what works for us. That's why I especially appreciate how this book caters to different types of learners. Some readers thrive on hands-on exercises, others want detailed explanations of SQL features, and some prefer understanding the business reasoning behind queries. This versatility makes the book accessible without ever feeling watered down.
 
+One thing the book gets right is treating SQL as a tool for answering real questions, not a checklist of features. The examples line up with the kinds of problems analysts actually get asked to solve, and the authors show how to move from a vague business question to a concrete query plan. The case study helps here — it forces you to think through the data, the assumptions, and the steps needed to get a reliable answer. It feels practical, not academic.
+
+The exercises are another strong part of the book. You’re not just shown queries; you actually write them, debug them, and iterate the way you would in a real workflow. It covers the basic plumbing too — loading data, exporting results, and connecting SQL work with Python when needed. Nothing about it is flashy, but the routine tasks are exactly what you deal with day to day, so the practice doesn’t feel wasted.
+
 The authors also dive into advanced and specialized topics that many beginner-friendly books skip. Performance tuning, working with JSON, and even geospatial queries are all explained in a way that's approachable yet thorough.
 
 ## The Gaps
