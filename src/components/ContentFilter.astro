@@ -21,7 +21,7 @@ const uniqueTags = Array.from(new Set(tags)).sort();
   </div>
 </div>
 
-<script define:vars={{ gridId, cardClass }}>
+<script is:inline define:vars={{ gridId, cardClass }}>
   document.addEventListener('DOMContentLoaded', () => {
     const filterButtons = document.querySelectorAll('.filter-tag');
     const cards = document.querySelectorAll(`.${cardClass}`);

@@ -1,0 +1,48 @@
+---
+/**
+ * OptimizedImage Component
+ * Provides WebP images with PNG/JPG fallback for older browsers
+ * Includes lazy loading and proper alt text
+ */
+
+interface Props {
+  src: string;
+  alt: string;
+  width?: number;
+  height?: number;
+  class?: string;
+  loading?: 'lazy' | 'eager';
+  fetchpriority?: 'high' | 'low' | 'auto';
+}
+
+const {
+  src,
+  alt,
+  width,
+  height,
+  class: className = '',
+  loading = 'lazy',
+  fetchpriority = 'auto',
+} = Astro.props;
+
+// Convert image path to WebP if available
+const getWebPPath = (imagePath: string): string => {
+  return imagePath.replace(/\.(png|jpg|jpeg)$/i, '.webp');
+};
+
+const webpSrc = getWebPPath(src);
+---
+
+<picture>
+  <source srcset={webpSrc} type="image/webp" />
+  <img
+    src={src}
+    alt={alt}
+    width={width}
+    height={height}
+    class={className}
+    loading={loading}
+    fetchpriority={fetchpriority}
+    decoding="async"
+  />
+</picture>

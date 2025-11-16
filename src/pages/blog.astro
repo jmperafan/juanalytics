@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ContentFilter from '../components/ContentFilter.astro';
+import OptimizedImage from '../components/OptimizedImage.astro';
 import { getCollection } from 'astro:content';
 import { calculateReadingTime, formatReadingTime } from '../utils/readingTime';
 import { buildUrl } from '../utils/urlHelper';
@@ -37,7 +38,12 @@ const allTags = blogsWithReadingTime.flatMap(b => b.data.tags || []);
             {blogsWithReadingTime.map((post) => (
               <a href={buildUrl(`blog/${post.slug}`)} class="card content-card blog-card" data-tags={JSON.stringify(post.data.tags || [])}>
                 {post.data.heroImage ? (
-                  <img src={buildUrl(post.data.heroImage)} alt={post.data.title} class="card-image" />
+                  <OptimizedImage
+                    src={buildUrl(post.data.heroImage)}
+                    alt={post.data.title}
+                    class="card-image"
+                    loading="lazy"
+                  />
                 ) : (
                   <div class="card-image-placeholder">
                     <p>Add heroImage in frontmatter</p>

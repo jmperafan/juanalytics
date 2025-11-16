@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ContentFilter from '../components/ContentFilter.astro';
 import YouTubeThumbnail from '../components/YouTubeThumbnail.astro';
+import Icon from '../components/Icon.astro';
 import { readContentYAML } from '../utils/yamlParser';
 
 const content = await readContentYAML();
@@ -46,9 +47,7 @@ const allTags = videos.flatMap(v => v.data.tags || []);
                       <div class="video-thumbnail-wrapper">
                         <YouTubeThumbnail videoUrl={video.data.videoUrl} alt={video.data.title} thumbnail={video.data.thumbnail} />
                         <div class="play-button">
-                          <svg width="28" height="28" viewBox="0 0 24 24" fill="white">
-                            <polygon points="5 3 19 12 5 21 5 3"></polygon>
-                          </svg>
+                          <Icon name="play" width={28} height={28} />
                         </div>
                       </div>
                       <div class="video-player"></div>
@@ -57,9 +56,7 @@ const allTags = videos.flatMap(v => v.data.tags || []);
                     <img src={video.data.thumbnail} alt={video.data.title} class="card-image" />
                   ) : (
                     <div class="card-image-placeholder">
-                      <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <polygon points="5 3 19 12 5 21 5 3"></polygon>
-                      </svg>
+                      <Icon name="play" size={64} />
                     </div>
                   )}
                 </div>

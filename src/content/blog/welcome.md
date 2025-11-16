@@ -1,7 +1,7 @@
 ---
 title: 'Welcome to juanalytics'
 description: 'Welcome to my new portfolio site where I share my thoughts on analytics engineering, dbt, and building data communities.'
-pubDate: 2025-10-31
+pubDate: 2024-10-31
 heroImage: 'logo_resized.png'
 tags: []
 ---
