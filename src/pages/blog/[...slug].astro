@@ -1,6 +1,8 @@
 ---
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { calculateReadingTime, formatReadingTime } from '../../utils/readingTime';
+import { buildUrl } from '../../utils/urlHelper';
 
 export async function getStaticPaths() {
   const blogs = await getCollection('blog');
@@ -13,40 +15,42 @@ export async function getStaticPaths() {
 const post = Astro.props;
 const { Content } = await post.render();
 
-// Get base path for GitHub Pages
-const base = import.meta.env.BASE_URL;
+// Calculate reading time
+const readingTime = calculateReadingTime(post.body);
 ---
 
 <BaseLayout title={post.data.title} description={post.data.description}>
-  <article style="padding: 4rem 0;">
-    <div class="container" style="max-width: 800px;">
+  <article class="blog-post">
+    <div class="container blog-post-container">
       {post.data.heroImage && (
-        <img src={base + post.data.heroImage} alt={post.data.title} style="width: 100%; max-width: 400px; height: auto; object-fit: contain; border-radius: 0.5rem; margin-bottom: 2rem; display: block; margin-left: auto; margin-right: auto;" />
+        <img src={buildUrl(post.data.heroImage)} alt={post.data.title} class="blog-post-hero" />
       )}
 
-      <h1 style="margin-bottom: 1rem;">{post.data.title}</h1>
+      <h1 class="blog-post-title">{post.data.title}</h1>
 
-      <div style="color: var(--color-text-light); margin-bottom: 2rem; display: flex; gap: 1rem; align-items: center;">
+      <div class="blog-post-meta">
         <time>{post.data.pubDate.toISOString().split('T')[0]}</time>
+        <span>•</span>
+        <span>{formatReadingTime(readingTime)}</span>
         {post.data.updatedDate && (
           <span>• Updated {post.data.updatedDate.toISOString().split('T')[0]}</span>
         )}
       </div>
 
       {post.data.tags && post.data.tags.length > 0 && (
-        <div style="margin-bottom: 2rem; display: flex; gap: 0.5rem; flex-wrap: wrap;">
+        <div class="blog-post-tags">
           {post.data.tags.map((tag) => (
-            <span style="background: var(--color-primary); color: white; padding: 0.25rem 0.75rem; border-radius: 1rem; font-size: 0.85rem;">{tag}</span>
+            <span class="blog-post-tag">{tag}</span>
           ))}
         </div>
       )}
 
-      <div style="line-height: 1.8; font-size: 1.1rem;">
+      <div class="blog-post-content">
         <Content />
       </div>
 
-      <div style="margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--color-border);">
-        <a href={base + "blog"} style="color: var(--color-primary);">← Back to blog</a>
+      <div class="blog-post-footer">
+        <a href={buildUrl("blog")} class="blog-back-link">← Back to blog</a>
       </div>
     </div>
   </article>
@@ -54,7 +58,7 @@ const base = import.meta.env.BASE_URL;
   <script>
     // Make external links (non-YouTube) open in a new tab
     document.addEventListener('DOMContentLoaded', () => {
-      const contentDiv = document.querySelector('article .container > div[style*="line-height"]');
+      const contentDiv = document.querySelector('.blog-post-content');
       if (contentDiv) {
         const links = contentDiv.querySelectorAll('a');
         links.forEach((link) => {

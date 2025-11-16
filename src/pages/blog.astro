@@ -1,56 +1,58 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import ContentFilter from '../components/ContentFilter.astro';
 import { getCollection } from 'astro:content';
+import { calculateReadingTime, formatReadingTime } from '../utils/readingTime';
+import { buildUrl } from '../utils/urlHelper';
 
 const blogs = (await getCollection('blog')).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 );
 
-// Get base path for GitHub Pages
-const base = import.meta.env.BASE_URL;
+// Calculate reading time for each blog post
+const blogsWithReadingTime = await Promise.all(
+  blogs.map(async (post) => {
+    const { body } = post;
+    const readingTime = calculateReadingTime(body);
+    return { ...post, readingTime };
+  })
+);
+
+// Get all unique tags for filtering
+const allTags = blogsWithReadingTime.flatMap(b => b.data.tags || []);
 ---
 
 <BaseLayout title="Blog | juanalytics">
-  <section style="padding: 4rem 0;">
+  <section class="content-section">
     <div class="container">
-      <h1 style="margin-bottom: 2rem;">Blog</h1>
-      {blogs.length === 0 ? (
-        <p style="color: var(--color-text-light); font-size: 1.1rem;">No blog posts yet. Check back soon!</p>
+      <div class="content-header">
+        <h1>Blog</h1>
+      </div>
+      {blogsWithReadingTime.length === 0 ? (
+        <p class="empty-state">No blog posts yet. Check back soon!</p>
       ) : (
-        <div style="display: flex; gap: 2rem;">
-          {/* Sidebar with filters */}
-          <div style="flex-shrink: 0; width: 200px;">
-            <div style="position: sticky; top: 2rem;">
-              <h3 style="font-size: 0.875rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-text-light); margin-bottom: 1rem;">Filter by tag</h3>
-              <div style="display: flex; flex-direction: column; gap: 0.5rem;">
-                <button class="filter-tag active" data-tag="all" style="background: var(--color-primary); color: white; padding: 0.5rem 1rem; border-radius: 0.5rem; font-size: 0.875rem; border: none; cursor: pointer; transition: all 0.2s; text-align: left;">All</button>
-                {Array.from(new Set(blogs.flatMap(b => b.data.tags || []))).sort().map((tag) => (
-                  <button class="filter-tag" data-tag={tag} style="background: var(--color-bg-secondary); color: var(--color-text); padding: 0.5rem 1rem; border-radius: 0.5rem; font-size: 0.875rem; border: 1px solid var(--color-border); cursor: pointer; transition: all 0.2s; text-align: left;">{tag}</button>
-                ))}
-              </div>
-            </div>
-          </div>
-          {/* Content grid */}
-          <div id="blog-grid" style="flex: 1; display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.5rem;">
-            {blogs.map((post) => (
-              <a href={`${base}blog/${post.slug}`} class="card blog-card" data-tags={JSON.stringify(post.data.tags || [])} style="padding: 0; overflow: hidden; display: flex; flex-direction: column;">
+        <div class="content-with-sidebar">
+          <ContentFilter tags={allTags} gridId="blog-grid" cardClass="blog-card" />
+          <div id="blog-grid" class="content-grid">
+            {blogsWithReadingTime.map((post) => (
+              <a href={buildUrl(`blog/${post.slug}`)} class="card content-card blog-card" data-tags={JSON.stringify(post.data.tags || [])}>
                 {post.data.heroImage ? (
-                  <img src={base + post.data.heroImage} alt={post.data.title} style="width: 100%; height: 200px; object-fit: cover; object-position: top;" />
+                  <img src={buildUrl(post.data.heroImage)} alt={post.data.title} class="card-image" />
                 ) : (
-                  <div style="width: 100%; height: 200px; background: var(--color-bg-secondary); display: flex; align-items: center; justify-content: center; color: var(--color-text-light);">
-                    <p style="font-size: 0.875rem; padding: 1rem; text-align: center;">📝 Add heroImage in frontmatter</p>
+                  <div class="card-image-placeholder">
+                    <p>Add heroImage in frontmatter</p>
                   </div>
                 )}
-                <div style="padding: 1.5rem; flex: 1; display: flex; flex-direction: column;">
-                  <h3 style="margin-bottom: 0.75rem; font-size: 1.125rem; line-height: 1.4;">{post.data.title}</h3>
-                  <p style="color: var(--color-text-light); font-size: 0.875rem; margin-bottom: 0.75rem;">
-                    {post.data.pubDate.toISOString().split('T')[0]}
+                <div class="card-content">
+                  <h3 class="card-title">{post.data.title}</h3>
+                  <p class="card-meta">
+                    {post.data.pubDate.toISOString().split('T')[0]} • {formatReadingTime(post.readingTime)}
                   </p>
-                  <p style="color: var(--color-text-light); font-size: 0.9375rem; line-height: 1.6; margin-bottom: 1rem; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">{post.data.description}</p>
+                  <p class="card-description">{post.data.description}</p>
                   {post.data.tags && post.data.tags.length > 0 && (
-                    <div style="margin-top: auto; display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                    <div class="card-tags">
                       {post.data.tags.map((tag) => (
-                        <span class="content-tag" data-tag={tag} style="background: var(--color-bg-secondary); color: var(--color-text); padding: 0.25rem 0.75rem; border-radius: 1rem; font-size: 0.8125rem; border: 1px solid var(--color-border); cursor: pointer; transition: all 0.2s;">{tag}</span>
+                        <span class="tag content-tag" data-tag={tag}>{tag}</span>
                       ))}
                     </div>
                   )}
@@ -62,68 +64,4 @@ const base = import.meta.env.BASE_URL;
       )}
     </div>
   </section>
-
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const filterButtons = document.querySelectorAll('.filter-tag');
-      const blogCards = document.querySelectorAll('.blog-card');
-      const contentTags = document.querySelectorAll('.content-tag');
-
-      function filterByTag(tag: string) {
-        filterButtons.forEach(btn => {
-          if (btn.getAttribute('data-tag') === tag) {
-            btn.classList.add('active');
-            (btn as HTMLElement).style.background = 'var(--color-primary)';
-            (btn as HTMLElement).style.color = 'white';
-            (btn as HTMLElement).style.border = 'none';
-          } else {
-            btn.classList.remove('active');
-            (btn as HTMLElement).style.background = 'var(--color-bg-secondary)';
-            (btn as HTMLElement).style.color = 'var(--color-text)';
-            (btn as HTMLElement).style.border = '1px solid var(--color-border)';
-          }
-        });
-
-        blogCards.forEach(card => {
-          const cardTags = JSON.parse(card.getAttribute('data-tags') || '[]');
-          if (tag === 'all' || cardTags.includes(tag)) {
-            (card as HTMLElement).style.display = 'flex';
-          } else {
-            (card as HTMLElement).style.display = 'none';
-          }
-        });
-
-        document.getElementById('blog-grid')?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-      }
-
-      filterButtons.forEach(btn => {
-        btn.addEventListener('click', (e) => {
-          e.preventDefault();
-          const tag = btn.getAttribute('data-tag') || 'all';
-          filterByTag(tag);
-        });
-      });
-
-      contentTags.forEach(tag => {
-        tag.addEventListener('click', (e) => {
-          e.preventDefault();
-          e.stopPropagation();
-          const tagName = tag.getAttribute('data-tag') || '';
-          filterByTag(tagName);
-        });
-      });
-    });
-  </script>
-
-  <style>
-    .filter-tag:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    }
-    .content-tag:hover {
-      background: var(--color-primary) !important;
-      color: white !important;
-      border-color: var(--color-primary) !important;
-    }
-  </style>
 </BaseLayout>

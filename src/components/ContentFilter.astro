@@ -1,0 +1,129 @@
+---
+interface Props {
+  tags: string[];
+  gridId: string;
+  cardClass: string;
+}
+
+const { tags, gridId, cardClass } = Astro.props;
+const uniqueTags = Array.from(new Set(tags)).sort();
+---
+
+<div class="sidebar-filters">
+  <div class="filters-sticky">
+    <h3 class="filter-header">Filter by tag</h3>
+    <div class="filter-buttons">
+      <button class="filter-tag active" data-tag="all">All</button>
+      {uniqueTags.map((tag) => (
+        <button class="filter-tag" data-tag={tag}>{tag}</button>
+      ))}
+    </div>
+  </div>
+</div>
+
+<script define:vars={{ gridId, cardClass }}>
+  document.addEventListener('DOMContentLoaded', () => {
+    const filterButtons = document.querySelectorAll('.filter-tag');
+    const cards = document.querySelectorAll(`.${cardClass}`);
+    const contentTags = document.querySelectorAll('.content-tag');
+
+    function filterByTag(tag) {
+      // Update active button
+      filterButtons.forEach(btn => {
+        if (btn.getAttribute('data-tag') === tag) {
+          btn.classList.add('active');
+        } else {
+          btn.classList.remove('active');
+        }
+      });
+
+      // Filter cards
+      cards.forEach(card => {
+        const cardTags = JSON.parse(card.getAttribute('data-tags') || '[]');
+        if (tag === 'all' || cardTags.includes(tag)) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+
+      // Scroll to top of results
+      document.getElementById(gridId)?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    // Filter button clicks
+    filterButtons.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const tag = btn.getAttribute('data-tag') || 'all';
+        filterByTag(tag);
+      });
+    });
+
+    // Content tag clicks
+    contentTags.forEach(tag => {
+      tag.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        const tagName = tag.getAttribute('data-tag') || '';
+        filterByTag(tagName);
+      });
+    });
+  });
+</script>
+
+<style>
+  .sidebar-filters {
+    flex-shrink: 0;
+    width: 200px;
+  }
+
+  .filters-sticky {
+    position: sticky;
+    top: 2rem;
+  }
+
+  .filter-header {
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-text-light);
+    margin-bottom: 1rem;
+  }
+
+  .filter-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .filter-tag {
+    background: var(--color-bg-secondary);
+    color: var(--color-text);
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+    border: 1px solid var(--color-border);
+    cursor: pointer;
+    transition: all 0.2s;
+    text-align: left;
+  }
+
+  .filter-tag:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .filter-tag.active {
+    background: var(--color-primary);
+    color: white;
+    border: none;
+  }
+
+  @media (max-width: 768px) {
+    .sidebar-filters {
+      display: none;
+    }
+  }
+</style>

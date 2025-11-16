@@ -1,15 +1,31 @@
 ---
 import '../styles/global.css';
+import '../styles/layout.css';
+import '../styles/content.css';
+import PlausibleAnalytics from '../components/PlausibleAnalytics.astro';
+import { buildUrl } from '../utils/urlHelper';
 
 interface Props {
   title: string;
   description?: string;
+  image?: string;
+  author?: string;
+  publishDate?: string;
 }
 
-const { title, description = "Portfolio of Juan Manuel Perafan - Analytics Engineer, dbt Community Award Recipient, and Data Community Organizer" } = Astro.props;
+const {
+  title,
+  description = "Portfolio of Juan Manuel Perafan - Analytics Engineer, dbt Community Award Recipient, and Data Community Organizer",
+  image = "/profile_photo.png",
+  author = "Juan Manuel Perafan",
+  publishDate
+} = Astro.props;
 
 // Get base path for GitHub Pages
-const base = import.meta.env.BASE_URL;
+const currentPath = Astro.url.pathname;
+const canonicalUrl = "https://juanalytics.com" + currentPath;
+const fullUrl = "https://juanalytics.com" + buildUrl("");
+const imageUrl = image.startsWith("http") ? image : "https://juanalytics.com" + image;
 ---
 
 <!doctype html>
@@ -18,32 +34,87 @@ const base = import.meta.env.BASE_URL;
     <meta charset="UTF-8" />
     <meta name="description" content={description} />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/png" href={base + "logo.png"} />
+    <meta name="author" content={author} />
+    <link rel="icon" type="image/png" href={buildUrl("logo.png")} />
     <meta name="generator" content={Astro.generator} />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href={canonicalUrl} />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={fullUrl} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={imageUrl} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:site_name" content="Juanalytics" />
+    
+    <!-- Twitter / X -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={fullUrl} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={imageUrl} />
+    <meta name="twitter:creator" content="@juanalytics" />
+    
+    <!-- Article metadata -->
+    {publishDate && <meta property="article:published_time" content={publishDate} />}
+    <meta property="article:author" content={author} />
+    
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Juan Manuel Perafan",
+        "url": "https://juanalytics.com",
+        "image": "https://juanalytics.com/profile_photo.png",
+        "description": "Analytics Engineer, dbt Community Award Recipient, and Data Community Organizer",
+        "jobTitle": "Analytics Engineer",
+        "sameAs": [
+          "https://www.linkedin.com/in/jmperafan/",
+          "https://github.com/jmperafan",
+          "https://www.youtube.com/@juanalytics",
+          "https://linktr.ee/juanalytics"
+        ],
+        "worksFor": {
+          "@type": "Organization",
+          "name": "Juanalytics"
+        }
+      }
+    </script>
+    
+    <!-- Preconnect to external resources -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    
+    <!-- Plausible Analytics -->
+    <PlausibleAnalytics />
+    
     <title>{title}</title>
   </head>
   <body>
     <header>
-      <nav class="container" style="padding: 1.5rem 1rem; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--color-border);">
-        <a href={base} style="display: flex; align-items: center; gap: 0.75rem; text-decoration: none;">
-          <img src={base + "logo.png"} alt="Juanalytics Logo" style="height: 70px; width: auto;" />
-          <span style="font-size: 1.125rem; font-weight: 600; color: var(--color-text);">Juanalytics</span>
+      <nav class="site-nav container">
+        <a href={buildUrl("")} class="logo-container">
+          <img src={buildUrl("logo.png")} alt="Juanalytics Logo" class="logo-image" />
+          <span class="logo-text">Juanalytics</span>
         </a>
         <button class="mobile-menu-toggle" aria-label="Toggle menu" id="mobile-menu-toggle">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
           </svg>
         </button>
-        <div class="nav-links" id="nav-links" style="display: flex; gap: 2rem; align-items: center;">
-          <a href={base + "talks"} style="color: var(--color-text); font-weight: 500;">Conferences</a>
-          <a href={base + "videos"} style="color: var(--color-text); font-weight: 500;">Videos</a>
-          <a href={base + "podcasts"} style="color: var(--color-text); font-weight: 500;">Podcasts</a>
-          <a href={base + "blog"} style="color: var(--color-text); font-weight: 500;">Blog</a>
-          <a href={base + "books"} style="color: var(--color-text); font-weight: 500;">Books</a>
-          <a href={base + "about"} style="color: var(--color-text); font-weight: 500;">About</a>
+        <div class="nav-links" id="nav-links">
+          <a href={buildUrl("talks")}>Conferences</a>
+          <a href={buildUrl("videos")}>Videos</a>
+          <a href={buildUrl("podcasts")}>Podcasts</a>
+          <a href={buildUrl("blog")}>Blog</a>
+          <a href={buildUrl("books")}>Books</a>
+          <a href={buildUrl("about")}>About</a>
         </div>
       </nav>
     </header>
@@ -59,10 +130,10 @@ const base = import.meta.env.BASE_URL;
       <slot />
     </main>
 
-    <footer style="margin-top: 4rem; padding: 2rem 0; border-top: 1px solid var(--color-border); text-align: center; color: var(--color-text-light);">
-      <div class="container">
+    <footer class="site-footer">
+      <div class="container footer-content">
         <p>&copy; {new Date().getFullYear()} Juan Manuel Perafan. All rights reserved.</p>
-        <div style="margin-top: 1rem; display: flex; justify-content: center; gap: 1.5rem;">
+        <div class="footer-links">
           <a href="https://www.linkedin.com/in/jmperafan/" target="_blank">LinkedIn</a>
           <a href="https://github.com/jmperafan" target="_blank">GitHub</a>
           <a href="https://linktr.ee/juanalytics" target="_blank">Linktree</a>

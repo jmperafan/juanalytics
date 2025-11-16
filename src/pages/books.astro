@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import ContentFilter from '../components/ContentFilter.astro';
 import { readContentYAML } from '../utils/yamlParser';
 
 const content = await readContentYAML();
@@ -16,39 +17,102 @@ const books = content.books.map(book => ({
     tags: book.tags,
   }
 }));
+
+const allTags = books.flatMap(b => b.data.tags || []);
 ---
 
 <BaseLayout title="Books | juanalytics">
-  <section style="padding: 4rem 0;">
+  <section class="content-section">
     <div class="container">
-      <h1 style="margin-bottom: 2rem;">Books</h1>
+      <div class="content-header">
+        <h1>Books</h1>
+      </div>
       {books.length === 0 ? (
-        <p style="color: var(--color-text-light); font-size: 1.1rem;">No books yet. Check back soon!</p>
+        <p class="empty-state">No books yet. Check back soon!</p>
+      ) : allTags.length > 0 ? (
+        <div class="content-with-sidebar">
+          <ContentFilter
+            tags={allTags}
+            gridId="books-grid"
+            cardClass="book-card"
+          />
+          <div id="books-grid" class="content-grid">
+            {books.map((book) => (
+              <a
+                href={book.data.amazonUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="card content-card book-card"
+                data-tags={JSON.stringify(book.data.tags || [])}
+              >
+                {book.data.coverImage ? (
+                  <div style="width: 100%; height: 400px; background: var(--color-bg-secondary); display: flex; align-items: center; justify-content: center;">
+                    <img src={book.data.coverImage} alt={book.data.title} style="height: 100%; width: auto; object-fit: contain;" />
+                  </div>
+                ) : (
+                  <div class="card-image-placeholder" style="height: 400px;">
+                    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                      <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                    </svg>
+                  </div>
+                )}
+                <div class="card-content">
+                  <h3 class="card-title">{book.data.title}</h3>
+                  {book.data.publisher && (
+                    <p class="card-meta" style="color: var(--color-primary); font-weight: 600;">{book.data.publisher}</p>
+                  )}
+                  <p class="card-meta">
+                    Published: {book.data.pubDate.toISOString().split('T')[0]}
+                  </p>
+                  <p class="card-description">{book.data.description}</p>
+                  {book.data.tags && book.data.tags.length > 0 && (
+                    <div class="card-tags">
+                      {book.data.tags.map((tag) => (
+                        <span class="tag content-tag" data-tag={tag}>{tag}</span>
+                      ))}
+                    </div>
+                  )}
+                  {book.data.amazonUrl && (
+                    <div style="margin-top: auto;">
+                      <span class="button" style="display: inline-block; font-size: 0.875rem; padding: 0.5rem 1rem;">View on Amazon →</span>
+                    </div>
+                  )}
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
       ) : (
-        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.5rem;">
+        <div class="content-grid">
           {books.map((book) => (
-            <a href={book.data.amazonUrl} target="_blank" rel="noopener noreferrer" class="card" style="padding: 0; overflow: hidden; display: flex; flex-direction: column;">
+            <a
+              href={book.data.amazonUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="card content-card"
+            >
               {book.data.coverImage ? (
                 <div style="width: 100%; height: 400px; background: var(--color-bg-secondary); display: flex; align-items: center; justify-content: center;">
                   <img src={book.data.coverImage} alt={book.data.title} style="height: 100%; width: auto; object-fit: contain;" />
                 </div>
               ) : (
-                <div style="width: 100%; height: 400px; background: var(--color-bg-secondary); display: flex; align-items: center; justify-content: center; color: var(--color-text-light);">
+                <div class="card-image-placeholder" style="height: 400px;">
                   <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
                     <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
                   </svg>
                 </div>
               )}
-              <div style="padding: 1.5rem; flex: 1; display: flex; flex-direction: column;">
-                <h3 style="margin-bottom: 0.75rem; font-size: 1.125rem; line-height: 1.4;">{book.data.title}</h3>
+              <div class="card-content">
+                <h3 class="card-title">{book.data.title}</h3>
                 {book.data.publisher && (
-                  <p style="color: var(--color-primary); font-size: 0.875rem; font-weight: 600; margin-bottom: 0.5rem;">{book.data.publisher}</p>
+                  <p class="card-meta" style="color: var(--color-primary); font-weight: 600;">{book.data.publisher}</p>
                 )}
-                <p style="color: var(--color-text-light); font-size: 0.875rem; margin-bottom: 0.75rem;">
+                <p class="card-meta">
                   Published: {book.data.pubDate.toISOString().split('T')[0]}
                 </p>
-                <p style="color: var(--color-text-light); font-size: 0.9375rem; line-height: 1.6; flex: 1; margin-bottom: 1rem; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">{book.data.description}</p>
+                <p class="card-description">{book.data.description}</p>
                 {book.data.amazonUrl && (
                   <div style="margin-top: auto;">
                     <span class="button" style="display: inline-block; font-size: 0.875rem; padding: 0.5rem 1rem;">View on Amazon →</span>

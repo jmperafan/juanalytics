@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import YouTubeThumbnail from '../components/YouTubeThumbnail.astro';
 import { getCollection } from 'astro:content';
 import { readContentYAML } from '../utils/yamlParser';
+import { buildUrl } from '../utils/urlHelper';
 
 // Get content from YAML (videos and podcasts)
 const content = await readContentYAML();
@@ -29,7 +30,7 @@ const recentVideos = content.videos
 
 // Get recent guest podcast appearances from YAML (excluding SQL Lingua Franca)
 const recentPodcasts = content.podcasts
-  .filter(p => !p.title.includes(' - ')) // Filter out SQL Lingua Franca episodes (they have " - " pattern)
+  .filter(p => !p.title.includes(' - '))
   .map(podcast => ({
     slug: podcast.url.split('/').pop() || '',
     data: {
@@ -46,60 +47,57 @@ const recentPodcasts = content.podcasts
     }
   }))
   .slice(0, 3);
-
-// Get base path for GitHub Pages
-const base = import.meta.env.BASE_URL;
 ---
 
 <BaseLayout title="juanalytics - Juan Manuel Perafan">
   <!-- Hero Section -->
-  <section style="padding: 5rem 0 4rem; background: var(--color-bg);">
-    <div class="container" style="max-width: 1000px;">
-      <div style="display: flex; align-items: center; gap: 3rem; flex-wrap: wrap;">
-        <div style="flex-shrink: 0;">
-          <img src={base + "profile_photo.png"} alt="Juan Manuel Perafan" style="width: 280px; height: 280px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);" />
+  <section class="hero-section">
+    <div class="container hero-max-width">
+      <div class="hero-container">
+        <div>
+          <img src={buildUrl("profile_photo.png")} alt="Juan Manuel Perafan" class="hero-image" />
         </div>
-        <div style="flex: 1; min-width: 400px;">
-          <h1 style="font-size: 3rem; margin-bottom: 1rem; color: var(--color-text); font-weight: 700; letter-spacing: -0.02em;">Juan Manuel Perafan</h1>
-          <p style="font-size: 1.25rem; color: var(--color-text-light); line-height: 1.5; margin-bottom: 1.5rem;">
+        <div class="hero-content">
+          <h1 class="hero-title">Juan Manuel Perafan</h1>
+          <p class="hero-subtitle">
             Analytics Engineer | Community Advocate | Author | Speaker
           </p>
-          <p style="font-size: 1.0625rem; color: var(--color-text); line-height: 1.7; margin-bottom: 1rem;">
+          <p class="hero-description">
             Welcome to my portfolio of content: talks, videos, podcasts, and blog posts. I specialize in:
           </p>
-          <ul style="list-style: none; padding: 0; margin: 0 0 2rem 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.5rem;">
-            <li style="color: var(--color-text); font-size: 1rem; display: flex; align-items: center; gap: 0.5rem;">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <ul class="specialty-list">
+            <li class="specialty-list-item">
+              <svg class="specialty-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <polyline points="20 6 9 17 4 12"></polyline>
               </svg>
               Analytics Engineering
             </li>
-            <li style="color: var(--color-text); font-size: 1rem; display: flex; align-items: center; gap: 0.5rem;">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <li class="specialty-list-item">
+              <svg class="specialty-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <polyline points="20 6 9 17 4 12"></polyline>
               </svg>
               dbt
             </li>
-            <li style="color: var(--color-text); font-size: 1rem; display: flex; align-items: center; gap: 0.5rem;">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <li class="specialty-list-item">
+              <svg class="specialty-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <polyline points="20 6 9 17 4 12"></polyline>
               </svg>
               Data Modeling
             </li>
-            <li style="color: var(--color-text); font-size: 1rem; display: flex; align-items: center; gap: 0.5rem;">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <li class="specialty-list-item">
+              <svg class="specialty-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <polyline points="20 6 9 17 4 12"></polyline>
               </svg>
               SQL
             </li>
-            <li style="color: var(--color-text); font-size: 1rem; display: flex; align-items: center; gap: 0.5rem;">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <li class="specialty-list-item">
+              <svg class="specialty-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <polyline points="20 6 9 17 4 12"></polyline>
               </svg>
               Data Visualization
             </li>
-            <li style="color: var(--color-text); font-size: 1rem; display: flex; align-items: center; gap: 0.5rem;">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <li class="specialty-list-item">
+              <svg class="specialty-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <polyline points="20 6 9 17 4 12"></polyline>
               </svg>
               Data Governance
@@ -111,38 +109,38 @@ const base = import.meta.env.BASE_URL;
   </section>
 
   <!-- What I Do -->
-  <section style="padding: 4rem 0; background: var(--color-bg-secondary); border-top: 1px solid var(--color-border);">
-    <div class="container" style="max-width: 1000px;">
-      <h2 style="font-size: 2rem; margin-bottom: 2.5rem; color: var(--color-text); font-weight: 700; text-align: center;">What You'll Find Here</h2>
+  <section class="section-with-bg">
+    <div class="container hero-max-width">
+      <h2 class="section-title">What You'll Find Here</h2>
 
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; margin-bottom: 3rem;">
-        <a href={base + "talks"} style="display: flex; align-items: flex-start; gap: 1rem; padding: 1.5rem; background: var(--color-bg); border-radius: 8px; border: 1px solid var(--color-border); text-decoration: none; transition: border-color 0.2s;">
-          <div style="flex-shrink: 0; color: var(--color-primary);">
+      <div class="cards-grid">
+        <a href={buildUrl("talks")} class="feature-card">
+          <div class="feature-icon">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
               <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
             </svg>
           </div>
-          <div>
-            <h3 style="font-size: 1.125rem; margin-bottom: 0.375rem; color: var(--color-text); font-weight: 600;">Conference Talks</h3>
-            <p style="color: var(--color-text-light); font-size: 0.9375rem; line-height: 1.5; margin: 0;">Presentations from conferences and meetups</p>
+          <div class="feature-content">
+            <h3>Conference Talks</h3>
+            <p>Presentations from conferences and meetups</p>
           </div>
         </a>
 
-        <a href={base + "videos"} style="display: flex; align-items: flex-start; gap: 1rem; padding: 1.5rem; background: var(--color-bg); border-radius: 8px; border: 1px solid var(--color-border); text-decoration: none; transition: border-color 0.2s;">
-          <div style="flex-shrink: 0; color: var(--color-primary);">
+        <a href={buildUrl("videos")} class="feature-card">
+          <div class="feature-icon">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <polygon points="5 3 19 12 5 21 5 3"></polygon>
             </svg>
           </div>
-          <div>
-            <h3 style="font-size: 1.125rem; margin-bottom: 0.375rem; color: var(--color-text); font-weight: 600;">Video Tutorials</h3>
-            <p style="color: var(--color-text-light); font-size: 0.9375rem; line-height: 1.5; margin: 0;">Technical deep dives and how-tos</p>
+          <div class="feature-content">
+            <h3>Video Tutorials</h3>
+            <p>Technical deep dives and how-tos</p>
           </div>
         </a>
 
-        <a href={base + "podcasts"} style="display: flex; align-items: flex-start; gap: 1rem; padding: 1.5rem; background: var(--color-bg); border-radius: 8px; border: 1px solid var(--color-border); text-decoration: none; transition: border-color 0.2s;">
-          <div style="flex-shrink: 0; color: var(--color-primary);">
+        <a href={buildUrl("podcasts")} class="feature-card">
+          <div class="feature-icon">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path>
               <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
@@ -150,36 +148,36 @@ const base = import.meta.env.BASE_URL;
               <line x1="8" y1="23" x2="16" y2="23"></line>
             </svg>
           </div>
-          <div>
-            <h3 style="font-size: 1.125rem; margin-bottom: 0.375rem; color: var(--color-text); font-weight: 600;">Podcast Appearances</h3>
-            <p style="color: var(--color-text-light); font-size: 0.9375rem; line-height: 1.5; margin: 0;">Conversations about data and community</p>
+          <div class="feature-content">
+            <h3>Podcast Appearances</h3>
+            <p>Conversations about data and community</p>
           </div>
         </a>
 
-        <a href={base + "blog"} style="display: flex; align-items: flex-start; gap: 1rem; padding: 1.5rem; background: var(--color-bg); border-radius: 8px; border: 1px solid var(--color-border); text-decoration: none; transition: border-color 0.2s;">
-          <div style="flex-shrink: 0; color: var(--color-primary);">
+        <a href={buildUrl("blog")} class="feature-card">
+          <div class="feature-icon">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"></path>
               <polyline points="14 2 14 8 20 8"></polyline>
             </svg>
           </div>
-          <div>
-            <h3 style="font-size: 1.125rem; margin-bottom: 0.375rem; color: var(--color-text); font-weight: 600;">Blog Posts</h3>
-            <p style="color: var(--color-text-light); font-size: 0.9375rem; line-height: 1.5; margin: 0;">Articles on analytics engineering</p>
+          <div class="feature-content">
+            <h3>Blog Posts</h3>
+            <p>Articles on analytics engineering</p>
           </div>
         </a>
       </div>
 
       <!-- Speaking & Training -->
-      <div style="background: var(--color-bg); border: 2px solid var(--color-primary); border-radius: 12px; padding: 2.5rem; margin-top: 3rem;">
-        <h3 style="font-size: 1.75rem; margin-bottom: 1.25rem; color: var(--color-text); font-weight: 700;">Let's Work Together</h3>
-        <p style="font-size: 1.0625rem; color: var(--color-text); line-height: 1.7; margin-bottom: 2rem;">
+      <div class="cta-box">
+        <h3 class="cta-title">Let's Work Together</h3>
+        <p class="cta-description">
           I'm available to speak at your next conference, meetup, or corporate event, train your team on analytics engineering and the modern data stack, or provide strategic consulting for your data initiatives. Let's talk!
         </p>
-        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.5rem;">
-          <div>
-            <h4 style="font-size: 1.125rem; margin-bottom: 0.75rem; color: var(--color-text); font-weight: 600; display: flex; align-items: center; gap: 0.5rem;">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <div class="cta-grid">
+          <div class="cta-item">
+            <h4>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path>
                 <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
                 <line x1="12" y1="19" x2="12" y2="23"></line>
@@ -187,38 +185,38 @@ const base = import.meta.env.BASE_URL;
               </svg>
               Speaking
             </h4>
-            <ul style="list-style: none; padding: 0; margin: 0; color: var(--color-text-light); font-size: 0.9375rem; line-height: 1.8;">
+            <ul>
               <li>• Conference keynotes</li>
               <li>• Technical deep dives</li>
               <li>• Panel discussions</li>
               <li>• Meetup presentations</li>
             </ul>
           </div>
-          <div>
-            <h4 style="font-size: 1.125rem; margin-bottom: 0.75rem; color: var(--color-text); font-weight: 600; display: flex; align-items: center; gap: 0.5rem;">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <div class="cta-item">
+            <h4>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
                 <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
               </svg>
               Training & Mentorship
             </h4>
-            <ul style="list-style: none; padding: 0; margin: 0; color: var(--color-text-light); font-size: 0.9375rem; line-height: 1.8;">
+            <ul>
               <li>• Hands-on dbt workshops</li>
               <li>• Modern data stack training</li>
               <li>• Team enablement programs</li>
               <li>• Custom curriculum design</li>
             </ul>
           </div>
-          <div>
-            <h4 style="font-size: 1.125rem; margin-bottom: 0.75rem; color: var(--color-text); font-weight: 600; display: flex; align-items: center; gap: 0.5rem;">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <div class="cta-item">
+            <h4>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
                 <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
                 <line x1="12" y1="22.08" x2="12" y2="12"></line>
               </svg>
               Consulting
             </h4>
-            <ul style="list-style: none; padding: 0; margin: 0; color: var(--color-text-light); font-size: 0.9375rem; line-height: 1.8;">
+            <ul>
               <li>• Data strategy & architecture</li>
               <li>• dbt implementation guidance</li>
               <li>• Analytics engineering workflows</li>
@@ -226,8 +224,8 @@ const base = import.meta.env.BASE_URL;
             </ul>
           </div>
         </div>
-        <div style="margin-top: 2rem; text-align: center;">
-          <a href={base + "about"} style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.875rem 1.75rem; background: var(--color-primary); color: white; text-decoration: none; border-radius: 6px; font-weight: 600; transition: background 0.2s;">
+        <div class="cta-button-container">
+          <a href={buildUrl("about")} class="cta-button">
             Get in Touch
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -241,19 +239,19 @@ const base = import.meta.env.BASE_URL;
 
   <!-- Recent Podcasts (Guest Appearances) -->
   {recentPodcasts.length > 0 && (
-    <section style="padding: 4rem 0;">
+    <section class="recent-section">
       <div class="container">
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+        <div class="section-header">
           <h2>Recent Podcast Guest Appearances</h2>
-          <a href={base + "podcasts"}>View all →</a>
+          <a href={buildUrl("podcasts")} class="view-all-link">View all →</a>
         </div>
-        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.5rem;">
+        <div class="content-grid">
           {recentPodcasts.map((podcast) => (
-            <a href={podcast.data.audioUrl} target="_blank" rel="noopener noreferrer" class="card" style="padding: 0; overflow: hidden; display: flex; flex-direction: column;">
+            <a href={podcast.data.audioUrl} target="_blank" rel="noopener noreferrer" class="card media-card">
               {podcast.data.thumbnail ? (
-                <img src={podcast.data.thumbnail} alt={podcast.data.title} style="width: 100%; height: 200px; object-fit: cover;" />
+                <img src={podcast.data.thumbnail} alt={podcast.data.title} class="media-image" />
               ) : (
-                <div style="width: 100%; height: 200px; background: var(--color-bg-secondary); display: flex; align-items: center; justify-content: center; color: var(--color-text-light);">
+                <div class="media-placeholder">
                   <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path>
                     <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
@@ -262,14 +260,14 @@ const base = import.meta.env.BASE_URL;
                   </svg>
                 </div>
               )}
-              <div style="padding: 1.5rem; flex: 1; display: flex; flex-direction: column;">
-                <h3 style="margin-bottom: 0.5rem; font-size: 1.125rem; line-height: 1.4;">{podcast.data.title}</h3>
-                <p style="color: var(--color-text-light); font-size: 0.875rem; margin-bottom: 0.75rem;">
+              <div class="media-content">
+                <h3 class="media-title">{podcast.data.title}</h3>
+                <p class="media-meta">
                   {podcast.data.pubDate.toISOString().split('T')[0]}
                   {podcast.data.podcastName && ` • ${podcast.data.podcastName}`}
                   {podcast.data.episode && ` - Episode ${podcast.data.episode}`}
                 </p>
-                <p style="color: var(--color-text-light); font-size: 0.9375rem; line-height: 1.6; flex: 1; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">{podcast.data.description}</p>
+                <p class="media-description">{podcast.data.description}</p>
               </div>
             </a>
           ))}
@@ -280,32 +278,32 @@ const base = import.meta.env.BASE_URL;
 
   <!-- Recent Videos -->
   {recentVideos.length > 0 && (
-    <section style="padding: 4rem 0; background: var(--color-bg-secondary);">
+    <section class="recent-section section-with-bg">
       <div class="container">
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+        <div class="section-header">
           <h2>Recent Videos</h2>
-          <a href={base + "videos"}>View all →</a>
+          <a href={buildUrl("videos")} class="view-all-link">View all →</a>
         </div>
-        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.5rem;">
+        <div class="content-grid">
           {recentVideos.map((video) => (
-            <a href={video.data.videoUrl} target="_blank" rel="noopener noreferrer" class="card" style="padding: 0; overflow: hidden; display: flex; flex-direction: column; background: var(--color-bg);">
+            <a href={video.data.videoUrl} target="_blank" rel="noopener noreferrer" class="card media-card">
               {video.data.videoUrl ? (
                 <YouTubeThumbnail videoUrl={video.data.videoUrl} alt={video.data.title} thumbnail={video.data.thumbnail} />
               ) : video.data.thumbnail ? (
-                <img src={video.data.thumbnail} alt={video.data.title} style="width: 100%; height: 200px; object-fit: cover;" />
+                <img src={video.data.thumbnail} alt={video.data.title} class="media-image" />
               ) : (
-                <div style="width: 100%; height: 200px; background: var(--color-bg-secondary); display: flex; align-items: center; justify-content: center; color: var(--color-text-light);">
+                <div class="media-placeholder">
                   <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <polygon points="5 3 19 12 5 21 5 3"></polygon>
                   </svg>
                 </div>
               )}
-              <div style="padding: 1.5rem; flex: 1; display: flex; flex-direction: column;">
-                <h3 style="margin-bottom: 0.75rem; font-size: 1.125rem; line-height: 1.4;">{video.data.title}</h3>
-                <p style="color: var(--color-text-light); font-size: 0.875rem; margin-bottom: 0.75rem;">
+              <div class="media-content">
+                <h3 class="media-title">{video.data.title}</h3>
+                <p class="media-meta">
                   {video.data.pubDate.toISOString().split('T')[0]}
                 </p>
-                <p style="color: var(--color-text-light); font-size: 0.9375rem; line-height: 1.6; flex: 1; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">{video.data.description}</p>
+                <p class="media-description">{video.data.description}</p>
               </div>
             </a>
           ))}
@@ -316,28 +314,28 @@ const base = import.meta.env.BASE_URL;
 
   <!-- Recent Blog Posts -->
   {recentBlogs.length > 0 && (
-    <section style="padding: 4rem 0;">
+    <section class="recent-section">
       <div class="container">
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+        <div class="section-header">
           <h2>Recent Blog Posts</h2>
-          <a href={base + "blog"}>View all →</a>
+          <a href={buildUrl("blog")} class="view-all-link">View all →</a>
         </div>
-        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.5rem;">
+        <div class="content-grid">
           {recentBlogs.map((post) => (
-            <a href={`${base}blog/${post.slug}`} class="card" style="padding: 0; overflow: hidden; display: flex; flex-direction: column;">
+            <a href={buildUrl(`blog/${post.slug}`)} class="card media-card">
               {post.data.heroImage ? (
-                <img src={base + post.data.heroImage} alt={post.data.title} style="width: 100%; height: 200px; object-fit: cover;" />
+                <img src={buildUrl(post.data.heroImage)} alt={post.data.title} class="media-image" />
               ) : (
-                <div style="width: 100%; height: 200px; background: var(--color-bg-secondary); display: flex; align-items: center; justify-content: center; color: var(--color-text-light);">
-                  <p style="font-size: 0.875rem; padding: 1rem; text-align: center;">Add heroImage in frontmatter</p>
+                <div class="media-placeholder">
+                  <p class="placeholder-text">Add heroImage in frontmatter</p>
                 </div>
               )}
-              <div style="padding: 1.5rem; flex: 1; display: flex; flex-direction: column;">
-                <h3 style="margin-bottom: 0.75rem; font-size: 1.125rem; line-height: 1.4;">{post.data.title}</h3>
-                <p style="color: var(--color-text-light); font-size: 0.875rem; margin-bottom: 0.75rem;">
+              <div class="media-content">
+                <h3 class="media-title">{post.data.title}</h3>
+                <p class="media-meta">
                   {post.data.pubDate.toISOString().split('T')[0]}
                 </p>
-                <p style="color: var(--color-text-light); font-size: 0.9375rem; line-height: 1.6; flex: 1; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">{post.data.description}</p>
+                <p class="media-description">{post.data.description}</p>
               </div>
             </a>
           ))}

@@ -3,11 +3,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
 <BaseLayout title="About | juanalytics">
-  <section style="padding: 4rem 0;">
-    <div class="container" style="max-width: 800px;">
-      <h1 style="margin-bottom: 2rem;">About Me</h1>
+  <section class="content-section">
+    <div class="container blog-post-container">
+      <div class="content-header">
+        <h1>About Me</h1>
+      </div>
 
-      <div style="line-height: 1.8; font-size: 1.1rem;">
+      <div class="blog-post-content">
         <p>
           I'm Juan Manuel Perafan, an Analytics Engineer based in Utrecht, Netherlands.
           Born and raised in Colombia, I've been living in the Netherlands since 2011.
@@ -52,10 +54,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         </p>
 
         <div style="margin-top: 2rem; display: flex; gap: 1rem; flex-wrap: wrap;">
-          <a href="https://www.linkedin.com/in/jmperafan/" target="_blank" class="button">LinkedIn</a>
-          <a href="https://www.youtube.com/@juanalytics" target="_blank" class="button">YouTube</a>
-          <a href="https://linktr.ee/juanalytics" target="_blank" class="button">Linktree</a>
-          <a href="https://github.com/jmperafan" target="_blank" class="button">GitHub</a>
+          <a href="https://www.linkedin.com/in/jmperafan/" target="_blank" rel="noopener noreferrer" class="button">LinkedIn</a>
+          <a href="https://www.youtube.com/@juanalytics" target="_blank" rel="noopener noreferrer" class="button">YouTube</a>
+          <a href="https://linktr.ee/juanalytics" target="_blank" rel="noopener noreferrer" class="button">Linktree</a>
+          <a href="https://github.com/jmperafan" target="_blank" rel="noopener noreferrer" class="button">GitHub</a>
         </div>
       </div>
     </div>

@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /.astro/
+Disallow: /node_modules/
+Sitemap: https://juanalytics.com/sitemap-index.xml
