@@ -2,8 +2,8 @@
 import '../styles/global.css';
 import '../styles/layout.css';
 import '../styles/content.css';
-import PlausibleAnalytics from '../components/PlausibleAnalytics.astro';
 import { buildUrl } from '../utils/urlHelper';
+import OptimizedImage from '../components/OptimizedImage.astro';
 
 interface Props {
   title: string;
@@ -40,6 +40,9 @@ const imageUrl = image.startsWith("http") ? image : "https://juanalytics.com" + 
 
     <!-- Canonical URL -->
     <link rel="canonical" href={canonicalUrl} />
+
+    <!-- RSS Feed -->
+    <link rel="alternate" type="application/rss+xml" title="Juanalytics Blog RSS Feed" href={buildUrl("rss.xml")} />
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
@@ -64,7 +67,7 @@ const imageUrl = image.startsWith("http") ? image : "https://juanalytics.com" + 
     <meta property="article:author" content={author} />
     
     <!-- JSON-LD Structured Data -->
-    <script type="application/ld+json">
+    <script is:inline type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "Person",
@@ -90,17 +93,25 @@ const imageUrl = image.startsWith("http") ? image : "https://juanalytics.com" + 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-    
-    <!-- Plausible Analytics -->
-    <PlausibleAnalytics />
-    
+
     <title>{title}</title>
   </head>
   <body>
+    <!-- Skip to main content link for accessibility -->
+    <a href="#main-content" class="skip-to-content">Skip to main content</a>
+
     <header>
       <nav class="site-nav container">
         <a href={buildUrl("")} class="logo-container">
-          <img src={buildUrl("logo.png")} alt="Juanalytics Logo" class="logo-image" />
+          <OptimizedImage
+            src={buildUrl("logo.png")}
+            alt="Juanalytics Logo"
+            class="logo-image"
+            loading="eager"
+            fetchpriority="high"
+            width={200}
+            height={200}
+          />
           <span class="logo-text">Juanalytics</span>
         </a>
         <button class="mobile-menu-toggle" aria-label="Toggle menu" id="mobile-menu-toggle">
@@ -120,13 +131,68 @@ const imageUrl = image.startsWith("http") ? image : "https://juanalytics.com" + 
     </header>
 
     <script>
-      document.getElementById('mobile-menu-toggle')?.addEventListener('click', () => {
-        const navLinks = document.getElementById('nav-links');
-        navLinks?.classList.toggle('active');
+      // Mobile menu functionality
+      const menuToggle = document.getElementById('mobile-menu-toggle');
+      const navLinks = document.getElementById('nav-links');
+      const body = document.body;
+
+      function closeMobileMenu() {
+        navLinks?.classList.remove('active');
+        body.style.overflow = ''; // Re-enable scrolling
+      }
+
+      function openMobileMenu() {
+        navLinks?.classList.add('active');
+        body.style.overflow = 'hidden'; // Prevent body scroll when menu is open
+      }
+
+      // Toggle menu on button click
+      menuToggle?.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (navLinks?.classList.contains('active')) {
+          closeMobileMenu();
+        } else {
+          openMobileMenu();
+        }
+      });
+
+      // Close menu when clicking a link
+      navLinks?.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', () => {
+          closeMobileMenu();
+        });
+      });
+
+      // Close menu when clicking outside
+      document.addEventListener('click', (e) => {
+        if (navLinks?.classList.contains('active') &&
+            !navLinks.contains(e.target as Node) &&
+            !menuToggle?.contains(e.target as Node)) {
+          closeMobileMenu();
+        }
+      });
+
+      // Close menu on ESC key
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && navLinks?.classList.contains('active')) {
+          closeMobileMenu();
+          menuToggle?.focus(); // Return focus to toggle button
+        }
+      });
+
+      // Prevent menu from staying open on resize to desktop
+      let resizeTimer: number;
+      window.addEventListener('resize', () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = window.setTimeout(() => {
+          if (window.innerWidth > 768) {
+            closeMobileMenu();
+          }
+        }, 250);
       });
     </script>
 
-    <main>
+    <main id="main-content" tabindex="-1">
       <slot />
     </main>
 
@@ -134,9 +200,15 @@ const imageUrl = image.startsWith("http") ? image : "https://juanalytics.com" + 
       <div class="container footer-content">
         <p>&copy; {new Date().getFullYear()} Juan Manuel Perafan. All rights reserved.</p>
         <div class="footer-links">
-          <a href="https://www.linkedin.com/in/jmperafan/" target="_blank">LinkedIn</a>
-          <a href="https://github.com/jmperafan" target="_blank">GitHub</a>
-          <a href="https://linktr.ee/juanalytics" target="_blank">Linktree</a>
+          <a href="https://www.linkedin.com/in/jmperafan/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <a href="https://github.com/jmperafan" target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a href="https://linktr.ee/juanalytics" target="_blank" rel="noopener noreferrer">Linktree</a>
+          <a href={buildUrl("rss.xml")} title="Subscribe to RSS Feed" aria-label="Subscribe to RSS Feed">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="display: inline-block; vertical-align: middle;">
+              <path d="M6.503 20.752c0 1.794-1.456 3.248-3.251 3.248-1.796 0-3.252-1.454-3.252-3.248 0-1.794 1.456-3.248 3.252-3.248 1.795.001 3.251 1.454 3.251 3.248zm-6.503-12.572v4.811c6.05.062 10.96 4.966 11.022 11.009h4.817c-.062-8.71-7.118-15.758-15.839-15.82zm0-3.368c10.58.046 19.152 8.594 19.183 19.188h4.817c-.03-13.231-10.755-23.954-24-24v4.812z"/>
+            </svg>
+            RSS
+          </a>
         </div>
       </div>
     </footer>
