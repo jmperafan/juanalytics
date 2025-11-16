@@ -225,15 +225,6 @@ npm run build
 # The dist/ folder contains the production build
 ```
 
-### Environment Variables
-
-For local development with scripts:
-
-```bash
-# scripts/.env (gitignored)
-YOUTUBE_API_KEY=your_api_key_here
-```
-
 ## ⚡ Performance
 
 - **Lighthouse Scores**: 90+ across all categories
