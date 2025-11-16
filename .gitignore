@@ -17,22 +17,17 @@ pnpm-debug.log*
 # environment variables
 .env
 .env.production
-scripts/.env
+.env.local
 
 # macOS-specific files
 .DS_Store
 
-# jetbrains setting folders
+# IDE folders
 .idea/
-
-# python
-.venv/
-__pycache__/
-*.pyc
-
-# scripts data files (keep config.json only)
-scripts/*.json
-!scripts/config.json
+.vscode/
+*.swp
+*.swo
+*~
 
 # Claude Code directory
 .claude/
