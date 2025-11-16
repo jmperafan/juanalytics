@@ -18,6 +18,8 @@ export function getBaseUrl(): string {
  */
 export function buildUrl(path: string): string {
   const base = getBaseUrl();
-  const cleanPath = path.startsWith('/') ? path : `/${path}`;
+  // Normalize the path: remove multiple slashes and ensure single leading slash
+  const normalizedPath = path.replace(/\/+/g, '/');
+  const cleanPath = normalizedPath.startsWith('/') ? normalizedPath : `/${normalizedPath}`;
   return `${base}${cleanPath}`;
 }

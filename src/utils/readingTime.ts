@@ -34,5 +34,7 @@ export function calculateReadingTime(content: string, wordsPerMinute: number = 2
  * @returns Formatted string (e.g., "5 min read")
  */
 export function formatReadingTime(minutes: number): string {
-  return `${minutes} min read`;
+  // Ensure minimum of 1 minute
+  const displayMinutes = Math.max(1, minutes);
+  return `${displayMinutes} min read`;
 }
