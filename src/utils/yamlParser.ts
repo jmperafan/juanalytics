@@ -15,6 +15,7 @@ export interface ContentItem {
   event?: string;
   location?: string;
   publisher?: string;
+  buttonText?: string;
   extra1?: string;
   extra2?: string;
 }
@@ -41,6 +42,7 @@ interface RawContentItem {
   event?: string;
   location?: string;
   publisher?: string;
+  buttonText?: string;
   extra1?: string;
   extra2?: string;
   [key: string]: unknown;
