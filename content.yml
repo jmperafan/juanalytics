@@ -657,3 +657,14 @@ books:
   tags:
   - analytics engineering
   publisher: Packt Publishing
+  buttonText: View on Amazon
+- url: https://jmperafan.gitbook.io/meetups/
+  title: The Fine Art of Organizing Meetups
+  description: A comprehensive guide to organizing technology-focused community events,
+    covering everything from finding sponsors and securing venues to recruiting speakers
+    and hosting successful meetups.
+  date: 2023-03-01
+  thumbnail: https://placehold.co/600x400/FF6B35/FFFFFF?text=Organizing+Meetups
+  tags:
+  - community building
+  buttonText: Read on GitBook
