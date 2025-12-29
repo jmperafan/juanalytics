@@ -16,6 +16,7 @@ const books = content.books.map(book => ({
     publisher: book.extra1 || '',
     coAuthors: book.extra2 ? book.extra2.split(';').map(a => a.trim()) : [],
     tags: book.tags,
+    buttonText: book.buttonText || 'View Book',
   }
 }));
 
@@ -73,7 +74,7 @@ const allTags = books.flatMap(b => b.data.tags || []);
                   )}
                   {book.data.amazonUrl && (
                     <div style="margin-top: auto;">
-                      <span class="button" style="display: inline-block; font-size: 0.875rem; padding: 0.5rem 1rem;">View on Amazon →</span>
+                      <span class="button" style="display: inline-block; font-size: 0.875rem; padding: 0.5rem 1rem;">{book.data.buttonText} →</span>
                     </div>
                   )}
                 </div>
@@ -113,7 +114,7 @@ const allTags = books.flatMap(b => b.data.tags || []);
                 <p class="card-description">{book.data.description}</p>
                 {book.data.amazonUrl && (
                   <div style="margin-top: auto;">
-                    <span class="button" style="display: inline-block; font-size: 0.875rem; padding: 0.5rem 1rem;">View on Amazon →</span>
+                    <span class="button" style="display: inline-block; font-size: 0.875rem; padding: 0.5rem 1rem;">{book.data.buttonText} →</span>
                   </div>
                 )}
               </div>
