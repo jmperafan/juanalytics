@@ -390,6 +390,17 @@ sql_lingua_franca:
   thumbnail: https://i.ytimg.com/vi/I1tKn4ZT4No/maxresdefault.jpg
   tags: [dbt, data strategy]
 guest_appearances:
+- url: https://www.youtube.com/live/HxMIsPrIyGQ?si=uEP4fl_dtI3CSj-O
+  title: 'Foundations of Analytics Engineer Role: Skills, Scope, and Modern Practices'
+  podcast: 'DataTalksClub'
+  episode: '1'
+  date: '2026-01-06'
+  description: In this episode, we discuss the Analytics Engineer role. What it includes and how it complements data engineers, data scientists, and business teams
+  duration: '91:20'
+  thumbnail: https://i.ytimg.com/vi/HxMIsPrIyGQ/maxresdefault.jpg
+  tags:
+  - analytics engineering
+  - career development
 - url: https://youtu.be/hWAY7Ax9_RA?si=fSCbDsSw9-BCr2NB
   title: 'From Psychology to Analytics Engineering'
   podcast: 'Data Career Transformations'
