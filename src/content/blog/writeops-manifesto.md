@@ -2,7 +2,7 @@
 title: "The WriteOps Manifesto: DevOps for Writers"
 description: "Why technical writers need CI/CD pipelines, version control, and automation just as much as developers do."
 pubDate: 2026-01-07
-heroImage: 'https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=1200&h=600&fit=crop'
+heroImage: 'logo_resized.png'
 tags: ["technical writing", "writeops", "devops", "asciidocs"]
 ---
 
