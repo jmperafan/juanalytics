@@ -1,8 +1,8 @@
 ---
 title: "AsciiDoc > Markdown"
 description: "AsciiDoc is objectively better than Markdown for technical writing. Here's why you should make the switch."
-pubDate: 2025-01-06
-heroImage: 'asciidoc-vs-markdown.jpg'
+pubDate: 2026-01-06
+heroImage: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=1200&h=600&fit=crop'
 tags: ["technical writing", "asciidocs", "writeops"]
 ---
 
