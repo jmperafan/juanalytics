@@ -137,7 +137,7 @@ You can toggle entire sections on and off with build flags. Try doing that in Ma
 
 Here's where AsciiDoc really shines for professional work: you have complete control over your document's appearance.
 
-Need to create corporate documentation with your company's branding? You can build custom themes that control everything—colors, fonts, sizes, headers, footers, front covers, back covers, even the title page layout.
+Need to create corporate documentation with your company's branding? You can build custom themes that control everything. Colors, fonts, sizes, headers, footers, front covers, back covers, even the title page layout.
 
 Want your PDFs to look exactly like your official corporate templates? You can do that. The theming system is powerful enough to match any style guide, and once you've built a theme, it's reusable across all your documents.
 
