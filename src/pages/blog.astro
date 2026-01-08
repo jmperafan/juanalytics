@@ -6,7 +6,7 @@ import { getCollection } from 'astro:content';
 import { calculateReadingTime, formatReadingTime } from '../utils/readingTime';
 import { buildUrl } from '../utils/urlHelper';
 
-const blogs = (await getCollection('blog')).sort(
+const blogs = (await getCollection('blogs')).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 );
 
@@ -14,7 +14,7 @@ const blogs = (await getCollection('blog')).sort(
 const blogsWithReadingTime = await Promise.all(
   blogs.map(async (post) => {
     const { body } = post;
-    const readingTime = calculateReadingTime(body);
+    const readingTime = calculateReadingTime(body || '');
     return { ...post, readingTime };
   })
 );
@@ -36,7 +36,7 @@ const allTags = blogsWithReadingTime.flatMap(b => b.data.tags || []);
           <ContentFilter tags={allTags} gridId="blog-grid" cardClass="blog-card" />
           <div id="blog-grid" class="content-grid">
             {blogsWithReadingTime.map((post) => (
-              <a href={buildUrl(`blog/${post.slug}`)} class="card content-card blog-card" data-tags={JSON.stringify(post.data.tags || [])}>
+              <a href={buildUrl(`blog/${post.id}`)} class="card content-card blog-card" data-tags={JSON.stringify(post.data.tags || [])}>
                 {post.data.heroImage ? (
                   <OptimizedImage
                     src={buildUrl(post.data.heroImage)}

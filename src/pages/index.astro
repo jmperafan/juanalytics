@@ -11,7 +11,7 @@ import { buildUrl } from '../utils/urlHelper';
 const content = await readContentYAML();
 
 // Get blogs from Astro content collections
-const recentBlogs = (await getCollection('blog')).sort(
+const recentBlogs = (await getCollection('blogs')).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 ).slice(0, 3);
 
@@ -285,7 +285,7 @@ const recentPodcasts = content.podcasts
         </div>
         <div class="content-grid">
           {recentBlogs.map((post) => (
-            <a href={buildUrl(`blog/${post.slug}`)} class="card media-card">
+            <a href={buildUrl(`blog/${post.id}`)} class="card media-card">
               {post.data.heroImage ? (
                 <OptimizedImage
                   src={buildUrl(post.data.heroImage)}

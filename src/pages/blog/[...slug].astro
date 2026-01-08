@@ -1,23 +1,23 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollection, render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import OptimizedImage from '../../components/OptimizedImage.astro';
 import { calculateReadingTime, formatReadingTime } from '../../utils/readingTime';
 import { buildUrl } from '../../utils/urlHelper';
 
 export async function getStaticPaths() {
-  const blogs = await getCollection('blog');
+  const blogs = await getCollection('blogs');
   return blogs.map((post) => ({
-    params: { slug: post.slug },
+    params: { slug: post.id },
     props: post,
   }));
 }
 
 const post = Astro.props;
-const { Content } = await post.render();
+const { Content } = await render(post);
 
 // Calculate reading time
-const readingTime = calculateReadingTime(post.body);
+const readingTime = calculateReadingTime(post.body || '');
 
 // Prepare structured data
 const blogPostStructuredData = {
@@ -48,11 +48,11 @@ const blogPostStructuredData = {
   },
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": `https://juanalytics.com${buildUrl(`blog/${post.slug}`)}`
+    "@id": `https://juanalytics.com${buildUrl(`blog/${post.id}`)}`
   },
   "keywords": post.data.tags?.join(', ') || '',
   "articleSection": "Analytics Engineering",
-  "wordCount": post.body.split(/\s+/).length,
+  "wordCount": (post.body || '').split(/\s+/).length,
   "timeRequired": `PT${readingTime}M`
 };
 ---

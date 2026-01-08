@@ -3,7 +3,7 @@ import { getCollection } from 'astro:content';
 import type { APIContext } from 'astro';
 
 export async function GET(context: APIContext) {
-  const blog = await getCollection('blog');
+  const blog = await getCollection('blogs');
 
   return rss({
     title: 'Juanalytics Blog',
@@ -13,7 +13,7 @@ export async function GET(context: APIContext) {
       title: post.data.title,
       description: post.data.description,
       pubDate: post.data.pubDate,
-      link: `/blog/${post.slug}/`,
+      link: `/blog/${post.id}/`,
       categories: post.data.tags || [],
       author: 'Juan Manuel Perafan',
     })),
