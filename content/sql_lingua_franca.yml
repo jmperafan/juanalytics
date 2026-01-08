@@ -1,0 +1,165 @@
+sql_lingua_franca:
+- url: https://www.youtube.com/watch?v=_ElJVYsqjsw
+  title: 'Sarah Levy - Data Governance vs. AI'
+  date: '2025-06-20'
+  podcast: SQL Lingua Franca
+  episode: '16'
+  description: '
+    In this episode of SQL Lingua Franca, Sarah Levy, co-founder and CEO of Yuno,
+    discusses data model governance, semantic layers, and the parallels between data governance'
+  duration: 01:02:32
+  thumbnail: https://i.ytimg.com/vi/_ElJVYsqjsw/maxresdefault.jpg
+  tags:
+  - data governance
+  - data strategy
+  - artificial intelligence
+- url: https://www.youtube.com/watch?v=xghnemtDnto
+  title: 'Dumky de Wilde - Hot Takes Special'
+  date: '2025-01-30'
+  podcast: SQL Lingua Franca
+  episode: '15'
+  description: '
+    Hot takes special episode with Dumky de Wilde'
+  duration: 01:05:08
+  thumbnail: https://i.ytimg.com/vi/xghnemtDnto/maxresdefault.jpg
+  tags:
+  - data strategy
+- url: https://www.youtube.com/watch?v=v5VuX9az9Wo
+  title: 'Lasse Benninga - Open Source Software in Data'
+  date: '2025-01-23'
+  podcast: SQL Lingua Franca
+  episode: '14'
+  description: '
+    In this podcast episode, the host introduces Lasse, an analytics engineer from
+    Utrecht with a diverse background in software engineering and data and discusses
+    the role of open source software in the data ecosystem.'
+  duration: 01:02:50
+  thumbnail: https://i.ytimg.com/vi/v5VuX9az9Wo/maxresdefault.jpg
+  tags:
+  - programming
+  - career development
+- url: https://www.youtube.com/watch?v=7Mbeq8NQxwo
+  title: 'Guillermo Sanchez - The Evolution of Analytics Engineering'
+  date: '2024-12-11'
+  podcast: SQL Lingua Franca
+  episode: '13'
+  description: '
+    In this episode of SQL Lingua Franca, we explore the dynamic shifts in analytics
+    engineering over the past four years.'
+  duration: '59:33'
+  thumbnail: https://i.ytimg.com/vi/7Mbeq8NQxwo/maxresdefault.jpg
+  tags:
+  - analytics engineering
+  - career development
+- url: https://www.youtube.com/watch?v=1KFGmaPsqa8
+  title: 'Thomas in''t Veld - Data Maturity & The Future of
+    Analytics'
+  date: '2024-11-19'
+  podcast: SQL Lingua Franca
+  episode: '12'
+  description: '
+    In this episode of SQL Lingua Franca, Thomas shares actionable strategies for
+    helping companies advance their data maturity. '
+  duration: 01:06:03
+  thumbnail: https://i.ytimg.com/vi/1KFGmaPsqa8/maxresdefault.jpg
+  tags:
+  - data strategy
+  - data maturity
+- url: https://www.youtube.com/watch?v=7GZ0duzksaM
+  title: 'Mariam Halfhide - Responsible AI'
+  date: '2024-11-06'
+  podcast: SQL Lingua Franca
+  episode: '11'
+  description: 'In this episode, Mariam discusses the importance of responsible AI practices in today''s data-driven world. She delves into the ethical considerations and governance frameworks necessary for implementing AI solutions that are both effective and socially responsible.'
+  duration: '56:04'
+  thumbnail: https://i.ytimg.com/vi/7GZ0duzksaM/maxresdefault.jpg
+  tags:
+  - artificial intelligence
+  - data strategy
+  - data governance
+- url: https://www.youtube.com/watch?v=EMCFacR1LlY
+  title: 'Ruben Huidekoper - Analytics Engineering'
+  date: '2024-10-07'
+  podcast: SQL Lingua Franca
+  episode: '9'
+  description: 'In this episode of the SQL Lingua Franca podcast, guest Ruben Huidekoper shares
+    his journey as an analytics engineer. He talks about the broad scope of the role.'
+  duration: '54:18'
+  thumbnail: https://i.ytimg.com/vi/EMCFacR1LlY/maxresdefault.jpg
+  tags:
+  - analytics engineering
+  - career development
+- url: https://youtu.be/FelO2Zaetos?si=L0i8vg8zLJzhix8l
+  title: 'Pádraic Slattery - Mature Data Teams'
+  date: '2024-09-11'
+  podcast: SQL Lingua Franca
+  episode: '8'
+  description: 'In this episode, Padraic shares his background, starting from a degree
+    in physics and transitioning into data engineering and analytics engineering.
+    He discusses the challenges of building mature data teams.'
+  duration: '56:30'
+  thumbnail: https://i.ytimg.com/vi/FelO2Zaetos/maxresdefault.jpg
+  tags: [data strategy]
+- url: https://youtu.be/A5TOnCdsJlo?si=JdkTBgwdCp5lm9ny
+  title: 'Ksenia Iakovleva - KPIs & Django Girls'
+  date: '2024-09-01'
+  podcast: SQL Lingua Franca
+  episode: '7'
+  description: 'In this episode, Ksenia discusses her transition from journalism to data analysis
+    in the financial sector. She shares insights on defining effective KPIs'
+  duration: '54:40'
+  thumbnail: https://i.ytimg.com/vi/A5TOnCdsJlo/maxresdefault.jpg
+  tags: [data strategy, career development]
+- url: https://youtu.be/Sl5jEuxJ9G0?si=7WitYMU02KyJlWBf
+  title: 'Luuk Feitsma - Recruiting Data Professionals'
+  date: '2024-08-26'
+  podcast: SQL Lingua Franca
+  episode: '6'
+  description: 'In this episode, Luuk shares his diverse professional journey, starting in the
+    music industry as a producer and DJ before transitioning into the IT recruitment'
+  duration: '56:29'
+  thumbnail: https://i.ytimg.com/vi/Sl5jEuxJ9G0/maxresdefault.jpg
+  tags: [career development]
+- url: https://youtu.be/jaoGFMFM7zc?si=kjMKWraKttM4IKxM
+  title: 'Daniel Herrera - Product Advocacy & GenAI'
+  podcast: SQL Lingua Franca
+  episode: '4'
+  date: '2024-08-11'
+  description: 'In this episode, we explore the global data landscape with Daniel Herrera, a developer
+    and discuss why some GenAI tools succeed while others fail.'
+  duration: '49:11'
+  thumbnail: https://i.ytimg.com/vi/jaoGFMFM7zc/maxresdefault.jpg
+  tags: [artificial intelligence]
+- url: https://youtu.be/51BPZkOsmKw?si=pTMuTf3sZWsaf4u-
+  title: Tony Zeljković - Developer Experience'
+  date: '2024-07-21'
+  podcast: SQL Lingua Franca
+  episode: '3'
+  description: 'In this episode, we explore the developer experience in data engineering with
+    our guest, Tony. The conversation delves into strategie...'
+  duration: '53:31'
+  thumbnail: https://i.ytimg.com/vi/51BPZkOsmKw/maxresdefault.jpg
+  tags:
+  - programming
+- url: https://youtu.be/OV5wvvsM5z0?si=xTTNiZftsWKIkzxO
+  title: 'Ricardo Granados Lopez - Data Modeling'
+  date: '2024-07-12'
+  podcast: SQL Lingua Franca
+  episode: '2'
+  description: 
+    'In this episode, we delve into the world of data careers and analytics engineering.
+    Our guest, Ricardo Granados, shares his journey from med...'
+  duration: '56:30'
+  thumbnail: https://i.ytimg.com/vi/OV5wvvsM5z0/maxresdefault.jpg
+  tags: [data modeling, career development]
+- url: https://youtu.be/I1tKn4ZT4No?si=LVJ_ziYhscy3aSnY
+  title: 'Fanny Kassapian - Data Transformations'
+  date: '2024-07-04'
+  podcast: SQL Lingua Franca
+  episode: '1'
+  description: 
+    'In this episode, we dive into the world of data transformations. Our guest, ⁠Fanny
+    Kassapian⁠, shares insights on creating efficient, scalable, ...'
+  duration: '51:15'
+  thumbnail: https://i.ytimg.com/vi/I1tKn4ZT4No/maxresdefault.jpg
+  tags: [dbt, data strategy]

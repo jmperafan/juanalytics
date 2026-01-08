@@ -1,0 +1,226 @@
+videos:
+- url: https://www.youtube.com/watch?v=35JelBDhvnE
+  title: dbt-excel, the revolutionary dbt adapter that turns spreadsheets into data
+    warehouses
+  date: '2023-03-30'
+  description: "Welcome to dbt-excel, the revolutionary dbt adapter that combines\
+    \ the rigor of dbt with the flexibility and familiarity of Excel. Get ready to\
+    \ change the way you look at data analytics forever. \n \n..."
+  duration: 04:27
+  thumbnail: https://i.ytimg.com/vi/35JelBDhvnE/hqdefault.jpg
+  tags: [dbt, spreadsheets]
+- url: https://www.youtube.com/watch?v=gyA3xBr8tbo
+  title: The Problem with Tableau & Power BI
+  date: '2021-08-26'
+  description: I love how Tableau & Power BI are constantly pushing each other to
+    become better tools. Both of these tools come with an army of shiny features.
+    But I believe could still learn a lot from DevOps an...
+  duration: 06:44
+  thumbnail: https://i.ytimg.com/vi/gyA3xBr8tbo/maxresdefault.jpg
+  tags: [tableau, power bi, business intelligence]
+- url: https://www.youtube.com/watch?v=aBNLPaCChn8
+  title: The Problems with KPI's (Key Performance Indicators)
+  date: '2021-08-16'
+  description: KPI's are an invaluable tool to track the progress of your organization.
+    But they can be a double-edge sword and here are 3 reasons why.
+  duration: 07:40
+  thumbnail: https://i.ytimg.com/vi/aBNLPaCChn8/maxresdefault.jpg
+  tags: [data strategy]
+- url: https://www.youtube.com/watch?v=ZFXN0-pr9s4
+  title: The Problem with Open-Source Dashboarding Tools
+  date: '2021-08-08'
+  description: As soon as programmer hear about the cost of a tool like Tableau or
+    Power BI, their first instinct is to look for an open-source alternative. So far,
+    I haven't found a good one. Open-source alterna...
+  duration: 06:01
+  thumbnail: https://i.ytimg.com/vi/ZFXN0-pr9s4/maxresdefault.jpg
+  tags: [data visualization, business intelligence]
+- url: https://www.youtube.com/watch?v=rvIuheMjXzA
+  title: 'Tableau Calculation Mastery: Unpivoting & Last Date with Data'
+  date: '2021-07-13'
+  description: In this tutorial I show you how to combine two advanced formulas. The
+    first one is how to unpivot a column (turn one column into multiple) using LODs.
+    The second I show you how to calculate the las...
+  duration: '10:15'
+  thumbnail: https://i.ytimg.com/vi/rvIuheMjXzA/maxresdefault.jpg
+  tags: [tableau, business intelligence]
+- url: https://www.youtube.com/watch?v=qbbX5hRjGNc
+  title: 'Power BI Hacks: Evenly-Spaced Tables'
+  date: '2021-07-06'
+  description: Have you ever tried to evenly space the columns of a table or a matrix?
+    You know, just like in Excel. Only to find out this is not possible out of the
+    box? Well, today I share how to get it done. T...
+  duration: 03:13
+  thumbnail: https://i.ytimg.com/vi/qbbX5hRjGNc/maxresdefault.jpg
+  tags: [power bi, business intelligence, data visualization]
+- url: https://www.youtube.com/watch?v=Qo2FQxuh9Ks
+  title: 'Power Query Tips: SQL Script from Files (part 2)'
+  date: '2021-06-29'
+  description: "In the last video, I showed you how to modify your query based on\
+    \ a SQL script. Now we are taking it one step forward and turn it into a function\
+    \ that bulk loads multiple SQL scripts. \n\nIf you have..."
+  duration: 07:08
+  thumbnail: https://i.ytimg.com/vi/Qo2FQxuh9Ks/maxresdefault.jpg
+  tags: [power query, business intelligence]
+- url: https://www.youtube.com/watch?v=rVoj_wPmg7w
+  title: 'Power Query Tips: SQL Script from Files (part 1)'
+  date: '2021-06-23'
+  description: In this video, I show you how to modify your query based on a SQL script.
+    Normally, you would need to copy and paste the code any time you change the script.
+    But with some M magic, we can point Pow...
+  duration: 09:05
+  thumbnail: https://i.ytimg.com/vi/rVoj_wPmg7w/maxresdefault.jpg
+  tags: [power query, business intelligence]
+- url: https://www.youtube.com/watch?v=hGWWgwoROc8
+  title: 'Mastering Power Query: Part 5 (Jedi)'
+  date: '2021-06-15'
+  description: This is the fifth and final video in a series of Power Query tutorials.
+    In this video, I show you how to turn an M script into a reusable function. True
+    M mastery comes from making your work robust...
+  duration: 09:00
+  thumbnail: https://i.ytimg.com/vi/hGWWgwoROc8/maxresdefault.jpg
+  tags: [power query, business intelligence]
+- url: https://www.youtube.com/watch?v=tMXMEDTBAEM
+  title: 'Mastering Power Query: Part 4 (Pro)'
+  date: '2021-06-08'
+  description: This is the fourth video in a series of Power Query tutorials. In this
+    video, I show you how to use the Advanced Editor and some M language commands
+    to make your Power Query work more robust. Watch...
+  duration: 08:37
+  thumbnail: https://i.ytimg.com/vi/tMXMEDTBAEM/hqdefault.jpg
+  tags: [power query, business intelligence]
+- url: https://www.youtube.com/watch?v=V-cnwii9Rdk
+  title: 'SQL Tutorial: Using SQLFiddle'
+  date: '2021-06-08'
+  description: SQLFiddle is a great tool if you want to test your SQL scripts. It
+    is 100% web-based, you can use multiple SQL dialects, and it is easy to use. I
+    personally use it to test my scripts with values th...
+  duration: 04:14
+  thumbnail: https://i.ytimg.com/vi/V-cnwii9Rdk/maxresdefault.jpg
+  tags: [sql]
+- url: https://www.youtube.com/watch?v=4HSnBRfqk9c
+  title: 'SQL Tutorial: Working with NULL values in T-SQL'
+  date: '2021-06-08'
+  description: In this video, I walk you through a use case in which I had NULL values,
+    empty strings, and a variable number of spaces. I show you my line of reasoning
+    and walk you through the formulas I used, be...
+  duration: 09:34
+  thumbnail: https://i.ytimg.com/vi/4HSnBRfqk9c/maxresdefault.jpg
+  tags: [sql]
+- url: https://www.youtube.com/watch?v=Tp3AR7x5Jq8
+  title: 'Mastering Power Query: Part 3 (Advanced)'
+  date: '2021-06-04'
+  description: This is the third video in a series of Power Query tutorials. In this
+    video, I show you how to use the Advanced Editor and some M language commands
+    to make your Power Query work more robust.
+  duration: 08:25
+  thumbnail: https://i.ytimg.com/vi/Tp3AR7x5Jq8/hqdefault.jpg
+  tags: [power query, business intelligence]
+- url: https://www.youtube.com/watch?v=jqkVLAB49oE
+  title: 'Power Query: Using M to make your work reusable (Advanced)'
+  date: '2021-05-19'
+  description: Power Query allows us to clean data with just some clicks. But you
+    need to get your hands dirty with the M language to make your work truly re-usable.
+    In this tutorial I walk you through a real-wor...
+  duration: '14:51'
+  thumbnail: https://i.ytimg.com/vi/jqkVLAB49oE/maxresdefault.jpg
+  tags: [power query, business intelligence]
+- url: https://www.youtube.com/watch?v=4ypWcdDPsr4
+  title: How to build a Tableau portfolio?
+  date: '2021-05-11'
+  description: 'Are you looking for a Tableau job at the moment? Here are is some
+    inspiration on how to make a Tableau Portfolio using Tableau Public.'
+  duration: 07:39
+  thumbnail: https://i.ytimg.com/vi/4ypWcdDPsr4/maxresdefault.jpg
+  tags: [tableau, career development]
+- url: https://www.youtube.com/watch?v=TtgKyTvFcBE
+  title: 'Mastering Power Query: Part 2 (Intermediate)'
+  date: '2021-05-07'
+  description: This is the second video in a series of Power Query tutorials. In this
+    video, I show you some best practices and how to avoid some nasty habits like
+    renaming columns or leaving the change types in ...
+  duration: 07:53
+  thumbnail: https://i.ytimg.com/vi/TtgKyTvFcBE/maxresdefault.jpg
+  tags: [power query, business intelligence]
+- url: https://www.youtube.com/watch?v=5Ln2osFZLoA
+  title: 'Mastering Power Query: Part 1 (Beginners)'
+  date: '2021-05-03'
+  description: This is the first video in a series of Power Query tutorials. In this
+    video, I show you how to get the job done (even if it wasn't always the best way
+    possible). Watch the next videos in the series...
+  duration: 08:08
+  thumbnail: https://i.ytimg.com/vi/5Ln2osFZLoA/maxresdefault.jpg
+  tags: [power query, business intelligence]
+- url: https://www.youtube.com/watch?v=oSZe2UV0sNs
+  title: Using R script visuals in Power BI
+  date: '2021-04-25'
+  description: Power BI makes it possible to embed R and Python visuals inside of
+    your reports. Using this feature can add different levels of complexity, but it
+    can be a game changer for those visualizations tha...
+  duration: 07:17
+  thumbnail: https://i.ytimg.com/vi/oSZe2UV0sNs/maxresdefault.jpg
+  tags:
+  - power bi
+  - r
+  - business intelligence
+- url: https://www.youtube.com/watch?v=foulJr8hxmE
+  title: Sentiment Analysis with Alteryx (Using the R tool)!
+  date: '2021-04-21'
+  description: "In this video, I show how to use the R tool in Alteryx to do sentiment\
+    \ analysis. Then, we turn it into a macro so that it can be further re-used. \n\
+    \nThis is not an R tutorial and I don't explain sen..."
+  duration: '21:15'
+  thumbnail: https://i.ytimg.com/vi/foulJr8hxmE/maxresdefault.jpg
+  tags: [alteryx, r]
+- url: https://www.youtube.com/watch?v=3UpWJEhHOdI
+  title: 5 Google Sheets Tricks you might not know!
+  date: '2021-04-12'
+  description: I cannot make it personally to the XKE, so I have decided to make a
+    video as a replacement for my talk. I hope you can learn one thing or two from
+    this video.
+  duration: 05:02
+  thumbnail: https://i.ytimg.com/vi/3UpWJEhHOdI/maxresdefault.jpg
+  tags: [spreadsheets]
+- url: https://www.youtube.com/watch?v=rhi2KChl2Gw
+  title: 'Tableau Calculation Mastery: 3 Ways to Split Columns'
+  date: '2019-11-01'
+  description: 'In this video I show you how to split a column in Tableau using 3
+    methods: 1) The easy way with Split 2) The Excel way with Find, Len, Left, and
+    Right 3) The hard way with Regular Expressions'
+  duration: '19:26'
+  thumbnail: https://i.ytimg.com/vi/rhi2KChl2Gw/maxresdefault.jpg
+  tags: [tableau, business intelligence]
+- url: https://www.youtube.com/watch?v=nmfsoncAK3M
+  title: Using Google Sheets to Scrape Web data
+  date: '2019-11-01'
+  description: This video teaches you how to use the =IMPORTHTML() formula from Google
+    Sheets to extract data from a website.
+  duration: 04:57
+  thumbnail: https://i.ytimg.com/vi/nmfsoncAK3M/maxresdefault.jpg
+  tags: [spreadsheets]
+- url: https://www.youtube.com/watch?v=E1pOuSccfYY
+  title: 'Tableau Fun: Using Unicode characters instead of Custom Shapes'
+  date: '2019-10-23'
+  description: If your two axes are occupied, you can also use Unicode characters
+    in your calculations as if they were custom shapes.
+  duration: 04:51
+  thumbnail: https://i.ytimg.com/vi/E1pOuSccfYY/maxresdefault.jpg
+  tags: [tableau, data visualization, business intelligence]
+- url: https://www.youtube.com/watch?v=1VgE-DvfjFs
+  title: Excel-like Absolute Reference in Tableau
+  date: '2019-10-19'
+  description: When Excel users start learning Tableau, they are always curious about
+    how to calculate an absolute reference. In Tableau and in SQL, this is a bit more
+    difficult, but it is also possible. This tut...
+  duration: 08:25
+  thumbnail: https://i.ytimg.com/vi/1VgE-DvfjFs/maxresdefault.jpg
+  tags: [tableau, business intelligence]
+- url: https://www.youtube.com/watch?v=oxDMC8jAMFY
+  title: 'Tableau Time Series: How many in a certain moment?'
+  date: '2019-10-19'
+  description: "How many members did the club have at a certain moment in time? The\
+    \ answer to this question is not as straightforward as you might think. In this\
+    \ video, I show you a solution to this problem. \n\nIn ..."
+  duration: 06:03
+  thumbnail: https://i.ytimg.com/vi/oxDMC8jAMFY/maxresdefault.jpg
+  tags: [tableau, business intelligence]

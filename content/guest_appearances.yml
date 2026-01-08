@@ -1,0 +1,92 @@
+guest_appearances:
+- url: https://www.youtube.com/live/HxMIsPrIyGQ?si=uEP4fl_dtI3CSj-O
+  title: 'Foundations of Analytics Engineer Role: Skills, Scope, and Modern Practices'
+  podcast: 'DataTalksClub'
+  episode: '1'
+  date: '2026-01-06'
+  description: In this episode, we discuss the Analytics Engineer role. What it includes and how it complements data engineers, data scientists, and business teams
+  duration: '91:20'
+  thumbnail: https://i.ytimg.com/vi/HxMIsPrIyGQ/maxresdefault.jpg
+  tags:
+  - analytics engineering
+  - career development
+- url: https://youtu.be/hWAY7Ax9_RA?si=fSCbDsSw9-BCr2NB
+  title: 'From Psychology to Analytics Engineering'
+  podcast: 'Data Career Transformations'
+  episode: '17'
+  date: '2025-06-06'
+  description: In this episode, Bolaji interviews Juan Manuel Perafan, a psychology major turned analytics engineer, who shares his journey from Colombia to the Netherlands and his transition into the data field. 
+  duration: '44:18'
+  thumbnail: https://i.ytimg.com/vi/hWAY7Ax9_RA/maxresdefault.jpg
+  tags:
+  - analytics engineering
+  - career development
+- url: https://open.spotify.com/episode/5nVGfUMqdNarBKUuBEPs8c?si=GzsBLny0QkKPfUKOEjLcng
+  title: 'Decifra lo que tu cliente quiere: Pongámosle datos al Marketing'
+  episode: '18'
+  podcast: 'La Nueva Generación Marketera'
+  date: '2024-10-09'
+  description: 'En este episodio, Juan Manuel Perafan, Analytics Engineer en Xebia,
+    comparte su experiencia en el mundo de los datos y cómo estos pueden transformar
+    las estrategias de marketing.'
+  duration: '29:08'
+  thumbnail: https://i.scdn.co/image/ab6765630000ba8aba7030a85c06e640687fda28
+  tags:
+  - marketing
+  - career development
+- url: https://youtu.be/ee-ZSxsdJCA?si=Xv2l0x0SgHF0vcTb
+  title: 'From Psychology to Analytics'
+  episode: '6'
+  podcast: 'Vibe IT Up'
+  date: '2023-12-31'
+  description: 'In this episode we have, Juan Manual Perafan, Analytics Engineer at Xebia who has more than 15 years of experience in the world of IT. We dive into his epic tech journey and learn about how he links Psychology with Tech.'
+  duration: '53:19'
+  thumbnail: https://i.ytimg.com/vi/ee-ZSxsdJCA/maxresdefault.jpg
+  tags:
+  - analytics engineering
+  - career development
+- url: https://www.youtube.com/watch?v=TLv3B9dSoVU
+  title: Data Democratization
+  date: '2022-01-19'
+  description: Embracing analytics throughout an organization can fuel innovation,
+    business agility, and growth, making data integral to many modern business strategies.
+  duration: '51:29'
+  thumbnail: https://i.ytimg.com/vi/TLv3B9dSoVU/hqdefault.jpg
+  tags: ['data strategy']
+- url: https://youtu.be/TSyDOcTuZig?si=OYQb_9CuEwGJeuuD
+  title: 'Always taking the extra step'
+  podcast: 'Beyond Coding'
+  episode: '17'
+  date: '2021-09-08'
+  description: There's always someone who's taking the extra step to get where they
+    want to go. And @juanalytics is that someone. He's been doing public speaking
+    for 5 years.
+  duration: '57:42'
+  thumbnail: https://i.ytimg.com/vi/TSyDOcTuZig/maxresdefault.jpg
+  tags: [career development]
+- url: https://www.youtube.com/watch?v=C7ykn5_tVGw
+  title: Data Governance for Analytics Engineering
+  podcast: Select Star
+  date: '2024-03-29'
+  description: Join Juan Manuel Perafan, Analytics Engineer at Xebia and Shinji Kim, Founder and CEO at Select Star, to discuss the fundamentals of analytics engineering and data governance that all analytics engineering teams need to consider.
+  thumbnail: https://i.ytimg.com/vi/C7ykn5_tVGw/maxresdefault.jpg
+  tags: ['analytics engineering', 'data governance']
+- url: https://www.dataengineeringpodcast.com/episodepage/exploring-the-design-and-benefits-of-the-modern-data-stack
+  title: Exploring The Design And Benefits Of The Modern Data Stack
+  podcast: Data Engineering Podcast
+  episode: '203' 
+  date: '2021-07-13'
+  duration: '49:02'
+  description: 'In this episode members of the GoDataDriven team, Guillermo Sanchez, Bram Ochsendorf, and Juan Perafan, explain the combinations of services that comprise this architecture, share their experiences working with clients to employ the stack, and the benefits of bringing engineers and business users together with data.'
+  thumbnail: https://assets.podhome.fm/f6ff0caa-931b-4c08-bfdd-08dc7f5cd336/638557928872209534cover.jpg?1855996031
+  tags: ['data engineering', 'modern data stack']
+- url: https://www.tableau.com/nl-nl/learn/webinars/versnel-je-data-en-haal-poleposition-met-tableau
+  title: Versnel je data en haal poleposition met Tableau
+  date: '2018-08-15'
+  duration: '27:52'
+  description: Dutch webinar - discover how Tableau transforms Formula 1 data into
+    powerful visualisations and race-winning insights.
+  thumbnail: https://www.tableau.com/sites/default/files/hero-backgrounds/1366x455_web_summerofsports_967604_1_0.jpg
+  tags:
+  - tableau
+  - data analysis

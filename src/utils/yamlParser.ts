@@ -59,29 +59,43 @@ interface RawYAMLData {
 }
 
 /**
- * Read YAML file from file system
- * @throws Error if YAML file cannot be read or parsed
+ * Read multiple YAML files from the content directory
+ * @throws Error if YAML files cannot be read or parsed
  */
-export async function readContentYAML(filePath: string = './content.yml'): Promise<ParsedContent> {
+export async function readContentYAML(): Promise<ParsedContent> {
   try {
     const fs = await import('fs');
     const path = await import('path');
     const yaml = await import('yaml');
 
-    // Resolve path from project root
-    // In Astro builds, process.cwd() points to the project root
-    const yamlPath = path.resolve(process.cwd(), filePath);
+    const contentDir = path.resolve(process.cwd(), './content');
 
-    if (!fs.existsSync(yamlPath)) {
-      throw new Error(`YAML file not found at ${yamlPath}`);
-    }
+    // Helper function to read and parse a YAML file
+    const readYAMLFile = (filename: string): RawContentItem[] => {
+      const filePath = path.join(contentDir, filename);
+      if (!fs.existsSync(filePath)) {
+        console.warn(`⚠️  YAML file not found: ${filePath}`);
+        return [];
+      }
+      const yamlContent = fs.readFileSync(filePath, 'utf-8');
+      const data = yaml.parse(yamlContent);
 
-    const yamlContent = fs.readFileSync(yamlPath, 'utf-8');
-    const data = yaml.parse(yamlContent) as RawYAMLData;
+      // Handle files with top-level keys (like videos: [...])
+      if (data && typeof data === 'object') {
+        // Get the first key's value if it's an array
+        const firstKey = Object.keys(data)[0];
+        if (firstKey && Array.isArray(data[firstKey])) {
+          return data[firstKey];
+        }
+      }
 
-    if (!data || typeof data !== 'object') {
-      throw new Error('Invalid YAML structure: expected an object');
-    }
+      // If it's already an array, return it
+      if (Array.isArray(data)) {
+        return data;
+      }
+
+      return [];
+    };
 
     // Process and sort each content type
     const processItems = (items: RawContentItem[]): ContentItem[] => {
@@ -94,16 +108,21 @@ export async function readContentYAML(filePath: string = './content.yml'): Promi
         .sort((a, b) => b.date.getTime() - a.date.getTime());
     };
 
-    // Merge sql_lingua_franca and guest_appearances into podcasts for backward compatibility
-    const sqlLinguaFranca = data.sql_lingua_franca || [];
-    const guestAppearances = data.guest_appearances || [];
+    // Read each content file
+    const videos = readYAMLFile('videos.yml');
+    const sqlLinguaFranca = readYAMLFile('sql_lingua_franca.yml');
+    const guestAppearances = readYAMLFile('guest_appearances.yml');
+    const talks = readYAMLFile('talks.yml');
+    const books = readYAMLFile('books.yml');
+
+    // Merge podcasts (SQL Lingua Franca + guest appearances)
     const allPodcasts = [...sqlLinguaFranca, ...guestAppearances];
 
     return {
-      videos: processItems(data.videos || []),
+      videos: processItems(videos),
       podcasts: processItems(allPodcasts),
-      talks: processItems(data.talks || []),
-      books: processItems(data.books || []),
+      talks: processItems(talks),
+      books: processItems(books),
     };
   } catch (error) {
     const errorMessage = error instanceof Error ? error.message : 'Unknown error';
