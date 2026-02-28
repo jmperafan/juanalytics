@@ -1,0 +1,68 @@
+courses:
+- slug: analytics-engineering-fundamentals
+  price: 97
+  originalPrice: 197
+  level: beginner
+  status: coming_soon
+  thumbnail: ""
+  tags:
+  - dbt
+  - SQL
+  - Analytics Engineering
+  featured: true
+  duration: 8 hours
+  lessons: 32
+  highlights:
+  - Master dbt from scratch to production
+  - Build maintainable, well-tested data models
+  - Write documentation your team will actually read
+  - Set up CI/CD for your analytics workflow
+  - Apply real-world patterns from top data teams
+  en:
+    title: Analytics Engineering Fundamentals
+    subtitle: Go from SQL basics to production-ready data pipelines with dbt
+    description: A step-by-step course that teaches you the full analytics engineering
+      workflow — from writing your first dbt model to deploying tested, documented
+      data pipelines your team can trust. No prior dbt experience required.
+    buyUrl: "#"
+  es:
+    title: Fundamentos de Analytics Engineering
+    subtitle: De SQL básico a pipelines de datos listos para producción con dbt
+    description: Un curso paso a paso que te enseña el flujo completo de analytics
+      engineering — desde tu primer modelo en dbt hasta desplegar pipelines probados
+      y documentados en los que tu equipo puede confiar. Sin experiencia previa en dbt.
+    buyUrl: "#"
+
+- slug: advanced-dbt-patterns
+  price: 147
+  originalPrice: 247
+  level: advanced
+  status: coming_soon
+  thumbnail: ""
+  tags:
+  - dbt
+  - Analytics Engineering
+  - Data Modeling
+  featured: false
+  duration: 6 hours
+  lessons: 24
+  highlights:
+  - Build reusable macros and dbt packages
+  - Master incremental models for large datasets
+  - Design scalable project structures
+  - Implement advanced testing strategies
+  - Integrate dbt with orchestration tools
+  en:
+    title: Advanced dbt Patterns
+    subtitle: Take your dbt skills to the next level with enterprise-grade techniques
+    description: Designed for analytics engineers who already know dbt basics and
+      want to master advanced patterns — macros, packages, incremental models, and
+      project structures that scale to thousands of models.
+    buyUrl: "#"
+  es:
+    title: Patrones Avanzados de dbt
+    subtitle: Lleva tus habilidades de dbt al siguiente nivel con técnicas de nivel empresarial
+    description: Diseñado para analytics engineers que ya conocen los fundamentos
+      de dbt y quieren dominar patrones avanzados — macros, paquetes, modelos
+      incrementales y estructuras de proyectos que escalan a miles de modelos.
+    buyUrl: "#"

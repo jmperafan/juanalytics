@@ -10,6 +10,14 @@ import { buildUrl } from '../utils/urlHelper';
 // Get content from YAML (videos and podcasts)
 const content = await readContentYAML();
 
+// Get courses from YAML
+const fsModule = await import('fs');
+const pathModule = await import('path');
+const yamlModule = await import('yaml');
+const coursesFilePath = pathModule.resolve(process.cwd(), './content/courses.yml');
+const coursesRaw = yamlModule.parse(fsModule.readFileSync(coursesFilePath, 'utf-8'));
+const featuredCourses = (coursesRaw.courses || []).slice(0, 2);
+
 // Get blogs from Astro content collections
 const recentBlogs = (await getCollection('blogs')).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
@@ -207,6 +215,55 @@ const recentPodcasts = content.podcasts
     </div>
   </section>
 
+  <!-- Courses Promo Section -->
+  {featuredCourses.length > 0 && (
+    <section class="courses-promo-section">
+      <div class="container hero-max-width">
+
+        <!-- Top row: headline left, CTA right -->
+        <div class="courses-promo-top">
+          <div class="courses-promo-text">
+            <p class="courses-promo-label">Also, I create courses.</p>
+            <h2 class="courses-promo-headline">
+              Practical training that gets you<br />from theory to production.
+            </h2>
+          </div>
+          <a href={buildUrl("courses")} class="courses-promo-cta">
+            See All My Courses →
+          </a>
+        </div>
+
+        <!-- Featured course row -->
+        <div class="courses-promo-featured">
+          <p class="featured-label">My most popular course:</p>
+          <a href={buildUrl(`courses/${featuredCourses[0].slug}`)} class="featured-course-card">
+            <div class="featured-course-thumbnail">
+              {featuredCourses[0].thumbnail ? (
+                <img src={featuredCourses[0].thumbnail} alt={featuredCourses[0].title} />
+              ) : (
+                <div class="featured-thumbnail-placeholder">
+                  <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M12 14l9-5-9-5-9 5 9 5z"/>
+                    <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/>
+                  </svg>
+                </div>
+              )}
+              {featuredCourses[0].status === 'coming_soon' && (
+                <span class="promo-status-badge">Coming Soon</span>
+              )}
+            </div>
+            <div class="featured-course-info">
+              <h3 class="featured-course-title">{featuredCourses[0].title}</h3>
+              <p class="featured-course-subtitle">{featuredCourses[0].subtitle}</p>
+              <span class="featured-learn-more">Learn More →</span>
+            </div>
+          </a>
+        </div>
+
+      </div>
+    </section>
+  )}
+
   <!-- Recent Podcasts (Guest Appearances) -->
   {recentPodcasts.length > 0 && (
     <section class="recent-section">
@@ -312,3 +369,183 @@ const recentPodcasts = content.podcasts
     </section>
   )}
 </BaseLayout>
+
+<style>
+  /* Courses Promo Section */
+  .courses-promo-section {
+    padding: 5rem 0;
+    background: var(--color-bg-secondary);
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  /* Top row: headline + CTA button */
+  .courses-promo-top {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 2rem;
+    margin-bottom: 3rem;
+  }
+
+  .courses-promo-label {
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: var(--color-accent);
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    margin-bottom: 0.875rem;
+  }
+
+  .courses-promo-headline {
+    font-size: 2.25rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin: 0;
+    letter-spacing: -0.02em;
+    color: var(--color-text);
+  }
+
+  .courses-promo-cta {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    padding: 1rem 2rem;
+    background: var(--color-primary);
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 1rem;
+    white-space: nowrap;
+    transition: background 0.2s;
+  }
+
+  .courses-promo-cta:hover {
+    background: #1d4ed8;
+    opacity: 1;
+  }
+
+  /* Featured course row */
+  .courses-promo-featured {
+    border-top: 1px solid var(--color-border);
+    padding-top: 2rem;
+  }
+
+  .featured-label {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-text-light);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 1.25rem;
+  }
+
+  .featured-course-card {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 2rem;
+    align-items: center;
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+
+  .featured-course-card:hover {
+    border-color: var(--color-primary);
+    box-shadow: 0 8px 32px rgba(37, 99, 235, 0.1);
+  }
+
+  .featured-course-thumbnail {
+    position: relative;
+    height: 180px;
+    background: var(--color-bg-secondary);
+    overflow: hidden;
+  }
+
+  .featured-course-thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .featured-thumbnail-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-light);
+    background: linear-gradient(135deg, var(--color-bg) 0%, var(--color-bg-secondary) 100%);
+  }
+
+  .promo-status-badge {
+    position: absolute;
+    top: 0.625rem;
+    right: 0.625rem;
+    background: var(--color-accent);
+    color: #0f172a;
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 0.2rem 0.5rem;
+    border-radius: 999px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  .featured-course-info {
+    padding: 1.5rem 1.5rem 1.5rem 0;
+  }
+
+  .featured-course-title {
+    font-size: 1.375rem;
+    font-weight: 700;
+    margin-bottom: 0.625rem;
+    color: var(--color-text);
+    line-height: 1.3;
+  }
+
+  .featured-course-subtitle {
+    font-size: 0.9375rem;
+    color: var(--color-text-light);
+    line-height: 1.6;
+    margin-bottom: 1.25rem;
+  }
+
+  .featured-learn-more {
+    font-size: 0.9375rem;
+    font-weight: 700;
+    color: var(--color-primary);
+  }
+
+  .featured-course-card:hover .featured-learn-more {
+    text-decoration: underline;
+  }
+
+  @media (max-width: 900px) {
+    .courses-promo-top {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .courses-promo-headline {
+      font-size: 1.75rem;
+    }
+
+    .featured-course-card {
+      grid-template-columns: 1fr;
+    }
+
+    .featured-course-thumbnail {
+      height: 200px;
+    }
+
+    .featured-course-info {
+      padding: 1.25rem;
+    }
+  }
+</style>

@@ -1,0 +1,540 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { buildUrl } from '../../utils/urlHelper';
+
+interface CourseLocale {
+  title: string;
+  subtitle?: string;
+  description: string;
+  buyUrl?: string;
+}
+
+interface Course {
+  slug: string;
+  thumbnail?: string;
+  price: number;
+  originalPrice?: number;
+  status: 'available' | 'coming_soon';
+  tags?: string[];
+  featured?: boolean;
+  highlights?: string[];
+  level?: string;
+  duration?: string;
+  lessons?: number;
+  en?: CourseLocale;
+  es?: CourseLocale;
+}
+
+export async function getStaticPaths() {
+  const fs = await import('fs');
+  const path = await import('path');
+  const yaml = await import('yaml');
+
+  const filePath = path.resolve(process.cwd(), './content/courses.yml');
+  const rawData = yaml.parse(fs.readFileSync(filePath, 'utf-8'));
+  const courses: any[] = rawData.courses || [];
+
+  // Generate one path per language version
+  const paths: any[] = [];
+  for (const course of courses) {
+    if (course.en) paths.push({ params: { slug: `${course.slug}-en` }, props: { course, lang: 'en' } });
+    if (course.es) paths.push({ params: { slug: `${course.slug}-es` }, props: { course, lang: 'es' } });
+  }
+  return paths;
+}
+
+const { course, lang } = Astro.props as { course: Course; lang: 'en' | 'es' };
+const locale = lang === 'es' ? course.es! : course.en!;
+const otherLang = lang === 'en' ? 'es' : 'en';
+const otherLocale = lang === 'en' ? course.es : course.en;
+
+const levelLabels: Record<string, string> = {
+  beginner: 'Beginner',
+  intermediate: 'Intermediate',
+  advanced: 'Advanced',
+};
+
+const isAvailable = course.status === 'available';
+---
+
+<BaseLayout
+  title={`${locale.title} | juanalytics`}
+  description={locale.description}
+>
+  <section class="course-hero">
+    <div class="container">
+      <div class="course-hero-inner">
+        <div class="course-hero-content">
+          <div class="course-hero-meta">
+            <span class="course-lang-badge">
+              {lang === 'en' ? '🇺🇸 English' : '🇪🇸 Español'}
+            </span>
+            {course.level && (
+              <span class={`course-level level-${course.level}`}>
+                {levelLabels[course.level] || course.level}
+              </span>
+            )}
+            {course.status === 'coming_soon' && (
+              <span class="status-badge">Coming Soon</span>
+            )}
+            {otherLocale && (
+              <a href={buildUrl(`courses/${course.slug}-${otherLang}`)} class="lang-switch-link">
+                {otherLang === 'en' ? '🇺🇸 Ver en inglés' : '🇪🇸 Ver en español'}
+              </a>
+            )}
+          </div>
+          <h1 class="course-hero-title">{locale.title}</h1>
+          <p class="course-hero-subtitle">{locale.subtitle}</p>
+          <p class="course-hero-description">{locale.description}</p>
+
+          <div class="course-stats">
+            {course.lessons && (
+              <div class="stat">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M9 11l3 3L22 4"/>
+                  <path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/>
+                </svg>
+                {course.lessons} lessons
+              </div>
+            )}
+            {course.duration && (
+              <div class="stat">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"/>
+                  <polyline points="12 6 12 12 16 14"/>
+                </svg>
+                {course.duration}
+              </div>
+            )}
+            {course.level && (
+              <div class="stat">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+                </svg>
+                {levelLabels[course.level] || course.level}
+              </div>
+            )}
+          </div>
+        </div>
+
+        <div class="course-pricing-card">
+          <div class="pricing-card-thumbnail">
+            {course.thumbnail ? (
+              <img src={course.thumbnail} alt={locale.title} />
+            ) : (
+              <div class="pricing-thumbnail-placeholder">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <path d="M12 14l9-5-9-5-9 5 9 5z"/>
+                  <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/>
+                </svg>
+              </div>
+            )}
+          </div>
+          <div class="pricing-card-body">
+            <div class="pricing-row">
+              {course.originalPrice && (
+                <span class="price-original">${course.originalPrice}</span>
+              )}
+              <span class="price-current">${course.price}</span>
+            </div>
+            {isAvailable ? (
+              <a href={locale.buyUrl || '#'} class="enroll-button" target="_blank" rel="noopener noreferrer">
+                Enroll Now →
+              </a>
+            ) : (
+              <button class="enroll-button coming-soon-btn" disabled>
+                Coming Soon
+              </button>
+            )}
+            <p class="pricing-note">
+              {isAvailable
+                ? '30-day money-back guarantee. No questions asked.'
+                : 'Join the waitlist to be notified when this course launches.'}
+            </p>
+            <ul class="pricing-includes">
+              {course.lessons && <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>{course.lessons} lessons</li>}
+              {course.duration && <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>{course.duration} of content</li>}
+              <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Lifetime access</li>
+              <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Certificate of completion</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {course.highlights && course.highlights.length > 0 && (
+    <section class="course-learn-section">
+      <div class="container course-learn-inner">
+        <h2>What you'll learn</h2>
+        <ul class="learn-grid">
+          {course.highlights.map((h: string) => (
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+              {h}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  )}
+
+  <section class="course-bottom-cta">
+    <div class="container">
+      <h2>Ready to level up your analytics engineering skills?</h2>
+      <p>Join professionals learning with Juan Manuel Perafan.</p>
+      <div class="bottom-cta-price">
+        {course.originalPrice && <span class="price-original">${course.originalPrice}</span>}
+        <span class="price-current">${course.price}</span>
+      </div>
+      {isAvailable ? (
+        <a href={locale.buyUrl || '#'} class="enroll-button" target="_blank" rel="noopener noreferrer">
+          Enroll Now →
+        </a>
+      ) : (
+        <button class="enroll-button coming-soon-btn" disabled>
+          Coming Soon — Join the Waitlist
+        </button>
+      )}
+    </div>
+  </section>
+
+  <div class="back-link-wrapper">
+    <div class="container">
+      <a href={buildUrl('courses')} class="back-link">← Back to all courses</a>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  /* Hero */
+  .course-hero {
+    padding: 4rem 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .course-hero-inner {
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .course-hero-meta {
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+
+  .course-lang-badge {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    padding: 0.25rem 0.75rem;
+    border-radius: 999px;
+    border: 1px solid var(--color-border);
+    color: var(--color-text-light);
+    background: var(--color-bg-secondary);
+  }
+
+  .lang-switch-link {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    text-decoration: none;
+    padding: 0.25rem 0.625rem;
+    border-radius: 999px;
+    border: 1px solid var(--color-primary);
+    transition: background 0.15s, color 0.15s;
+  }
+
+  .lang-switch-link:hover {
+    background: var(--color-primary);
+    color: white;
+  }
+
+  .course-level {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0.2rem 0.6rem;
+    border-radius: 999px;
+  }
+
+  .level-beginner { background: rgba(16, 185, 129, 0.15); color: #10b981; }
+  .level-intermediate { background: rgba(245, 158, 11, 0.15); color: #f59e0b; }
+  .level-advanced { background: rgba(239, 68, 68, 0.15); color: #ef4444; }
+
+  .status-badge {
+    background: var(--color-accent);
+    color: #0f172a;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 0.2rem 0.6rem;
+    border-radius: 999px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  .course-hero-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 0.75rem;
+    letter-spacing: -0.02em;
+  }
+
+  .course-hero-subtitle {
+    font-size: 1.25rem;
+    color: var(--color-text-light);
+    margin-bottom: 1rem;
+    line-height: 1.5;
+  }
+
+  .course-hero-description {
+    font-size: 1rem;
+    color: var(--color-text-light);
+    line-height: 1.7;
+    margin-bottom: 2rem;
+  }
+
+  .course-stats {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .stat {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.9375rem;
+    color: var(--color-text-light);
+  }
+
+  .stat svg {
+    color: var(--color-primary);
+    flex-shrink: 0;
+  }
+
+  /* Pricing Card */
+  .course-pricing-card {
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    overflow: hidden;
+    position: sticky;
+    top: 2rem;
+  }
+
+  .pricing-card-thumbnail {
+    width: 100%;
+    height: 180px;
+    background: var(--color-bg);
+    overflow: hidden;
+  }
+
+  .pricing-card-thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .pricing-thumbnail-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-light);
+    background: linear-gradient(135deg, var(--color-bg) 0%, var(--color-bg-secondary) 100%);
+  }
+
+  .pricing-card-body {
+    padding: 1.5rem;
+  }
+
+  .pricing-row {
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .price-original {
+    font-size: 1.125rem;
+    color: var(--color-text-light);
+    text-decoration: line-through;
+  }
+
+  .price-current {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color-text);
+  }
+
+  .enroll-button {
+    display: block;
+    width: 100%;
+    padding: 0.875rem 1.5rem;
+    background: var(--color-primary);
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  .enroll-button:hover:not(:disabled) {
+    background: #1d4ed8;
+  }
+
+  .enroll-button.coming-soon-btn {
+    background: var(--color-bg);
+    color: var(--color-text-light);
+    border: 1px solid var(--color-border);
+    cursor: not-allowed;
+  }
+
+  .pricing-note {
+    font-size: 0.8125rem;
+    color: var(--color-text-light);
+    text-align: center;
+    margin: 0.875rem 0 1.25rem;
+    line-height: 1.5;
+  }
+
+  .pricing-includes {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    border-top: 1px solid var(--color-border);
+    padding-top: 1.25rem;
+  }
+
+  .pricing-includes li {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    color: var(--color-text-light);
+  }
+
+  .pricing-includes li svg {
+    color: var(--color-primary);
+    flex-shrink: 0;
+  }
+
+  /* What you'll learn */
+  .course-learn-section {
+    padding: 4rem 0;
+    background: var(--color-bg-secondary);
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .course-learn-inner h2 {
+    font-size: 1.75rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .learn-grid {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.875rem;
+  }
+
+  .learn-grid li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.625rem;
+    font-size: 0.9375rem;
+    color: var(--color-text-light);
+    line-height: 1.5;
+  }
+
+  .learn-grid li svg {
+    color: var(--color-primary);
+    flex-shrink: 0;
+    margin-top: 3px;
+  }
+
+  /* Bottom CTA */
+  .course-bottom-cta {
+    padding: 4rem 0;
+    text-align: center;
+  }
+
+  .course-bottom-cta h2 {
+    font-size: 1.75rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .course-bottom-cta p {
+    color: var(--color-text-light);
+    margin-bottom: 1.5rem;
+  }
+
+  .bottom-cta-price {
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+    justify-content: center;
+    margin-bottom: 1.25rem;
+  }
+
+  .course-bottom-cta .enroll-button {
+    display: inline-block;
+    width: auto;
+    padding: 0.875rem 2.5rem;
+  }
+
+  /* Back link */
+  .back-link-wrapper {
+    padding: 0 0 3rem;
+  }
+
+  .back-link {
+    color: var(--color-primary);
+    text-decoration: none;
+    font-size: 0.9375rem;
+  }
+
+  .back-link:hover {
+    text-decoration: underline;
+  }
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    .course-hero-inner {
+      grid-template-columns: 1fr;
+    }
+
+    .course-pricing-card {
+      position: static;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .course-hero-title {
+      font-size: 1.875rem;
+    }
+
+    .learn-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

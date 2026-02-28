@@ -36,6 +36,18 @@
   font-weight: 500;
 }
 
+.nav-links .nav-courses-link {
+  background: var(--color-accent);
+  color: #0f172a;
+  padding: 0.375rem 0.875rem;
+  border-radius: 6px;
+  font-weight: 700;
+}
+
+.nav-links .nav-courses-link:hover {
+  opacity: 0.9;
+}
+
 /* Hero Section */
 .hero-section {
   padding: 5rem 0 4rem;
