@@ -75,32 +75,14 @@ const recentPodcasts = content.podcasts
           <p class="hero-description">
             Welcome to my portfolio of content: talks, videos, podcasts, and blog posts. I specialize in:
           </p>
-          <ul class="specialty-list">
-            <li class="specialty-list-item">
-              <Icon name="check" class="specialty-icon" />
-              Analytics Engineering
-            </li>
-            <li class="specialty-list-item">
-              <Icon name="check" class="specialty-icon" />
-              dbt
-            </li>
-            <li class="specialty-list-item">
-              <Icon name="check" class="specialty-icon" />
-              Data Modeling
-            </li>
-            <li class="specialty-list-item">
-              <Icon name="check" class="specialty-icon" />
-              SQL
-            </li>
-            <li class="specialty-list-item">
-              <Icon name="check" class="specialty-icon" />
-              Data Visualization
-            </li>
-            <li class="specialty-list-item">
-              <Icon name="check" class="specialty-icon" />
-              Data Governance
-            </li>
-          </ul>
+          <div class="specialty-tags">
+            <span class="specialty-tag">Analytics Engineering</span>
+            <span class="specialty-tag">dbt</span>
+            <span class="specialty-tag">Data Modeling</span>
+            <span class="specialty-tag">SQL</span>
+            <span class="specialty-tag">Data Visualization</span>
+            <span class="specialty-tag">Data Governance</span>
+          </div>
         </div>
       </div>
     </div>
@@ -212,7 +194,7 @@ const recentPodcasts = content.podcasts
     <section class="recent-section">
       <div class="container">
         <div class="section-header">
-          <h2>Recent Podcast Guest Appearances</h2>
+          <h2>Podcast Appearances</h2>
           <a href={buildUrl("podcasts")} class="view-all-link">View all →</a>
         </div>
         <div class="content-grid">

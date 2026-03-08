@@ -138,8 +138,8 @@ img {
 
 .card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
-  border-color: #d1d5db;
+  box-shadow: 0 4px 20px rgba(37, 99, 235, 0.15);
+  border-color: var(--color-primary);
 }
 
 /* Mobile Responsive Styles */
@@ -171,68 +171,6 @@ img {
     padding: 1.25rem;
   }
 
-  /* Hero section responsive */
-  section > .container > div[style*="display: flex"] {
-    flex-direction: column !important;
-    align-items: center !important;
-    text-align: center;
-  }
-
-  section > .container > div > div[style*="min-width: 400px"] {
-    min-width: 100% !important;
-  }
-
-  /* Center profile image and make it bigger on mobile */
-  section > .container > div > div[style*="flex-shrink: 0"] {
-    display: flex;
-    justify-content: center;
-  }
-
-  section > .container > div > div[style*="flex-shrink: 0"] img {
-    width: 200px !important;
-    height: 200px !important;
-  }
-
-  /* Make specialty list 2 columns (3 items each side) on mobile */
-  ul[style*="grid-template-columns: repeat(2, 1fr)"] {
-    grid-template-columns: repeat(2, 1fr) !important;
-    gap: 0.5rem 0.75rem !important;
-  }
-
-  /* Make list items smaller on mobile */
-  ul[style*="grid-template-columns: repeat(2, 1fr)"] li {
-    font-size: 0.875rem !important;
-  }
-
-  ul[style*="grid-template-columns: repeat(2, 1fr)"] li svg {
-    width: 14px !important;
-    height: 14px !important;
-  }
-
-  /* Make "What I Do" cards single column on small screens */
-  div[style*="grid-template-columns: repeat(auto-fit, minmax(220px, 1fr))"] {
-    grid-template-columns: 1fr !important;
-  }
-
-  /* Make "Let's Work Together" grid responsive */
-  div[style*="grid-template-columns: repeat(3, 1fr)"] {
-    grid-template-columns: 1fr !important;
-    gap: 1.5rem !important;
-  }
-
-  /* Hide sidebar filters on mobile */
-  div[style*="width: 200px"] {
-    display: none !important;
-  }
-
-  /* Make content area full-width when sidebar is hidden */
-  section > div > div[style*="display: flex; gap: 2rem"] {
-    flex-direction: column !important;
-  }
-
-  section > div > div[style*="display: flex; gap: 2rem"] > div[style*="flex: 1"] {
-    width: 100% !important;
-  }
 }
 
 /* Mobile phones */
