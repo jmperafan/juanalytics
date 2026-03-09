@@ -1,65 +1,204 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import OptimizedImage from '../components/OptimizedImage.astro';
+import { buildUrl } from '../utils/urlHelper';
 ---
 
 <BaseLayout title="About | juanalytics">
   <section class="content-section">
     <div class="container blog-post-container">
-      <div class="content-header">
-        <h1>About Me</h1>
+
+      <div class="about-intro">
+        <div class="about-intro-text">
+          <h1>About Me</h1>
+          <p>
+            I'm Juan Manuel Perafan, an Analytics Engineer based in Connecticut.
+            Born in Colombia, I spent over a decade in the Netherlands before recently moving to the US.
+          </p>
+          <p>
+            I've spent close to a decade in data, mostly as an implementation consultant.
+            That background shapes how I think: technology should adapt to how your business
+            operates, not the other way around. Data systems should fit your processes, not
+            force you to build new ones around them.
+          </p>
+          <p>
+            My week usually involves teaching dbt, writing, debugging something, and showing up
+            at a conference or meetup somewhere.
+          </p>
+        </div>
+        <div class="about-intro-photo">
+          <OptimizedImage
+            src={buildUrl("profile_photo.png")}
+            alt="Juan Manuel Perafan"
+            class="about-photo"
+            width={400}
+            height={400}
+          />
+        </div>
       </div>
 
       <div class="blog-post-content">
+
+        <h2>Work</h2>
         <p>
-          I'm Juan Manuel Perafan, an Analytics Engineer based in Utrecht, Netherlands.
-          Born and raised in Colombia, I've been living in the Netherlands since 2011.
+          I work independently now. Most of my time goes to three things: teaching dbt Cloud
+          as a freelance instructor through dbt Labs, consulting on analytics engineering projects,
+          and building <a href="https://query.academy" target="_blank" rel="noopener noreferrer">Query Academy</a> — an online platform for data engineering courses.
+        </p>
+        <p>
+          The problems I care about are the messy ones: where the data doesn't match what the
+          business actually means, where teams can't agree on definitions, where the pipeline
+          runs but the numbers are still wrong.
+        </p>
+        <p>
+          I'm available for speaking, training, and consulting.
+          LinkedIn is the easiest way to reach me.
         </p>
 
+        <h2>Books</h2>
+        <div class="about-book">
+          <img
+            src="https://content.packt.com/_/image/original/B19305/cover_image.jpg"
+            alt="Fundamentals of Analytics Engineering book cover"
+            class="about-book-cover"
+          />
+          <div>
+            <p>
+              In 2024, I co-authored <strong>Fundamentals of Analytics Engineering</strong>,
+              published by Packt. It covers building end-to-end analytics solutions — dbt,
+              data modeling, testing, and the practices that actually hold up in production.
+            </p>
+            <a href="https://www.amazon.com/author/jmperafan" target="_blank" rel="noopener noreferrer" class="button">View on Amazon</a>
+          </div>
+        </div>
         <p>
-          My ideal working week involves learning new technologies, debugging code, writing
-          difficult calculations, teaching organizations about data, and networking at a
-          conference/Meetup.
+          I'm currently writing a second book: <strong>The Data Consultant's Handbook</strong>.
+          It's aimed at data professionals who work independently or want to — covering the
+          business side of consulting that most technical content skips.
         </p>
 
-        <h2 style="margin-top: 2.5rem; margin-bottom: 1rem;">What I Do</h2>
-
-        <p>
-          I help organizations make their data reflect their actual business reality. Technology should
-          adapt to how your business operates, not the other way around. Data systems should integrate
-          with your processes, not force you to create new ones.
-        </p>
-
-        <p>
-          With nearly a decade of experience in data (mostly as an implementation consultant), I work at
-          the intersection of hands-on engineering, people development, and organizational culture through
-          data governance.
-        </p>
-
-        <h2 style="margin-top: 2.5rem; margin-bottom: 1rem;">Community</h2>
-
-        <p>Besides my regular job, I am also very active in the data community:</p>
-
-        <ul style="margin-left: 1.5rem; margin-bottom: 2rem; line-height: 2;">
-          <li>Co-author of <strong>Fundamentals of Analytics Engineering</strong></li>
-          <li><strong>dbt Community Award</strong> recipient (2024)</li>
-          <li>Host of <strong>SQL Lingua Franca Podcast</strong></li>
-          <li>Founder of the <strong>Analytics Engineering</strong> and <strong>Dutch dbt</strong> meetups</li>
-          <li>Speaker at conferences and meetups worldwide</li>
+        <h2>Community</h2>
+        <p>I've also spent a lot of time building the data community:</p>
+        <ul class="about-list">
+          <li>
+            <strong>dbt Community Award recipient (2024)</strong> — given annually by dbt Labs
+            to community members who contribute meaningfully to the dbt ecosystem.
+          </li>
+          <li>
+            <strong>Host of SQL Lingua Franca</strong> — a podcast about the past, present,
+            and future of SQL and the data world.
+          </li>
+          <li>
+            <strong>Founder of the Analytics Engineering Meetup and Dutch dbt Meetup</strong>
+            in the Netherlands.
+          </li>
+          <li>
+            <strong>Conference speaker</strong> across Europe, Latin America, and the US —
+            including Coalesce, the Linux Foundation Open Source Summit, and Big Data Tech Warsaw.
+          </li>
         </ul>
 
-        <h2 style="margin-top: 2rem;">Let's Connect</h2>
+        <h2>Get in Touch</h2>
         <p>
-          I'm always excited to connect with fellow data enthusiasts, speak at events,
-          or collaborate on interesting projects. Feel free to reach out!
+          LinkedIn is the easiest way to reach me. I'm also on GitHub, YouTube, and Linktree
+          if you want to find everything in one place.
         </p>
 
-        <div style="margin-top: 2rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+        <div class="about-links">
           <a href="https://www.linkedin.com/in/jmperafan/" target="_blank" rel="noopener noreferrer" class="button">LinkedIn</a>
           <a href="https://www.youtube.com/@juanalytics" target="_blank" rel="noopener noreferrer" class="button">YouTube</a>
           <a href="https://linktr.ee/juanalytics" target="_blank" rel="noopener noreferrer" class="button">Linktree</a>
           <a href="https://github.com/jmperafan" target="_blank" rel="noopener noreferrer" class="button">GitHub</a>
         </div>
+
       </div>
     </div>
   </section>
 </BaseLayout>
+
+<style>
+.about-intro {
+  display: flex;
+  gap: 3rem;
+  align-items: flex-start;
+  margin-bottom: 3rem;
+  flex-wrap: wrap;
+}
+
+.about-intro-text {
+  flex: 1;
+  min-width: 300px;
+}
+
+.about-intro-text h1 {
+  margin-bottom: 1.5rem;
+}
+
+.about-intro-photo {
+  flex-shrink: 0;
+}
+
+.about-photo {
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  box-shadow: 0 0 0 4px var(--color-bg-secondary), 0 0 0 7px var(--color-border);
+}
+
+.about-book {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+  margin: 1.5rem 0 2rem;
+  flex-wrap: wrap;
+}
+
+.about-book-cover {
+  width: 140px;
+  height: auto;
+  border-radius: 4px;
+  flex-shrink: 0;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+.about-list {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.about-list li {
+  padding-left: 1rem;
+  border-left: 2px solid var(--color-primary);
+  line-height: 1.7;
+}
+
+.about-links {
+  margin-top: 1.5rem;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+  .about-intro {
+    flex-direction: column-reverse;
+    align-items: center;
+    text-align: center;
+  }
+
+  .about-intro-photo {
+    display: flex;
+    justify-content: center;
+  }
+
+  .about-book {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+}
+</style>

@@ -51,38 +51,35 @@ const recentPodcasts = content.podcasts
   .slice(0, 3);
 ---
 
+<style>
+</style>
+
 <BaseLayout title="juanalytics - Juan Manuel Perafan">
   <!-- Hero Section -->
   <section class="hero-section">
     <div class="container hero-max-width">
-      <div class="hero-container">
-        <div>
-          <OptimizedImage
-            src={buildUrl("profile_photo.png")}
-            alt="Juan Manuel Perafan"
-            class="hero-image"
-            loading="eager"
-            fetchpriority="high"
-            width={800}
-            height={800}
-          />
-        </div>
-        <div class="hero-content">
-          <h1 class="hero-title">Juan Manuel Perafan</h1>
-          <p class="hero-subtitle">
-            Analytics Engineer | Community Advocate | Author | Speaker
-          </p>
-          <p class="hero-description">
-            Welcome to my portfolio of content: talks, videos, podcasts, and blog posts. I specialize in:
-          </p>
-          <div class="specialty-tags">
-            <span class="specialty-tag">Analytics Engineering</span>
-            <span class="specialty-tag">dbt</span>
-            <span class="specialty-tag">Data Modeling</span>
-            <span class="specialty-tag">SQL</span>
-            <span class="specialty-tag">Data Visualization</span>
-            <span class="specialty-tag">Data Governance</span>
-          </div>
+      <div class="hero-main">
+        <OptimizedImage
+          src={buildUrl("profile_photo.png")}
+          alt="Juan Manuel Perafan"
+          class="hero-image"
+          loading="eager"
+          fetchpriority="high"
+          width={400}
+          height={400}
+        />
+        <p class="hero-eyebrow">Analytics Engineer · Instructor · Author · Community Builder</p>
+        <h1 class="hero-title">Juan Manuel Perafan</h1>
+        <p class="hero-description">
+          A decade of experience helping organizations make their data resemble their business, not forcing their business to fit a data model. Welcome to my corner of the internet, where I keep my books, talks, videos, podcasts, and blogs.
+        </p>
+        <div class="specialty-tags">
+          <span class="specialty-tag">Analytics Engineering</span>
+          <span class="specialty-tag">dbt</span>
+          <span class="specialty-tag">Data Modeling</span>
+          <span class="specialty-tag">SQL</span>
+          <span class="specialty-tag">Data Visualization</span>
+          <span class="specialty-tag">Data Governance</span>
         </div>
       </div>
     </div>
@@ -90,7 +87,7 @@ const recentPodcasts = content.podcasts
 
   <!-- What I Do -->
   <section class="section-with-bg">
-    <div class="container hero-max-width">
+    <div class="container">
       <h2 class="section-title">What You'll Find Here</h2>
 
       <div class="cards-grid">
@@ -100,7 +97,7 @@ const recentPodcasts = content.podcasts
           </div>
           <div class="feature-content">
             <h3>Conference Talks</h3>
-            <p>Presentations from conferences and meetups</p>
+            <p>Slides and recordings from live events</p>
           </div>
         </a>
 
@@ -119,7 +116,7 @@ const recentPodcasts = content.podcasts
             <Icon name="microphone" size={24} />
           </div>
           <div class="feature-content">
-            <h3>Podcast Appearances</h3>
+            <h3>Podcasts</h3>
             <p>Conversations about data and community</p>
           </div>
         </a>
@@ -139,7 +136,7 @@ const recentPodcasts = content.podcasts
       <div class="cta-box">
         <h3 class="cta-title">Let's Work Together</h3>
         <p class="cta-description">
-          I'm available to speak at your next conference, meetup, or corporate event, train your team on analytics engineering and the modern data stack, or provide strategic consulting for your data initiatives. Let's talk!
+          I'm available to speak at your next conference, meetup, or corporate event, train your team on analytics engineering and the modern data stack, or provide strategic consulting for your data initiatives.
         </p>
         <div class="cta-grid">
           <div class="cta-item">
@@ -150,7 +147,6 @@ const recentPodcasts = content.podcasts
             <ul>
               <li>• Conference keynotes</li>
               <li>• Technical deep dives</li>
-              <li>• Panel discussions</li>
               <li>• Meetup presentations</li>
             </ul>
           </div>
@@ -160,10 +156,9 @@ const recentPodcasts = content.podcasts
               Training & Mentorship
             </h4>
             <ul>
-              <li>• Hands-on dbt workshops</li>
-              <li>• Modern data stack training</li>
-              <li>• Team enablement programs</li>
-              <li>• Custom curriculum design</li>
+              <li>• Curriculum design</li>
+              <li>• Leading workshops & training</li>
+              <li>• Team mentorship</li>
             </ul>
           </div>
           <div class="cta-item">
@@ -173,9 +168,8 @@ const recentPodcasts = content.podcasts
             </h4>
             <ul>
               <li>• Data strategy & architecture</li>
-              <li>• dbt implementation guidance</li>
-              <li>• Analytics engineering workflows</li>
-              <li>• Platform modernization</li>
+              <li>• Data modeling & SQL</li>
+              <li>• Modern data stack</li>
             </ul>
           </div>
         </div>
