@@ -1,5 +1,14 @@
 books:
 - url: https://www.amazon.com/author/jmperafan
+  title: The Data Consultant's Handbook
+  description: A practical guide for data professionals navigating the world of consulting, covering client management, project delivery, and building a successful data consulting practice.
+  date: 2026-12-31
+  thumbnail: https://placehold.co/600x400/FF6B35/FFFFFF?text=The+Data+Consultant%27s+Handbook
+  tags:
+  - data consulting
+  publisher: Packt Publishing
+  buttonText: Coming Soon
+- url: https://www.amazon.com/author/jmperafan
   title: Fundamentals of Analytics Engineering
   description: A comprehensive guide to building end-to-end analytics solutions with
     modern tools and best practices, covering dbt, data modeling, testing, and more.
