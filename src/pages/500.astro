@@ -16,7 +16,7 @@ import { buildUrl } from '../utils/urlHelper';
           Oops! Something went wrong on our end. We're working to fix it.
         </p>
         <div class="error-actions">
-          <button onclick="window.location.reload()" class="button">
+          <button id="reload-btn" class="button">
             Try Again
           </button>
           <a href={buildUrl("")} class="button button-secondary">
@@ -132,3 +132,9 @@ import { buildUrl } from '../utils/urlHelper';
     }
   }
 </style>
+
+<script>
+  document.getElementById('reload-btn')?.addEventListener('click', () => {
+    window.location.reload();
+  });
+</script>

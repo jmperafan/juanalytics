@@ -95,7 +95,7 @@ const allTags = videos.flatMap(v => v.data.tags || []);
         const thumbnail = card.querySelector('.video-thumbnail-wrapper');
         const playerContainer = card.querySelector('.video-player');
 
-        if (thumbnailWrapper && thumbnail && playerContainer) {
+        if (thumbnailWrapper instanceof HTMLElement && thumbnail instanceof HTMLElement && playerContainer instanceof HTMLElement) {
           thumbnailWrapper.addEventListener('click', (e) => {
             e.stopPropagation();
 
@@ -107,8 +107,8 @@ const allTags = videos.flatMap(v => v.data.tags || []);
 
               if (embedUrl) {
                 // Hide thumbnail and show player
-                (thumbnail as HTMLElement).style.display = 'none';
-                (playerContainer as HTMLElement).style.display = 'block';
+                thumbnail.style.display = 'none';
+                playerContainer.style.display = 'block';
 
                 // Create and insert iframe
                 const iframe = document.createElement('iframe');

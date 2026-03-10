@@ -146,15 +146,16 @@ const allTags = allPodcasts.flatMap(p => p.data.tags || []);
         let guestVisible = 0;
 
         podcastCards.forEach(card => {
+          if (!(card instanceof HTMLElement)) return;
           const cardTags = JSON.parse(card.getAttribute('data-tags') || '[]');
           const cardType = card.getAttribute('data-type');
 
           if (tag === 'all' || cardTags.includes(tag)) {
-            (card as HTMLElement).style.display = 'flex';
+            card.style.display = 'flex';
             if (cardType === 'sql-lingua-franca') sqlLinguaFrancaVisible++;
             if (cardType === 'guest-appearance') guestVisible++;
           } else {
-            (card as HTMLElement).style.display = 'none';
+            card.style.display = 'none';
           }
         });
 

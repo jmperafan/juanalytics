@@ -1,4 +1,5 @@
 // YAML parser utility for reading content from YAML files
+import { validateContentArray, logValidationResults } from './contentValidation';
 
 export interface ContentItem {
   type: 'video' | 'podcast' | 'talk' | 'book';
@@ -120,12 +121,20 @@ export async function readContentYAML(): Promise<ParsedContent> {
     // Merge podcasts (SQL Lingua Franca + guest appearances)
     const allPodcasts = [...sqlLinguaFranca, ...guestAppearances];
 
-    return {
+    const result = {
       videos: processItems(videos),
       podcasts: processItems(allPodcasts),
       talks: processItems(talks),
       books: processItems(books),
     };
+
+    // Validate all content at load time so issues surface during build/dev
+    const types = ['videos', 'podcasts', 'talks', 'books'] as const;
+    for (const type of types) {
+      logValidationResults(validateContentArray(result[type], type), type);
+    }
+
+    return result;
   } catch (error) {
     const errorMessage = error instanceof Error ? error.message : 'Unknown error';
     console.error('❌ Error reading content YAML:', errorMessage);

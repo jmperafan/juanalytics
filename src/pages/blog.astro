@@ -11,13 +11,10 @@ const blogs = (await getCollection('blogs')).sort(
 );
 
 // Calculate reading time for each blog post
-const blogsWithReadingTime = await Promise.all(
-  blogs.map(async (post) => {
-    const { body } = post;
-    const readingTime = calculateReadingTime(body || '');
-    return { ...post, readingTime };
-  })
-);
+const blogsWithReadingTime = blogs.map((post) => ({
+  ...post,
+  readingTime: calculateReadingTime(post.body || ''),
+}));
 
 // Get all unique tags for filtering
 const allTags = blogsWithReadingTime.flatMap(b => b.data.tags || []);

@@ -107,35 +107,7 @@ const talks = content.talks.map(talk => ({
   </section>
 
   <script>
-    function extractYouTubeId(url: string): string | null {
-      const patterns = [
-        /(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([^&\s]+)/,
-        /youtube\.com\/shorts\/([^&\s]+)/
-      ];
-
-      for (const pattern of patterns) {
-        const match = url.match(pattern);
-        if (match) return match[1];
-      }
-
-      return null;
-    }
-
-    function extractVimeoId(url: string): string | null {
-      const match = url.match(/vimeo\.com\/(\d+)/);
-      return match ? match[1] : null;
-    }
-
-    function getEmbedUrl(videoUrl: string): string {
-      if (videoUrl.includes('youtube.com') || videoUrl.includes('youtu.be')) {
-        const videoId = extractYouTubeId(videoUrl);
-        return videoId ? `https://www.youtube.com/embed/${videoId}` : '';
-      } else if (videoUrl.includes('vimeo.com')) {
-        const videoId = extractVimeoId(videoUrl);
-        return videoId ? `https://player.vimeo.com/video/${videoId}` : '';
-      }
-      return videoUrl;
-    }
+    import { getEmbedUrl } from '../utils/videoHelper';
 
     document.addEventListener('DOMContentLoaded', () => {
       const talkCards = document.querySelectorAll('.talk-card');
@@ -150,7 +122,7 @@ const talks = content.talks.map(talk => ({
           const thumbnail = card.querySelector('.video-thumbnail-wrapper');
           const playerContainer = card.querySelector('.video-player');
 
-          if (thumbnailContainer && thumbnail && playerContainer) {
+          if (thumbnailContainer instanceof HTMLElement && thumbnail instanceof HTMLElement && playerContainer instanceof HTMLElement) {
             thumbnailContainer.addEventListener('click', (e) => {
               e.stopPropagation();
 
@@ -161,8 +133,8 @@ const talks = content.talks.map(talk => ({
 
                 if (embedUrl) {
                   // Hide thumbnail and show player
-                  (thumbnail as HTMLElement).style.display = 'none';
-                  (playerContainer as HTMLElement).style.display = 'block';
+                  thumbnail.style.display = 'none';
+                  playerContainer.style.display = 'block';
 
                   // Create and insert iframe
                   const iframe = document.createElement('iframe');
