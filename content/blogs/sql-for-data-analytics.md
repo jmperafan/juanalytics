@@ -2,7 +2,7 @@
 title: "Book Review: SQL for Data Analytics (4th Edition)"
 description: "I recently finished reading SQL for Data Analytics (4th Edition). Here are my thoughts on the book."
 pubDate: 2025-11-03
-heroImage: 'sql-for-data-analytics-cover.jpg'
+heroImage: 'blog/sql-for-data-analytics-cover.webp'
 tags: ["sql", "career development"]
 ---
 

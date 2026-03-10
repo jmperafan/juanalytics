@@ -15,7 +15,7 @@ const { src, alt, fit } = Astro.props;
     class="thumbnail-image"
     onload="
       const forced = this.parentElement.dataset.fit;
-      const cls = forced ?? (this.naturalWidth / this.naturalHeight < 1.2 ? 'contain' : 'cover');
+      const cls = forced ?? 'contain';
       this.parentElement.classList.add('fit-' + cls);
     "
   />

@@ -25,7 +25,7 @@ const blogPostStructuredData = {
   "@type": "BlogPosting",
   "headline": post.data.title,
   "description": post.data.description,
-  "image": post.data.heroImage ? `https://juanalytics.com${buildUrl(post.data.heroImage)}` : "https://juanalytics.com/profile_photo.png",
+  "image": post.data.heroImage ? `https://juanalytics.com${buildUrl(post.data.heroImage)}` : "https://juanalytics.com/images/profile_photo.webp",
   "datePublished": post.data.pubDate.toISOString(),
   "dateModified": post.data.updatedDate ? post.data.updatedDate.toISOString() : post.data.pubDate.toISOString(),
   "author": {
@@ -43,7 +43,7 @@ const blogPostStructuredData = {
     "name": "Juanalytics",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://juanalytics.com/logo.png"
+      "url": "https://juanalytics.com/images/logo.webp"
     }
   },
   "mainEntityOfPage": {

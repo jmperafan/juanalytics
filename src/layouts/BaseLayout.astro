@@ -16,7 +16,7 @@ interface Props {
 const {
   title,
   description = "Portfolio of Juan Manuel Perafan - Analytics Engineer, dbt Community Award Recipient, and Data Community Organizer",
-  image = "/profile_photo.png",
+  image = "/images/profile_photo.webp",
   author = "Juan Manuel Perafan",
   publishDate
 } = Astro.props;
@@ -35,7 +35,7 @@ const imageUrl = image.startsWith("http") ? image : "https://juanalytics.com" + 
     <meta name="description" content={description} />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="author" content={author} />
-    <link rel="icon" type="image/png" href={buildUrl("logo.png")} />
+    <link rel="icon" type="image/webp" href={buildUrl("images/logo.webp")} />
     <meta name="generator" content={Astro.generator} />
 
     <!-- Canonical URL -->
@@ -73,7 +73,7 @@ const imageUrl = image.startsWith("http") ? image : "https://juanalytics.com" + 
         "@type": "Person",
         "name": "Juan Manuel Perafan",
         "url": "https://juanalytics.com",
-        "image": "https://juanalytics.com/profile_photo.png",
+        "image": "https://juanalytics.com/images/profile_photo.webp",
         "description": "Analytics Engineer, dbt Community Award Recipient, and Data Community Organizer",
         "jobTitle": "Analytics Engineer",
         "sameAs": [
@@ -108,7 +108,7 @@ const imageUrl = image.startsWith("http") ? image : "https://juanalytics.com" + 
       <nav class="site-nav container">
         <a href={buildUrl("")} class="logo-container">
           <OptimizedImage
-            src={buildUrl("logo.png")}
+            src={buildUrl("images/logo.webp")}
             alt="Juanalytics Logo"
             class="logo-image"
             loading="eager"
