@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import YouTubeThumbnail from '../components/YouTubeThumbnail.astro';
+import ThumbnailImage from '../components/ThumbnailImage.astro';
 import ContentFilter from '../components/ContentFilter.astro';
 import Icon from '../components/Icon.astro';
 import { readContentYAML } from '../utils/yamlParser';
@@ -63,7 +64,7 @@ const talks = content.talks.map(talk => ({
                       <div class="video-player"></div>
                     </>
                   ) : talk.data.thumbnail ? (
-                    <img src={talk.data.thumbnail} alt={talk.data.title} class="card-image" />
+                    <ThumbnailImage src={talk.data.thumbnail} alt={talk.data.title} />
                   ) : (
                     <div class="card-image-placeholder">
                       <Icon name="presentation" size={64} />

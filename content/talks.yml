@@ -4,10 +4,18 @@ talks:
   description: Sharing insights and strategies for effectively onboarding junior analytics
     engineers.
   date: 2025-10-14
-  thumbnail: https://placehold.co/600x400/FF6B35/FFFFFF?text=Coalesce+2025
+  thumbnail: https://placehold.co/600x400/1e293b/94a3b8?text=Coalesce+2025
   tags: [dbt, analytics engineering, career development]
   event: Coalesce 2025
   location: Las Vegas, NV
+- url: https://www.meetup.com/medellin-dbt-meetup/events/302810510/?eventOrigin=group_events_list
+  title: 'dbt turbocharge: Query optimization in dbt'
+  date: '2024-09-04'
+  description: A networking gathering for data professionals featuring presentations on analytics engineering, data stacks, data ops, modeling, testing, and team structures.
+  thumbnail: https://placehold.co/600x400/1e293b/94a3b8?text=Medellin+dbt+Meetup
+  tags: [dbt, performance tuning, sql]
+  event: Medellín dbt Meetup
+  location: Medellín, Colombia
 - url: https://www.youtube.com/watch?v=XelmswFijtw
   title: 'dbt turbocharge: Boosting performance of your data models'
   date: '2023-10-24'
@@ -124,7 +132,7 @@ talks:
   date: '2024-09-25'
   description: In this talk, we will explore the various testing capabilities that dbt offers
     to ensure data quality and reliability..
-  thumbnail: https://placehold.co/600x400/FF6B35/FFFFFF?text=Budapest+dbt+Meetup
+  thumbnail: https://placehold.co/600x400/1e293b/94a3b8?text=Budapest+dbt+Meetup
   tags: [dbt, programming]
   event: Budapest dbt Meetup
   location: Budapest, Hungary

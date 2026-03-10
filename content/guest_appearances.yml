@@ -31,6 +31,7 @@ guest_appearances:
     las estrategias de marketing.'
   duration: '29:08'
   thumbnail: https://i.scdn.co/image/ab6765630000ba8aba7030a85c06e640687fda28
+  thumbnail_fit: contain
   tags:
   - marketing
   - career development

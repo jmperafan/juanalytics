@@ -3,7 +3,7 @@ books:
   title: The Data Consultant's Handbook
   description: A practical guide for data professionals navigating the world of consulting, covering client management, project delivery, and building a successful data consulting practice.
   date: 2026-12-31
-  thumbnail: https://placehold.co/600x400/FF6B35/FFFFFF?text=The+Data+Consultant%27s+Handbook
+  thumbnail: https://placehold.co/600x400/1e293b/94a3b8?text=The+Data+Consultant%27s+Handbook
   tags:
   - data consulting
   publisher: Packt Publishing
@@ -24,7 +24,7 @@ books:
     covering everything from finding sponsors and securing venues to recruiting speakers
     and hosting successful meetups.
   date: 2023-03-01
-  thumbnail: https://placehold.co/600x400/FF6B35/FFFFFF?text=Organizing+Meetups
+  thumbnail: https://placehold.co/600x400/1e293b/94a3b8?text=Organizing+Meetups
   tags:
   - community building
   buttonText: Read on GitBook

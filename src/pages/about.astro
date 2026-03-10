@@ -2,28 +2,98 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import OptimizedImage from '../components/OptimizedImage.astro';
 import { buildUrl } from '../utils/urlHelper';
+import { readContentYAML } from '../utils/yamlParser';
+
+const { talks } = await readContentYAML();
+
+// Coordinate lookup for known talk locations
+const coordMap: Record<string, [number, number]> = {
+  'Las Vegas, NV': [36.1699, -115.1398],
+  'San Diego, CA': [32.7157, -117.1611],
+  'San Francisco, CA': [37.7749, -122.4194],
+  'New York, NY': [40.7128, -74.0060],
+  'Boston, MA': [42.3601, -71.0589],
+  'Chicago, IL': [41.8781, -87.6298],
+  'Austin, TX': [30.2672, -97.7431],
+  'London, UK': [51.5074, -0.1278],
+  'Amsterdam, The Netherlands': [52.3676, 4.9041],
+  'Amersfoort, The Netherlands': [52.1561, 5.3878],
+  'Brussels, Belgium': [50.8503, 4.3517],
+  'Ghent, Belgium': [51.0543, 3.7174],
+  'Antwerp, Belgium': [51.2194, 4.4025],
+  'Berlin, Germany': [52.52, 13.405],
+  'Warsaw, Poland': [52.2297, 21.0122],
+  'Budapest, Hungary': [47.4979, 19.0402],
+  'Bilbao, Spain': [43.263, -2.935],
+  'Barcelona, Spain': [41.3851, 2.1734],
+  'Paris, France': [48.8566, 2.3522],
+  'Bogota, Colombia': [4.711, -74.0721],
+  'Cali, Colombia': [3.4516, -76.5320],
+  'Medellín, Colombia': [6.2442, -75.5812],
+};
+
+const talkMarkers = talks
+  .filter(t => t.location && t.location !== 'Virtual' && coordMap[t.location])
+  .map(t => ({
+    coords: coordMap[t.location!],
+    title: t.title,
+    event: t.event ?? '',
+    location: t.location!,
+  }));
+
+// Deduplicate by location; keep count for popup
+const seenLocations = new Set<string>();
+const dedupedTalkMarkers = talkMarkers.filter(m => {
+  if (seenLocations.has(m.location)) return false;
+  seenLocations.add(m.location);
+  return true;
+});
+
+const talkCountByLocation = talkMarkers.reduce<Record<string, number>>((acc, m) => {
+  acc[m.location] = (acc[m.location] ?? 0) + 1;
+  return acc;
+}, {});
+
+const talkMarkersWithCount = dedupedTalkMarkers.map(m => ({
+  ...m,
+  count: talkCountByLocation[m.location],
+}));
+
+const talksByLocation = talks
+  .filter(t => t.location && t.location !== 'Virtual' && coordMap[t.location])
+  .reduce<Record<string, Array<{title: string, event: string, year: string, url: string}>>>((acc, t) => {
+    if (!acc[t.location!]) acc[t.location!] = [];
+    acc[t.location!].push({
+      title: t.title,
+      event: t.event ?? '',
+      year: t.date instanceof Date ? String(t.date.getFullYear()) : String(t.date).slice(0, 4),
+      url: t.url ?? '',
+    });
+    return acc;
+  }, {});
 ---
 
 <BaseLayout title="About | juanalytics">
   <section class="content-section">
-    <div class="container blog-post-container">
+    <div class="container">
 
+      <!-- Intro -->
       <div class="about-intro">
         <div class="about-intro-text">
           <h1>About Me</h1>
           <p>
-            I'm Juan Manuel Perafan, an Analytics Engineer based in Connecticut.
-            Born in Colombia, I spent over a decade in the Netherlands before recently moving to the US.
+            I'm an Analytics Engineer born and raised in Cali, Colombia. But I lived in the Netherlands
+            for most of my adult life. In 2026, my family and I relocated to Connecticut, US.
           </p>
           <p>
-            I've spent close to a decade in data, mostly as an implementation consultant.
-            That background shapes how I think: technology should adapt to how your business
-            operates, not the other way around. Data systems should fit your processes, not
-            force you to build new ones around them.
+            I have a decade of experience working with data, mostly as an implementation consultant.
+            Thanks to my clients I have been involved in most of the analytics lifecycle, from defining
+            objectives and architecture to data modeling and reporting.
           </p>
           <p>
-            My week usually involves teaching dbt, writing, debugging something, and showing up
-            at a conference or meetup somewhere.
+            Besides consultancy, teaching and community building are a core part of what I do.
+            I've written a book, run meetups, built courses, and spoken at conferences around the world.
+            The common thread: making analytics engineering more accessible to everyone working with data.
           </p>
         </div>
         <div class="about-intro-photo">
@@ -31,92 +101,414 @@ import { buildUrl } from '../utils/urlHelper';
             src={buildUrl("profile_photo.png")}
             alt="Juan Manuel Perafan"
             class="about-photo"
-            width={400}
-            height={400}
+            width={315}
+            height={315}
           />
         </div>
       </div>
 
       <div class="blog-post-content">
 
-        <h2>Work</h2>
-        <p>
-          I work independently now. Most of my time goes to three things: teaching dbt Cloud
-          as a freelance instructor through dbt Labs, consulting on analytics engineering projects,
-          and building <a href="https://query.academy" target="_blank" rel="noopener noreferrer">Query Academy</a> — an online platform for data engineering courses.
-        </p>
-        <p>
-          The problems I care about are the messy ones: where the data doesn't match what the
-          business actually means, where teams can't agree on definitions, where the pipeline
-          runs but the numbers are still wrong.
-        </p>
-        <p>
-          I'm available for speaking, training, and consulting.
-          LinkedIn is the easiest way to reach me.
-        </p>
-
-        <h2>Books</h2>
-        <div class="about-book">
-          <img
-            src="https://content.packt.com/_/image/original/B19305/cover_image.jpg"
-            alt="Fundamentals of Analytics Engineering book cover"
-            class="about-book-cover"
-          />
-          <div>
-            <p>
-              In 2024, I co-authored <strong>Fundamentals of Analytics Engineering</strong>,
-              published by Packt. It covers building end-to-end analytics solutions — dbt,
-              data modeling, testing, and the practices that actually hold up in production.
-            </p>
-            <a href="https://www.amazon.com/author/jmperafan" target="_blank" rel="noopener noreferrer" class="button">View on Amazon</a>
+        <!-- Section 1: Now -->
+        <h2>What I'm Up To</h2>
+        <div class="now-grid">
+          <div class="now-card">
+            <div class="now-card-icon">&#x1F4DA;</div>
+            <div>
+              <strong>Teaching dbt</strong>
+              <p>Freelance instructor for dbt Labs, running live dbt Cloud training for data teams around the world.</p>
+            </div>
+          </div>
+          <div class="now-card">
+            <div class="now-card-icon">&#x1F3EB;</div>
+            <div>
+              <strong>Building Query Academy</strong>
+              <p>Growing <a href="https://query.academy" target="_blank" rel="noopener noreferrer">Query Academy</a>, an online platform for data engineering courses and hands-on SQL learning.</p>
+            </div>
+          </div>
+          <div class="now-card">
+            <div class="now-card-icon">&#x270D;&#xFE0F;</div>
+            <div>
+              <strong>Writing a Second Book</strong>
+              <p><em>The Data Consultant's Handbook</em>, covering the business side of consulting that most technical content skips.</p>
+            </div>
+          </div>
+          <div class="now-card">
+            <div class="now-card-icon">&#x1F3A4;</div>
+            <div>
+              <strong>Speaking at Conferences</strong>
+              <p>Regularly showing up and speaking at data meetups and conferences across the world.</p>
+            </div>
           </div>
         </div>
-        <p>
-          I'm currently writing a second book: <strong>The Data Consultant's Handbook</strong>.
-          It's aimed at data professionals who work independently or want to — covering the
-          business side of consulting that most technical content skips.
-        </p>
 
-        <h2>Community</h2>
-        <p>I've also spent a lot of time building the data community:</p>
-        <ul class="about-list">
-          <li>
-            <strong>dbt Community Award recipient (2024)</strong> — given annually by dbt Labs
-            to community members who contribute meaningfully to the dbt ecosystem.
-          </li>
-          <li>
-            <strong>Host of SQL Lingua Franca</strong> — a podcast about the past, present,
-            and future of SQL and the data world.
-          </li>
-          <li>
-            <strong>Founder of the Analytics Engineering Meetup and Dutch dbt Meetup</strong>
-            in the Netherlands.
-          </li>
-          <li>
-            <strong>Conference speaker</strong> across Europe, Latin America, and the US —
-            including Coalesce, the Linux Foundation Open Source Summit, and Big Data Tech Warsaw.
-          </li>
-        </ul>
+        <!-- Section 2: Map + Places Lived -->
+        <h2>Around the World</h2>
+        <p>I've lived in four countries and spoken in many more.</p>
 
-        <h2>Get in Touch</h2>
-        <p>
-          LinkedIn is the easiest way to reach me. I'm also on GitHub, YouTube, and Linktree
-          if you want to find everything in one place.
-        </p>
+        <div class="map-section">
+          <div class="map-col">
+            <p class="map-col-label">Where I've Lived</p>
+            <div class="countries-lived">
+              <div class="country-item">
+                <svg id="shape-col" class="country-svg"></svg>
+                <div class="country-label">
+                  <strong>Colombia</strong>
+                  <span>Born and Raised</span>
+                </div>
+              </div>
+              <div class="country-item">
+                <svg id="shape-gbr" class="country-svg"></svg>
+                <div class="country-label">
+                  <strong>United Kingdom</strong>
+                  <span>1 year</span>
+                </div>
+              </div>
+              <div class="country-item">
+                <svg id="shape-nld" class="country-svg"></svg>
+                <div class="country-label">
+                  <strong>Netherlands</strong>
+                  <span>15 years</span>
+                </div>
+              </div>
+              <div class="country-item">
+                <svg id="shape-usa" class="country-svg"></svg>
+                <div class="country-label">
+                  <strong>United States</strong>
+                  <span>Since 2026</span>
+                </div>
+              </div>
+            </div>
+          </div>
 
-        <div class="about-links">
-          <a href="https://www.linkedin.com/in/jmperafan/" target="_blank" rel="noopener noreferrer" class="button">LinkedIn</a>
-          <a href="https://www.youtube.com/@juanalytics" target="_blank" rel="noopener noreferrer" class="button">YouTube</a>
-          <a href="https://linktr.ee/juanalytics" target="_blank" rel="noopener noreferrer" class="button">Linktree</a>
-          <a href="https://github.com/jmperafan" target="_blank" rel="noopener noreferrer" class="button">GitHub</a>
+          <div class="map-col">
+            <p class="map-col-label">Where I've Spoken</p>
+            <div class="continent-maps">
+              <div class="continent-panel">
+                <svg id="map-northamerica" class="continent-svg"></svg>
+                <span class="continent-label">USA</span>
+              </div>
+              <div class="continent-panel">
+                <svg id="map-europe" class="continent-svg"></svg>
+                <span class="continent-label">Europe</span>
+              </div>
+              <div class="continent-panel">
+                <svg id="map-southamerica" class="continent-svg"></svg>
+                <span class="continent-label">South America</span>
+              </div>
+            </div>
+          </div>
         </div>
+
+        <!-- Section 3: Domain Highlights -->
+        <h2>Previous Experience</h2>
+
+        <div class="domain-sections">
+
+          <div class="domain-section">
+            <div class="domain-section-header"><h3>Data Work</h3></div>
+            <div class="exp-cards">
+              <div class="exp-card">
+                <div class="exp-card-main">
+                  <div class="exp-card-info"><span class="exp-role">Analytics Engineer</span><div class="exp-org">Xebia</div></div>
+                  <div class="exp-years-stack"><span>2020</span><span>2024</span></div>
+                </div>
+                <p class="exp-desc">Analytics engineering, dbt, and data modeling for clients across the Netherlands.</p>
+              </div>
+              <div class="exp-card">
+                <div class="exp-card-main">
+                  <div class="exp-card-info"><span class="exp-role">Analytics Consultant</span><div class="exp-org">Biztory</div></div>
+                  <div class="exp-years-stack"><span>2018</span><span>2020</span></div>
+                </div>
+                <p class="exp-desc">30+ clients in 4 countries, covering the full analytics lifecycle from architecture to reporting.</p>
+              </div>
+              <div class="exp-card">
+                <div class="exp-card-main">
+                  <div class="exp-card-info"><span class="exp-role">Marketing Intelligence</span><div class="exp-org">Justlease.nl</div></div>
+                  <div class="exp-years-stack"><span>2017</span><span>2018</span></div>
+                </div>
+                <p class="exp-desc">Data analysis with Python and R, MS SQL database marketing, and internal Tableau champion.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="domain-section">
+            <div class="domain-section-header"><h3>Teaching</h3></div>
+            <div class="exp-cards">
+              <div class="exp-card">
+                <div class="exp-card-main">
+                  <div class="exp-card-info"><span class="exp-role">Technical Instructor</span><div class="exp-org">dbt Labs</div></div>
+                  <div class="exp-years-stack"><span>2026</span><span>now</span></div>
+                </div>
+                <p class="exp-desc">Live dbt Cloud training for data teams around the world.</p>
+              </div>
+              <div class="exp-card">
+                <div class="exp-card-main">
+                  <div class="exp-card-info"><span class="exp-role">Zoomcamp Instructor</span><div class="exp-org">DataTalks.Club</div></div>
+                  <div class="exp-years-stack"><span>2025</span><span>now</span></div>
+                </div>
+                <p class="exp-desc">Analytics engineering module in the Data Engineering Zoomcamp.</p>
+              </div>
+              <div class="exp-card">
+                <div class="exp-card-main">
+                  <div class="exp-card-info"><span class="exp-role">Founder & Instructor</span><div class="exp-org">Query Academy</div></div>
+                  <div class="exp-years-stack"><span>2024</span><span>now</span></div>
+                </div>
+                <p class="exp-desc">Online platform for SQL and analytics engineering education.</p>
+              </div>
+              <div class="exp-card">
+                <div class="exp-card-main">
+                  <div class="exp-card-info"><span class="exp-role">Head Coach</span><div class="exp-org">Nimbus Intelligence</div></div>
+                  <div class="exp-years-stack"><span>2025</span></div>
+                </div>
+                <p class="exp-desc">Designed and delivered a 3-month data engineering bootcamp for new hires.</p>
+              </div>
+              <div class="exp-card">
+                <div class="exp-card-main">
+                  <div class="exp-card-info"><span class="exp-role">Guest Lecturer</span><div class="exp-org">University of Groningen</div></div>
+                  <div class="exp-years-stack"><span>2021</span><span>2022</span></div>
+                </div>
+                <p class="exp-desc">Hands-on course covering each step of the data lifecycle for honours students.</p>
+              </div>
+              <div class="exp-card">
+                <div class="exp-card-main">
+                  <div class="exp-card-info"><span class="exp-role">Teaching Assistant</span><div class="exp-org">University of Groningen</div></div>
+                  <div class="exp-years-stack"><span>2014</span><span>2016</span></div>
+                </div>
+                <p class="exp-desc">Taught 5 different courses, 548 hours across 192 students.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="domain-section">
+            <div class="domain-section-header"><h3>Community</h3></div>
+            <div class="exp-cards">
+              <div class="exp-card">
+                <div class="exp-card-main">
+                  <div class="exp-card-info"><span class="exp-role">Co-Author</span><div class="exp-org">Fundamentals of Analytics Engineering</div></div>
+                  <div class="exp-years-stack"><span>2023</span><span>2024</span></div>
+                </div>
+                <p class="exp-desc">Analytics engineering textbook published by Packt, covering the full modern data stack.</p>
+              </div>
+              <div class="exp-card">
+                <div class="exp-card-main">
+                  <div class="exp-card-info"><span class="exp-role">Organizer</span><div class="exp-org">Meetup</div></div>
+                  <div class="exp-years-stack"><span>2016</span><span>now</span></div>
+                </div>
+                <p class="exp-desc">Analytics Engineering, Dutch dbt, and Data Visualization meetups.</p>
+              </div>
+              <div class="exp-card">
+                <div class="exp-card-main">
+                  <div class="exp-card-info"><span class="exp-role">Podcast Host</span><div class="exp-org">SQL Lingua Franca</div></div>
+                  <div class="exp-years-stack"><span>2024</span><span>2025</span></div>
+                </div>
+                <p class="exp-desc">Conversations about data, analytics engineering, and the SQL ecosystem.</p>
+              </div>
+              <div class="exp-card">
+                <div class="exp-card-main">
+                  <div class="exp-card-info"><span class="exp-role">Conference Speaker</span><div class="exp-org">Dozens of talks</div></div>
+                  <div class="exp-years-stack"><span>worldwide</span></div>
+                </div>
+                <p class="exp-desc">dbt Coalesce, Linux Foundation, Big Data Summit, Developer Week LatAm.</p>
+              </div>
+              <div class="exp-card">
+                <div class="exp-card-main">
+                  <div class="exp-card-info"><span class="exp-role">Recipient</span><div class="exp-org">dbt Community Award</div></div>
+                  <div class="exp-years-stack"><span>2024</span></div>
+                </div>
+                <p class="exp-desc">Recognized by the global dbt community for contributions to analytics engineering.</p>
+              </div>
+              <div class="exp-card">
+                <div class="exp-card-main">
+                  <div class="exp-card-info"><span class="exp-role">Creator</span><div class="exp-org">dbt Excel</div></div>
+                  <div class="exp-years-stack"><span>2023</span></div>
+                </div>
+                <p class="exp-desc">A fully working dbt adapter for Excel, built as an April Fools' prank. Deprecated, as intended.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
 
       </div>
     </div>
   </section>
 </BaseLayout>
 
+<!-- Country silhouettes + continent talk panels via D3 + topojson -->
+<script is:inline define:vars={{ talkMarkers: talkMarkersWithCount, talksByLocation }}>
+(function () {
+  // ── Tooltip ──
+  var tooltip = document.createElement('div');
+  tooltip.id = 'talk-tooltip';
+  tooltip.style.cssText = 'position:fixed;pointer-events:none;opacity:0;transition:opacity 0.15s;z-index:1000;background:var(--color-bg-secondary,#1a2d4a);border:1px solid var(--color-border,#2d4a6f);border-radius:0.5rem;padding:0.6rem 0.85rem;max-width:260px;font-size:0.78rem;line-height:1.5;color:var(--color-text,#e2e8f0);box-shadow:0 4px 16px rgba(0,0,0,0.4);';
+  document.body.appendChild(tooltip);
+
+  function showTooltip(evt, location) {
+    var talks = talksByLocation[location] || [];
+    if (!talks.length) return;
+    var html = talks.map(function(t) {
+      var title = t.url
+        ? '<a href="' + t.url + '" target="_blank" rel="noopener" style="color:#60a5fa;text-decoration:none;font-weight:600;">' + t.title + '</a>'
+        : '<strong>' + t.title + '</strong>';
+      var cleanEvent = t.event ? t.event.replace(new RegExp('\\b' + t.year + '\\b', 'g'), '').trim().replace(/[-–\s]+$/, '').trim() : '';
+      var meta = [cleanEvent, t.year].filter(Boolean).join(' · ');
+      return '<div style="margin-bottom:0.5rem;">' + title +
+        '<div style="color:#94a3b8;font-size:0.72rem;margin-top:0.1rem;">' + meta + '</div>' +
+        '</div>';
+    }).join('');
+    tooltip.innerHTML = '<div style="font-size:0.65rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:#94a3b8;margin-bottom:0.4rem;">' + location + '</div>' + html;
+    tooltip.style.opacity = '1';
+    moveTooltip(evt);
+  }
+
+  function moveTooltip(evt) {
+    var x = evt.clientX + 14, y = evt.clientY - 10;
+    if (x + 270 > window.innerWidth) x = evt.clientX - 270;
+    tooltip.style.left = x + 'px';
+    tooltip.style.top = y + 'px';
+  }
+
+  function hideTooltip() { tooltip.style.opacity = '0'; }
+
+  // ── Country silhouettes (lived) ──
+  var countries = [
+    { id: 170, svgId: 'shape-col' },
+    { id: 826, svgId: 'shape-gbr' },
+    { id: 528, svgId: 'shape-nld' },
+    { id: 840, svgId: 'shape-usa' },
+  ];
+
+  // ── Continent panels (spoken) ──
+  var continentDefs = [
+    { svgId: 'map-northamerica', bbox: [-125, 24, -66, 50] },
+    { svgId: 'map-europe',       bbox: [-5,   35,  22, 57], includeIds: [250] },
+    { svgId: 'map-southamerica', bbox: [-82, -56, -33, 14] },
+  ];
+
+  function loadScript(src, cb) {
+    var s = document.createElement('script');
+    s.src = src; s.onload = cb;
+    document.head.appendChild(s);
+  }
+
+  var geoBounds = {
+    528: [[3, 50], [8, 54]],
+    826: [[-9, 49], [2, 58.8]],
+    840: [[-130, 20], [-60, 55]],
+    250: [[-5, 42], [8, 51]],
+  };
+
+  function filterToContinental(feature, bbox) {
+    var geom = feature.geometry;
+    function inBbox(ring) {
+      var sx = 0, sy = 0;
+      for (var i = 0; i < ring.length; i++) { sx += ring[i][0]; sy += ring[i][1]; }
+      var cx = sx / ring.length, cy = sy / ring.length;
+      return cx >= bbox[0][0] && cx <= bbox[1][0] && cy >= bbox[0][1] && cy <= bbox[1][1];
+    }
+    if (geom.type === 'Polygon') return inBbox(geom.coordinates[0]) ? feature : null;
+    if (geom.type === 'MultiPolygon') {
+      var polys = geom.coordinates.filter(function(p) { return inBbox(p[0]); });
+      if (!polys.length) return null;
+      return { type: 'Feature', geometry: { type: 'MultiPolygon', coordinates: polys } };
+    }
+    return feature;
+  }
+
+  loadScript('https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js', function () {
+    loadScript('https://cdn.jsdelivr.net/npm/topojson-client@3/dist/topojson-client.min.js', function () {
+      fetch('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-50m.json')
+        .then(function (r) { return r.json(); })
+        .then(function (world) {
+          var allFeatures = topojson.feature(world, world.objects.countries).features;
+
+          // ── Render country silhouettes ──
+          var W = 100, H = 80, pad = 6;
+          countries.forEach(function (c) {
+            var feature = allFeatures.find(function (f) {
+              return +f.id === c.id || f.id === String(c.id);
+            });
+            if (!feature) return;
+            var svgEl = document.getElementById(c.svgId);
+            if (!svgEl) return;
+            var renderFeature = geoBounds[c.id] ? filterToContinental(feature, geoBounds[c.id]) : feature;
+            if (!renderFeature) return;
+            var projection = d3.geoMercator().fitExtent([[pad, pad], [W - pad, H - pad]], renderFeature);
+            var pathGen = d3.geoPath().projection(projection);
+            d3.select(svgEl)
+              .attr('viewBox', '0 0 ' + W + ' ' + H)
+              .attr('preserveAspectRatio', 'xMidYMid meet')
+              .append('path')
+              .attr('d', pathGen(renderFeature))
+              .attr('fill', '#2563eb')
+              .attr('opacity', '0.75');
+          });
+
+          // ── Render continent panels with talk dots ──
+          var CW = 240, CH = 220, cpad = 8;
+          continentDefs.forEach(function (cont) {
+            var svgEl = document.getElementById(cont.svgId);
+            if (!svgEl) return;
+
+            var features = allFeatures.filter(function (f) {
+              if (cont.includeIds && cont.includeIds.indexOf(+f.id) !== -1) return true;
+              try {
+                var c = d3.geoCentroid(f);
+                return c[0] >= cont.bbox[0] && c[0] <= cont.bbox[2] &&
+                       c[1] >= cont.bbox[1] && c[1] <= cont.bbox[3];
+              } catch (e) { return false; }
+            }).map(function (f) {
+              var bounds = geoBounds[+f.id];
+              return bounds ? filterToContinental(f, bounds) : f;
+            }).filter(Boolean);
+
+            if (!features.length) return;
+
+            var collection = { type: 'FeatureCollection', features: features };
+            var projection = d3.geoMercator()
+              .fitExtent([[cpad, cpad], [CW - cpad, CH - cpad]], collection);
+            var pathGen = d3.geoPath().projection(projection);
+
+            var svg = d3.select(svgEl)
+              .attr('viewBox', '0 0 ' + CW + ' ' + CH)
+              .attr('preserveAspectRatio', 'xMidYMid meet');
+
+            features.forEach(function (f) {
+              svg.append('path')
+                .attr('d', pathGen(f))
+                .attr('fill', '#1a2d4a')
+                .attr('stroke', '#2d4a6f')
+                .attr('stroke-width', 0.5);
+            });
+
+            talkMarkers.forEach(function (m) {
+              var lat = m.coords[0], lon = m.coords[1];
+              if (lon < cont.bbox[0] || lon > cont.bbox[2] ||
+                  lat < cont.bbox[1] || lat > cont.bbox[3]) return;
+              var pt = projection([lon, lat]);
+              if (!pt) return;
+              svg.append('circle')
+                .attr('cx', pt[0]).attr('cy', pt[1])
+                .attr('r', 3.5)
+                .attr('fill', '#2563eb')
+                .attr('stroke', '#60a5fa')
+                .attr('stroke-width', 1.5)
+                .style('cursor', 'pointer')
+                .on('mouseover', function(evt) { showTooltip(evt, m.location); })
+                .on('mousemove', moveTooltip)
+                .on('mouseout', hideTooltip);
+            });
+          });
+        });
+    });
+  });
+})();
+</script>
+
 <style>
+/* ── Intro ── */
 .about-intro {
   display: flex;
   gap: 3rem;
@@ -134,56 +526,286 @@ import { buildUrl } from '../utils/urlHelper';
   margin-bottom: 1.5rem;
 }
 
-.about-intro-photo {
-  flex-shrink: 0;
-}
+.about-intro-photo { flex-shrink: 0; }
 
 .about-photo {
-  width: 220px;
-  height: 220px;
+  width: 315px;
+  height: 315px;
   border-radius: 50%;
   box-shadow: 0 0 0 4px var(--color-bg-secondary), 0 0 0 7px var(--color-border);
 }
 
-.about-book {
+/* ── Now grid ── */
+.now-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.25rem;
+  margin: 1.5rem 0 2.5rem;
+}
+
+.now-card {
   display: flex;
-  gap: 2rem;
+  gap: 1rem;
   align-items: flex-start;
-  margin: 1.5rem 0 2rem;
-  flex-wrap: wrap;
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: 0.75rem;
+  padding: 1.25rem 1.5rem;
 }
 
-.about-book-cover {
-  width: 140px;
-  height: auto;
-  border-radius: 4px;
+.now-card-icon {
+  font-size: 1.5rem;
   flex-shrink: 0;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+  line-height: 1;
+  margin-top: 0.1rem;
 }
 
-.about-list {
-  list-style: none;
-  padding: 0;
-  margin: 1rem 0 2rem;
+.now-card strong {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-size: 1rem;
+}
+
+.now-card p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--color-text-light);
+  line-height: 1.6;
+}
+
+/* ── Map section: lived left, spoken right ── */
+.map-section {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 1.25rem;
+  align-items: stretch;
+  margin: 1rem 0 2.5rem;
+}
+
+.map-col {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.map-col .countries-lived,
+.map-col .continent-maps {
+  flex: 1;
+}
+
+.map-col-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-text-light);
+  margin: 0;
+}
+
+/* ── Country silhouettes ── */
+.countries-lived {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  min-width: 0;
+}
+
+/* ── Continent talk panels ── */
+.continent-maps {
+  display: flex;
+  gap: 0.75rem;
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: 0.75rem;
+  padding: 1rem;
+  align-items: center;
+}
+
+.continent-panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.continent-svg {
+  width: 100%;
+  height: 200px;
+  display: block;
+}
+
+.continent-label {
+  font-size: 0.65rem;
+  color: var(--color-text-light);
+  text-align: center;
+}
+
+.country-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: 0.75rem;
+  padding: 0.6rem 0.4rem 0.5rem;
+  min-width: 0;
+}
+
+.country-svg {
+  width: 100%;
+  height: 72px;
+  display: block;
+  overflow: hidden;
+}
+
+.country-label {
+  text-align: center;
+}
+
+.country-label strong {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.country-label span {
+  display: block;
+  font-size: 0.65rem;
+  color: var(--color-text-light);
+  margin-top: 0.1rem;
+}
+
+
+/* ── Section padding override ── */
+.content-section {
+  padding-bottom: 2rem;
+}
+
+/* ── Domain sections ── */
+.domain-sections {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin: 1.5rem 0 0;
+}
+
+.domain-section {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--color-border);
 }
 
-.about-list li {
-  padding-left: 1rem;
-  border-left: 2px solid var(--color-primary);
-  line-height: 1.7;
+.domain-section:first-child {
+  padding-top: 0;
+  border-top: none;
 }
 
-.about-links {
-  margin-top: 1.5rem;
+.domain-section-header {
   display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
+  align-items: center;
 }
 
-@media (max-width: 768px) {
+.domain-section-header h3 {
+  margin: 0;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-text-light);
+  padding-left: 0.75rem;
+  border-left: 2px solid var(--color-primary);
+  line-height: 1.2;
+}
+
+
+.exp-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+}
+
+.exp-card {
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: 0.75rem;
+  padding: 1.25rem 1.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.exp-card-main {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.exp-card-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.exp-role {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  line-height: 1.3;
+}
+
+.exp-org {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--color-text);
+  line-height: 1.3;
+}
+
+.exp-years-stack {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  flex-shrink: 0;
+  gap: 0;
+}
+
+.exp-years-stack span {
+  font-size: 0.68rem;
+  color: var(--color-text-light);
+  line-height: 1.3;
+  white-space: nowrap;
+}
+
+.exp-desc {
+  font-size: 0.78rem;
+  color: var(--color-text-light);
+  line-height: 1.5;
+  margin: 0;
+}
+
+
+/* ── Responsive ── */
+@media (max-width: 720px) {
+  .map-section {
+    grid-template-columns: 1fr;
+  }
+
+  #world-map {
+    height: 220px;
+  }
+
+  .countries-lived {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
   .about-intro {
     flex-direction: column-reverse;
     align-items: center;
@@ -195,10 +817,12 @@ import { buildUrl } from '../utils/urlHelper';
     justify-content: center;
   }
 
-  .about-book {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
+  .countries-lived {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .exp-cards {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 </style>

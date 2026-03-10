@@ -8,6 +8,7 @@ export interface ContentItem {
   duration?: string;
   description: string;
   thumbnail?: string;
+  thumbnail_fit?: 'cover' | 'contain';
   tags: string[];
   platform?: 'youtube' | 'vimeo' | 'other';
   podcast?: string;
@@ -35,6 +36,7 @@ interface RawContentItem {
   duration?: string;
   description?: string;
   thumbnail?: string;
+  thumbnail_fit?: string;
   tags?: string[];
   platform?: string;
   podcast?: string;

@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ContentFilter from '../components/ContentFilter.astro';
 import Icon from '../components/Icon.astro';
+import ThumbnailImage from '../components/ThumbnailImage.astro';
 import { readContentYAML } from '../utils/yamlParser';
 
 const content = await readContentYAML();
@@ -55,7 +56,7 @@ const allTags = allPodcasts.flatMap(p => p.data.tags || []);
                 {guestAppearances.map((podcast) => (
                   <a href={podcast.data.audioUrl} target="_blank" rel="noopener noreferrer" class="card content-card podcast-card" data-tags={JSON.stringify(podcast.data.tags || [])} data-type="guest-appearance">
                     {podcast.data.thumbnail ? (
-                      <img src={podcast.data.thumbnail} alt={podcast.data.title} class="card-image" />
+                      <ThumbnailImage src={podcast.data.thumbnail} alt={podcast.data.title} fit={podcast.data.thumbnail_fit as 'cover' | 'contain' | undefined} />
                     ) : (
                       <div class="card-image-placeholder">
                         <Icon name="microphone" size={64} />
@@ -90,7 +91,7 @@ const allTags = allPodcasts.flatMap(p => p.data.tags || []);
                 {sqlLinguaFranca.map((podcast) => (
                   <a href={podcast.data.audioUrl} target="_blank" rel="noopener noreferrer" class="card content-card podcast-card" data-tags={JSON.stringify(podcast.data.tags || [])} data-type="sql-lingua-franca">
                     {podcast.data.thumbnail ? (
-                      <img src={podcast.data.thumbnail} alt={podcast.data.title} class="card-image" />
+                      <ThumbnailImage src={podcast.data.thumbnail} alt={podcast.data.title} fit={podcast.data.thumbnail_fit as 'cover' | 'contain' | undefined} />
                     ) : (
                       <div class="card-image-placeholder">
                         <Icon name="microphone" size={64} />

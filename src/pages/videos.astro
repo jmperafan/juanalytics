@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ContentFilter from '../components/ContentFilter.astro';
 import YouTubeThumbnail from '../components/YouTubeThumbnail.astro';
+import ThumbnailImage from '../components/ThumbnailImage.astro';
 import Icon from '../components/Icon.astro';
 import { readContentYAML } from '../utils/yamlParser';
 
@@ -53,7 +54,7 @@ const allTags = videos.flatMap(v => v.data.tags || []);
                       <div class="video-player"></div>
                     </>
                   ) : video.data.thumbnail ? (
-                    <img src={video.data.thumbnail} alt={video.data.title} class="card-image" />
+                    <ThumbnailImage src={video.data.thumbnail} alt={video.data.title} />
                   ) : (
                     <div class="card-image-placeholder">
                       <Icon name="play" size={64} />
