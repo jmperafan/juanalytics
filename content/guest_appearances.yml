@@ -5,8 +5,7 @@ guest_appearances:
   date: '2026-03-26'
   description: Gabriela Costa and Juan Manuel Perafan discuss the importance of discovery in data projects. Rather than jumping directly to SQL or BI tools, professionals should first understand the stakeholder's underlying business problem.
   duration: '9:56'
-  thumbnail: https://media.licdn.com/dms/image/v2/D4D05AQEbpq83gXIiCA/videocover-high/B4DZ0qe37fJoBU-/0/1774534253010
-  thumbnail_fit: contain
+  thumbnail: /images/thumbnails/gabriela-dados-discovery.webp
   tags:
   - analytics engineering
   - dashboard
