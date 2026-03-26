@@ -1,4 +1,16 @@
 guest_appearances:
+- url: https://www.linkedin.com/posts/gabrieladados_o-stakeholder-te-pediu-um-dashboard-qual-activity-7442936594220843008-ozy3
+  title: 'O stakeholder te pediu um dashboard. Qual é o seu próximo passo?'
+  podcast: Gabriela Dados
+  date: '2026-03-26'
+  description: Gabriela Costa and Juan Manuel Perafan discuss the importance of discovery in data projects. Rather than jumping directly to SQL or BI tools, professionals should first understand the stakeholder's underlying business problem.
+  duration: '9:56'
+  thumbnail: https://media.licdn.com/dms/image/v2/D4D05AQEbpq83gXIiCA/videocover-high/B4DZ0qe37fJoBU-/0/1774534253010
+  thumbnail_fit: contain
+  tags:
+  - analytics engineering
+  - dashboard
+  - requirements
 - url: https://www.youtube.com/live/HxMIsPrIyGQ?si=uEP4fl_dtI3CSj-O
   title: 'Foundations of Analytics Engineer Role: Skills, Scope, and Modern Practices'
   podcast: 'DataTalksClub'
