@@ -1,0 +1,81 @@
+data_hustle_podcast:
+- url: https://www.youtube.com/watch?v=4k4wg9wL0YE
+  title: 'Kingsley Hall - AI-Enabled and Deeply Human'
+  date: '2026-06-12'
+  podcast: The Data Hustle Podcast
+  episode: '7'
+  description: 'Kingsley Hall explores how AI is reshaping enterprise sales, why AI-enabled sellers will outperform traditional ones, and why storytelling, trust, and curiosity may become the real differentiators in a world full of AI-generated content.'
+  duration: '58:46'
+  thumbnail: https://i.ytimg.com/vi/4k4wg9wL0YE/maxresdefault.jpg
+  tags:
+  - artificial intelligence
+  - career development
+- url: https://www.youtube.com/watch?v=SYqveyVb9-4
+  title: 'Chris Gambill - Data Strategy Over Syntax'
+  date: '2026-06-10'
+  podcast: The Data Hustle Podcast
+  episode: '6'
+  description: 'Chris Gambill, a data strategy and engineering leader with 25+ years of experience, talks about why strategy beats syntax, how aspiring data engineers can stand out in the AI era, and how senior professionals can move from implementation to trusted advisor.'
+  duration: '55:41'
+  thumbnail: https://i.ytimg.com/vi/SYqveyVb9-4/maxresdefault.jpg
+  tags:
+  - data engineering
+  - career development
+- url: https://www.youtube.com/watch?v=1j_6a-uKLYE
+  title: 'Zharko Cekovski - Rescuing Broken Data Projects'
+  date: '2026-06-02'
+  podcast: The Data Hustle Podcast
+  episode: '5'
+  description: 'Zharko Cekovski shares stories from rescuing broken data projects, where the real problems are organizational rather than technical, and offers practical advice on remote consulting, Git as a collaboration skill, and when AI helps versus when it adds noise.'
+  duration: '45:28'
+  thumbnail: https://i.ytimg.com/vi/1j_6a-uKLYE/maxresdefault.jpg
+  tags:
+  - data engineering
+  - consulting
+- url: https://www.youtube.com/watch?v=fCy5m7BW1B8
+  title: 'Shane Gibson - Beyond the Jira Ticket Factory'
+  date: '2026-05-28'
+  podcast: The Data Hustle Podcast
+  episode: '4'
+  description: 'Shane Gibson breaks down how data teams can escape the Jira ticket factory, create more business value through better flow and stakeholder alignment, and what it takes to build a sustainable data consulting practice.'
+  duration: '54:26'
+  thumbnail: https://i.ytimg.com/vi/fCy5m7BW1B8/maxresdefault.jpg
+  tags:
+  - data strategy
+  - consulting
+- url: https://www.youtube.com/watch?v=24A7QY9WAko
+  title: 'Slawomir Tulski - Political Debt in Data Organizations'
+  date: '2026-05-21'
+  podcast: The Data Hustle Podcast
+  episode: '3'
+  description: 'Sławomir Tulski, former Meta data engineering manager, digs into why data teams get stuck as ask factories, how political debt differs from technical debt, and what the AI era means for implementation-focused consultants.'
+  duration: '1:01:44'
+  thumbnail: https://i.ytimg.com/vi/24A7QY9WAko/maxresdefault.jpg
+  tags:
+  - data strategy
+  - consulting
+  - artificial intelligence
+- url: https://www.youtube.com/watch?v=Xyx3E-b6Opo
+  title: 'Dr. Clair Sullivan - From Expert to Solopreneur'
+  date: '2026-05-16'
+  podcast: The Data Hustle Podcast
+  episode: '2'
+  description: 'Dr. Clair Sullivan shares lessons on becoming a solopreneur, building credibility as a technical professional, and turning expertise into a sustainable consulting business. Topics include pricing, networking, content, and how Gen AI is changing consulting economics.'
+  duration: '46:47'
+  thumbnail: https://i.ytimg.com/vi/Xyx3E-b6Opo/maxresdefault.jpg
+  tags:
+  - consulting
+  - career development
+  - artificial intelligence
+- url: https://www.youtube.com/watch?v=Yf5IYY5oBrc
+  title: 'Thais Cooke - Data Analysts in the AI Era'
+  date: '2026-05-09'
+  podcast: The Data Hustle Podcast
+  episode: '1'
+  description: 'Thais Cooke, senior healthcare data analyst and LinkedIn Learning instructor, talks about how AI is changing the analyst role, why SQL and critical thinking still matter, and why domain knowledge and stakeholder trust are becoming the real differentiators.'
+  duration: '48:31'
+  thumbnail: https://i.ytimg.com/vi/Yf5IYY5oBrc/maxresdefault.jpg
+  tags:
+  - analytics engineering
+  - career development
+  - artificial intelligence

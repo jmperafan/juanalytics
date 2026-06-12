@@ -18,24 +18,26 @@ const allPodcasts = content.podcasts.map(podcast => ({
     episode: podcast.episode || (podcast.extra1 ? parseInt(podcast.extra1) : undefined),
     thumbnail: podcast.thumbnail,
     thumbnail_fit: podcast.thumbnail_fit as 'cover' | 'contain' | undefined,
-    type: (podcast.extra1 && parseInt(podcast.extra1) > 0) ? 'own' : 'guest',
     tags: podcast.tags,
   }
 }));
 
-// SQL Lingua Franca episodes have titles with pattern "Name - Topic"
-const sqlLinguaFranca = allPodcasts
-  .filter(p => p.data.title.includes(' - '))
-  .sort((a, b) => {
-    const episodeA = typeof a.data.episode === 'number' ? a.data.episode : 0;
-    const episodeB = typeof b.data.episode === 'number' ? b.data.episode : 0;
-    return episodeB - episodeA;
-  });
-const guestAppearances = allPodcasts
-  .filter(p => !p.data.title.includes(' - '))
+const dataHustle = allPodcasts
+  .filter(p => p.data.podcastName === 'The Data Hustle Podcast')
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
-// Get all unique tags for filtering
+const sqlLinguaFranca = allPodcasts
+  .filter(p => p.data.podcastName === 'SQL Lingua Franca')
+  .sort((a, b) => {
+    const episodeA = typeof a.data.episode === 'number' ? a.data.episode : parseInt(String(a.data.episode) || '0');
+    const episodeB = typeof b.data.episode === 'number' ? b.data.episode : parseInt(String(b.data.episode) || '0');
+    return episodeB - episodeA;
+  });
+
+const guestAppearances = allPodcasts
+  .filter(p => p.data.podcastName !== 'The Data Hustle Podcast' && p.data.podcastName !== 'SQL Lingua Franca')
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
 const allTags = allPodcasts.flatMap(p => p.data.tags || []);
 ---
 
@@ -50,9 +52,54 @@ const allTags = allPodcasts.flatMap(p => p.data.tags || []);
         <ContentFilter tags={allTags} gridId="podcasts-container" cardClass="podcast-card" />
 
         <div id="podcasts-container" style="flex: 1;">
+
+          {dataHustle.length > 0 && (
+            <div class="podcast-section" id="data-hustle-section" data-section-type="data-hustle">
+              <div class="section-header">
+                <h2 class="section-subtitle">The Data Hustle Podcast</h2>
+              </div>
+              <p class="section-description">Research in podcast form: Tony and I talk careers and consultancy with practitioners as we write our upcoming book on data.</p>
+              <div class="content-grid">
+                {dataHustle.map((podcast) => (
+                  <a href={podcast.data.audioUrl} target="_blank" rel="noopener noreferrer" class="card content-card podcast-card" data-tags={JSON.stringify(podcast.data.tags || [])} data-type="data-hustle">
+                    {podcast.data.thumbnail ? (
+                      <ThumbnailImage src={podcast.data.thumbnail} alt={podcast.data.title} fit={podcast.data.thumbnail_fit as 'cover' | 'contain' | undefined} />
+                    ) : (
+                      <div class="card-image-placeholder">
+                        <Icon name="microphone" size={64} />
+                      </div>
+                    )}
+                    <div class="card-content">
+                      <h3 class="card-title">{podcast.data.title}</h3>
+                      {podcast.data.episode && (
+                        <p class="podcast-series-meta">Episode {podcast.data.episode}</p>
+                      )}
+                      <p class="card-meta">
+                        {podcast.data.pubDate.toISOString().split('T')[0]}
+                        {podcast.data.duration && ` • ${podcast.data.duration}`}
+                      </p>
+                      <p class="card-description">{podcast.data.description}</p>
+                      {podcast.data.tags && podcast.data.tags.length > 0 && (
+                        <div class="card-tags">
+                          {podcast.data.tags.map((tag) => (
+                            <span class="tag content-tag" data-tag={tag}>{tag}</span>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  </a>
+                ))}
+              </div>
+              <div class="show-more-wrapper" id="data-hustle-more"></div>
+            </div>
+          )}
+
           {guestAppearances.length > 0 && (
-            <div class="podcast-section" id="guest-section">
-              <h2 class="section-subtitle">Guest Appearances</h2>
+            <div class="podcast-section" id="guest-section" data-section-type="guest-appearance">
+              <div class="section-header">
+                <h2 class="section-subtitle">Guest Appearances</h2>
+              </div>
+              <p class="section-description">If you host a podcast about data or tech careers and want me on, I am always happy to join the conversation.</p>
               <div class="content-grid">
                 {guestAppearances.map((podcast) => (
                   <a href={podcast.data.audioUrl} target="_blank" rel="noopener noreferrer" class="card content-card podcast-card" data-tags={JSON.stringify(podcast.data.tags || [])} data-type="guest-appearance">
@@ -82,12 +129,16 @@ const allTags = allPodcasts.flatMap(p => p.data.tags || []);
                   </a>
                 ))}
               </div>
+              <div class="show-more-wrapper" id="guest-more"></div>
             </div>
           )}
 
           {sqlLinguaFranca.length > 0 && (
-            <div class="podcast-section" id="sql-lingua-franca-section">
-              <h2 class="section-subtitle">SQL Lingua Franca</h2>
+            <div class="podcast-section" id="sql-lingua-franca-section" data-section-type="sql-lingua-franca">
+              <div class="section-header">
+                <h2 class="section-subtitle">SQL Lingua Franca</h2>
+              </div>
+              <p class="section-description">My first podcast (2024–2025): intimate conversations with knowledgeable guests about data, analytics engineering, and strategy.</p>
               <div class="content-grid">
                 {sqlLinguaFranca.map((podcast) => (
                   <a href={podcast.data.audioUrl} target="_blank" rel="noopener noreferrer" class="card content-card podcast-card" data-tags={JSON.stringify(podcast.data.tags || [])} data-type="sql-lingua-franca">
@@ -100,12 +151,8 @@ const allTags = allPodcasts.flatMap(p => p.data.tags || []);
                     )}
                     <div class="card-content">
                       <h3 class="card-title">{podcast.data.title}</h3>
-                      {(podcast.data.podcastName || podcast.data.episode) && (
-                        <p class="podcast-series-meta">
-                          {podcast.data.podcastName && podcast.data.podcastName}
-                          {podcast.data.podcastName && podcast.data.episode && ' • '}
-                          {podcast.data.episode && `Episode ${podcast.data.episode}`}
-                        </p>
+                      {podcast.data.episode && (
+                        <p class="podcast-series-meta">Episode {podcast.data.episode}</p>
                       )}
                       <p class="card-meta">
                         {podcast.data.pubDate.toISOString().split('T')[0]}
@@ -123,10 +170,11 @@ const allTags = allPodcasts.flatMap(p => p.data.tags || []);
                   </a>
                 ))}
               </div>
+              <div class="show-more-wrapper" id="sql-lingua-franca-more"></div>
             </div>
           )}
 
-          {sqlLinguaFranca.length === 0 && guestAppearances.length === 0 && (
+          {dataHustle.length === 0 && sqlLinguaFranca.length === 0 && guestAppearances.length === 0 && (
             <p class="empty-state">No podcast episodes yet. Check back soon!</p>
           )}
         </div>
@@ -135,45 +183,74 @@ const allTags = allPodcasts.flatMap(p => p.data.tags || []);
   </section>
 
   <script>
+    const INITIAL_LIMIT = 4;
+
+    const SECTIONS: Record<string, { sectionId: string; moreId: string }> = {
+      'data-hustle':       { sectionId: 'data-hustle-section',      moreId: 'data-hustle-more' },
+      'sql-lingua-franca': { sectionId: 'sql-lingua-franca-section', moreId: 'sql-lingua-franca-more' },
+      'guest-appearance':  { sectionId: 'guest-section',             moreId: 'guest-more' },
+    };
+
+    const expandedSections = new Set<string>();
+    let activeTag = 'all';
+
+    function expand(type: string) {
+      expandedSections.add(type);
+      applyVisibility();
+    }
+
+    function applyVisibility() {
+      const podcastCards = document.querySelectorAll<HTMLElement>('.podcast-card');
+      const matching: Record<string, number> = {};
+      Object.keys(SECTIONS).forEach(k => matching[k] = 0);
+
+      podcastCards.forEach(card => {
+        const cardTags: string[] = JSON.parse(card.getAttribute('data-tags') || '[]');
+        const type = card.getAttribute('data-type') || '';
+        const matchesTag = activeTag === 'all' || cardTags.includes(activeTag);
+
+        if (!matchesTag) {
+          card.style.display = 'none';
+          return;
+        }
+
+        matching[type] = (matching[type] || 0) + 1;
+        const position = matching[type];
+        const expanded = expandedSections.has(type) || activeTag !== 'all';
+        card.style.display = (expanded || position <= INITIAL_LIMIT) ? 'flex' : 'none';
+      });
+
+      Object.entries(SECTIONS).forEach(([type, { sectionId, moreId }]) => {
+        const section = document.getElementById(sectionId);
+        const moreWrapper = document.getElementById(moreId);
+        if (!section || !moreWrapper) return;
+
+        const total = matching[type] || 0;
+        section.style.display = total > 0 ? 'block' : 'none';
+
+        const hiddenCount = total - INITIAL_LIMIT;
+        const isFiltering = activeTag !== 'all';
+        const isExpanded = expandedSections.has(type);
+        const showButtons = !isFiltering && !isExpanded && hiddenCount > 0;
+
+        // Bottom subtle button
+        if (showButtons) {
+          moreWrapper.innerHTML = `<button class="show-more-btn" data-type="${type}">Show ${hiddenCount} more</button>`;
+          moreWrapper.querySelector('button')?.addEventListener('click', () => expand(type));
+        } else {
+          moreWrapper.innerHTML = '';
+        }
+      });
+    }
+
     document.addEventListener('DOMContentLoaded', () => {
-      const filterButtons = document.querySelectorAll('.filter-tag');
-      const podcastCards = document.querySelectorAll('.podcast-card');
-      const sqlLinguaFrancaSection = document.getElementById('sql-lingua-franca-section');
-      const guestSection = document.getElementById('guest-section');
+      applyVisibility();
 
-      function filterByTag(tag: string) {
-        let sqlLinguaFrancaVisible = 0;
-        let guestVisible = 0;
-
-        podcastCards.forEach(card => {
-          if (!(card instanceof HTMLElement)) return;
-          const cardTags = JSON.parse(card.getAttribute('data-tags') || '[]');
-          const cardType = card.getAttribute('data-type');
-
-          if (tag === 'all' || cardTags.includes(tag)) {
-            card.style.display = 'flex';
-            if (cardType === 'sql-lingua-franca') sqlLinguaFrancaVisible++;
-            if (cardType === 'guest-appearance') guestVisible++;
-          } else {
-            card.style.display = 'none';
-          }
-        });
-
-        // Hide section headers if no items are visible
-        if (sqlLinguaFrancaSection) {
-          (sqlLinguaFrancaSection as HTMLElement).style.display = sqlLinguaFrancaVisible > 0 ? 'block' : 'none';
-        }
-        if (guestSection) {
-          (guestSection as HTMLElement).style.display = guestVisible > 0 ? 'block' : 'none';
-        }
-      }
-
-      // Override ContentFilter's filterByTag function for podcast-specific logic
-      filterButtons.forEach(btn => {
+      document.querySelectorAll('.filter-tag').forEach(btn => {
         btn.addEventListener('click', (e) => {
           e.preventDefault();
-          const tag = btn.getAttribute('data-tag') || 'all';
-          filterByTag(tag);
+          activeTag = btn.getAttribute('data-tag') || 'all';
+          applyVisibility();
         });
       });
     });
@@ -184,11 +261,31 @@ const allTags = allPodcasts.flatMap(p => p.data.tags || []);
       margin-bottom: 4rem;
     }
 
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+
     .section-subtitle {
       font-size: 1.75rem;
-      margin-bottom: 1.5rem;
+      margin: 0;
       color: var(--color-text);
       font-weight: 700;
+    }
+
+    .section-description {
+      color: var(--color-text-light);
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin: 0 0 1.5rem;
+    }
+
+.podcast-card .card-description {
+      -webkit-line-clamp: 3;
+      line-clamp: 3;
     }
 
     .podcast-series-meta {
@@ -196,6 +293,28 @@ const allTags = allPodcasts.flatMap(p => p.data.tags || []);
       font-weight: 600;
       font-size: 0.875rem;
       margin-bottom: 0.75rem;
+    }
+
+    .show-more-wrapper {
+      margin-top: 1.25rem;
+      text-align: center;
+    }
+
+    .show-more-btn {
+      background: transparent;
+      border: 1px solid var(--color-text-muted, #888);
+      color: var(--color-text-muted, #888);
+      padding: 0.5rem 1.5rem;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .show-more-btn:hover {
+      border-color: var(--color-text);
+      color: var(--color-text);
     }
   </style>
 </BaseLayout>

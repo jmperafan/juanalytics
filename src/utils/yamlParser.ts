@@ -115,11 +115,12 @@ export async function readContentYAML(): Promise<ParsedContent> {
     const videos = readYAMLFile('videos.yml');
     const sqlLinguaFranca = readYAMLFile('sql_lingua_franca.yml');
     const guestAppearances = readYAMLFile('guest_appearances.yml');
+    const dataHustlePodcast = readYAMLFile('data_hustle_podcast.yml');
     const talks = readYAMLFile('talks.yml');
     const books = readYAMLFile('books.yml');
 
-    // Merge podcasts (SQL Lingua Franca + guest appearances)
-    const allPodcasts = [...sqlLinguaFranca, ...guestAppearances];
+    // Merge all podcast sources
+    const allPodcasts = [...sqlLinguaFranca, ...guestAppearances, ...dataHustlePodcast];
 
     const result = {
       videos: processItems(videos),
