@@ -13,7 +13,7 @@ const books = content.books.map(book => ({
     pubDate: book.date,
     coverImage: book.thumbnail,
     amazonUrl: book.url,
-    publisher: book.extra1 || '',
+    publisher: book.publisher || '',
     coAuthors: book.extra2 ? book.extra2.split(';').map(a => a.trim()) : [],
     tags: book.tags,
     buttonText: book.buttonText || 'View Book',
