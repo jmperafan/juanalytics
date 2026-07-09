@@ -145,6 +145,15 @@ talks:
   tags: [analytics engineering, career development]
   event: Berlin dbt Meetup
   location: Berlin, Germany
+- title: 'Roadmap to Data Maturity: How to Become a Data-Driven Organization'
+  date: '2022-09-14'
+  description: A talk about the roadmap to data maturity and strategies for becoming a data-driven organization.
+  thumbnail: /public/images/thumbnails/big_data_expo_2022.jpg
+  tags:
+  - data strategy
+  - data maturity
+  event: Big Data Expo 2022
+  location: Utrecht, Netherlands
 - url: https://godatafest.com/broadcasts/power-bi-vs-tableau/
   title: 'Power BI vs Tableau: The Ultimate BI Tool for mature data organizations'
   date: '2022-10-27'
