@@ -5,15 +5,15 @@ talks:
     engineers.
   date: 2025-10-14
   thumbnail: https://placehold.co/600x400/1e293b/94a3b8?text=Coalesce+2025
-  tags: [dbt, analytics engineering, career development]
+  tags: [dbt, Analytics Engineering, Career Development]
   event: Coalesce 2025
   location: Las Vegas, NV
 - url: https://www.meetup.com/medellin-dbt-meetup/events/302810510/?eventOrigin=group_events_list
   title: 'dbt turbocharge: Query optimization in dbt'
   date: '2024-09-04'
-  description: A networking gathering for data professionals featuring presentations on analytics engineering, data stacks, data ops, modeling, testing, and team structures.
+  description: A networking gathering for data professionals featuring presentations on Analytics Engineering, data stacks, data ops, modeling, testing, and team structures.
   thumbnail: https://placehold.co/600x400/1e293b/94a3b8?text=Medellin+dbt+Meetup
-  tags: [dbt, performance tuning, sql]
+  tags: [dbt, Performance Tuning, SQL]
   event: Medellín dbt Meetup
   location: Medellín, Colombia
 - url: https://www.youtube.com/watch?v=XelmswFijtw
@@ -24,7 +24,7 @@ talks:
     as most resources available focus on le...
   duration: '30:23'
   thumbnail: https://i.ytimg.com/vi/XelmswFijtw/maxresdefault.jpg
-  tags: [dbt, performance tuning, sql]
+  tags: [dbt, Performance Tuning, SQL]
   event: Coalesce 2023
   location: San Diego, CA
 - url: https://www.youtube.com/watch?v=e7cGqsqLkmU
@@ -34,7 +34,7 @@ talks:
   duration: '34:54'
   thumbnail: https://i.ytimg.com/vi/e7cGqsqLkmU/maxresdefault.jpg
   tags:
-  - community building
+  - Community Building
   event: The Linux Foundation OS Summit 2023
   location: Bilbao, Spain
 - url: https://www.youtube.com/watch?v=9eiYoB21uuo
@@ -46,7 +46,7 @@ talks:
   duration: '29:07'
   thumbnail: https://i.ytimg.com/vi/9eiYoB21uuo/maxresdefault.jpg
   tags:
-  - community building
+  - Community Building
   event: Big Data Summit Warsaw 2023
   location: Warsaw, Poland
 - url: https://www.youtube.com/watch?v=Y4aoTfLV450
@@ -57,7 +57,7 @@ talks:
   thumbnail: https://i.ytimg.com/vi/Y4aoTfLV450/maxresdefault.jpg
   tags:
   - dbt
-  - data strategy
+  - Data Strategy
   event: 'dbt Belgium Meetup #2'
   location: Ghent, Belgium
 - url: https://www.youtube.com/watch?v=RVxU9tYB6-o
@@ -69,7 +69,7 @@ talks:
   duration: 05:04
   thumbnail: https://i.ytimg.com/vi/RVxU9tYB6-o/maxresdefault.jpg
   tags:
-  - community building
+  - Community Building
   event: Xebia TEDxKE
   location: Amersfoort, The Netherlands
 - url: https://www.youtube.com/watch?v=zDr6vgq2cdY
@@ -78,7 +78,7 @@ talks:
   description: 'Spanish talk demostration some lesser known functionalities of Tableau.'
   duration: 01:15:55
   thumbnail: https://i.ytimg.com/vi/zDr6vgq2cdY/hqdefault.jpg
-  tags: [tableau, data visualization]
+  tags: [Tableau, Data Visualization]
   event: Latino/a/x Tableau User Group
   location: Virtual
 - url: https://www.youtube.com/watch?v=TCyU09dd4ZE&t=20723s
@@ -87,7 +87,7 @@ talks:
   description: 'In this talk, I discuss the project management side of creating a dashboard and all the hidden complexities behind it.'
   duration: 07:19:10
   thumbnail: https://i.ytimg.com/vi/TCyU09dd4ZE/maxresdefault.jpg
-  tags: [data visualization, business intelligence]
+  tags: [Data Visualization, Business Intelligence]
   event: GoDataFest 2021
   location: Amsterdam, The Netherlands
 - url: https://www.youtube.com/watch?v=prhUEW-l32M
@@ -97,7 +97,7 @@ talks:
     and R into Tableau to extend its functionalities.'
   duration: '54:52'
   thumbnail: https://i.ytimg.com/vi/prhUEW-l32M/maxresdefault.jpg
-  tags: [tableau, r, python]
+  tags: [Tableau, R, Python]
   event: Tableau User Group Netherlands
   location: Virtual
 - url: https://bigdatatechwarsaw.eu/prelegenci/juan-manuel-perafan/
@@ -105,15 +105,15 @@ talks:
   date: '2023-03-29'
   description: In this talk, demystify the organization of meetups. From finding sponsors, getting world-class speakers, and attracting a relevant audience.
   thumbnail: https://bigdatatechwarsaw.eu/wp-content/uploads/2021/12/Juan-Manuel-Perafan.jpg
-  tags: [community building]
+  tags: [Community Building]
   event: Data & AI Warsaw Tech Summit
   location: Warsaw, Poland
-- url: https://usergroups.snowflake.com/events/details/snowflake-netherlands-presents-snowflake-and-dbt-a-hands-on-experience/
+- url: https://usergroups.Snowflake.com/events/details/Snowflake-netherlands-presents-Snowflake-and-dbt-a-hands-on-experience/
   title: dbt Packages for Snowflake users
   date: '2025-07-15'
   description: July 15 we will be joined by Juan Manuel Perafan (Nimbus Intelligence) and Bart van Delft (dbt Labs). We will be informed about the latest and greatest in dbt and what it will bring to the Snowflake Community. After that we will get our hands dirty and get to see for ourselves how dbt works and what can be achieved.
-  thumbnail: https://res.cloudinary.com/startup-grind/image/upload/c_fill,dpr_2.0,f_auto,g_center,h_1080,q_100,w_1080/v1/gcs/platform-data-snowflake/events/Amsterdam%20User%20Group%20Meeting%20July%2015_Laqbv8f.png
-  tags: [snowflake, dbt]
+  thumbnail: https://res.cloudinary.com/startup-grind/image/upload/c_fill,dpr_2.0,f_auto,g_center,h_1080,q_100,w_1080/v1/gcs/platform-data-Snowflake/events/Amsterdam%20User%20Group%20Meeting%20July%2015_Laqbv8f.png
+  tags: [Snowflake, dbt]
   event: Snowflake Netherlands User Group
   location: Amsterdam, The Netherlands
 - url: https://dwlatinamerica23.sched.com/event/1M8Fs
@@ -124,7 +124,7 @@ talks:
   thumbnail: https://dwlatinamerica23.sched.com/img/app-icon.png?1761834776
   tags:
   - dbt
-  - analytics engineering
+  - Analytics Engineering
   event: DeveloperWeek Latin America 2023
   location: Virtual
 - url: https://www.meetup.com/budapest-dbt-meetup/events/302956469/
@@ -133,7 +133,7 @@ talks:
   description: In this talk, we will explore the various testing capabilities that dbt offers
     to ensure data quality and reliability..
   thumbnail: https://placehold.co/600x400/1e293b/94a3b8?text=Budapest+dbt+Meetup
-  tags: [dbt, programming]
+  tags: [dbt, Programming]
   event: Budapest dbt Meetup
   location: Budapest, Hungary
 - url: https://www.meetup.com/berlin-dbt-meetup/events/310533963/?eventOrigin=group_events_list
@@ -142,27 +142,27 @@ talks:
   description: In this talk, I will share some insights and strategies for effectively
     onboarding junior analytics engineers.
   thumbnail: https://secure.meetupstatic.com/photos/event/d/a/d/1/600_497696017.jpeg
-  tags: [analytics engineering, career development]
+  tags: [Analytics Engineering, Career Development]
   event: Berlin dbt Meetup
   location: Berlin, Germany
 - title: 'Roadmap to Data Maturity: How to Become a Data-Driven Organization'
   date: '2022-09-14'
-  description: A talk about the roadmap to data maturity and strategies for becoming a data-driven organization.
+  description: A talk about the roadmap to Data Maturity and strategies for becoming a data-driven organization.
   thumbnail: /public/images/thumbnails/big_data_expo_2022.jpg
   tags:
-  - data strategy
-  - data maturity
+  - Data Strategy
+  - Data Maturity
   event: Big Data Expo 2022
   location: Utrecht, Netherlands
-- url: https://godatafest.com/broadcasts/power-bi-vs-tableau/
+- url: https://godatafest.com/broadcasts/power-bi-vs-Tableau/
   title: 'Power BI vs Tableau: The Ultimate BI Tool for mature data organizations'
   date: '2022-10-27'
   description: 'In this talk, we will compare the most widely used BI tools in the market from the perspective of a mature data organization'
   thumbnail: https://godatafest.com/wp-content/uploads/2021/08/godatafest-2021-tunein.jpg
   tags:
-  - power bi
-  - tableau
-  - business intelligence
+  - Power BI
+  - Tableau
+  - Business Intelligence
   event: GoDataFest 2022
   location: Amsterdam, The Netherlands
 - url: https://www.youtube.com/watch?v=MqfngHF-q7w
@@ -173,7 +173,7 @@ talks:
     the tools used, and how this role fits into the modern data team.'
   duration: '10:41'
   thumbnail: https://i.ytimg.com/vi/MqfngHF-q7w/maxresdefault.jpg
-  tags: [analytics engineering, career development]
+  tags: [Analytics Engineering, Career Development]
   event: GoDataFest 2020
   location: Amsterdam, The Netherlands
 - url: https://www.meetup.com/san-francisco-dbt-meetup/events/307986150/
@@ -181,7 +181,7 @@ talks:
   date: '2025-06-12'
   description: In this talk, we will explore three underrated use cases of the dbt Semantic Layer that can help you get more value out of your data models and improve collaboration between data teams and business users.
   thumbnail: https://secure.meetupstatic.com/photos/event/1/8/5/a/600_528486234.jpeg
-  tags: [dbt, data strategy]
+  tags: [dbt, Data Strategy]
   event: dbt Global Circuit Series
   location: San Francisco, CA
 - url: https://www.eventbrite.co.uk/e/insights-in-data-visualization-tickets-58093188290
@@ -189,7 +189,7 @@ talks:
   date: '2019-03-28'
   description: In this talk, we will discuss self-service from a project planning perspective.
   thumbnail: https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F58335348%2F149188760893%2F1%2Foriginal.20190312-161519?w=1000&amp;auto=format%2Ccompress&amp;q=75&amp;sharp=10&amp;rect=0%2C104%2C680%2C340&amp;s=bc270ece27d544cf51579bcf19e23bb1
-  tags: [data visualization, data strategy]
+  tags: [Data Visualization, Data Strategy]
   event: Insights in Data Visualization
   location: Antwerp, Belgium
 - url: https://nerdnite.com/events/amsterdam/
@@ -197,6 +197,6 @@ talks:
   date: '2017-11-24'
   description: An exploration of psychoacoustics and how human perception of sound extends beyond simple decibel measurements. A look at the fascinating intersection between physics, biology, and how we experience sound.
   thumbnail: /public/images/thumbnails/nerd_nite_2017.jpeg
-  tags: [psychology]
+  tags: [Psychology]
   event: Nerdnite #34
   location: Amsterdam, The Netherlands
