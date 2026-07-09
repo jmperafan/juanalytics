@@ -6,13 +6,13 @@ sql_lingua_franca:
   episode: '16'
   description: '
     In this episode of SQL Lingua Franca, Sarah Levy, co-founder and CEO of Yuno,
-    discusses data model governance, semantic layers, and the parallels between data governance'
+    discusses data model governance, semantic layers, and the parallels between Data Governance'
   duration: 01:02:32
   thumbnail: https://i.ytimg.com/vi/_ElJVYsqjsw/maxresdefault.jpg
   tags:
-  - data governance
-  - data strategy
-  - artificial intelligence
+  - Data Governance
+  - Data Strategy
+  - Artificial Intelligence
 - url: https://www.youtube.com/watch?v=xghnemtDnto
   title: 'Dumky de Wilde - Hot Takes Special'
   date: '2025-01-30'
@@ -23,7 +23,7 @@ sql_lingua_franca:
   duration: 01:05:08
   thumbnail: https://i.ytimg.com/vi/xghnemtDnto/maxresdefault.jpg
   tags:
-  - data strategy
+  - Data Strategy
 - url: https://www.youtube.com/watch?v=v5VuX9az9Wo
   title: 'Lasse Benninga - Open Source Software in Data'
   date: '2025-01-23'
@@ -36,8 +36,8 @@ sql_lingua_franca:
   duration: 01:02:50
   thumbnail: https://i.ytimg.com/vi/v5VuX9az9Wo/maxresdefault.jpg
   tags:
-  - programming
-  - career development
+  - Programming
+  - Career Development
 - url: https://www.youtube.com/watch?v=7Mbeq8NQxwo
   title: 'Guillermo Sanchez - The Evolution of Analytics Engineering'
   date: '2024-12-11'
@@ -49,8 +49,8 @@ sql_lingua_franca:
   duration: '59:33'
   thumbnail: https://i.ytimg.com/vi/7Mbeq8NQxwo/maxresdefault.jpg
   tags:
-  - analytics engineering
-  - career development
+  - Analytics Engineering
+  - Career Development
 - url: https://www.youtube.com/watch?v=1KFGmaPsqa8
   title: 'Thomas in''t Veld - Data Maturity & The Future of
     Analytics'
@@ -59,12 +59,12 @@ sql_lingua_franca:
   episode: '12'
   description: '
     In this episode of SQL Lingua Franca, Thomas shares actionable strategies for
-    helping companies advance their data maturity. '
+    helping companies advance their Data Maturity. '
   duration: 01:06:03
   thumbnail: https://i.ytimg.com/vi/1KFGmaPsqa8/maxresdefault.jpg
   tags:
-  - data strategy
-  - data maturity
+  - Data Strategy
+  - Data Maturity
 - url: https://www.youtube.com/watch?v=7GZ0duzksaM
   title: 'Mariam Halfhide - Responsible AI'
   date: '2024-11-06'
@@ -74,9 +74,9 @@ sql_lingua_franca:
   duration: '56:04'
   thumbnail: https://i.ytimg.com/vi/7GZ0duzksaM/maxresdefault.jpg
   tags:
-  - artificial intelligence
-  - data strategy
-  - data governance
+  - Artificial Intelligence
+  - Data Strategy
+  - Data Governance
 - url: https://www.youtube.com/watch?v=EMCFacR1LlY
   title: 'Ruben Huidekoper - Analytics Engineering'
   date: '2024-10-07'
@@ -87,19 +87,19 @@ sql_lingua_franca:
   duration: '54:18'
   thumbnail: https://i.ytimg.com/vi/EMCFacR1LlY/maxresdefault.jpg
   tags:
-  - analytics engineering
-  - career development
+  - Analytics Engineering
+  - Career Development
 - url: https://youtu.be/FelO2Zaetos?si=L0i8vg8zLJzhix8l
   title: 'Pádraic Slattery - Mature Data Teams'
   date: '2024-09-11'
   podcast: SQL Lingua Franca
   episode: '8'
   description: 'In this episode, Padraic shares his background, starting from a degree
-    in physics and transitioning into data engineering and analytics engineering.
+    in physics and transitioning into data engineering and Analytics Engineering.
     He discusses the challenges of building mature data teams.'
   duration: '56:30'
   thumbnail: https://i.ytimg.com/vi/FelO2Zaetos/maxresdefault.jpg
-  tags: [data strategy]
+  tags: [Data Strategy]
 - url: https://youtu.be/A5TOnCdsJlo?si=JdkTBgwdCp5lm9ny
   title: 'Ksenia Iakovleva - KPIs & Django Girls'
   date: '2024-09-01'
@@ -109,7 +109,7 @@ sql_lingua_franca:
     in the financial sector. She shares insights on defining effective KPIs'
   duration: '54:40'
   thumbnail: https://i.ytimg.com/vi/A5TOnCdsJlo/maxresdefault.jpg
-  tags: [data strategy, career development]
+  tags: [Data Strategy, Career Development]
 - url: https://youtu.be/Sl5jEuxJ9G0?si=7WitYMU02KyJlWBf
   title: 'Luuk Feitsma - Recruiting Data Professionals'
   date: '2024-08-26'
@@ -119,7 +119,7 @@ sql_lingua_franca:
     music industry as a producer and DJ before transitioning into the IT recruitment'
   duration: '56:29'
   thumbnail: https://i.ytimg.com/vi/Sl5jEuxJ9G0/maxresdefault.jpg
-  tags: [career development]
+  tags: [Career Development]
 - url: https://youtu.be/jaoGFMFM7zc?si=kjMKWraKttM4IKxM
   title: 'Daniel Herrera - Product Advocacy & GenAI'
   podcast: SQL Lingua Franca
@@ -129,7 +129,7 @@ sql_lingua_franca:
     and discuss why some GenAI tools succeed while others fail.'
   duration: '49:11'
   thumbnail: https://i.ytimg.com/vi/jaoGFMFM7zc/maxresdefault.jpg
-  tags: [artificial intelligence]
+  tags: [Artificial Intelligence]
 - url: https://youtu.be/51BPZkOsmKw?si=pTMuTf3sZWsaf4u-
   title: Tony Zeljković - Developer Experience'
   date: '2024-07-21'
@@ -140,18 +140,18 @@ sql_lingua_franca:
   duration: '53:31'
   thumbnail: https://i.ytimg.com/vi/51BPZkOsmKw/maxresdefault.jpg
   tags:
-  - programming
+  - Programming
 - url: https://youtu.be/OV5wvvsM5z0?si=xTTNiZftsWKIkzxO
   title: 'Ricardo Granados Lopez - Data Modeling'
   date: '2024-07-12'
   podcast: SQL Lingua Franca
   episode: '2'
   description: 
-    'In this episode, we delve into the world of data careers and analytics engineering.
+    'In this episode, we delve into the world of data careers and Analytics Engineering.
     Our guest, Ricardo Granados, shares his journey from med...'
   duration: '56:30'
   thumbnail: https://i.ytimg.com/vi/OV5wvvsM5z0/maxresdefault.jpg
-  tags: [data modeling, career development]
+  tags: [Data Modeling, Career Development]
 - url: https://youtu.be/I1tKn4ZT4No?si=LVJ_ziYhscy3aSnY
   title: 'Fanny Kassapian - Data Transformations'
   date: '2024-07-04'
@@ -162,4 +162,4 @@ sql_lingua_franca:
     Kassapian⁠, shares insights on creating efficient, scalable, ...'
   duration: '51:15'
   thumbnail: https://i.ytimg.com/vi/I1tKn4ZT4No/maxresdefault.jpg
-  tags: [dbt, data strategy]
+  tags: [dbt, Data Strategy]
