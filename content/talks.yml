@@ -192,3 +192,11 @@ talks:
   tags: [data visualization, data strategy]
   event: Insights in Data Visualization
   location: Antwerp, Belgium
+- url: https://nerdnite.com/events/amsterdam/
+  title: 'Psychoacoustics: perception cannot be measured in decibels'
+  date: '2017-11-24'
+  description: An exploration of psychoacoustics and how human perception of sound extends beyond simple decibel measurements. A look at the fascinating intersection between physics, biology, and how we experience sound.
+  thumbnail: /public/images/thumbnails/nerd_nite_2017.jpeg
+  tags: [psychology]
+  event: Nerdnite #34
+  location: Amsterdam, The Netherlands
