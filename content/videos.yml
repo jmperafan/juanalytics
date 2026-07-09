@@ -1,6 +1,6 @@
 videos:
 - url: https://www.youtube.com/watch?v=35JelBDhvnE
-  title: dbt-excel, the revolutionary dbt adapter that turns spreadsheets into data
+  title: dbt-excel, the revolutionary dbt adapter that turns Spreadsheets into data
     warehouses
   date: '2023-03-30'
   description: "Welcome to dbt-excel, the revolutionary dbt adapter that combines\
@@ -8,7 +8,7 @@ videos:
     \ change the way you look at data analytics forever. \n \n..."
   duration: 04:27
   thumbnail: https://i.ytimg.com/vi/35JelBDhvnE/hqdefault.jpg
-  tags: [dbt, spreadsheets]
+  tags: [dbt, Spreadsheets]
 - url: https://www.youtube.com/watch?v=gyA3xBr8tbo
   title: The Problem with Tableau & Power BI
   date: '2021-08-26'
@@ -17,7 +17,7 @@ videos:
     But I believe could still learn a lot from DevOps an...
   duration: 06:44
   thumbnail: https://i.ytimg.com/vi/gyA3xBr8tbo/maxresdefault.jpg
-  tags: [tableau, power bi, business intelligence]
+  tags: [Tableau, Power BI, Business Intelligence]
 - url: https://www.youtube.com/watch?v=aBNLPaCChn8
   title: The Problems with KPI's (Key Performance Indicators)
   date: '2021-08-16'
@@ -25,7 +25,7 @@ videos:
     But they can be a double-edge sword and here are 3 reasons why.
   duration: 07:40
   thumbnail: https://i.ytimg.com/vi/aBNLPaCChn8/maxresdefault.jpg
-  tags: [data strategy]
+  tags: [Data Strategy]
 - url: https://www.youtube.com/watch?v=ZFXN0-pr9s4
   title: The Problem with Open-Source Dashboarding Tools
   date: '2021-08-08'
@@ -34,7 +34,7 @@ videos:
     I haven't found a good one. Open-source alterna...
   duration: 06:01
   thumbnail: https://i.ytimg.com/vi/ZFXN0-pr9s4/maxresdefault.jpg
-  tags: [data visualization, business intelligence]
+  tags: [Data Visualization, Business Intelligence]
 - url: https://www.youtube.com/watch?v=rvIuheMjXzA
   title: 'Tableau Calculation Mastery: Unpivoting & Last Date with Data'
   date: '2021-07-13'
@@ -43,7 +43,7 @@ videos:
     The second I show you how to calculate the las...
   duration: '10:15'
   thumbnail: https://i.ytimg.com/vi/rvIuheMjXzA/maxresdefault.jpg
-  tags: [tableau, business intelligence]
+  tags: [Tableau, Business Intelligence]
 - url: https://www.youtube.com/watch?v=qbbX5hRjGNc
   title: 'Power BI Hacks: Evenly-Spaced Tables'
   date: '2021-07-06'
@@ -52,7 +52,7 @@ videos:
     box? Well, today I share how to get it done. T...
   duration: 03:13
   thumbnail: https://i.ytimg.com/vi/qbbX5hRjGNc/maxresdefault.jpg
-  tags: [power bi, business intelligence, data visualization]
+  tags: [Power BI, Business Intelligence, Data Visualization]
 - url: https://www.youtube.com/watch?v=Qo2FQxuh9Ks
   title: 'Power Query Tips: SQL Script from Files (part 2)'
   date: '2021-06-29'
@@ -61,7 +61,7 @@ videos:
     \ that bulk loads multiple SQL scripts. \n\nIf you have..."
   duration: 07:08
   thumbnail: https://i.ytimg.com/vi/Qo2FQxuh9Ks/maxresdefault.jpg
-  tags: [power query, business intelligence]
+  tags: [Power Query, Business Intelligence]
 - url: https://www.youtube.com/watch?v=rVoj_wPmg7w
   title: 'Power Query Tips: SQL Script from Files (part 1)'
   date: '2021-06-23'
@@ -70,7 +70,7 @@ videos:
     But with some M magic, we can point Pow...
   duration: 09:05
   thumbnail: https://i.ytimg.com/vi/rVoj_wPmg7w/maxresdefault.jpg
-  tags: [power query, business intelligence]
+  tags: [Power Query, Business Intelligence]
 - url: https://www.youtube.com/watch?v=hGWWgwoROc8
   title: 'Mastering Power Query: Part 5 (Jedi)'
   date: '2021-06-15'
@@ -79,7 +79,7 @@ videos:
     M mastery comes from making your work robust...
   duration: 09:00
   thumbnail: https://i.ytimg.com/vi/hGWWgwoROc8/maxresdefault.jpg
-  tags: [power query, business intelligence]
+  tags: [Power Query, Business Intelligence]
 - url: https://www.youtube.com/watch?v=tMXMEDTBAEM
   title: 'Mastering Power Query: Part 4 (Pro)'
   date: '2021-06-08'
@@ -88,7 +88,7 @@ videos:
     to make your Power Query work more robust. Watch...
   duration: 08:37
   thumbnail: https://i.ytimg.com/vi/tMXMEDTBAEM/hqdefault.jpg
-  tags: [power query, business intelligence]
+  tags: [Power Query, Business Intelligence]
 - url: https://www.youtube.com/watch?v=V-cnwii9Rdk
   title: 'SQL Tutorial: Using SQLFiddle'
   date: '2021-06-08'
@@ -115,7 +115,7 @@ videos:
     to make your Power Query work more robust.
   duration: 08:25
   thumbnail: https://i.ytimg.com/vi/Tp3AR7x5Jq8/hqdefault.jpg
-  tags: [power query, business intelligence]
+  tags: [Power Query, Business Intelligence]
 - url: https://www.youtube.com/watch?v=jqkVLAB49oE
   title: 'Power Query: Using M to make your work reusable (Advanced)'
   date: '2021-05-19'
@@ -124,7 +124,7 @@ videos:
     In this tutorial I walk you through a real-wor...
   duration: '14:51'
   thumbnail: https://i.ytimg.com/vi/jqkVLAB49oE/maxresdefault.jpg
-  tags: [power query, business intelligence]
+  tags: [Power Query, Business Intelligence]
 - url: https://www.youtube.com/watch?v=4ypWcdDPsr4
   title: How to build a Tableau portfolio?
   date: '2021-05-11'
@@ -132,7 +132,7 @@ videos:
     inspiration on how to make a Tableau Portfolio using Tableau Public.'
   duration: 07:39
   thumbnail: https://i.ytimg.com/vi/4ypWcdDPsr4/maxresdefault.jpg
-  tags: [tableau, career development]
+  tags: [Tableau, Career Development]
 - url: https://www.youtube.com/watch?v=TtgKyTvFcBE
   title: 'Mastering Power Query: Part 2 (Intermediate)'
   date: '2021-05-07'
@@ -141,7 +141,7 @@ videos:
     renaming columns or leaving the change types in ...
   duration: 07:53
   thumbnail: https://i.ytimg.com/vi/TtgKyTvFcBE/maxresdefault.jpg
-  tags: [power query, business intelligence]
+  tags: [Power Query, Business Intelligence]
 - url: https://www.youtube.com/watch?v=5Ln2osFZLoA
   title: 'Mastering Power Query: Part 1 (Beginners)'
   date: '2021-05-03'
@@ -150,7 +150,7 @@ videos:
     possible). Watch the next videos in the series...
   duration: 08:08
   thumbnail: https://i.ytimg.com/vi/5Ln2osFZLoA/maxresdefault.jpg
-  tags: [power query, business intelligence]
+  tags: [Power Query, Business Intelligence]
 - url: https://www.youtube.com/watch?v=oSZe2UV0sNs
   title: Using R script visuals in Power BI
   date: '2021-04-25'
@@ -160,9 +160,9 @@ videos:
   duration: 07:17
   thumbnail: https://i.ytimg.com/vi/oSZe2UV0sNs/maxresdefault.jpg
   tags:
-  - power bi
-  - r
-  - business intelligence
+  - Power BI
+  - R
+  - Business Intelligence
 - url: https://www.youtube.com/watch?v=foulJr8hxmE
   title: Sentiment Analysis with Alteryx (Using the R tool)!
   date: '2021-04-21'
@@ -171,7 +171,7 @@ videos:
     \nThis is not an R tutorial and I don't explain sen..."
   duration: '21:15'
   thumbnail: https://i.ytimg.com/vi/foulJr8hxmE/maxresdefault.jpg
-  tags: [alteryx, r]
+  tags: [Alteryx, r]
 - url: https://www.youtube.com/watch?v=3UpWJEhHOdI
   title: 5 Google Sheets Tricks you might not know!
   date: '2021-04-12'
@@ -180,7 +180,7 @@ videos:
     this video.
   duration: 05:02
   thumbnail: https://i.ytimg.com/vi/3UpWJEhHOdI/maxresdefault.jpg
-  tags: [spreadsheets]
+  tags: [Spreadsheets]
 - url: https://www.youtube.com/watch?v=rhi2KChl2Gw
   title: 'Tableau Calculation Mastery: 3 Ways to Split Columns'
   date: '2019-11-01'
@@ -189,7 +189,7 @@ videos:
     Right 3) The hard way with Regular Expressions'
   duration: '19:26'
   thumbnail: https://i.ytimg.com/vi/rhi2KChl2Gw/maxresdefault.jpg
-  tags: [tableau, business intelligence]
+  tags: [Tableau, Business Intelligence]
 - url: https://www.youtube.com/watch?v=nmfsoncAK3M
   title: Using Google Sheets to Scrape Web data
   date: '2019-11-01'
@@ -197,7 +197,7 @@ videos:
     Sheets to extract data from a website.
   duration: 04:57
   thumbnail: https://i.ytimg.com/vi/nmfsoncAK3M/maxresdefault.jpg
-  tags: [spreadsheets]
+  tags: [Spreadsheets]
 - url: https://www.youtube.com/watch?v=E1pOuSccfYY
   title: 'Tableau Fun: Using Unicode characters instead of Custom Shapes'
   date: '2019-10-23'
@@ -205,7 +205,7 @@ videos:
     in your calculations as if they were custom shapes.
   duration: 04:51
   thumbnail: https://i.ytimg.com/vi/E1pOuSccfYY/maxresdefault.jpg
-  tags: [tableau, data visualization, business intelligence]
+  tags: [Tableau, Data Visualization, Business Intelligence]
 - url: https://www.youtube.com/watch?v=1VgE-DvfjFs
   title: Excel-like Absolute Reference in Tableau
   date: '2019-10-19'
@@ -214,7 +214,7 @@ videos:
     difficult, but it is also possible. This tut...
   duration: 08:25
   thumbnail: https://i.ytimg.com/vi/1VgE-DvfjFs/maxresdefault.jpg
-  tags: [tableau, business intelligence]
+  tags: [Tableau, Business Intelligence]
 - url: https://www.youtube.com/watch?v=oxDMC8jAMFY
   title: 'Tableau Time Series: How many in a certain moment?'
   date: '2019-10-19'
@@ -223,4 +223,4 @@ videos:
     \ video, I show you a solution to this problem. \n\nIn ..."
   duration: 06:03
   thumbnail: https://i.ytimg.com/vi/oxDMC8jAMFY/maxresdefault.jpg
-  tags: [tableau, business intelligence]
+  tags: [Tableau, Business Intelligence]

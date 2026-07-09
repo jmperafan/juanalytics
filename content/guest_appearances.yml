@@ -84,14 +84,14 @@ guest_appearances:
   thumbnail: https://i.ytimg.com/vi/C7ykn5_tVGw/maxresdefault.jpg
   tags: ['Analytics Engineering', 'Data Governance']
 - url: https://www.dataengineeringpodcast.com/episodepage/exploring-the-design-and-benefits-of-the-modern-data-stack
-  title: Exploring The Design And Benefits Of The Modern Data Stack
+  title: Exploring The Design And Benefits Of The Data Platform
   podcast: Data Engineering Podcast
   episode: '203' 
   date: '2021-07-13'
   duration: '49:02'
   description: 'In this episode members of the GoDataDriven team, Guillermo Sanchez, Bram Ochsendorf, and Juan Perafan, explain the combinations of services that comprise this architecture, share their experiences working with clients to employ the stack, and the benefits of bringing engineers and business users together with data.'
   thumbnail: https://assets.podhome.fm/f6ff0caa-931b-4c08-bfdd-08dc7f5cd336/638557928872209534cover.jpg?1855996031
-  tags: ['Data Engineering', 'Modern Data Stack']
+  tags: ['Data Engineering', 'Data Platform']
 - url: https://www.Tableau.com/nl-nl/learn/webinars/versnel-je-data-en-haal-poleposition-met-Tableau
   title: Versnel je data en haal poleposition met Tableau
   date: '2018-08-15'
