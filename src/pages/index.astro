@@ -133,47 +133,53 @@ const recentPodcasts = content.podcasts
       </div>
 
       <!-- Speaking & Training -->
-      <div class="cta-box">
-        <h3 class="cta-title">Let's Work Together</h3>
-        <p class="cta-description">
-          I'm available to speak at your next conference, meetup, or corporate event, train your team on analytics engineering and the modern data stack, or provide strategic consulting for your data initiatives.
-        </p>
-        <div class="cta-grid">
-          <div class="cta-item">
-            <h4>
-              <Icon name="microphone" size={20} />
-              Speaking
-            </h4>
-            <ul>
-              <li>• Conference keynotes</li>
-              <li>• Technical deep dives</li>
-              <li>• Meetup presentations</li>
-            </ul>
+      <div class="services-section">
+        <h2 class="services-title">Let's Work Together</h2>
+        <div class="services-grid">
+          <div class="service-card">
+            <OptimizedImage
+              src={buildUrl("images/services/speaking_07.jpg")}
+              alt="Speaking"
+              class="service-image"
+              loading="lazy"
+              width={1200}
+              height={674}
+            />
+            <div class="service-content">
+              <h3 class="service-title">Speaking</h3>
+              <p class="service-description">Looking for a speaker for your conference or meetup?</p>
+            </div>
           </div>
-          <div class="cta-item">
-            <h4>
-              <Icon name="book" size={20} />
-              Training & Mentorship
-            </h4>
-            <ul>
-              <li>• Curriculum design</li>
-              <li>• Leading workshops & training</li>
-              <li>• Team mentorship</li>
-            </ul>
+          <div class="service-card">
+            <OptimizedImage
+              src={buildUrl("images/services/mentoring_01.jpg")}
+              alt="Training & Mentorship"
+              class="service-image"
+              loading="lazy"
+              width={1200}
+              height={674}
+            />
+            <div class="service-content">
+              <h3 class="service-title">Training & Mentorship</h3>
+              <p class="service-description">Want to train your team on data skills? I design and lead workshops.</p>
+            </div>
           </div>
-          <div class="cta-item">
-            <h4>
-              <Icon name="package" size={20} />
-              Consulting
-            </h4>
-            <ul>
-              <li>• Data strategy & architecture</li>
-              <li>• Data modeling & SQL</li>
-              <li>• Modern data stack</li>
-            </ul>
+          <div class="service-card">
+            <OptimizedImage
+              src={buildUrl("images/services/consulting_01.jpg")}
+              alt="Consulting"
+              class="service-image"
+              loading="lazy"
+              width={1200}
+              height={674}
+            />
+            <div class="service-content">
+              <h3 class="service-title">Consulting</h3>
+              <p class="service-description">Building a data strategy? I help organizations design data architectures.</p>
+            </div>
           </div>
         </div>
-        <div class="cta-button-container">
+        <div class="services-cta-container">
           <a href={buildUrl("about")} class="cta-button">
             Get in Touch
             <Icon name="arrow" size={16} />
