@@ -1,0 +1,547 @@
+---
+interface Role {
+  role: string;
+  org: string;
+  startYear: number;
+  startMonth: number;
+  endYear: number | null;
+  endMonth: number | null;
+}
+
+interface Role {
+  role: string;
+  org: string;
+  startYear: number;
+  startMonth: number;
+  endYear: number | null;
+  endMonth: number | null;
+  description?: string;
+}
+
+const roles: Role[] = [
+  { role: 'Author', org: 'Packt', startYear: 2025, startMonth: 11, endYear: null, endMonth: null, description: 'The Data Consultant\'s Handbook – forthcoming analytics consulting guide. Currently in development.' },
+  { role: 'Technical Instructor', org: 'dbt Labs', startYear: 2026, startMonth: 3, endYear: null, endMonth: null, description: 'Facilitated hands-on, co-development sessions using customers\' real data and use cases.' },
+  { role: 'Podcast Host', org: 'The Data Hustle Podcast', startYear: 2026, startMonth: 5, endYear: null, endMonth: null, description: 'Conversations about data, analytics engineering, and the SQL ecosystem.' },
+  { role: 'Zoomcamp Instructor', org: 'DataTalks.Club', startYear: 2025, startMonth: 11, endYear: null, endMonth: null, description: 'Analytics engineering module in the Data Engineering Zoomcamp.' },
+  { role: 'Head Coach', org: 'Nimbus Intelligence', startYear: 2025, startMonth: 1, endYear: 2025, endMonth: 11, description: 'Designed and delivered a 3-month bootcamp for new hires on data engineering and analytics.' },
+  { role: 'Podcast Host', org: 'SQL Lingua Franca', startYear: 2024, startMonth: 6, endYear: 2025, endMonth: 6, description: 'Hosted conversations about data, analytics engineering, and the SQL ecosystem.' },
+  { role: 'Analytics Engineer', org: 'Xebia', startYear: 2020, startMonth: 12, endYear: 2024, endMonth: 11, description: 'Analytics engineering, dbt, and data modeling for clients across the Netherlands.' },
+  { role: 'Author', org: 'Packt', startYear: 2023, startMonth: 2, endYear: 2024, endMonth: 3, description: 'Fundamentals of Analytics Engineering – wrote prologue, conclusion, chapters on serving data and data governance, led project management, and created initial outline.' },
+  { role: 'Analytics Consultant', org: 'Biztory', startYear: 2018, startMonth: 6, endYear: 2020, endMonth: 11, description: 'Worked with 30+ clients across 4 countries on analytics lifecycle from architecture to reporting.' },
+  { role: 'Marketing Intelligence', org: 'Justlease.nl', startYear: 2017, startMonth: 4, endYear: 2018, endMonth: 6, description: 'Data analysis with Python and R, MS SQL database marketing, and Tableau champion.' },
+  { role: 'Lecturer', org: 'University of Groningen', startYear: 2021, startMonth: 8, endYear: 2022, endMonth: 11, description: 'Taught "Analyzing Data - A Practical Approach" to honors college students on the data lifecycle.' },
+  { role: 'Organizer', org: 'Meetup', startYear: 2019, startMonth: 7, endYear: 2026, endMonth: 2, description: 'Founded and organized Analytics Engineering and Dutch dbt meetups in the Netherlands.' },
+  { role: 'Lecturer', org: 'University of Groningen', startYear: 2014, startMonth: 2, endYear: 2017, endMonth: 3, description: 'Taught 5 different courses with 548 hours across 192 students on conversational skills and research methodology.' },
+];
+
+// Sort by start year - LATEST FIRST (TOP)
+let sortedRoles = [...roles].sort((a, b) => b.startYear - a.startYear);
+
+// Group podcasts, books, and University of Groningen roles together
+const podcastRoles = sortedRoles.filter(r => r.role === 'Podcast Host');
+const packtRoles = sortedRoles.filter(r => r.org === 'Packt');
+const groningenRoles = sortedRoles.filter(r => r.org === 'University of Groningen');
+const otherRoles = sortedRoles.filter(r => r.role !== 'Podcast Host' && r.org !== 'Packt' && r.org !== 'University of Groningen');
+
+// Rebuild with grouped roles
+interface RoleGroup {
+  roles: Role[];
+  isGrouped?: boolean;
+}
+
+const roleGroups: RoleGroup[] = [];
+let podcastGroupAdded = false;
+let packtGroupAdded = false;
+let groningenGroupAdded = false;
+
+otherRoles.forEach(role => {
+  // Insert podcast group when we reach a year where it should go
+  if (!podcastGroupAdded && role.startYear < podcastRoles[0]?.startYear) {
+    roleGroups.push({ roles: podcastRoles, isGrouped: true });
+    podcastGroupAdded = true;
+  }
+
+  // Insert Packt group when we reach a year where it should go
+  if (!packtGroupAdded && role.startYear < packtRoles[0]?.startYear) {
+    roleGroups.push({ roles: packtRoles, isGrouped: true });
+    packtGroupAdded = true;
+  }
+
+  // Insert Groningen group when we reach a year where it should go
+  if (!groningenGroupAdded && role.startYear < groningenRoles[0]?.startYear) {
+    roleGroups.push({ roles: groningenRoles, isGrouped: true });
+    groningenGroupAdded = true;
+  }
+
+  roleGroups.push({ roles: [role] });
+});
+
+if (!podcastGroupAdded) {
+  roleGroups.push({ roles: podcastRoles, isGrouped: true });
+}
+if (!packtGroupAdded) {
+  roleGroups.push({ roles: packtRoles, isGrouped: true });
+}
+if (!groningenGroupAdded) {
+  roleGroups.push({ roles: groningenRoles, isGrouped: true });
+}
+
+// Reorder: podcast group at position 4, university group at bottom
+const podcastGroupIdx = roleGroups.findIndex(g => g.isGrouped && g.roles[0].role === 'Podcast Host');
+const packtGroupIdx = roleGroups.findIndex(g => g.isGrouped && g.roles[0].org === 'Packt');
+const universityGroupIdx = roleGroups.findIndex(g => g.isGrouped && g.roles[0].org === 'University of Groningen');
+
+if (podcastGroupIdx !== -1 && podcastGroupIdx !== 3) {
+  const podcastGroup = roleGroups.splice(podcastGroupIdx, 1)[0];
+  roleGroups.splice(3, 0, podcastGroup);
+}
+
+if (universityGroupIdx !== -1) {
+  const universityGroup = roleGroups.splice(universityGroupIdx, 1)[0];
+  roleGroups.push(universityGroup);
+}
+
+const minYear = 2014;
+const maxYear = 2027;
+const yearRange = maxYear - minYear;
+const totalMonths = yearRange * 12;
+
+// Dynamic current date for calculating durations
+const now = new Date();
+const currentYear = now.getFullYear();
+const currentMonth = now.getMonth() + 1;
+
+// Helper to wrap text into multiple lines
+const wrapText = (text: string, maxCharsPerLine: number = 56) => {
+  const words = text.split(' ');
+  const lines: string[] = [];
+  let currentLine = '';
+
+  words.forEach(word => {
+    if ((currentLine + word).length <= maxCharsPerLine) {
+      currentLine += (currentLine ? ' ' : '') + word;
+    } else {
+      if (currentLine) lines.push(currentLine);
+      currentLine = word;
+    }
+  });
+  if (currentLine) lines.push(currentLine);
+  return lines;
+};
+
+const width = 1200;
+const margin = { top: 40, right: 100, bottom: 80, left: 220 };
+const labelX = width - margin.right + 12;
+const barHeight = 32;
+const rowHeight = 75;
+const plotWidth = width - margin.left - margin.right;
+const plotHeight = roleGroups.length * rowHeight;
+const svgHeight = plotHeight + margin.top + margin.bottom;
+
+const getBarPosition = (startYear: number, startMonth: number, endYear: number | null, endMonth: number | null) => {
+  const startMonthNum = (startYear - minYear) * 12 + startMonth;
+  const endMonthNum = endYear ? (endYear - minYear) * 12 + (endMonth || 12) : totalMonths;
+
+  // Reverse X axis: newer dates on left, older on right
+  const startX = margin.left + ((totalMonths - endMonthNum) / totalMonths) * plotWidth;
+  const barWidth = Math.max(((endMonthNum - startMonthNum) / totalMonths) * plotWidth, 6);
+
+  return { startX, barWidth };
+};
+---
+
+<div class="timeline-container">
+  <svg
+    {width}
+    height={svgHeight}
+    viewBox={`0 0 ${width} ${svgHeight}`}
+    preserveAspectRatio="xMidYMid meet"
+    class="timeline-svg"
+  >
+    <!-- Year grid lines (reversed) -->
+    {
+      Array.from({ length: yearRange + 1 }).map((_, i) => {
+        const x = margin.left + ((yearRange - i) / yearRange) * plotWidth;
+        return (
+          <line
+            x1={x}
+            y1={margin.top}
+            x2={x}
+            y2={svgHeight - margin.bottom}
+            stroke="var(--color-border)"
+            stroke-width="0.5"
+            opacity="0.05"
+          />
+        );
+      })
+    }
+
+    <!-- Each role or group -->
+    {
+      roleGroups.map((group, groupIdx) => {
+        const y = margin.top + groupIdx * rowHeight + rowHeight / 2;
+
+        return group.isGrouped ? (
+          <!-- Grouped items: multiple bars on same row -->
+          <g class="role-group">
+            {group.roles.map((role, barIdx) => {
+              const { startX, barWidth } = getBarPosition(role.startYear, role.startMonth, role.endYear, role.endMonth);
+              const barY = y;
+              // For grouped items, stagger labels vertically at the left side
+              const labelYOffset = (barIdx - Math.floor(group.roles.length / 2)) * 22;
+
+              return (
+                <g class="role-item">
+                  <!-- Bar -->
+                  <rect
+                    x={startX}
+                    y={barY - barHeight / 2}
+                    width={barWidth}
+                    height={barHeight}
+                    fill="var(--color-primary)"
+                    rx="4"
+                    opacity="0.8"
+                    class="bar"
+                  />
+
+                  <!-- Role label (only for first item in group) -->
+                  {barIdx === 0 && (
+                    <text
+                      x={margin.left - 20}
+                      y={barY - 6}
+                      text-anchor="end"
+                      font-size="13"
+                      font-weight="600"
+                      fill="var(--color-text)"
+                    >
+                      {role.role}
+                    </text>
+                  )}
+
+                  <!-- Org label (only for first item in group) -->
+                  {barIdx === 0 && (
+                    <text
+                      x={margin.left - 20}
+                      y={barY + 10}
+                      text-anchor="end"
+                      font-size="11"
+                      font-weight="400"
+                      fill="var(--color-text-light)"
+                    >
+                      {role.org}
+                    </text>
+                  )}
+
+                  <!-- Duration in months (RIGHT of bar) -->
+                  <text
+                    x={startX + barWidth + 6}
+                    y={barY + 4}
+                    text-anchor="start"
+                    font-size="11"
+                    font-weight="500"
+                    fill="var(--color-text-light)"
+                  >
+                    {(role.endYear ? (role.endYear - role.startYear) * 12 + (role.endMonth || 12) - (role.startMonth || 1) + 1 : (currentYear - role.startYear) * 12 + currentMonth - (role.startMonth || 1) + 1).toLocaleString()} m
+                  </text>
+
+                  <!-- Tooltip -->
+                  {
+                    (() => {
+                      const tooltipX = Math.max(startX - 10, margin.left);
+                      const tooltipWidth = 360;
+                      const tooltipCenterX = tooltipX + tooltipWidth / 2;
+                      const descriptionLines = role.description ? wrapText(role.description).length : 0;
+                      const descriptionHeight = descriptionLines * 16;
+                      const tooltipHeight = 88 + descriptionHeight + (role.description ? 5 : 0);
+                      return (
+                        <g class="tooltip-group" opacity="0">
+                          <rect
+                            x={tooltipX}
+                            y={barY - tooltipHeight - 10}
+                            width={tooltipWidth}
+                            height={tooltipHeight}
+                            fill="var(--color-bg-primary)"
+                            stroke="var(--color-border)"
+                            stroke-width="1"
+                            rx="4"
+                          />
+                          <text
+                            x={tooltipCenterX}
+                            y={barY - tooltipHeight + 18}
+                            text-anchor="middle"
+                            font-size="15"
+                            font-weight="700"
+                            fill="var(--color-text)"
+                          >
+                            {role.role}
+                          </text>
+                          <text
+                            x={tooltipCenterX}
+                            y={barY - tooltipHeight + 36}
+                            text-anchor="middle"
+                            font-size="12"
+                            font-weight="500"
+                            fill="var(--color-text-light)"
+                            opacity="0.9"
+                          >
+                            {role.org}
+                          </text>
+                          <text
+                            x={tooltipCenterX}
+                            y={barY - tooltipHeight + 53}
+                            text-anchor="middle"
+                            font-size="11"
+                            font-weight="400"
+                            fill="var(--color-text-light)"
+                            opacity="0.75"
+                          >
+                            {role.startYear}-{String(role.startMonth).padStart(2, '0')} to {role.endYear ? `${role.endYear}-${String(role.endMonth || 12).padStart(2, '0')}` : 'Present'}
+                          </text>
+                          {role.description && (
+                            <g>
+                              {wrapText(role.description).map((line, idx) => (
+                                <text
+                                  x={tooltipX + 25}
+                                  y={barY - tooltipHeight + 82 + idx * 16}
+                                  text-anchor="start"
+                                  font-size="11"
+                                  fill="var(--color-text-light)"
+                                  class="tooltip-description"
+                                >
+                                  {line}
+                                </text>
+                              ))}
+                            </g>
+                          )}
+                        </g>
+                      );
+                    })()
+                  }
+
+                  <title>{`${role.role} • ${role.org}\n${role.startYear}-${String(role.startMonth).padStart(2, '0')} to ${role.endYear ? `${role.endYear}-${String(role.endMonth || 12).padStart(2, '0')}` : 'Present'}\n${role.description || ''}`}</title>
+                </g>
+              );
+            })}
+          </g>
+        ) : (
+          <!-- Single role -->
+          <g class="role-item">
+            {
+              (() => {
+                const role = group.roles[0];
+                const { startX, barWidth } = getBarPosition(role.startYear, role.startMonth, role.endYear, role.endMonth);
+
+                return (
+                  <>
+                    <!-- Bar -->
+                    <rect
+                      x={startX}
+                      y={y - barHeight / 2}
+                      width={barWidth}
+                      height={barHeight}
+                      fill="var(--color-primary)"
+                      rx="4"
+                      opacity="0.8"
+                      class="bar"
+                    />
+
+                    <!-- Role label (LEFT of bar) -->
+                    <text
+                      x={margin.left - 20}
+                      y={y - 6}
+                      text-anchor="end"
+                      font-size="13"
+                      font-weight="600"
+                      fill="var(--color-text)"
+                    >
+                      {role.role}
+                    </text>
+
+                    <!-- Org label (LEFT, below role) -->
+                    <text
+                      x={margin.left - 20}
+                      y={y + 10}
+                      text-anchor="end"
+                      font-size="11"
+                      font-weight="400"
+                      fill="var(--color-text-light)"
+                    >
+                      {role.org}
+                    </text>
+
+                    <!-- Duration in months (RIGHT of bar) -->
+                    <text
+                      x={startX + barWidth + 6}
+                      y={y + 4}
+                      font-size="11"
+                      font-weight="500"
+                      fill="var(--color-text-light)"
+                    >
+                      {(role.endYear ? (role.endYear - role.startYear) * 12 + (role.endMonth || 12) - (role.startMonth || 1) + 1 : (currentYear - role.startYear) * 12 + currentMonth - (role.startMonth || 1) + 1).toLocaleString()} m
+                    </text>
+
+                    <!-- Tooltip -->
+                    {
+                      (() => {
+                        const tooltipX = Math.max(startX - 10, margin.left);
+                        const tooltipWidth = 360;
+                        const tooltipCenterX = tooltipX + tooltipWidth / 2;
+                        const descriptionLines = role.description ? wrapText(role.description).length : 0;
+                        const descriptionHeight = descriptionLines * 16;
+                        const tooltipHeight = 88 + descriptionHeight + (role.description ? 5 : 0);
+                        return (
+                          <g class="tooltip-group" opacity="0">
+                            <rect
+                              x={tooltipX}
+                              y={y - tooltipHeight - 10}
+                              width={tooltipWidth}
+                              height={tooltipHeight}
+                              fill="var(--color-bg-primary)"
+                              stroke="var(--color-border)"
+                              stroke-width="1"
+                              rx="4"
+                            />
+                            <text
+                              x={tooltipCenterX}
+                              y={y - tooltipHeight + 18}
+                              text-anchor="middle"
+                              font-size="15"
+                              font-weight="700"
+                              fill="var(--color-text)"
+                            >
+                              {role.role}
+                            </text>
+                            <text
+                              x={tooltipCenterX}
+                              y={y - tooltipHeight + 36}
+                              text-anchor="middle"
+                              font-size="12"
+                              font-weight="500"
+                              fill="var(--color-text-light)"
+                              opacity="0.9"
+                            >
+                              {role.org}
+                            </text>
+                            <text
+                              x={tooltipCenterX}
+                              y={y - tooltipHeight + 53}
+                              text-anchor="middle"
+                              font-size="11"
+                              font-weight="400"
+                              fill="var(--color-text-light)"
+                              opacity="0.75"
+                            >
+                              {role.startYear}-{String(role.startMonth).padStart(2, '0')} to {role.endYear ? `${role.endYear}-${String(role.endMonth || 12).padStart(2, '0')}` : 'Present'}
+                            </text>
+                            {role.description && (
+                              <g>
+                                {wrapText(role.description).map((line, idx) => (
+                                  <text
+                                    x={tooltipX + 25}
+                                    y={y - tooltipHeight + 82 + idx * 16}
+                                    text-anchor="start"
+                                    font-size="11"
+                                    fill="var(--color-text-light)"
+                                    class="tooltip-description"
+                                  >
+                                    {line}
+                                  </text>
+                                ))}
+                              </g>
+                            )}
+                          </g>
+                        );
+                      })()
+                    }
+
+                    <title>{`${role.role} • ${role.org}\n${role.startYear}-${String(role.startMonth).padStart(2, '0')} to ${role.endYear ? `${role.endYear}-${String(role.endMonth || 12).padStart(2, '0')}` : 'Present'}\n${role.description || ''}`}</title>
+                  </>
+                );
+              })()
+            }
+          </g>
+        );
+      })
+    }
+
+    <!-- Year labels (reversed) -->
+    {
+      Array.from({ length: yearRange + 1 }).map((_, i) => {
+        if (i % 2 === 0) {
+          const year = minYear + i;
+          const x = margin.left + ((yearRange - i) / yearRange) * plotWidth;
+          return (
+            <text
+              x={x}
+              y={svgHeight - 20}
+              text-anchor="middle"
+              font-size="12"
+              font-weight="500"
+              fill="var(--color-text-light)"
+            >
+              {year}
+            </text>
+          );
+        }
+      })
+    }
+  </svg>
+</div>
+
+<style>
+  .timeline-container {
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: 0.75rem;
+    padding: 2rem;
+    overflow-x: auto;
+    margin-bottom: 2rem;
+  }
+
+  .timeline-svg {
+    width: 100%;
+    height: auto;
+    min-width: 600px;
+  }
+
+  .bar {
+    transition: opacity 0.2s, filter 0.2s;
+    cursor: pointer;
+  }
+
+  .role-item:hover .bar {
+    opacity: 1 !important;
+    filter: brightness(1.15);
+  }
+
+  /* Tooltip styling */
+  title {
+    white-space: pre-line;
+    font-size: 12px;
+    pointer-events: none;
+  }
+
+  .role-item:hover {
+    filter: drop-shadow(0 4px 12px rgba(37, 99, 235, 0.15));
+  }
+
+  .role-item:hover .tooltip-group {
+    opacity: 1;
+    animation: tooltipFadeIn 0.2s ease-out;
+  }
+
+  @keyframes tooltipFadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .timeline-container {
+      padding: 1rem;
+    }
+  }
+</style>

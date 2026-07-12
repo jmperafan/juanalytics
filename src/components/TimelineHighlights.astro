@@ -1,0 +1,243 @@
+---
+import { experiences } from '../data/experience';
+
+// Filter only 'highlight' type items, excluding dbt Excel
+const highlights = experiences
+  .filter(e => e.type === 'highlight' && e.id !== 'dbt-excel')
+  .sort((a, b) => a.startYear - b.startYear || (a.startMonth || 1) - (b.startMonth || 1));
+
+// Group highlights by type for display
+const books = highlights.filter(e => e.category === 'Community' && e.id === 'book');
+const projects = highlights.filter(e => e.id !== 'book' && e.id !== 'dbt-excel');
+
+const minYear = 2023;
+const maxYear = 2026;
+const yearRange = maxYear - minYear;
+const width = 900;
+const height = 280;
+const margin = { top: 50, right: 60, bottom: 80, left: 220 };
+const plotWidth = width - margin.left - margin.right;
+
+interface GroupedHighlight {
+  label: string;
+  items: typeof highlights;
+}
+
+const groupedHighlights: GroupedHighlight[] = [
+  { label: 'Publications', items: books },
+  { label: 'Projects & Milestones', items: projects },
+].filter(g => g.items.length > 0);
+---
+
+<div class="highlights-container">
+  <svg
+    {width}
+    {height}
+    viewBox={`0 0 ${width} ${height}`}
+    preserveAspectRatio="xMidYMid meet"
+    class="timeline-svg"
+  >
+    <!-- Background -->
+    <rect width={width} height={height} fill="transparent" />
+
+    <!-- Timeline line (subtle) -->
+    <line
+      x1={margin.left}
+      y1={height / 2}
+      x2={width - margin.right}
+      y2={height / 2}
+      stroke="var(--color-border)"
+      stroke-width="1"
+      opacity="0.2"
+    />
+
+    <!-- Year markers -->
+    {
+      Array.from({ length: yearRange + 1 }).map((_, i) => {
+        const year = minYear + i;
+        const x = margin.left + (i / yearRange) * plotWidth;
+        return (
+          <>
+            <circle
+              cx={x}
+              cy={height / 2}
+              r="2.5"
+              fill="var(--color-border)"
+              opacity="0.3"
+            />
+            <text
+              x={x}
+              y={height - 20}
+              text-anchor="middle"
+              font-size="11"
+              fill="var(--color-text-light)"
+            >
+              {year}
+            </text>
+          </>
+        );
+      })
+    }
+
+    <!-- Highlights -->
+    {
+      groupedHighlights.map((group, groupIdx) => {
+        const isTopHalf = groupIdx === 0;
+        const baseY = isTopHalf ? height * 0.25 : height * 0.75;
+
+        return group.items.map((item, idx) => {
+          const yearOffset = item.startYear - minYear;
+          const monthOffset = (item.startMonth || 1) - 1;
+          const x = margin.left + ((yearOffset * 12 + monthOffset) / (yearRange * 12)) * plotWidth;
+
+          // Vary vertical position for items in same group
+          const offsetY = isTopHalf
+            ? baseY - (idx % 2) * 25 - 10
+            : baseY + (idx % 2) * 25 + 10;
+
+          const connectorY = isTopHalf ? baseY + 15 : baseY - 15;
+
+          return (
+            <g class="highlight-item">
+              <!-- Connector line -->
+              <line
+                x1={x}
+                y1={height / 2}
+                x2={x}
+                y2={connectorY}
+                stroke="var(--color-primary)"
+                stroke-width="1"
+                opacity="0.25"
+              />
+
+              <!-- Event marker -->
+              <circle
+                cx={x}
+                cy={height / 2}
+                r="4"
+                fill="var(--color-primary)"
+                opacity="0.9"
+                class="highlight-dot"
+              />
+
+              <!-- Label -->
+              <g>
+                <text
+                  x={x}
+                  y={offsetY - 8}
+                  text-anchor="middle"
+                  font-size="11"
+                  font-weight="600"
+                  fill="var(--color-text)"
+                  class="highlight-title"
+                >
+                  {item.role}
+                </text>
+                <text
+                  x={x}
+                  y={offsetY + 6}
+                  text-anchor="middle"
+                  font-size="9"
+                  fill="var(--color-text-light)"
+                  class="highlight-org"
+                >
+                  {item.org.length > 24 ? item.org.slice(0, 21) + '…' : item.org}
+                </text>
+                <text
+                  x={x}
+                  y={offsetY + 18}
+                  text-anchor="middle"
+                  font-size="8"
+                  fill="var(--color-text-light)"
+                  font-weight="500"
+                  opacity="0.7"
+                >
+                  {item.startYear}/{item.startMonth?.toString().padStart(2, '0')}
+                </text>
+              </g>
+
+              <title>{item.role}\n{item.org}\n{item.startYear}/{item.startMonth}</title>
+            </g>
+          );
+        });
+      })
+    }
+  </svg>
+
+  <!-- Legend -->
+  <div class="highlights-legend">
+    {
+      groupedHighlights.map((group) => (
+        <div class="legend-group">
+          <span class="legend-label">{group.label}</span>
+        </div>
+      ))
+    }
+  </div>
+</div>
+
+<style>
+  .highlights-container {
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: 0.75rem;
+    padding: 2rem 2rem 2.5rem 1rem;
+    overflow-x: auto;
+    margin-bottom: 2rem;
+    transition: box-shadow 0.2s;
+  }
+
+  .highlights-container:hover {
+    box-shadow: 0 2px 12px rgba(37, 99, 235, 0.08);
+  }
+
+  .timeline-svg {
+    width: 100%;
+    height: auto;
+    min-width: 500px;
+  }
+
+  .highlight-dot {
+    transition: r 0.2s, filter 0.2s;
+    cursor: pointer;
+  }
+
+  .highlight-item:hover .highlight-dot {
+    r: 6;
+    filter: brightness(1.2);
+  }
+
+  .highlight-item:hover .highlight-title {
+    font-weight: 700;
+  }
+
+  .highlights-legend {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    margin-top: 1rem;
+    font-size: 0.85rem;
+    color: var(--color-text-light);
+  }
+
+  .legend-group {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .legend-label {
+    font-weight: 500;
+  }
+
+  @media (max-width: 768px) {
+    .highlights-container {
+      padding: 1rem;
+    }
+
+    .highlights-legend {
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+  }
+</style>

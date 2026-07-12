@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import OptimizedImage from '../components/OptimizedImage.astro';
+import ExperienceTimeline from '../components/ExperienceTimeline.astro';
 import { buildUrl } from '../utils/urlHelper';
 import { readContentYAML } from '../utils/yamlParser';
 import { coordMap } from '../data/locations';
@@ -175,135 +176,13 @@ const talksByLocation = talks
           </div>
         </div>
 
-        <!-- Section 3: Domain Highlights -->
+        <!-- Section 3: Experience Timeline -->
         <h2>Previous Experience</h2>
+        <p style="font-size: 1.1rem; color: var(--color-text-light); margin-bottom: 2rem;">
+          A decade of experience teaching, working with data, and building community around analytics engineering.
+        </p>
 
-        <div class="domain-sections">
-
-          <div class="domain-section">
-            <div class="domain-section-header"><h3>Data Work</h3></div>
-            <div class="exp-cards">
-              <div class="exp-card">
-                <div class="exp-card-main">
-                  <div class="exp-card-info"><span class="exp-role">Analytics Engineer</span><div class="exp-org">Xebia</div></div>
-                  <div class="exp-years-stack"><span>2020</span><span>2024</span></div>
-                </div>
-                <p class="exp-desc">Analytics engineering, dbt, and data modeling for clients across the Netherlands.</p>
-              </div>
-              <div class="exp-card">
-                <div class="exp-card-main">
-                  <div class="exp-card-info"><span class="exp-role">Analytics Consultant</span><div class="exp-org">Biztory</div></div>
-                  <div class="exp-years-stack"><span>2018</span><span>2020</span></div>
-                </div>
-                <p class="exp-desc">30+ clients in 4 countries, covering the full analytics lifecycle from architecture to reporting.</p>
-              </div>
-              <div class="exp-card">
-                <div class="exp-card-main">
-                  <div class="exp-card-info"><span class="exp-role">Marketing Intelligence</span><div class="exp-org">Justlease.nl</div></div>
-                  <div class="exp-years-stack"><span>2017</span><span>2018</span></div>
-                </div>
-                <p class="exp-desc">Data analysis with Python and R, MS SQL database marketing, and internal Tableau champion.</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="domain-section">
-            <div class="domain-section-header"><h3>Teaching</h3></div>
-            <div class="exp-cards">
-              <div class="exp-card">
-                <div class="exp-card-main">
-                  <div class="exp-card-info"><span class="exp-role">Technical Instructor</span><div class="exp-org">dbt Labs</div></div>
-                  <div class="exp-years-stack"><span>2026</span><span>now</span></div>
-                </div>
-                <p class="exp-desc">Live dbt Cloud training for data teams around the world.</p>
-              </div>
-              <div class="exp-card">
-                <div class="exp-card-main">
-                  <div class="exp-card-info"><span class="exp-role">Zoomcamp Instructor</span><div class="exp-org">DataTalks.Club</div></div>
-                  <div class="exp-years-stack"><span>2025</span><span>now</span></div>
-                </div>
-                <p class="exp-desc">Analytics engineering module in the Data Engineering Zoomcamp.</p>
-              </div>
-              <div class="exp-card">
-                <div class="exp-card-main">
-                  <div class="exp-card-info"><span class="exp-role">Independent Instructor</span><div class="exp-org">Online Courses</div></div>
-                  <div class="exp-years-stack"><span>2024</span><span>now</span></div>
-                </div>
-                <p class="exp-desc">Building self-paced courses on SQL and analytics engineering.</p>
-              </div>
-              <div class="exp-card">
-                <div class="exp-card-main">
-                  <div class="exp-card-info"><span class="exp-role">Head Coach</span><div class="exp-org">Nimbus Intelligence</div></div>
-                  <div class="exp-years-stack"><span>2025</span></div>
-                </div>
-                <p class="exp-desc">Designed and delivered a 3-month data engineering bootcamp for new hires.</p>
-              </div>
-              <div class="exp-card">
-                <div class="exp-card-main">
-                  <div class="exp-card-info"><span class="exp-role">Guest Lecturer</span><div class="exp-org">University of Groningen</div></div>
-                  <div class="exp-years-stack"><span>2021</span><span>2022</span></div>
-                </div>
-                <p class="exp-desc">Hands-on course covering each step of the data lifecycle for honours students.</p>
-              </div>
-              <div class="exp-card">
-                <div class="exp-card-main">
-                  <div class="exp-card-info"><span class="exp-role">Teaching Assistant</span><div class="exp-org">University of Groningen</div></div>
-                  <div class="exp-years-stack"><span>2014</span><span>2016</span></div>
-                </div>
-                <p class="exp-desc">Taught 5 different courses, 548 hours across 192 students.</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="domain-section">
-            <div class="domain-section-header"><h3>Community</h3></div>
-            <div class="exp-cards">
-              <div class="exp-card">
-                <div class="exp-card-main">
-                  <div class="exp-card-info"><span class="exp-role">Co-Author</span><div class="exp-org">Fundamentals of Analytics Engineering</div></div>
-                  <div class="exp-years-stack"><span>2023</span><span>2024</span></div>
-                </div>
-                <p class="exp-desc">Analytics engineering textbook published by Packt, covering the full modern data stack.</p>
-              </div>
-              <div class="exp-card">
-                <div class="exp-card-main">
-                  <div class="exp-card-info"><span class="exp-role">Organizer</span><div class="exp-org">Meetup</div></div>
-                  <div class="exp-years-stack"><span>2016</span><span>now</span></div>
-                </div>
-                <p class="exp-desc">Analytics Engineering, Dutch dbt, and Data Visualization meetups.</p>
-              </div>
-              <div class="exp-card">
-                <div class="exp-card-main">
-                  <div class="exp-card-info"><span class="exp-role">Podcast Host</span><div class="exp-org">SQL Lingua Franca</div></div>
-                  <div class="exp-years-stack"><span>2024</span><span>2025</span></div>
-                </div>
-                <p class="exp-desc">Conversations about data, analytics engineering, and the SQL ecosystem.</p>
-              </div>
-              <div class="exp-card">
-                <div class="exp-card-main">
-                  <div class="exp-card-info"><span class="exp-role">Conference Speaker</span><div class="exp-org">Dozens of talks</div></div>
-                  <div class="exp-years-stack"><span>worldwide</span></div>
-                </div>
-                <p class="exp-desc">dbt Coalesce, Linux Foundation, Big Data Summit, Developer Week LatAm.</p>
-              </div>
-              <div class="exp-card">
-                <div class="exp-card-main">
-                  <div class="exp-card-info"><span class="exp-role">Recipient</span><div class="exp-org">dbt Community Award</div></div>
-                  <div class="exp-years-stack"><span>2024</span></div>
-                </div>
-                <p class="exp-desc">Recognized by the global dbt community for contributions to analytics engineering.</p>
-              </div>
-              <div class="exp-card">
-                <div class="exp-card-main">
-                  <div class="exp-card-info"><span class="exp-role">Creator</span><div class="exp-org">dbt Excel</div></div>
-                  <div class="exp-years-stack"><span>2023</span></div>
-                </div>
-                <p class="exp-desc">A fully working dbt adapter for Excel, built as an April Fools' prank. Deprecated, as intended.</p>
-              </div>
-            </div>
-          </div>
-
-        </div>
+        <ExperienceTimeline />
 
 
       </div>
@@ -662,130 +541,6 @@ const talksByLocation = talks
   padding-bottom: 2rem;
 }
 
-/* ── Domain sections ── */
-.domain-sections {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  margin: 1.5rem 0 0;
-}
-
-.domain-section {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.domain-section-header {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-.domain-section-header h3 {
-  margin: 0;
-  font-size: 0.7rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--color-text-light);
-  white-space: nowrap;
-  flex-shrink: 0;
-}
-
-.domain-section-header::after {
-  content: '';
-  flex: 1;
-  height: 1px;
-  background: var(--color-border);
-}
-
-
-.exp-cards {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
-}
-
-.exp-card {
-  background: var(--color-bg-secondary);
-  border: 1px solid var(--color-border);
-  border-left: 3px solid var(--color-primary);
-  border-radius: 0.75rem;
-  padding: 1.25rem 1.4rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-  transition: box-shadow 0.2s, background 0.2s;
-}
-
-.exp-card:hover {
-  background: color-mix(in srgb, var(--color-bg-secondary) 92%, var(--color-primary) 8%);
-  box-shadow: 0 4px 20px rgba(96, 165, 250, 0.1);
-}
-
-.exp-card-main {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 0.5rem;
-  padding-bottom: 0.65rem;
-  margin-bottom: 0.65rem;
-  border-bottom: 1px solid var(--color-border);
-}
-
-.exp-card-info {
-  display: flex;
-  flex-direction: column;
-  gap: 0.15rem;
-}
-
-.exp-role {
-  font-size: 0.95rem;
-  font-weight: 700;
-  color: var(--color-primary);
-  line-height: 1.3;
-}
-
-.exp-org {
-  font-size: 0.8rem;
-  font-weight: 500;
-  color: var(--color-text-light);
-  line-height: 1.3;
-}
-
-.exp-years-stack {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  flex-shrink: 0;
-  gap: 0;
-}
-
-.exp-years-stack span {
-  font-size: 0.68rem;
-  color: var(--color-text-light);
-  line-height: 1.3;
-  white-space: nowrap;
-}
-
-.exp-years-stack span:first-child:not(:only-child)::after {
-  content: '';
-  display: block;
-  width: 1px;
-  height: 6px;
-  background: var(--color-border);
-  margin: 2px 0;
-  margin-left: auto;
-}
-
-.exp-desc {
-  font-size: 0.78rem;
-  color: var(--color-text-light);
-  line-height: 1.5;
-  margin: 0;
-}
-
 
 /* ── Responsive ── */
 @media (max-width: 720px) {
@@ -815,10 +570,6 @@ const talksByLocation = talks
   }
 
   .countries-lived {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .exp-cards {
     grid-template-columns: repeat(2, 1fr);
   }
 }
