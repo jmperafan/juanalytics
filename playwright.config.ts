@@ -41,7 +41,9 @@ export default defineConfig({
   ],
 
   webServer: {
-    command: 'npm run dev',
+    // CI tests the production build (built in the preceding workflow step);
+    // local runs use the dev server, which injects the Astro dev toolbar.
+    command: process.env.CI ? 'npm run preview -- --port 4321' : 'npm run dev',
     url: 'http://localhost:4321',
     reuseExistingServer: !process.env.CI,
   },
