@@ -47,12 +47,16 @@ const allTags = books.flatMap(b => b.data.tags || []);
                 class="card content-card book-card"
                 data-tags={JSON.stringify(book.data.tags || [])}
               >
-                {book.data.coverImage ? (
-                  <div style="width: 100%; height: 400px; background: var(--color-bg-secondary); display: flex; align-items: center; justify-content: center;">
-                    <img src={book.data.coverImage} alt={book.data.title} style="height: 100%; width: auto; object-fit: contain;" />
+                {book.data.coverImage && !book.data.coverImage.includes('placehold.co') ? (
+                  <div style="width: 100%; aspect-ratio: 7/8; background: var(--color-bg-secondary); display: flex; align-items: center; justify-content: center;">
+                    <img src={book.data.coverImage} alt={book.data.title} style="height: 100%; width: 100%; object-fit: cover;" />
+                  </div>
+                ) : book.data.coverImage && book.data.coverImage.includes('placehold.co') ? (
+                  <div style="width: 100%; aspect-ratio: 7/8; background: var(--color-bg-secondary); display: flex; align-items: center; justify-content: center;">
+                    <p style="font-size: 2rem; font-weight: 600; text-align: center; color: var(--color-text-light); padding: 2rem; line-height: 1.3;">{book.data.title.split(' ').slice(4).join(' ')}</p>
                   </div>
                 ) : (
-                  <div class="card-image-placeholder" style="height: 400px;">
+                  <div class="card-image-placeholder" style="height: 400px; overflow: hidden;">
                     <Icon name="book" size={64} />
                   </div>
                 )}
@@ -91,12 +95,16 @@ const allTags = books.flatMap(b => b.data.tags || []);
               rel="noopener noreferrer"
               class="card content-card"
             >
-              {book.data.coverImage ? (
-                <div style="width: 100%; height: 400px; background: var(--color-bg-secondary); display: flex; align-items: center; justify-content: center;">
-                  <img src={book.data.coverImage} alt={book.data.title} style="height: 100%; width: auto; object-fit: contain;" />
+              {book.data.coverImage && !book.data.coverImage.includes('placehold.co') ? (
+                <div style="width: 100%; aspect-ratio: 7/8; background: var(--color-bg-secondary); display: flex; align-items: center; justify-content: center;">
+                  <img src={book.data.coverImage} alt={book.data.title} style="height: 100%; width: 100%; object-fit: cover;" />
+                </div>
+              ) : book.data.coverImage && book.data.coverImage.includes('placehold.co') ? (
+                <div style="width: 100%; aspect-ratio: 7/8; background: var(--color-bg-secondary); display: flex; align-items: center; justify-content: center;">
+                  <p style="font-size: 2rem; font-weight: 600; text-align: center; color: var(--color-text-light); padding: 2rem; line-height: 1.3;">{book.data.title.split(' ').slice(4).join(' ')}</p>
                 </div>
               ) : (
-                <div class="card-image-placeholder" style="height: 400px;">
+                <div class="card-image-placeholder" style="height: 400px; overflow: hidden;">
                   <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
                     <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
