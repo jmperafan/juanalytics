@@ -1,9 +1,10 @@
 ---
 import { getCollection, render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import OptimizedImage from '../../components/OptimizedImage.astro';
 import { calculateReadingTime, formatReadingTime } from '../../utils/readingTime';
-import { buildUrl } from '../../utils/urlHelper';
+import { formatDate } from '../../utils/format';
+import logo from '../../assets/logo.webp';
+import profilePhoto from '../../assets/profile_photo.webp';
 
 export async function getStaticPaths() {
   const blogs = await getCollection('blogs');
@@ -20,18 +21,19 @@ const { Content } = await render(post);
 const readingTime = calculateReadingTime(post.body || '');
 
 // Prepare structured data
+const site = Astro.site ?? new URL('https://juanalytics.com');
 const blogPostStructuredData = {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
   "headline": post.data.title,
   "description": post.data.description,
-  "image": post.data.heroImage ? `https://juanalytics.com${buildUrl(post.data.heroImage)}` : "https://juanalytics.com/images/profile_photo.webp",
+  "image": new URL(post.data.heroImage ?? profilePhoto.src, site).href,
   "datePublished": post.data.pubDate.toISOString(),
   "dateModified": post.data.updatedDate ? post.data.updatedDate.toISOString() : post.data.pubDate.toISOString(),
   "author": {
     "@type": "Person",
     "name": "Juan Manuel Perafan",
-    "url": "https://juanalytics.com",
+    "url": site.href,
     "sameAs": [
       "https://www.linkedin.com/in/jmperafan/",
       "https://github.com/jmperafan",
@@ -43,12 +45,12 @@ const blogPostStructuredData = {
     "name": "Juanalytics",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://juanalytics.com/images/logo.webp"
+      "url": new URL(logo.src, site).href
     }
   },
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": `https://juanalytics.com${buildUrl(`blog/${post.id}`)}`
+    "@id": new URL(`blog/${post.id}`, site).href
   },
   "keywords": post.data.tags?.join(', ') || '',
   "articleSection": "Analytics Engineering",
@@ -57,15 +59,21 @@ const blogPostStructuredData = {
 };
 ---
 
-<BaseLayout title={post.data.title} description={post.data.description}>
+<BaseLayout
+  title={post.data.title}
+  description={post.data.description}
+  image={post.data.heroImage}
+  ogType="article"
+  publishDate={post.data.pubDate.toISOString()}
+>
   <!-- Blog Post Structured Data -->
   <script is:inline type="application/ld+json" set:html={JSON.stringify(blogPostStructuredData)} slot="head" />
 
   <article class="blog-post">
     <div class="container blog-post-container">
       {post.data.heroImage && (
-        <OptimizedImage
-          src={buildUrl(post.data.heroImage)}
+        <img
+          src={post.data.heroImage}
           alt={post.data.title}
           class="blog-post-hero"
           loading="eager"
@@ -76,11 +84,11 @@ const blogPostStructuredData = {
       <h1 class="blog-post-title">{post.data.title}</h1>
 
       <div class="blog-post-meta">
-        <time>{post.data.pubDate.toISOString().split('T')[0]}</time>
+        <time datetime={post.data.pubDate.toISOString()}>{formatDate(post.data.pubDate)}</time>
         <span>•</span>
         <span>{formatReadingTime(readingTime)}</span>
         {post.data.updatedDate && (
-          <span>• Updated {post.data.updatedDate.toISOString().split('T')[0]}</span>
+          <span>• Updated {formatDate(post.data.updatedDate)}</span>
         )}
       </div>
 
@@ -97,7 +105,7 @@ const blogPostStructuredData = {
       </div>
 
       <div class="blog-post-footer">
-        <a href={buildUrl("blog")} class="blog-back-link">← Back to blog</a>
+        <a href="/blog" class="blog-back-link">← Back to blog</a>
       </div>
     </div>
   </article>

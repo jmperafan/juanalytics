@@ -2,25 +2,11 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ContentFilter from '../components/ContentFilter.astro';
 import Icon from '../components/Icon.astro';
-import { readContentYAML } from '../utils/yamlParser';
+import { getCollection } from 'astro:content';
+import { formatDate, byDateDesc } from '../utils/format';
 
-const content = await readContentYAML();
-const books = content.books.map(book => ({
-  slug: book.url.split('/').pop() || '',
-  data: {
-    title: book.title,
-    description: book.description,
-    pubDate: book.date,
-    coverImage: book.thumbnail,
-    amazonUrl: book.url,
-    publisher: book.publisher || '',
-    coAuthors: book.extra2 ? book.extra2.split(';').map(a => a.trim()) : [],
-    tags: book.tags,
-    buttonText: book.buttonText || 'View Book',
-  }
-}));
-
-const allTags = books.flatMap(b => b.data.tags || []);
+const books = (await getCollection('books')).sort(byDateDesc);
+const allTags = books.flatMap(b => b.data.tags);
 ---
 
 <BaseLayout title="Books | juanalytics">
@@ -31,105 +17,108 @@ const allTags = books.flatMap(b => b.data.tags || []);
       </div>
       {books.length === 0 ? (
         <p class="empty-state">No books yet. Check back soon!</p>
-      ) : allTags.length > 0 ? (
+      ) : (
         <div class="content-with-sidebar">
-          <ContentFilter
-            tags={allTags}
-            gridId="books-grid"
-            cardClass="book-card"
-          />
+          {allTags.length > 0 && (
+            <ContentFilter
+              tags={allTags}
+              gridId="books-grid"
+              cardClass="book-card"
+            />
+          )}
           <div id="books-grid" class="content-grid">
             {books.map((book) => (
               <a
-                href={book.data.amazonUrl}
+                href={book.data.url}
                 target="_blank"
                 rel="noopener noreferrer"
                 class="card content-card book-card"
-                data-tags={JSON.stringify(book.data.tags || [])}
+                data-tags={JSON.stringify(book.data.tags)}
               >
-                {book.data.coverImage && !book.data.coverImage.includes('placehold.co') ? (
-                  <div style="width: 100%; aspect-ratio: 7/8; background: var(--color-bg-secondary); display: flex; align-items: center; justify-content: center;">
-                    <img src={book.data.coverImage} alt={book.data.title} style="height: 100%; width: 100%; object-fit: cover;" />
+                {book.data.thumbnail && !book.data.thumbnail.includes('placehold.co') ? (
+                  <div class="book-cover">
+                    <img src={book.data.thumbnail} alt={book.data.title} class="book-cover-image" />
                   </div>
-                ) : book.data.coverImage && book.data.coverImage.includes('placehold.co') ? (
-                  <div style="width: 100%; aspect-ratio: 7/8; background: var(--color-bg-secondary); display: flex; align-items: center; justify-content: center;">
-                    <p style="font-size: 2rem; font-weight: 600; text-align: center; color: var(--color-text-light); padding: 2rem; line-height: 1.3;">{book.data.title.split(' ').slice(4).join(' ')}</p>
+                ) : book.data.thumbnail ? (
+                  <div class="book-cover">
+                    <p class="book-cover-placeholder-title">{book.data.title.split(' ').slice(4).join(' ')}</p>
                   </div>
                 ) : (
-                  <div class="card-image-placeholder" style="height: 400px; overflow: hidden;">
+                  <div class="card-image-placeholder book-icon-placeholder">
                     <Icon name="book" size={64} />
                   </div>
                 )}
                 <div class="card-content">
                   <h3 class="card-title">{book.data.title}</h3>
                   {book.data.publisher && (
-                    <p class="card-meta" style="color: var(--color-primary); font-weight: 600;">{book.data.publisher}</p>
+                    <p class="card-meta book-publisher">{book.data.publisher}</p>
                   )}
                   <p class="card-meta">
-                    Published: {book.data.pubDate.toISOString().split('T')[0]}
+                    Published: {formatDate(book.data.date)}
                   </p>
                   <p class="card-description">{book.data.description}</p>
-                  {book.data.tags && book.data.tags.length > 0 && (
+                  {book.data.tags.length > 0 && (
                     <div class="card-tags">
                       {book.data.tags.map((tag) => (
                         <span class="tag content-tag" data-tag={tag}>{tag}</span>
                       ))}
                     </div>
                   )}
-                  {book.data.amazonUrl && (
-                    <div style="margin-top: auto;">
-                      <span class="button" style="display: inline-block; font-size: 0.875rem; padding: 0.5rem 1rem;">{book.data.buttonText} →</span>
-                    </div>
-                  )}
+                  <div class="book-cta">
+                    <span class="button book-cta-button">{book.data.buttonText} →</span>
+                  </div>
                 </div>
               </a>
             ))}
           </div>
         </div>
-      ) : (
-        <div class="content-grid">
-          {books.map((book) => (
-            <a
-              href={book.data.amazonUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="card content-card"
-            >
-              {book.data.coverImage && !book.data.coverImage.includes('placehold.co') ? (
-                <div style="width: 100%; aspect-ratio: 7/8; background: var(--color-bg-secondary); display: flex; align-items: center; justify-content: center;">
-                  <img src={book.data.coverImage} alt={book.data.title} style="height: 100%; width: 100%; object-fit: cover;" />
-                </div>
-              ) : book.data.coverImage && book.data.coverImage.includes('placehold.co') ? (
-                <div style="width: 100%; aspect-ratio: 7/8; background: var(--color-bg-secondary); display: flex; align-items: center; justify-content: center;">
-                  <p style="font-size: 2rem; font-weight: 600; text-align: center; color: var(--color-text-light); padding: 2rem; line-height: 1.3;">{book.data.title.split(' ').slice(4).join(' ')}</p>
-                </div>
-              ) : (
-                <div class="card-image-placeholder" style="height: 400px; overflow: hidden;">
-                  <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
-                    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
-                  </svg>
-                </div>
-              )}
-              <div class="card-content">
-                <h3 class="card-title">{book.data.title}</h3>
-                {book.data.publisher && (
-                  <p class="card-meta" style="color: var(--color-primary); font-weight: 600;">{book.data.publisher}</p>
-                )}
-                <p class="card-meta">
-                  Published: {book.data.pubDate.toISOString().split('T')[0]}
-                </p>
-                <p class="card-description">{book.data.description}</p>
-                {book.data.amazonUrl && (
-                  <div style="margin-top: auto;">
-                    <span class="button" style="display: inline-block; font-size: 0.875rem; padding: 0.5rem 1rem;">{book.data.buttonText} →</span>
-                  </div>
-                )}
-              </div>
-            </a>
-          ))}
-        </div>
       )}
     </div>
   </section>
 </BaseLayout>
+
+<style>
+  .book-cover {
+    width: 100%;
+    aspect-ratio: 7/8;
+    background: var(--color-bg-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .book-cover-image {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+
+  .book-cover-placeholder-title {
+    font-size: 2rem;
+    font-weight: 600;
+    text-align: center;
+    color: var(--color-text-light);
+    padding: 2rem;
+    line-height: 1.3;
+  }
+
+  .book-icon-placeholder {
+    height: 400px;
+    overflow: hidden;
+  }
+
+  .book-publisher {
+    color: var(--color-primary);
+    font-weight: 600;
+  }
+
+  .book-cta {
+    margin-top: auto;
+  }
+
+  .book-cta-button {
+    display: inline-block;
+    font-size: 0.875rem;
+    padding: 0.5rem 1rem;
+  }
+</style>

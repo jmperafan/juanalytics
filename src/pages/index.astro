@@ -1,66 +1,30 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import YouTubeThumbnail from '../components/YouTubeThumbnail.astro';
-import OptimizedImage from '../components/OptimizedImage.astro';
 import Icon from '../components/Icon.astro';
 import { getCollection } from 'astro:content';
-import { readContentYAML } from '../utils/yamlParser';
-import { buildUrl } from '../utils/urlHelper';
+import { Image } from 'astro:assets';
+import { formatDate, byDateDesc } from '../utils/format';
+import profilePhoto from '../assets/profile_photo.webp';
+import speakingImage from '../assets/services/speaking.jpg';
+import trainingImage from '../assets/services/training.jpg';
+import consultingImage from '../assets/services/consulting.jpg';
 
-// Get content from YAML (videos and podcasts)
-const content = await readContentYAML();
-
-// Get blogs from Astro content collections
 const recentBlogs = (await getCollection('blogs')).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 ).slice(0, 3);
 
-// Get recent videos from YAML
-const recentVideos = content.videos
-  .map(video => ({
-    data: {
-      title: video.title,
-      description: video.description,
-      pubDate: video.date,
-      videoUrl: video.url,
-      thumbnail: video.thumbnail,
-      platform: (video.platform as 'youtube' | 'vimeo' | 'other') || 'youtube',
-      tags: video.tags,
-    }
-  }))
-  .slice(0, 3);
-
-// Get recent guest podcast appearances from YAML (excluding SQL Lingua Franca)
-const recentPodcasts = content.podcasts
-  .filter(p => !p.title.includes(' - '))
-  .map(podcast => ({
-    slug: podcast.url.split('/').pop() || '',
-    data: {
-      title: podcast.title,
-      description: podcast.description,
-      pubDate: podcast.date,
-      podcastName: podcast.podcast || podcast.extra2 || '',
-      audioUrl: podcast.url,
-      duration: podcast.duration,
-      episode: podcast.episode || (podcast.extra1 ? parseInt(podcast.extra1) : undefined),
-      thumbnail: podcast.thumbnail,
-      type: (podcast.extra1 && parseInt(podcast.extra1) > 0) ? 'own' : 'guest',
-      tags: podcast.tags,
-    }
-  }))
-  .slice(0, 3);
+const recentVideos = (await getCollection('videos')).sort(byDateDesc).slice(0, 3);
+const recentPodcasts = (await getCollection('guestAppearances')).sort(byDateDesc).slice(0, 3);
 ---
-
-<style>
-</style>
 
 <BaseLayout title="juanalytics - Juan Manuel Perafan">
   <!-- Hero Section -->
   <section class="hero-section">
     <div class="container hero-max-width">
       <div class="hero-main">
-        <OptimizedImage
-          src={buildUrl("images/profile_photo.webp")}
+        <Image
+          src={profilePhoto}
           alt="Juan Manuel Perafan"
           class="hero-image"
           loading="eager"
@@ -91,7 +55,7 @@ const recentPodcasts = content.podcasts
       <h2 class="section-title">What You'll Find Here</h2>
 
       <div class="cards-grid">
-        <a href={buildUrl("talks")} class="feature-card">
+        <a href="/talks" class="feature-card">
           <div class="feature-icon">
             <Icon name="presentation" size={24} />
           </div>
@@ -101,7 +65,7 @@ const recentPodcasts = content.podcasts
           </div>
         </a>
 
-        <a href={buildUrl("videos")} class="feature-card">
+        <a href="/videos" class="feature-card">
           <div class="feature-icon">
             <Icon name="play" size={24} />
           </div>
@@ -111,7 +75,7 @@ const recentPodcasts = content.podcasts
           </div>
         </a>
 
-        <a href={buildUrl("podcasts")} class="feature-card">
+        <a href="/podcasts" class="feature-card">
           <div class="feature-icon">
             <Icon name="microphone" size={24} />
           </div>
@@ -121,7 +85,7 @@ const recentPodcasts = content.podcasts
           </div>
         </a>
 
-        <a href={buildUrl("blog")} class="feature-card">
+        <a href="/blog" class="feature-card">
           <div class="feature-icon">
             <Icon name="document" size={24} />
           </div>
@@ -137,8 +101,8 @@ const recentPodcasts = content.podcasts
         <h2 class="services-title">Let's Work Together</h2>
         <div class="services-grid">
           <div class="service-card">
-            <OptimizedImage
-              src={buildUrl("images/services/speaking_07.jpg")}
+            <Image
+              src={speakingImage}
               alt="Speaking"
               class="service-image"
               loading="lazy"
@@ -151,8 +115,8 @@ const recentPodcasts = content.podcasts
             </div>
           </div>
           <div class="service-card">
-            <OptimizedImage
-              src={buildUrl("images/services/mentoring_01.jpg")}
+            <Image
+              src={trainingImage}
               alt="Training"
               class="service-image"
               loading="lazy"
@@ -165,8 +129,8 @@ const recentPodcasts = content.podcasts
             </div>
           </div>
           <div class="service-card">
-            <OptimizedImage
-              src={buildUrl("images/services/consulting_01.jpg")}
+            <Image
+              src={consultingImage}
               alt="Consulting"
               class="service-image"
               loading="lazy"
@@ -180,7 +144,7 @@ const recentPodcasts = content.podcasts
           </div>
         </div>
         <div class="services-cta-container">
-          <a href={buildUrl("about")} class="cta-button">
+          <a href="/about" class="cta-button">
             Get in Touch
             <Icon name="arrow" size={16} />
           </a>
@@ -195,11 +159,11 @@ const recentPodcasts = content.podcasts
       <div class="container">
         <div class="section-header">
           <h2>Podcast Appearances</h2>
-          <a href={buildUrl("podcasts")} class="view-all-link">View all →</a>
+          <a href="/podcasts" class="view-all-link">View all →</a>
         </div>
         <div class="content-grid">
           {recentPodcasts.map((podcast) => (
-            <a href={podcast.data.audioUrl} target="_blank" rel="noopener noreferrer" class="card media-card">
+            <a href={podcast.data.url} target="_blank" rel="noopener noreferrer" class="card media-card">
               {podcast.data.thumbnail ? (
                 <img src={podcast.data.thumbnail} alt={podcast.data.title} class="media-image" />
               ) : (
@@ -210,8 +174,8 @@ const recentPodcasts = content.podcasts
               <div class="media-content">
                 <h3 class="media-title">{podcast.data.title}</h3>
                 <p class="media-meta">
-                  {podcast.data.pubDate.toISOString().split('T')[0]}
-                  {podcast.data.podcastName && ` • ${podcast.data.podcastName}`}
+                  {formatDate(podcast.data.date)}
+                  {podcast.data.podcast && ` • ${podcast.data.podcast}`}
                   {podcast.data.episode && ` - Episode ${podcast.data.episode}`}
                 </p>
                 <p class="media-description">{podcast.data.description}</p>
@@ -229,24 +193,16 @@ const recentPodcasts = content.podcasts
       <div class="container">
         <div class="section-header">
           <h2>Recent Videos</h2>
-          <a href={buildUrl("videos")} class="view-all-link">View all →</a>
+          <a href="/videos" class="view-all-link">View all →</a>
         </div>
         <div class="content-grid">
           {recentVideos.map((video) => (
-            <a href={video.data.videoUrl} target="_blank" rel="noopener noreferrer" class="card media-card">
-              {video.data.videoUrl ? (
-                <YouTubeThumbnail videoUrl={video.data.videoUrl} alt={video.data.title} thumbnail={video.data.thumbnail} />
-              ) : video.data.thumbnail ? (
-                <img src={video.data.thumbnail} alt={video.data.title} class="media-image" />
-              ) : (
-                <div class="media-placeholder">
-                  <Icon name="play" size={64} />
-                </div>
-              )}
+            <a href={video.data.url} target="_blank" rel="noopener noreferrer" class="card media-card">
+              <YouTubeThumbnail videoUrl={video.data.url} alt={video.data.title} thumbnail={video.data.thumbnail} />
               <div class="media-content">
                 <h3 class="media-title">{video.data.title}</h3>
                 <p class="media-meta">
-                  {video.data.pubDate.toISOString().split('T')[0]}
+                  {formatDate(video.data.date)}
                 </p>
                 <p class="media-description">{video.data.description}</p>
               </div>
@@ -263,14 +219,14 @@ const recentPodcasts = content.podcasts
       <div class="container">
         <div class="section-header">
           <h2>Recent Blog Posts</h2>
-          <a href={buildUrl("blog")} class="view-all-link">View all →</a>
+          <a href="/blog" class="view-all-link">View all →</a>
         </div>
         <div class="content-grid">
           {recentBlogs.map((post) => (
-            <a href={buildUrl(`blog/${post.id}`)} class="card media-card">
+            <a href={`/blog/${post.id}`} class="card media-card">
               {post.data.heroImage ? (
-                <OptimizedImage
-                  src={buildUrl(post.data.heroImage)}
+                <img
+                  src={post.data.heroImage}
                   alt={post.data.title}
                   class="media-image"
                   loading="lazy"
@@ -283,7 +239,7 @@ const recentPodcasts = content.podcasts
               <div class="media-content">
                 <h3 class="media-title">{post.data.title}</h3>
                 <p class="media-meta">
-                  {post.data.pubDate.toISOString().split('T')[0]}
+                  {formatDate(post.data.pubDate)}
                 </p>
                 <p class="media-description">{post.data.description}</p>
               </div>

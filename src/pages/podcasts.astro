@@ -1,44 +1,17 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ContentFilter from '../components/ContentFilter.astro';
-import Icon from '../components/Icon.astro';
-import ThumbnailImage from '../components/ThumbnailImage.astro';
-import { readContentYAML } from '../utils/yamlParser';
+import PodcastCard from '../components/PodcastCard.astro';
+import { getCollection } from 'astro:content';
+import { byDateDesc } from '../utils/format';
 
-const content = await readContentYAML();
-const allPodcasts = content.podcasts.map(podcast => ({
-  slug: podcast.url.split('/').pop() || '',
-  data: {
-    title: podcast.title,
-    description: podcast.description,
-    pubDate: podcast.date,
-    podcastName: podcast.podcast || podcast.extra2 || '',
-    audioUrl: podcast.url,
-    duration: podcast.duration,
-    episode: podcast.episode || (podcast.extra1 ? parseInt(podcast.extra1) : undefined),
-    thumbnail: podcast.thumbnail,
-    thumbnail_fit: podcast.thumbnail_fit as 'cover' | 'contain' | undefined,
-    tags: podcast.tags,
-  }
-}));
+const dataHustle = (await getCollection('dataHustle')).sort(byDateDesc);
+const guestAppearances = (await getCollection('guestAppearances')).sort(byDateDesc);
+const sqlLinguaFranca = (await getCollection('sqlLinguaFranca')).sort(
+  (a, b) => (b.data.episode ?? 0) - (a.data.episode ?? 0)
+);
 
-const dataHustle = allPodcasts
-  .filter(p => p.data.podcastName === 'The Data Hustle Podcast')
-  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
-
-const sqlLinguaFranca = allPodcasts
-  .filter(p => p.data.podcastName === 'SQL Lingua Franca')
-  .sort((a, b) => {
-    const episodeA = typeof a.data.episode === 'number' ? a.data.episode : parseInt(String(a.data.episode) || '0');
-    const episodeB = typeof b.data.episode === 'number' ? b.data.episode : parseInt(String(b.data.episode) || '0');
-    return episodeB - episodeA;
-  });
-
-const guestAppearances = allPodcasts
-  .filter(p => p.data.podcastName !== 'The Data Hustle Podcast' && p.data.podcastName !== 'SQL Lingua Franca')
-  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
-
-const allTags = allPodcasts.flatMap(p => p.data.tags || []);
+const allTags = [...dataHustle, ...guestAppearances, ...sqlLinguaFranca].flatMap(p => p.data.tags);
 ---
 
 <BaseLayout title="Podcasts | juanalytics">
@@ -61,33 +34,7 @@ const allTags = allPodcasts.flatMap(p => p.data.tags || []);
               <p class="section-description">Research in podcast form: Tony and I talk careers and consultancy with practitioners as we write our upcoming book on data.</p>
               <div class="content-grid">
                 {dataHustle.map((podcast) => (
-                  <a href={podcast.data.audioUrl} target="_blank" rel="noopener noreferrer" class="card content-card podcast-card" data-tags={JSON.stringify(podcast.data.tags || [])} data-type="data-hustle">
-                    {podcast.data.thumbnail ? (
-                      <ThumbnailImage src={podcast.data.thumbnail} alt={podcast.data.title} fit={podcast.data.thumbnail_fit as 'cover' | 'contain' | undefined} />
-                    ) : (
-                      <div class="card-image-placeholder">
-                        <Icon name="microphone" size={64} />
-                      </div>
-                    )}
-                    <div class="card-content">
-                      <h3 class="card-title">{podcast.data.title}</h3>
-                      {podcast.data.episode && (
-                        <p class="podcast-series-meta">Episode {podcast.data.episode}</p>
-                      )}
-                      <p class="card-meta">
-                        {podcast.data.pubDate.toISOString().split('T')[0]}
-                        {podcast.data.duration && ` • ${podcast.data.duration}`}
-                      </p>
-                      <p class="card-description">{podcast.data.description}</p>
-                      {podcast.data.tags && podcast.data.tags.length > 0 && (
-                        <div class="card-tags">
-                          {podcast.data.tags.map((tag) => (
-                            <span class="tag content-tag" data-tag={tag}>{tag}</span>
-                          ))}
-                        </div>
-                      )}
-                    </div>
-                  </a>
+                  <PodcastCard episode={podcast} sectionType="data-hustle" variant="series" />
                 ))}
               </div>
               <div class="show-more-wrapper" id="data-hustle-more"></div>
@@ -102,31 +49,7 @@ const allTags = allPodcasts.flatMap(p => p.data.tags || []);
               <p class="section-description">If you host a podcast about data or tech careers and want me on, I am always happy to join the conversation.</p>
               <div class="content-grid">
                 {guestAppearances.map((podcast) => (
-                  <a href={podcast.data.audioUrl} target="_blank" rel="noopener noreferrer" class="card content-card podcast-card" data-tags={JSON.stringify(podcast.data.tags || [])} data-type="guest-appearance">
-                    {podcast.data.thumbnail ? (
-                      <ThumbnailImage src={podcast.data.thumbnail} alt={podcast.data.title} fit={podcast.data.thumbnail_fit as 'cover' | 'contain' | undefined} />
-                    ) : (
-                      <div class="card-image-placeholder">
-                        <Icon name="microphone" size={64} />
-                      </div>
-                    )}
-                    <div class="card-content">
-                      <h3 class="card-title">{podcast.data.title}</h3>
-                      <p class="card-meta">
-                        {podcast.data.pubDate.toISOString().split('T')[0]}
-                        {podcast.data.podcastName && ` • ${podcast.data.podcastName}`}
-                        {podcast.data.episode && ` - Episode ${podcast.data.episode}`}
-                      </p>
-                      <p class="card-description">{podcast.data.description}</p>
-                      {podcast.data.tags && podcast.data.tags.length > 0 && (
-                        <div class="card-tags">
-                          {podcast.data.tags.map((tag) => (
-                            <span class="tag content-tag" data-tag={tag}>{tag}</span>
-                          ))}
-                        </div>
-                      )}
-                    </div>
-                  </a>
+                  <PodcastCard episode={podcast} sectionType="guest-appearance" variant="guest" />
                 ))}
               </div>
               <div class="show-more-wrapper" id="guest-more"></div>
@@ -141,33 +64,7 @@ const allTags = allPodcasts.flatMap(p => p.data.tags || []);
               <p class="section-description">My first podcast (2024–2025): intimate conversations with knowledgeable guests about data, analytics engineering, and strategy.</p>
               <div class="content-grid">
                 {sqlLinguaFranca.map((podcast) => (
-                  <a href={podcast.data.audioUrl} target="_blank" rel="noopener noreferrer" class="card content-card podcast-card" data-tags={JSON.stringify(podcast.data.tags || [])} data-type="sql-lingua-franca">
-                    {podcast.data.thumbnail ? (
-                      <ThumbnailImage src={podcast.data.thumbnail} alt={podcast.data.title} fit={podcast.data.thumbnail_fit as 'cover' | 'contain' | undefined} />
-                    ) : (
-                      <div class="card-image-placeholder">
-                        <Icon name="microphone" size={64} />
-                      </div>
-                    )}
-                    <div class="card-content">
-                      <h3 class="card-title">{podcast.data.title}</h3>
-                      {podcast.data.episode && (
-                        <p class="podcast-series-meta">Episode {podcast.data.episode}</p>
-                      )}
-                      <p class="card-meta">
-                        {podcast.data.pubDate.toISOString().split('T')[0]}
-                        {podcast.data.duration && ` • ${podcast.data.duration}`}
-                      </p>
-                      <p class="card-description">{podcast.data.description}</p>
-                      {podcast.data.tags && podcast.data.tags.length > 0 && (
-                        <div class="card-tags">
-                          {podcast.data.tags.map((tag) => (
-                            <span class="tag content-tag" data-tag={tag}>{tag}</span>
-                          ))}
-                        </div>
-                      )}
-                    </div>
-                  </a>
+                  <PodcastCard episode={podcast} sectionType="sql-lingua-franca" variant="series" />
                 ))}
               </div>
               <div class="show-more-wrapper" id="sql-lingua-franca-more"></div>
@@ -281,18 +178,6 @@ const allTags = allPodcasts.flatMap(p => p.data.tags || []);
       font-size: 0.95rem;
       line-height: 1.6;
       margin: 0 0 1.5rem;
-    }
-
-.podcast-card .card-description {
-      -webkit-line-clamp: 3;
-      line-clamp: 3;
-    }
-
-    .podcast-series-meta {
-      color: var(--color-primary);
-      font-weight: 600;
-      font-size: 0.875rem;
-      margin-bottom: 0.75rem;
     }
 
     .show-more-wrapper {

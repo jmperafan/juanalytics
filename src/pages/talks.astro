@@ -4,22 +4,10 @@ import YouTubeThumbnail from '../components/YouTubeThumbnail.astro';
 import ThumbnailImage from '../components/ThumbnailImage.astro';
 import ContentFilter from '../components/ContentFilter.astro';
 import Icon from '../components/Icon.astro';
-import { readContentYAML } from '../utils/yamlParser';
+import { getCollection } from 'astro:content';
+import { formatDate, byDateDesc } from '../utils/format';
 
-const content = await readContentYAML();
-const talks = content.talks.map(talk => ({
-  data: {
-    title: talk.title,
-    description: talk.description,
-    event: talk.event || talk.extra1 || '',
-    eventUrl: talk.url,
-    date: talk.date,
-    location: talk.location || talk.extra2 || '',
-    videoUrl: talk.url,
-    thumbnail: talk.thumbnail,
-    tags: talk.tags,
-  }
-}));
+const talks = (await getCollection('talks')).sort(byDateDesc);
 ---
 
 <BaseLayout title="Conference Talks | juanalytics">
@@ -39,24 +27,24 @@ const talks = content.talks.map(talk => ({
           />
           <div id="talks-grid" class="content-grid">
             {talks.map((talk) => {
-              const isYouTubeUrl = talk.data.videoUrl && (talk.data.videoUrl.includes('youtube') || talk.data.videoUrl.includes('youtu.be'));
+              const isYouTubeUrl = talk.data.url && (talk.data.url.includes('youtube') || talk.data.url.includes('youtu.be'));
               const CardElement = isYouTubeUrl ? 'div' : 'a';
-              const linkProps = !isYouTubeUrl && talk.data.videoUrl ? { href: talk.data.videoUrl, target: '_blank', rel: 'noopener noreferrer' } : {};
+              const linkProps = !isYouTubeUrl && talk.data.url ? { href: talk.data.url, target: '_blank', rel: 'noopener noreferrer' } : {};
 
               return (
               <CardElement
                 {...linkProps}
                 class="card content-card talk-card"
                 data-tags={JSON.stringify(talk.data.tags || [])}
-                data-video-url={talk.data.videoUrl || ''}
-                data-has-video={talk.data.videoUrl ? 'true' : 'false'}
+                data-video-url={talk.data.url || ''}
+                data-has-video={talk.data.url ? 'true' : 'false'}
                 data-is-youtube={isYouTubeUrl ? 'true' : 'false'}
               >
                 <div class="video-card-wrapper">
-                  {talk.data.videoUrl && talk.data.videoUrl.includes('youtube') ? (
+                  {talk.data.url && talk.data.url.includes('youtube') ? (
                     <>
                       <div class="video-thumbnail-wrapper">
-                        <YouTubeThumbnail videoUrl={talk.data.videoUrl} alt={talk.data.title} thumbnail={talk.data.thumbnail} />
+                        <YouTubeThumbnail videoUrl={talk.data.url} alt={talk.data.title} thumbnail={talk.data.thumbnail} />
                         <div class="play-button">
                           <Icon name="play" size={28} />
                         </div>
@@ -79,7 +67,7 @@ const talks = content.talks.map(talk => ({
                   </p>
                   <p class="card-meta" style="display: flex; align-items: center; gap: 0.5rem;">
                     <Icon name="clock" size={14} />
-                    {talk.data.date.toISOString().split('T')[0]}
+                    {formatDate(talk.data.date)}
                     {talk.data.location && (
                       <>
                         <span style="margin: 0 0.25rem;">•</span>

@@ -1,52 +1,136 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import OptimizedImage from '../components/OptimizedImage.astro';
 import ExperienceTimeline from '../components/ExperienceTimeline.astro';
-import { buildUrl } from '../utils/urlHelper';
-import { readContentYAML } from '../utils/yamlParser';
+import { getCollection } from 'astro:content';
+import { Image } from 'astro:assets';
+import { geoMercator, geoPath, geoCentroid } from 'd3-geo';
+import { feature } from 'topojson-client';
+import { createRequire } from 'node:module';
 import { coordMap } from '../data/locations';
+import profilePhoto from '../assets/profile_photo.webp';
 
-const { talks } = await readContentYAML();
+const talks = (await getCollection('talks')).map(t => t.data);
 
-const talkMarkers = talks
-  .filter(t => t.location && t.location !== 'Virtual' && coordMap[t.location])
-  .map(t => ({
-    coords: coordMap[t.location!],
+const locatedTalks = talks.filter(
+  (t): t is typeof t & { location: string } =>
+    !!t.location && t.location !== 'Virtual' && !!coordMap[t.location]
+);
+
+const talkMarkers = [...new Set(locatedTalks.map(t => t.location))].map(location => ({
+  coords: coordMap[location]!,
+  location,
+}));
+
+const talksByLocation = locatedTalks.reduce<
+  Record<string, Array<{ title: string; event: string; year: string; url: string }>>
+>((acc, t) => {
+  (acc[t.location] ??= []).push({
     title: t.title,
-    event: t.event ?? '',
-    location: t.location!,
-  }));
-
-// Deduplicate by location; keep count for popup
-const seenLocations = new Set<string>();
-const dedupedTalkMarkers = talkMarkers.filter(m => {
-  if (seenLocations.has(m.location)) return false;
-  seenLocations.add(m.location);
-  return true;
-});
-
-const talkCountByLocation = talkMarkers.reduce<Record<string, number>>((acc, m) => {
-  acc[m.location] = (acc[m.location] ?? 0) + 1;
+    event: t.event,
+    year: String(t.date.getFullYear()),
+    url: t.url ?? '',
+  });
   return acc;
 }, {});
 
-const talkMarkersWithCount = dedupedTalkMarkers.map(m => ({
-  ...m,
-  count: talkCountByLocation[m.location],
-}));
+// ── Build-time map rendering (replaces the old runtime D3 + CDN setup) ──
+const require = createRequire(import.meta.url);
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const world: any = require('world-atlas/countries-50m.json');
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const allFeatures: any[] = (feature(world, world.objects.countries) as any).features;
 
-const talksByLocation = talks
-  .filter(t => t.location && t.location !== 'Virtual' && coordMap[t.location])
-  .reduce<Record<string, Array<{title: string, event: string, year: string, url: string}>>>((acc, t) => {
-    if (!acc[t.location!]) acc[t.location!] = [];
-    acc[t.location!].push({
-      title: t.title,
-      event: t.event ?? '',
-      year: t.date instanceof Date ? String(t.date.getFullYear()) : String(t.date).slice(0, 4),
-      url: t.url ?? '',
-    });
-    return acc;
-  }, {});
+// Bounding boxes to strip far-flung islands/territories from silhouettes
+const geoBounds: Record<number, [[number, number], [number, number]]> = {
+  528: [[3, 50], [8, 54]],
+  826: [[-9, 49], [2, 58.8]],
+  840: [[-130, 20], [-60, 55]],
+  250: [[-5, 42], [8, 51]],
+};
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function filterToContinental(f: any, bbox: [[number, number], [number, number]]): any {
+  const geom = f.geometry;
+  const inBbox = (ring: number[][]) => {
+    let sx = 0, sy = 0;
+    for (const [x, y] of ring) { sx += x; sy += y; }
+    const cx = sx / ring.length, cy = sy / ring.length;
+    return cx >= bbox[0][0] && cx <= bbox[1][0] && cy >= bbox[0][1] && cy <= bbox[1][1];
+  };
+  if (geom.type === 'Polygon') return inBbox(geom.coordinates[0]) ? f : null;
+  if (geom.type === 'MultiPolygon') {
+    const polys = geom.coordinates.filter((p: number[][][]) => inBbox(p[0]));
+    if (!polys.length) return null;
+    return { type: 'Feature', geometry: { type: 'MultiPolygon', coordinates: polys } };
+  }
+  return f;
+}
+
+// ── Country silhouettes (lived) ──
+const COUNTRY_W = 100, COUNTRY_H = 80, COUNTRY_PAD = 6;
+const countryIds = { colombia: 170, uk: 826, netherlands: 528, usa: 840 };
+
+const countryPaths = Object.fromEntries(
+  Object.entries(countryIds).map(([name, id]) => {
+    const found = allFeatures.find(f => +f.id === id);
+    const renderFeature = found && geoBounds[id] ? filterToContinental(found, geoBounds[id]) : found;
+    if (!renderFeature) return [name, null];
+    const projection = geoMercator().fitExtent(
+      [[COUNTRY_PAD, COUNTRY_PAD], [COUNTRY_W - COUNTRY_PAD, COUNTRY_H - COUNTRY_PAD]],
+      renderFeature
+    );
+    return [name, geoPath(projection)(renderFeature)];
+  })
+) as Record<keyof typeof countryIds, string | null>;
+
+// ── Continent panels (spoken) with talk location dots ──
+const PANEL_W = 240, PANEL_H = 220, PANEL_PAD = 8;
+const continentDefs = [
+  { id: 'northamerica', label: 'USA', bbox: [-125, 24, -66, 50] as const, includeIds: [] as number[] },
+  { id: 'europe', label: 'Europe', bbox: [-5, 35, 22, 57] as const, includeIds: [250] },
+  { id: 'southamerica', label: 'South America', bbox: [-82, -56, -33, 14] as const, includeIds: [] as number[] },
+];
+
+const continentPanels = continentDefs.map(cont => {
+  const features = allFeatures
+    .filter(f => {
+      if (cont.includeIds.includes(+f.id)) return true;
+      try {
+        const c = geoCentroid(f);
+        return c[0] >= cont.bbox[0] && c[0] <= cont.bbox[2] &&
+               c[1] >= cont.bbox[1] && c[1] <= cont.bbox[3];
+      } catch {
+        return false;
+      }
+    })
+    .map(f => (geoBounds[+f.id] ? filterToContinental(f, geoBounds[+f.id]!) : f))
+    .filter(Boolean);
+
+  const collection = { type: 'FeatureCollection' as const, features };
+  const projection = geoMercator().fitExtent(
+    [[PANEL_PAD, PANEL_PAD], [PANEL_W - PANEL_PAD, PANEL_H - PANEL_PAD]],
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    collection as any
+  );
+  const pathGen = geoPath(projection);
+
+  const dots = talkMarkers
+    .filter(m => {
+      const [lat, lon] = m.coords;
+      return lon >= cont.bbox[0] && lon <= cont.bbox[2] && lat >= cont.bbox[1] && lat <= cont.bbox[3];
+    })
+    .map(m => {
+      const pt = projection([m.coords[1], m.coords[0]]);
+      return pt ? { x: pt[0], y: pt[1], location: m.location } : null;
+    })
+    .filter((d): d is NonNullable<typeof d> => d !== null);
+
+  return {
+    ...cont,
+    paths: features.map(f => pathGen(f)).filter(Boolean) as string[],
+    dots,
+  };
+});
 ---
 
 <BaseLayout title="About | juanalytics">
@@ -73,8 +157,8 @@ const talksByLocation = talks
           </p>
         </div>
         <div class="about-intro-photo">
-          <OptimizedImage
-            src={buildUrl("images/profile_photo.webp")}
+          <Image
+            src={profilePhoto}
             alt="Juan Manuel Perafan"
             class="about-photo"
             width={315}
@@ -126,52 +210,65 @@ const talksByLocation = talks
           <div class="map-col">
             <p class="map-col-label">Where I've Lived</p>
             <div class="countries-lived">
-              <div class="country-item">
-                <svg id="shape-col" class="country-svg"></svg>
-                <div class="country-label">
-                  <strong>Colombia</strong>
-                  <span>Born and Raised</span>
+              {[
+                { key: 'colombia' as const, name: 'Colombia', note: 'Born and Raised' },
+                { key: 'uk' as const, name: 'United Kingdom', note: '1 year' },
+                { key: 'netherlands' as const, name: 'Netherlands', note: '15 years' },
+                { key: 'usa' as const, name: 'United States', note: 'Since 2026' },
+              ].map(({ key, name, note }) => (
+                <div class="country-item">
+                  <svg
+                    class="country-svg"
+                    viewBox={`0 0 ${COUNTRY_W} ${COUNTRY_H}`}
+                    preserveAspectRatio="xMidYMid meet"
+                    role="img"
+                    aria-label={`Map silhouette of ${name}`}
+                  >
+                    {countryPaths[key] && <path d={countryPaths[key]} fill="#2563eb" opacity="0.75" />}
+                  </svg>
+                  <div class="country-label">
+                    <strong>{name}</strong>
+                    <span>{note}</span>
+                  </div>
                 </div>
-              </div>
-              <div class="country-item">
-                <svg id="shape-gbr" class="country-svg"></svg>
-                <div class="country-label">
-                  <strong>United Kingdom</strong>
-                  <span>1 year</span>
-                </div>
-              </div>
-              <div class="country-item">
-                <svg id="shape-nld" class="country-svg"></svg>
-                <div class="country-label">
-                  <strong>Netherlands</strong>
-                  <span>15 years</span>
-                </div>
-              </div>
-              <div class="country-item">
-                <svg id="shape-usa" class="country-svg"></svg>
-                <div class="country-label">
-                  <strong>United States</strong>
-                  <span>Since 2026</span>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
 
           <div class="map-col">
             <p class="map-col-label">Where I've Spoken</p>
             <div class="continent-maps">
-              <div class="continent-panel">
-                <svg id="map-northamerica" class="continent-svg"></svg>
-                <span class="continent-label">USA</span>
-              </div>
-              <div class="continent-panel">
-                <svg id="map-europe" class="continent-svg"></svg>
-                <span class="continent-label">Europe</span>
-              </div>
-              <div class="continent-panel">
-                <svg id="map-southamerica" class="continent-svg"></svg>
-                <span class="continent-label">South America</span>
-              </div>
+              {continentPanels.map((panel) => (
+                <div class="continent-panel">
+                  <svg
+                    class="continent-svg"
+                    viewBox={`0 0 ${PANEL_W} ${PANEL_H}`}
+                    preserveAspectRatio="xMidYMid meet"
+                    role="img"
+                    aria-label={`Map of ${panel.label} with talk locations: ${panel.dots.map(d => d.location).join(', ') || 'none'}`}
+                  >
+                    {panel.paths.map((d) => (
+                      <path d={d} fill="#1a2d4a" stroke="#2d4a6f" stroke-width="0.5" />
+                    ))}
+                    {panel.dots.map((dot) => (
+                      <circle
+                        class="talk-dot"
+                        cx={dot.x}
+                        cy={dot.y}
+                        r="3.5"
+                        fill="#2563eb"
+                        stroke="#60a5fa"
+                        stroke-width="1.5"
+                        tabindex="0"
+                        role="button"
+                        data-location={dot.location}
+                        aria-label={`Talks in ${dot.location}`}
+                      />
+                    ))}
+                  </svg>
+                  <span class="continent-label">{panel.label}</span>
+                </div>
+              ))}
             </div>
           </div>
         </div>
@@ -190,179 +287,155 @@ const talksByLocation = talks
   </section>
 </BaseLayout>
 
-<!-- Country silhouettes + continent talk panels via D3 + topojson -->
-<script is:inline define:vars={{ talkMarkers: talkMarkersWithCount, talksByLocation }}>
+<!-- Talk-location tooltips. Maps themselves are rendered at build time. -->
+<script is:inline define:vars={{ talksByLocation }}>
 (function () {
-  // ── Tooltip ──
   var tooltip = document.createElement('div');
   tooltip.id = 'talk-tooltip';
-  tooltip.style.cssText = 'position:fixed;pointer-events:none;opacity:0;transition:opacity 0.15s;z-index:1000;background:var(--color-bg-secondary,#1a2d4a);border:1px solid var(--color-border,#2d4a6f);border-radius:0.5rem;padding:0.6rem 0.85rem;max-width:260px;font-size:0.78rem;line-height:1.5;color:var(--color-text,#e2e8f0);box-shadow:0 4px 16px rgba(0,0,0,0.4);';
   document.body.appendChild(tooltip);
 
-  function showTooltip(evt, location) {
+  // Build tooltip content with DOM APIs so titles/URLs are never parsed as HTML
+  function buildTooltip(location) {
+    tooltip.replaceChildren();
     var talks = talksByLocation[location] || [];
-    if (!talks.length) return;
-    var html = talks.map(function(t) {
-      var title = t.url
-        ? '<a href="' + t.url + '" target="_blank" rel="noopener" style="color:#60a5fa;text-decoration:none;font-weight:600;">' + t.title + '</a>'
-        : '<strong>' + t.title + '</strong>';
-      var cleanEvent = t.event ? t.event.replace(new RegExp('\\b' + t.year + '\\b', 'g'), '').trim().replace(/[-–\s]+$/, '').trim() : '';
-      var meta = [cleanEvent, t.year].filter(Boolean).join(' · ');
-      return '<div style="margin-bottom:0.5rem;">' + title +
-        '<div style="color:#94a3b8;font-size:0.72rem;margin-top:0.1rem;">' + meta + '</div>' +
-        '</div>';
-    }).join('');
-    tooltip.innerHTML = '<div style="font-size:0.65rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:#94a3b8;margin-bottom:0.4rem;">' + location + '</div>' + html;
-    tooltip.style.opacity = '1';
-    moveTooltip(evt);
+    if (!talks.length) return false;
+
+    var heading = document.createElement('div');
+    heading.className = 'talk-tooltip-heading';
+    heading.textContent = location;
+    tooltip.appendChild(heading);
+
+    talks.forEach(function (t) {
+      var item = document.createElement('div');
+      item.className = 'talk-tooltip-item';
+
+      var title;
+      if (t.url) {
+        title = document.createElement('a');
+        title.href = t.url;
+        title.target = '_blank';
+        title.rel = 'noopener';
+        title.className = 'talk-tooltip-link';
+      } else {
+        title = document.createElement('strong');
+      }
+      title.textContent = t.title;
+      item.appendChild(title);
+
+      var cleanEvent = t.event
+        ? t.event.replace(new RegExp('\\b' + t.year + '\\b', 'g'), '').trim().replace(/[-–\s]+$/, '').trim()
+        : '';
+      var meta = document.createElement('div');
+      meta.className = 'talk-tooltip-meta';
+      meta.textContent = [cleanEvent, t.year].filter(Boolean).join(' · ');
+      item.appendChild(meta);
+
+      tooltip.appendChild(item);
+    });
+    return true;
   }
 
-  function moveTooltip(evt) {
-    var x = evt.clientX + 14, y = evt.clientY - 10;
-    if (x + 270 > window.innerWidth) x = evt.clientX - 270;
+  function showTooltip(x, y, location) {
+    if (!buildTooltip(location)) return;
+    tooltip.classList.add('visible');
+    moveTooltip(x, y);
+  }
+
+  function moveTooltip(clientX, clientY) {
+    var x = clientX + 14, y = clientY - 10;
+    if (x + 270 > window.innerWidth) x = clientX - 270;
     tooltip.style.left = x + 'px';
     tooltip.style.top = y + 'px';
   }
 
-  function hideTooltip() { tooltip.style.opacity = '0'; }
+  function hideTooltip() { tooltip.classList.remove('visible'); }
 
-  // ── Country silhouettes (lived) ──
-  var countries = [
-    { id: 170, svgId: 'shape-col' },
-    { id: 826, svgId: 'shape-gbr' },
-    { id: 528, svgId: 'shape-nld' },
-    { id: 840, svgId: 'shape-usa' },
-  ];
+  document.querySelectorAll('.talk-dot').forEach(function (dot) {
+    var location = dot.getAttribute('data-location');
 
-  // ── Continent panels (spoken) ──
-  var continentDefs = [
-    { svgId: 'map-northamerica', bbox: [-125, 24, -66, 50] },
-    { svgId: 'map-europe',       bbox: [-5,   35,  22, 57], includeIds: [250] },
-    { svgId: 'map-southamerica', bbox: [-82, -56, -33, 14] },
-  ];
+    dot.addEventListener('mouseover', function (evt) { showTooltip(evt.clientX, evt.clientY, location); });
+    dot.addEventListener('mousemove', function (evt) { moveTooltip(evt.clientX, evt.clientY); });
+    dot.addEventListener('mouseout', hideTooltip);
 
-  function loadScript(src, cb) {
-    var s = document.createElement('script');
-    s.src = src; s.onload = cb;
-    document.head.appendChild(s);
-  }
+    // Keyboard: show near the dot on focus, dismiss on blur/Escape
+    dot.addEventListener('focus', function () {
+      var rect = dot.getBoundingClientRect();
+      showTooltip(rect.right, rect.top, location);
+    });
+    dot.addEventListener('blur', hideTooltip);
+    dot.addEventListener('keydown', function (evt) {
+      if (evt.key === 'Escape') hideTooltip();
+    });
 
-  var geoBounds = {
-    528: [[3, 50], [8, 54]],
-    826: [[-9, 49], [2, 58.8]],
-    840: [[-130, 20], [-60, 55]],
-    250: [[-5, 42], [8, 51]],
-  };
-
-  function filterToContinental(feature, bbox) {
-    var geom = feature.geometry;
-    function inBbox(ring) {
-      var sx = 0, sy = 0;
-      for (var i = 0; i < ring.length; i++) { sx += ring[i][0]; sy += ring[i][1]; }
-      var cx = sx / ring.length, cy = sy / ring.length;
-      return cx >= bbox[0][0] && cx <= bbox[1][0] && cy >= bbox[0][1] && cy <= bbox[1][1];
-    }
-    if (geom.type === 'Polygon') return inBbox(geom.coordinates[0]) ? feature : null;
-    if (geom.type === 'MultiPolygon') {
-      var polys = geom.coordinates.filter(function(p) { return inBbox(p[0]); });
-      if (!polys.length) return null;
-      return { type: 'Feature', geometry: { type: 'MultiPolygon', coordinates: polys } };
-    }
-    return feature;
-  }
-
-  loadScript('https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js', function () {
-    loadScript('https://cdn.jsdelivr.net/npm/topojson-client@3/dist/topojson-client.min.js', function () {
-      fetch('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-50m.json')
-        .then(function (r) { return r.json(); })
-        .then(function (world) {
-          var allFeatures = topojson.feature(world, world.objects.countries).features;
-
-          // ── Render country silhouettes ──
-          var W = 100, H = 80, pad = 6;
-          countries.forEach(function (c) {
-            var feature = allFeatures.find(function (f) {
-              return +f.id === c.id || f.id === String(c.id);
-            });
-            if (!feature) return;
-            var svgEl = document.getElementById(c.svgId);
-            if (!svgEl) return;
-            var renderFeature = geoBounds[c.id] ? filterToContinental(feature, geoBounds[c.id]) : feature;
-            if (!renderFeature) return;
-            var projection = d3.geoMercator().fitExtent([[pad, pad], [W - pad, H - pad]], renderFeature);
-            var pathGen = d3.geoPath().projection(projection);
-            d3.select(svgEl)
-              .attr('viewBox', '0 0 ' + W + ' ' + H)
-              .attr('preserveAspectRatio', 'xMidYMid meet')
-              .append('path')
-              .attr('d', pathGen(renderFeature))
-              .attr('fill', '#2563eb')
-              .attr('opacity', '0.75');
-          });
-
-          // ── Render continent panels with talk dots ──
-          var CW = 240, CH = 220, cpad = 8;
-          continentDefs.forEach(function (cont) {
-            var svgEl = document.getElementById(cont.svgId);
-            if (!svgEl) return;
-
-            var features = allFeatures.filter(function (f) {
-              if (cont.includeIds && cont.includeIds.indexOf(+f.id) !== -1) return true;
-              try {
-                var c = d3.geoCentroid(f);
-                return c[0] >= cont.bbox[0] && c[0] <= cont.bbox[2] &&
-                       c[1] >= cont.bbox[1] && c[1] <= cont.bbox[3];
-              } catch (e) { return false; }
-            }).map(function (f) {
-              var bounds = geoBounds[+f.id];
-              return bounds ? filterToContinental(f, bounds) : f;
-            }).filter(Boolean);
-
-            if (!features.length) return;
-
-            var collection = { type: 'FeatureCollection', features: features };
-            var projection = d3.geoMercator()
-              .fitExtent([[cpad, cpad], [CW - cpad, CH - cpad]], collection);
-            var pathGen = d3.geoPath().projection(projection);
-
-            var svg = d3.select(svgEl)
-              .attr('viewBox', '0 0 ' + CW + ' ' + CH)
-              .attr('preserveAspectRatio', 'xMidYMid meet');
-
-            features.forEach(function (f) {
-              svg.append('path')
-                .attr('d', pathGen(f))
-                .attr('fill', '#1a2d4a')
-                .attr('stroke', '#2d4a6f')
-                .attr('stroke-width', 0.5);
-            });
-
-            talkMarkers.forEach(function (m) {
-              var lat = m.coords[0], lon = m.coords[1];
-              if (lon < cont.bbox[0] || lon > cont.bbox[2] ||
-                  lat < cont.bbox[1] || lat > cont.bbox[3]) return;
-              var pt = projection([lon, lat]);
-              if (!pt) return;
-              svg.append('circle')
-                .attr('cx', pt[0]).attr('cy', pt[1])
-                .attr('r', 3.5)
-                .attr('fill', '#2563eb')
-                .attr('stroke', '#60a5fa')
-                .attr('stroke-width', 1.5)
-                .style('cursor', 'pointer')
-                .on('mouseover', function(evt) { showTooltip(evt, m.location); })
-                .on('mousemove', moveTooltip)
-                .on('mouseout', hideTooltip);
-            });
-          });
-        })
-        .catch(function (err) {
-          console.warn('Failed to load world map data:', err);
-        });
+    // Touch: tap toggles the tooltip
+    dot.addEventListener('click', function (evt) {
+      if (tooltip.classList.contains('visible')) {
+        hideTooltip();
+      } else {
+        showTooltip(evt.clientX, evt.clientY, location);
+      }
     });
   });
 })();
 </script>
+
+<style is:global>
+  #talk-tooltip {
+    position: fixed;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.15s;
+    z-index: 1000;
+    background: var(--color-bg-secondary, #1a2d4a);
+    border: 1px solid var(--color-border, #2d4a6f);
+    border-radius: 0.5rem;
+    padding: 0.6rem 0.85rem;
+    max-width: 260px;
+    font-size: 0.78rem;
+    line-height: 1.5;
+    color: var(--color-text, #e2e8f0);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+  }
+
+  #talk-tooltip.visible {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .talk-tooltip-heading {
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #94a3b8;
+    margin-bottom: 0.4rem;
+  }
+
+  .talk-tooltip-item {
+    margin-bottom: 0.5rem;
+  }
+
+  .talk-tooltip-link {
+    color: #60a5fa;
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .talk-tooltip-meta {
+    color: #94a3b8;
+    font-size: 0.72rem;
+    margin-top: 0.1rem;
+  }
+
+  .talk-dot {
+    cursor: pointer;
+  }
+
+  .talk-dot:focus-visible {
+    outline: 2px solid var(--color-accent, #f59e0b);
+    outline-offset: 2px;
+  }
+</style>
 
 <style>
 /* ── Intro ── */

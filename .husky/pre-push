@@ -1,13 +1,8 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-echo "Building project before push..."
-
-npm run build
-
-if [ $? -ne 0 ]; then
-  echo "Build failed! Cannot push."
+# Fast unit tests before push; the full build and E2E suite run in CI.
+npm run test:run || {
+  echo "Unit tests failed! Cannot push."
   exit 1
-fi
-
-echo "Build successful. Proceeding with push."
+}

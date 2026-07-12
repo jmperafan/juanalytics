@@ -2,25 +2,12 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ContentFilter from '../components/ContentFilter.astro';
 import YouTubeThumbnail from '../components/YouTubeThumbnail.astro';
-import ThumbnailImage from '../components/ThumbnailImage.astro';
 import Icon from '../components/Icon.astro';
-import { readContentYAML } from '../utils/yamlParser';
+import { getCollection } from 'astro:content';
+import { formatDate, byDateDesc } from '../utils/format';
 
-const content = await readContentYAML();
-const videos = content.videos.map(video => ({
-  data: {
-    title: video.title,
-    description: video.description,
-    pubDate: video.date,
-    videoUrl: video.url,
-    thumbnail: video.thumbnail,
-    platform: (video.platform as 'youtube' | 'vimeo' | 'other') || 'youtube',
-    tags: video.tags,
-  }
-}));
-
-// Get all unique tags for filtering
-const allTags = videos.flatMap(v => v.data.tags || []);
+const videos = (await getCollection('videos')).sort(byDateDesc);
+const allTags = videos.flatMap(v => v.data.tags);
 ---
 
 <BaseLayout title="Videos | juanalytics">
@@ -38,36 +25,26 @@ const allTags = videos.flatMap(v => v.data.tags || []);
             {videos.map((video) => (
               <div
                 class="card content-card video-card"
-                data-tags={JSON.stringify(video.data.tags || [])}
-                data-video-url={video.data.videoUrl || ''}
-                data-platform={video.data.platform || 'youtube'}
+                data-tags={JSON.stringify(video.data.tags)}
+                data-video-url={video.data.url}
+                data-platform={video.data.platform}
               >
                 <div class="video-card-wrapper">
-                  {video.data.videoUrl ? (
-                    <>
-                      <div class="video-thumbnail-wrapper">
-                        <YouTubeThumbnail videoUrl={video.data.videoUrl} alt={video.data.title} thumbnail={video.data.thumbnail} />
-                        <div class="play-button">
-                          <Icon name="play" width={28} height={28} />
-                        </div>
-                      </div>
-                      <div class="video-player"></div>
-                    </>
-                  ) : video.data.thumbnail ? (
-                    <ThumbnailImage src={video.data.thumbnail} alt={video.data.title} />
-                  ) : (
-                    <div class="card-image-placeholder">
-                      <Icon name="play" size={64} />
+                  <div class="video-thumbnail-wrapper">
+                    <YouTubeThumbnail videoUrl={video.data.url} alt={video.data.title} thumbnail={video.data.thumbnail} />
+                    <div class="play-button">
+                      <Icon name="play" width={28} height={28} />
                     </div>
-                  )}
+                  </div>
+                  <div class="video-player"></div>
                 </div>
                 <div class="card-content">
                   <h3 class="card-title">{video.data.title}</h3>
                   <p class="card-meta">
-                    {video.data.pubDate.toISOString().split('T')[0]}
+                    {formatDate(video.data.date)}
                   </p>
                   <p class="card-description">{video.data.description}</p>
-                  {video.data.tags && video.data.tags.length > 0 && (
+                  {video.data.tags.length > 0 && (
                     <div class="card-tags">
                       {video.data.tags.map((tag) => (
                         <span class="tag content-tag" data-tag={tag}>{tag}</span>

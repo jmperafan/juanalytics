@@ -1,6 +1,5 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { buildUrl } from '../utils/urlHelper';
 ---
 
 <BaseLayout
@@ -16,20 +15,20 @@ import { buildUrl } from '../utils/urlHelper';
           The page you're looking for doesn't exist or has been moved.
         </p>
         <div class="error-actions">
-          <a href={buildUrl("")} class="button">
+          <a href="/" class="button">
             Go to Homepage
           </a>
-          <a href={buildUrl("blog")} class="button button-secondary">
+          <a href="/blog" class="button button-secondary">
             Browse Blog
           </a>
         </div>
         <div class="error-suggestions">
           <h3>Popular Pages:</h3>
           <ul>
-            <li><a href={buildUrl("talks")}>Conference Talks</a></li>
-            <li><a href={buildUrl("videos")}>Videos</a></li>
-            <li><a href={buildUrl("podcasts")}>Podcasts</a></li>
-            <li><a href={buildUrl("about")}>About Me</a></li>
+            <li><a href="/talks">Conference Talks</a></li>
+            <li><a href="/videos">Videos</a></li>
+            <li><a href="/podcasts">Podcasts</a></li>
+            <li><a href="/about">About Me</a></li>
           </ul>
         </div>
       </div>

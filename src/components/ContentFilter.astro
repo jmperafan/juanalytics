@@ -11,11 +11,11 @@ const uniqueTags = Array.from(new Set(tags)).sort();
 
 <div class="sidebar-filters">
   <div class="filters-sticky">
-    <h3 class="filter-header">Filter by tag</h3>
-    <div class="filter-buttons">
-      <button class="filter-tag active" data-tag="all">All</button>
+    <h3 class="filter-header" id={`${gridId}-filter-label`}>Filter by tag</h3>
+    <div class="filter-buttons" role="group" aria-labelledby={`${gridId}-filter-label`}>
+      <button class="filter-tag active" data-tag="all" aria-pressed="true">All</button>
       {uniqueTags.map((tag) => (
-        <button class="filter-tag" data-tag={tag}>{tag}</button>
+        <button class="filter-tag" data-tag={tag} aria-pressed="false">{tag}</button>
       ))}
     </div>
   </div>
@@ -30,11 +30,9 @@ const uniqueTags = Array.from(new Set(tags)).sort();
     function filterByTag(tag) {
       // Update active button
       filterButtons.forEach(btn => {
-        if (btn.getAttribute('data-tag') === tag) {
-          btn.classList.add('active');
-        } else {
-          btn.classList.remove('active');
-        }
+        const isActive = btn.getAttribute('data-tag') === tag;
+        btn.classList.toggle('active', isActive);
+        btn.setAttribute('aria-pressed', String(isActive));
       });
 
       // Filter cards
@@ -121,9 +119,24 @@ const uniqueTags = Array.from(new Set(tags)).sort();
     border: none;
   }
 
+  /* On small screens the sidebar becomes a horizontal chip row above the grid */
   @media (max-width: 768px) {
     .sidebar-filters {
-      display: none;
+      width: 100%;
+    }
+
+    .filters-sticky {
+      position: static;
+    }
+
+    .filter-buttons {
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+
+    .filter-tag {
+      padding: 0.4rem 0.75rem;
+      font-size: 0.8rem;
     }
   }
 </style>

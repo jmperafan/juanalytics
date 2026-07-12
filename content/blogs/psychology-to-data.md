@@ -2,7 +2,7 @@
 title: 'From Psychology to Data'
 description: 'People often ask me how I ended up working in data. So I made a graph about it.'
 pubDate: 2026-07-09
-heroImage: 'images/logo_resized.webp'
+heroImage: '/images/logo_resized.webp'
 tags: ['career']
 ---
 

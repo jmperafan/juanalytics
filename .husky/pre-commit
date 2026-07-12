@@ -1,15 +1,11 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-echo "Running pre-commit checks..."
-
-# Check TypeScript
-echo "Checking TypeScript..."
-npx astro check --exit-code 1
-
-if [ $? -ne 0 ]; then
-  echo "TypeScript check failed!"
-  exit 1
+# Only type-check when code files are staged; content/doc edits commit instantly.
+if git diff --cached --name-only | grep -qE '\.(ts|astro|mjs)$'; then
+  echo "Code changes staged - running astro check..."
+  npx astro check || {
+    echo "TypeScript check failed!"
+    exit 1
+  }
 fi
-
-echo "Pre-commit checks passed!"

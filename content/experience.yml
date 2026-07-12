@@ -1,0 +1,75 @@
+# Career timeline shown on the About page.
+# Rows render in file order (newest first). Entries sharing a `group`
+# render as multiple bars on a single row.
+experience:
+- role: Technical Instructor
+  org: dbt Labs
+  start: 2026-03
+  end: null
+  description: Facilitated hands-on, co-development sessions using customers' real data and use cases.
+- role: Zoomcamp Instructor
+  org: DataTalks.Club
+  start: 2025-11
+  end: null
+  description: Analytics engineering module in the Data Engineering Zoomcamp.
+- role: Head Coach
+  org: Nimbus Intelligence
+  start: 2025-01
+  end: 2025-11
+  description: Designed and delivered a 3-month bootcamp for new hires on data engineering and analytics.
+- role: Podcast Host
+  org: The Data Hustle Podcast
+  group: podcasts
+  start: 2026-05
+  end: null
+  description: Conversations about data, analytics engineering, and the SQL ecosystem.
+- role: Podcast Host
+  org: SQL Lingua Franca
+  group: podcasts
+  start: 2024-06
+  end: 2025-06
+  description: Hosted conversations about data, analytics engineering, and the SQL ecosystem.
+- role: Author
+  org: Packt
+  group: packt
+  start: 2025-11
+  end: null
+  description: The Data Consultant's Handbook – forthcoming analytics consulting guide. Currently in development.
+- role: Author
+  org: Packt
+  group: packt
+  start: 2023-02
+  end: 2024-03
+  description: Fundamentals of Analytics Engineering – wrote prologue, conclusion, chapters on serving data and data governance, led project management, and created initial outline.
+- role: Analytics Engineer
+  org: Xebia
+  start: 2020-12
+  end: 2024-11
+  description: Analytics engineering, dbt, and data modeling for clients across the Netherlands.
+- role: Organizer
+  org: Meetup
+  start: 2019-07
+  end: 2026-02
+  description: Founded and organized Analytics Engineering and Dutch dbt meetups in the Netherlands.
+- role: Analytics Consultant
+  org: Biztory
+  start: 2018-06
+  end: 2020-11
+  description: Worked with 30+ clients across 4 countries on analytics lifecycle from architecture to reporting.
+- role: Marketing Intelligence
+  org: Justlease.nl
+  start: 2017-04
+  end: 2018-06
+  description: Data analysis with Python and R, MS SQL database marketing, and Tableau champion.
+- role: Lecturer
+  org: University of Groningen
+  group: groningen
+  start: 2021-08
+  end: 2022-11
+  description: Taught "Analyzing Data - A Practical Approach" to honors college students on the data lifecycle.
+- role: Lecturer
+  org: University of Groningen
+  group: groningen
+  start: 2014-02
+  end: 2017-03
+  description: Taught 5 different courses with 548 hours across 192 students on conversational skills and research methodology.

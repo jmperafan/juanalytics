@@ -4,7 +4,7 @@ import ContentFilter from '../components/ContentFilter.astro';
 import ThumbnailImage from '../components/ThumbnailImage.astro';
 import { getCollection } from 'astro:content';
 import { calculateReadingTime, formatReadingTime } from '../utils/readingTime';
-import { buildUrl } from '../utils/urlHelper';
+import { formatDate } from '../utils/format';
 
 const blogs = (await getCollection('blogs')).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
@@ -33,10 +33,10 @@ const allTags = blogsWithReadingTime.flatMap(b => b.data.tags || []);
           <ContentFilter tags={allTags} gridId="blog-grid" cardClass="blog-card" />
           <div id="blog-grid" class="content-grid">
             {blogsWithReadingTime.map((post) => (
-              <a href={buildUrl(`blog/${post.id}`)} class="card content-card blog-card" data-tags={JSON.stringify(post.data.tags || [])}>
+              <a href={`/blog/${post.id}`} class="card content-card blog-card" data-tags={JSON.stringify(post.data.tags || [])}>
                 {post.data.heroImage ? (
                   <ThumbnailImage
-                    src={buildUrl(post.data.heroImage)}
+                    src={post.data.heroImage}
                     alt={post.data.title}
                   />
                 ) : (
@@ -47,7 +47,7 @@ const allTags = blogsWithReadingTime.flatMap(b => b.data.tags || []);
                 <div class="card-content">
                   <h3 class="card-title">{post.data.title}</h3>
                   <p class="card-meta">
-                    {post.data.pubDate.toISOString().split('T')[0]} • {formatReadingTime(post.readingTime)}
+                    {formatDate(post.data.pubDate)} • {formatReadingTime(post.readingTime)}
                   </p>
                   <p class="card-description">{post.data.description}</p>
                   {post.data.tags && post.data.tags.length > 0 && (

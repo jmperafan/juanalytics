@@ -1,0 +1,68 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import Icon from './Icon.astro';
+import ThumbnailImage from './ThumbnailImage.astro';
+import { formatDate } from '../utils/format';
+
+interface Props {
+  episode: CollectionEntry<'guestAppearances' | 'sqlLinguaFranca' | 'dataHustle'>;
+  /** Used by the page script to group cards into sections */
+  sectionType: string;
+  /** 'series' shows an Episode line + duration; 'guest' shows the host podcast in the meta line */
+  variant?: 'series' | 'guest';
+}
+
+const { episode, sectionType, variant = 'series' } = Astro.props;
+const { data } = episode;
+---
+
+<a
+  href={data.url}
+  target="_blank"
+  rel="noopener noreferrer"
+  class="card content-card podcast-card"
+  data-tags={JSON.stringify(data.tags)}
+  data-type={sectionType}
+>
+  {data.thumbnail ? (
+    <ThumbnailImage src={data.thumbnail} alt={data.title} fit={data.thumbnail_fit} />
+  ) : (
+    <div class="card-image-placeholder">
+      <Icon name="microphone" size={64} />
+    </div>
+  )}
+  <div class="card-content">
+    <h3 class="card-title">{data.title}</h3>
+    {variant === 'series' && data.episode && (
+      <p class="podcast-series-meta">Episode {data.episode}</p>
+    )}
+    <p class="card-meta">
+      {formatDate(data.date)}
+      {variant === 'guest' && data.podcast && ` • ${data.podcast}`}
+      {variant === 'guest' && data.episode && ` - Episode ${data.episode}`}
+      {variant === 'series' && data.duration && ` • ${data.duration}`}
+    </p>
+    <p class="card-description">{data.description}</p>
+    {data.tags.length > 0 && (
+      <div class="card-tags">
+        {data.tags.map((tag) => (
+          <span class="tag content-tag" data-tag={tag}>{tag}</span>
+        ))}
+      </div>
+    )}
+  </div>
+</a>
+
+<style>
+  .podcast-card .card-description {
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+  }
+
+  .podcast-series-meta {
+    color: var(--color-primary);
+    font-weight: 600;
+    font-size: 0.875rem;
+    margin-bottom: 0.75rem;
+  }
+</style>
