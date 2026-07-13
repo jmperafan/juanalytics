@@ -111,7 +111,7 @@ const durationMonths = (role: Role) =>
     : (currentYear - role.startYear) * 12 + currentMonth - role.startMonth + 1;
 ---
 
-<div class="timeline-container">
+<div class="timeline-container timeline-desktop">
   <svg
     {width}
     height={svgHeight}
@@ -294,6 +294,21 @@ const durationMonths = (role: Role) =>
   </svg>
 </div>
 
+<!-- Mobile: vertical list instead of the gantt chart -->
+<ol class="timeline-mobile">
+  {roles.map((role) => (
+    <li class="timeline-mobile-item">
+      <div class="timeline-mobile-header">
+        <span class="timeline-mobile-role">{role.role}</span>
+        <span class="timeline-mobile-duration">{durationMonths(role)} mo</span>
+      </div>
+      <span class="timeline-mobile-org">{role.org}</span>
+      <span class="timeline-mobile-period">{formatPeriod(role)}</span>
+      <p class="timeline-mobile-description">{role.description}</p>
+    </li>
+  ))}
+</ol>
+
 <style>
   .timeline-container {
     background: var(--color-bg-secondary);
@@ -342,9 +357,83 @@ const durationMonths = (role: Role) =>
     }
   }
 
+  .timeline-mobile {
+    display: none;
+    list-style: none;
+    padding: 0;
+    margin: 0 0 2rem;
+    border-left: 2px solid var(--color-border);
+  }
+
+  .timeline-mobile-item {
+    position: relative;
+    padding: 0 0 1.75rem 1.25rem;
+  }
+
+  .timeline-mobile-item::before {
+    content: '';
+    position: absolute;
+    left: -7px;
+    top: 0.35rem;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--color-primary);
+  }
+
+  .timeline-mobile-item:last-child {
+    padding-bottom: 0;
+  }
+
+  .timeline-mobile-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 0.75rem;
+  }
+
+  .timeline-mobile-role {
+    font-weight: 600;
+    font-size: 0.9375rem;
+    color: var(--color-text);
+  }
+
+  .timeline-mobile-duration {
+    flex-shrink: 0;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--color-text-light);
+  }
+
+  .timeline-mobile-org {
+    display: block;
+    font-size: 0.8125rem;
+    color: var(--color-text-light);
+    margin-top: 0.125rem;
+  }
+
+  .timeline-mobile-period {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--color-text-light);
+    opacity: 0.75;
+    margin-top: 0.125rem;
+  }
+
+  .timeline-mobile-description {
+    font-size: 0.8125rem;
+    line-height: 1.5;
+    color: var(--color-text-light);
+    margin: 0.5rem 0 0;
+  }
+
   @media (max-width: 768px) {
-    .timeline-container {
-      padding: 1rem;
+    .timeline-desktop {
+      display: none;
+    }
+
+    .timeline-mobile {
+      display: block;
     }
   }
 </style>
