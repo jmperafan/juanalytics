@@ -24,7 +24,7 @@ test.describe('Blog', () => {
 
   test('should display reading time', async ({ page }) => {
     await page.goto('/blog');
-    await expect(page.getByText(/min read/i)).toBeVisible();
+    await expect(page.getByText(/min read/i).first()).toBeVisible();
   });
 
   test('should have back to blog link on post page', async ({ page }) => {
