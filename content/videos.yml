@@ -97,7 +97,7 @@ videos:
     personally use it to test my scripts with values th...
   duration: 04:14
   thumbnail: https://i.ytimg.com/vi/V-cnwii9Rdk/maxresdefault.jpg
-  tags: [sql]
+  tags: [SQL]
 - url: https://www.youtube.com/watch?v=4HSnBRfqk9c
   title: 'SQL Tutorial: Working with NULL values in T-SQL'
   date: '2021-06-08'
@@ -106,7 +106,7 @@ videos:
     and walk you through the formulas I used, be...
   duration: 09:34
   thumbnail: https://i.ytimg.com/vi/4HSnBRfqk9c/maxresdefault.jpg
-  tags: [sql]
+  tags: [SQL]
 - url: https://www.youtube.com/watch?v=Tp3AR7x5Jq8
   title: 'Mastering Power Query: Part 3 (Advanced)'
   date: '2021-06-04'
@@ -171,7 +171,7 @@ videos:
     \nThis is not an R tutorial and I don't explain sen..."
   duration: '21:15'
   thumbnail: https://i.ytimg.com/vi/foulJr8hxmE/maxresdefault.jpg
-  tags: [Alteryx, r]
+  tags: [Alteryx, R]
 - url: https://www.youtube.com/watch?v=3UpWJEhHOdI
   title: 5 Google Sheets Tricks you might not know!
   date: '2021-04-12'

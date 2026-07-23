@@ -3,7 +3,7 @@ title: "The WriteOps Manifesto: DevOps for Writers"
 description: "Why technical writers need CI/CD pipelines, version control, and automation just as much as developers do."
 pubDate: 2026-01-07
 heroImage: '/blog/the-writeops-manifesto.webp'
-tags: ["technical writing", "writeops", "devops", "asciidocs"]
+tags: ["Technical Writing", "AsciiDoc"]
 ---
 
 Software developers have spent decades perfecting their workflows. They use version control. They automate everything. They run tests on every commit. They deploy with a single command.

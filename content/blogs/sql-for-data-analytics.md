@@ -3,7 +3,7 @@ title: "Book Review: SQL for Data Analytics (4th Edition)"
 description: "I recently finished reading SQL for Data Analytics (4th Edition). Here are my thoughts on the book."
 pubDate: 2025-11-03
 heroImage: '/blog/sql-for-data-analytics-cover.webp'
-tags: ["sql", "career development"]
+tags: ["SQL", "Career Development"]
 ---
 
 Packt sent me an early release copy of [SQL for Data Analytics](https://www.packtpub.com/en-us/product/sql-for-data-analytics-9781836646259), a book I'd never heard of before. I am not part of the objective audience for such a book (it is probably written for people who want to become analysts). But I was intrigued since I spent most of this year teaching SQL to beginners, so I was curious about the authors' approach.

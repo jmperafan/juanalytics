@@ -3,7 +3,7 @@ title: 'From Psychology to Data'
 description: 'People often ask me how I ended up working in data. So I made a graph about it.'
 pubDate: 2026-07-09
 heroImage: '/images/logo_resized.webp'
-tags: ['career']
+tags: ['Career Development']
 ---
 
 One of the worst kept secrets of my career is that I didn't come from a technical background. I studied Psychology. There was a time that I was intrigued by neuroscience and behavioral experiments to understand the brain.
