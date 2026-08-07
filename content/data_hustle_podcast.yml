@@ -17,7 +17,10 @@ data_hustle_podcast:
     Thomas in ’t Veld: https://www.linkedin.com/in/thomasintveld/
   duration: 57:06
   thumbnail: https://i.ytimg.com/vi/JSroznqpuAU/maxresdefault.jpg
-  tags: []
+  tags:
+  - Data Consulting
+  - Data Strategy
+  - Artificial Intelligence
 - url: https://www.youtube.com/watch?v=F5wvR_Rnu0s
   title: Slow Data, Fast business - Ep8. Noel Gomez
   date: 2026-06-23
@@ -50,7 +53,10 @@ data_hustle_podcast:
     - https://datacoves.com/
   duration: 50:36
   thumbnail: https://i.ytimg.com/vi/F5wvR_Rnu0s/maxresdefault.jpg
-  tags: []
+  tags:
+  - Data Engineering
+  - Data Governance
+  - Artificial Intelligence
 - url: https://www.youtube.com/watch?v=4k4wg9wL0YE
   title: 'Kingsley Hall - AI-Enabled and Deeply Human'
   date: '2026-06-12'
