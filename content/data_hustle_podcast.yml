@@ -1,4 +1,56 @@
 data_hustle_podcast:
+- url: https://www.youtube.com/watch?v=JSroznqpuAU
+  title: "Data Superstars are a Trap - #9 Data Hustle"
+  date: 2026-08-05
+  podcast: The Data Hustle Podcast
+  episode: "9"
+  description: |-
+    In this episode of The Data Hustle, we speak with Thomas in ’t Veld, CEO and co-founder of Tasman Analytics, about what makes a genuinely effective data consultant and how companies should build lean, capable data teams. Thomas explains why the strongest consultants combine technical depth, business understanding and communication skills—and why the best specialists still need a broad, T-shaped understanding of the wider data landscape.
+
+    We also discuss how AI is changing recruitment, consulting and analytics delivery; what it really means to operate an AI-native data team; why strong data modelling and human-curated semantic layers still matter; and how small teams can use modern tools to produce the output that once required much larger departments.
+
+    The conversation covers product thinking, context layers, data governance, stakeholder communication, consultancy career paths and the importance of focusing relentlessly on the business problems that actually move the needle.
+
+    Find Thomas and Tasman at:
+
+    Tasman Analytics: https://tasman.ai
+    Thomas in ’t Veld: https://www.linkedin.com/in/thomasintveld/
+  duration: 57:06
+  thumbnail: https://i.ytimg.com/vi/JSroznqpuAU/maxresdefault.jpg
+  tags: []
+- url: https://www.youtube.com/watch?v=F5wvR_Rnu0s
+  title: Slow Data, Fast business - Ep8. Noel Gomez
+  date: 2026-06-23
+  podcast: The Data Hustle Podcast
+  episode: "8"
+  description: |-
+    In this episode of The Data Hustle, we sit down with Noel Gomez, co-founder of DataCoves, to discuss what it really takes to build and operate a modern data platform at scale.
+
+    Having dbt, Apache Airflow, Snowflake and a collection of open-source tools does not automatically give you a platform. Noel explains why the difficult part is often the “glue” between those tools: governance, security, CI/CD, conventions, ownership and repeatable ways of working.
+
+    We also explore what happens when AI dramatically accelerates data development. A team might go from 500 to 5,000 dbt models—but did it actually need those models? And who validates the output when AI is capable of being confidently wrong?
+
+    Noel shares why AI should be treated as an efficiency tool rather than a replacement for human judgment, what junior data professionals should learn to remain valuable, and why curiosity, fundamentals and the ability to challenge AI matter more than simply generating more code.
+
+    We discuss:
+
+    * Why a collection of tools is not the same as a data platform
+    * The challenge of running dbt and Airflow at enterprise scale
+    * Why AI makes governance and conventions more important
+    * How AI can accelerate technical debt
+    * The risks of trusting AI-generated work without validation
+    * What happens to junior engineers when companies automate entry-level work
+    * Why data professionals need to understand the “why,” not only the implementation
+    * Why strong teams go slower initially so they can move faster over time
+    * How saying “no” prevents unnecessary products and features from becoming permanent liabilities
+
+    Find Noel at:
+
+    - https://www.linkedin.com/in/noelgomez/
+    - https://datacoves.com/
+  duration: 50:36
+  thumbnail: https://i.ytimg.com/vi/F5wvR_Rnu0s/maxresdefault.jpg
+  tags: []
 - url: https://www.youtube.com/watch?v=4k4wg9wL0YE
   title: 'Kingsley Hall - AI-Enabled and Deeply Human'
   date: '2026-06-12'

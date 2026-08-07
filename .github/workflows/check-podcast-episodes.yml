@@ -1,0 +1,40 @@
+name: check-podcast-episodes
+
+on:
+  schedule:
+    - cron: '0 13 * * 1' # Mondays 13:00 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  check-episodes:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout your repository using git
+        uses: actions/checkout@v4
+
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Fetch latest Data Hustle Podcast episodes
+        run: node scripts/fetch-podcast-episodes.mjs
+
+      - name: Commit and push new episode(s)
+        run: |
+          if git diff --quiet -- content/data_hustle_podcast.yml; then
+            echo "No new episodes, nothing to commit."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add content/data_hustle_podcast.yml
+          git commit -m "Add new Data Hustle Podcast episode(s)"
+          git push
