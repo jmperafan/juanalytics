@@ -3,7 +3,7 @@ data_hustle_podcast:
   title: "How Sequentum Scrapes the Web at Scale - #11 Data Hustle"
   date: 2026-08-14
   podcast: The Data Hustle Podcast
-  episode: "12"
+  episode: "11"
   description: |-
     AI is moving from generating answers to making decisions. That changes the stakes.
 
@@ -23,7 +23,7 @@ data_hustle_podcast:
   title: "Taking Analytics by Storm with Agents - #10 Data Hustle"
   date: 2026-08-07
   podcast: The Data Hustle Podcast
-  episode: "11"
+  episode: "10"
   description: |-
     AI agents promise to let anyone analyse company data through a conversation—but reliable agentic analytics requires far more than connecting an LLM to a database.
 
@@ -40,29 +40,6 @@ data_hustle_podcast:
     - https://www.linkedin.com/in/claire-gouze/
     - https://www.linkedin.com/in/christopheblefari/
   thumbnail: https://i.ytimg.com/vi/BbWfELhzQRU/maxresdefault.jpg
-  tags: []
-- url: https://www.youtube.com/watch?v=WtYj7p89gTo
-  title: "GTA 5 Red Spiderman VS Red/Green Minion! 💥 Epic Ragdolls & Fails 😂 #02"
-  date: 2026-07-16
-  podcast: The Data Hustle Podcast
-  episode: "10"
-  description: |-
-    GTA 5 Red Spiderman VS Red/Green Minion! 💥 Epic Ragdolls & Fails 😂 #02
-
-    🔥 **The ultimate showdown in Los Santos begins NOW!** 🔥
-    Can **Red Spiderman 🕷️** survive against the unstoppable **Red + Green Minion Army 🤯**?
-
-    Get ready for **1000+ flying minions**, insane **Euphoria physics**, hilarious ragdoll crashes, massive explosions, crazy tombstone launches, and non-stop chaos that only GTA 5 can deliver! 😂💥
-    Watch until the very end to see who takes the victory, then let us know your prediction in the comments! 👇
-
-    🚨 **Brand-new GTA 5 videos uploaded EVERY DAY!**
-    🔥 Smash **SUBSCRIBE** and turn on the notification bell 🔔 so you never miss the next insane battle!
-    👍 Leave a **LIKE** if this video made you laugh—the next episode will be even bigger, crazier, and more explosive!
-
-    #GTA5 #GTA5Ragdolls #RedSpiderman #RedMinion #GreenMinion #EpicRagdolls #GTA5Funny #GTA5Fails #Minions #SpidermanVSMinion #EuphoriaPhysics #GTA5FunnyMoments #RagdollFails #GTA5Epic #GTABattle #FunnyGaming #EpicFails #LosSantos
-
-    💥 More insane battles, bigger explosions, and even crazier ragdoll moments are coming tomorrow... Stay tuned!
-  thumbnail: https://i.ytimg.com/vi/WtYj7p89gTo/maxresdefault.jpg
   tags: []
 - url: https://www.youtube.com/watch?v=JSroznqpuAU
   title: "Data Superstars are a Trap - #9 Data Hustle"

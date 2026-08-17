@@ -7,6 +7,7 @@ on:
 
 permissions:
   contents: write
+  actions: write
 
 jobs:
   check-episodes:
@@ -28,9 +29,11 @@ jobs:
         run: node scripts/fetch-podcast-episodes.mjs
 
       - name: Commit and push new episode(s)
+        id: commit
         run: |
           if git diff --quiet -- content/data_hustle_podcast.yml; then
             echo "No new episodes, nothing to commit."
+            echo "pushed=false" >> "$GITHUB_OUTPUT"
             exit 0
           fi
           git config user.name "github-actions[bot]"
@@ -38,3 +41,14 @@ jobs:
           git add content/data_hustle_podcast.yml
           git commit -m "Add new Data Hustle Podcast episode(s)"
           git push
+          echo "pushed=true" >> "$GITHUB_OUTPUT"
+
+      # A push made with the default GITHUB_TOKEN doesn't trigger other
+      # workflows (GitHub's anti-recursion rule), so deploy.yml's `on: push`
+      # never fires for this commit. workflow_dispatch is exempt from that
+      # rule, so trigger the deploy explicitly.
+      - name: Trigger deploy
+        if: steps.commit.outputs.pushed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run deploy.yml
