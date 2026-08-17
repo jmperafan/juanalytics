@@ -1,4 +1,267 @@
 videos:
+- url: https://www.youtube.com/watch?v=auzcdLRyEIk
+  title: DE Zoomcamp 4.2.1 - dbt Core vs dbt Cloud
+  date: 2026-01-18
+  description: |-
+    In this video, you'll understand the key differences between dbt Core and dbt Cloud, the evolution of dbt from an open-source tool to a comprehensive platform, and why this course focuses on dbt Core. You'll learn about dbt Fusion, the new engine rewriting dbt's future, and how to choose the right dbt setup for your needs.
+
+    🔗 Course materials: https://github.com/DataTalksClub/data-engineering-zoomcamp/tree/main/04-analytics-engineering
+    💬 Join the community: https://datatalks.club/slack
+
+    What You'll Learn:
+    - The origins of dbt Core (2016) as a free, open-source command-line tool
+    - How dbt Cloud emerged as a SaaS platform with managed infrastructure
+    - The introduction of dbt Fusion and its impact on the dbt ecosystem
+    - Adapter support considerations when choosing between Core and Cloud
+    - Why this course uses dbt Core with DuckDB and how it translates to dbt Cloud
+
+    Timestamps:
+
+    🔗 dbt Core vs Cloud comparison: https://www.getdbt.com/product/dbt-core-vs-dbt-cloud
+  duration: 5:46
+  thumbnail: https://i.ytimg.com/vi/auzcdLRyEIk/maxresdefault.jpg
+  tags:
+    - dbt
+    - Analytics Engineering
+- url: https://www.youtube.com/watch?v=GFbwlrt6f54
+  title: DE Zoomcamp 4.2.2 - Cloud Setup (Alternative A)
+  date: 2025-12-29
+  description: |-
+    In this tutorial, you'll learn how to set up the cloud infrastructure needed for Module 4 of the Data Engineering Zoomcamp. By the end of this video, you'll be able to configure BigQuery with dbt Cloud, create secure service accounts with appropriate permissions, and initialize your first dbt project in the cloud.
+
+    🔗 Course materials: https://github.com/DataTalksClub/data-engineering-zoomcamp/tree/main/04-analytics-engineering
+    💬 Join the community: https://datatalks.club/slack
+
+    What You'll Learn:
+    - Setting up BigQuery API access and verifying your data from Module 3
+    - Creating service accounts following security best practices
+    - Configuring dbt Cloud with BigQuery integration
+    - Understanding the difference between managed and GitHub-integrated Git repositories
+    - Initializing and structuring your first dbt Cloud project
+
+    Timestamps:
+  duration: 16:58
+  thumbnail: https://i.ytimg.com/vi/GFbwlrt6f54/maxresdefault.jpg
+  tags:
+    - dbt
+    - Analytics Engineering
+- url: https://www.youtube.com/watch?v=GoFAbJYfvlw
+  title: DE Zoomcamp 4.2.3 - Local Setup (Alternative B)
+  date: 2026-01-13
+  description: |-
+    In this tutorial, you'll learn how to set up a complete local development environment for Module 4 of the Data Engineering Zoomcamp using DuckDB and dbt Core. By the end of this video, you'll have a fully functional local analytics engineering workflow without needing any cloud services or paid accounts.
+
+    🔗 Course materials: https://github.com/DataTalksClub/data-engineering-zoomcamp/tree/main/04-analytics-engineering
+    💬 Join the community: https://datatalks.club/slack
+
+    What You'll Learn:
+    - Installing DuckDB and dbt Core with the DuckDB adapter
+    - Initializing a dbt project and understanding its structure
+    - Configuring profiles.yaml for optimal performance with large datasets
+    - Creating a local data lake and ingesting NYC taxi data into DuckDB
+    - Setting up Git ignore best practices to avoid committing data
+    - Installing and configuring the Power User for dbt VS Code extension
+
+    Timestamps:
+  duration: 15:21
+  thumbnail: https://i.ytimg.com/vi/GoFAbJYfvlw/maxresdefault.jpg
+  tags:
+    - dbt
+    - Analytics Engineering
+- url: https://www.youtube.com/watch?v=2dYDS4OQbT0
+  title: DE Zoomcamp 4.3.1 - dbt Project Structure
+  date: 2026-01-13
+  description: |-
+    In this tutorial, you'll learn the anatomy of a dbt project and understand the purpose of each directory and file created when you initialize dbt. By the end of this video, you'll know where to place different types of SQL logic, how to organize your transformations, and understand dbt's recommended project structure conventions.
+
+    🔗 Course materials: https://github.com/DataTalksClub/data-engineering-zoomcamp/tree/main/04-analytics-engineering
+    💬 Join the community: https://datatalks.club/slack
+
+    What You'll Learn:
+    - Understanding the dbt_project.yml file and why it's critical for every dbt command
+    - Using the analysis folder for data quality reports and administrative queries
+    - Creating reusable logic with macros (similar to Python functions)
+    - Working with seeds for quick CSV ingestion and lookup tables
+    - Implementing snapshots to track slowly changing dimensions
+    - Writing singular tests as SQL assertions
+    - Organizing models into staging, intermediate, and marts layers
+
+    Timestamps:
+  duration: 20:22
+  thumbnail: https://i.ytimg.com/vi/2dYDS4OQbT0/maxresdefault.jpg
+  tags:
+    - dbt
+    - Analytics Engineering
+- url: https://www.youtube.com/watch?v=7CrrXazV_8k
+  title: DE Zoomcamp 4.3.2 - dbt Sources
+  date: 2026-01-13
+  description: |-
+    In this tutorial, you'll learn how to configure dbt sources and create your first staging models. By the end of this video, you'll understand how to connect dbt to your raw data tables, use the source() function for dynamic references, and apply best practices for staging layer transformations including column renaming, data type casting, and proper naming conventions.
+
+    🔗 Course materials: https://github.com/DataTalksClub/data-engineering-zoomcamp/tree/main/04-analytics-engineering
+    💬 Join the community: https://datatalks.club/slack
+
+    What You'll Learn:
+    - Creating a sources.yml file to define your raw data locations
+    - Understanding database, schema, and table configurations for both DuckDB and BigQuery
+    - Using the source() function instead of hard-coded table references
+    - Implementing staging model naming conventions (stg_ prefix)
+    - Organizing columns logically (IDs, timestamps, trip info, payment info)
+    - Casting data types explicitly for consistency
+    - Following the one-to-one staging principle (minimal transformations)
+
+    Timestamps:
+  duration: 18:15
+  thumbnail: https://i.ytimg.com/vi/7CrrXazV_8k/maxresdefault.jpg
+  tags:
+    - dbt
+    - Analytics Engineering
+- url: https://www.youtube.com/watch?v=JQYz-8sl1aQ
+  title: DE Zoomcamp 4.4.1 - dbt Models
+  date: 2026-01-13
+  description: |-
+    In this tutorial, you'll learn how to build intermediate and mart models in dbt by exploring real-world data transformations. By the end of this video, you'll understand the difference between staging, intermediate, and mart layers, learn how to use the ref() function to build dependencies between models, and discover how to handle column discrepancies when combining datasets.
+
+    🔗 Course materials: https://github.com/DataTalksClub/data-engineering-zoomcamp/tree/main/04-analytics-engineering
+    💬 Join the community: https://datatalks.club/slack
+
+    What You'll Learn:
+    - Transitioning from staging to business logic: exploring data and understanding context
+    - Planning your mart layer: dashboards vs dimensional models (facts and dimensions)
+    - Understanding dimensional modeling concepts (fact tables and dimension tables)
+    - Using the ref() function to reference dbt models (vs source() for raw data)
+    - Creating intermediate models for complex transformations like unions
+    - Handling column discrepancies between similar datasets
+    - Understanding the business context behind the NYC taxi data (yellow vs green taxis)
+    - Adding default values for missing columns to enable unions
+
+    Timestamps:
+  duration: 13:07
+  thumbnail: https://i.ytimg.com/vi/JQYz-8sl1aQ/maxresdefault.jpg
+  tags:
+    - dbt
+    - Analytics Engineering
+- url: https://www.youtube.com/watch?v=lT4fmTDEqVk
+  title: DE Zoomcamp 4.4.2 - dbt Seeds and Macros
+  date: 2026-01-13
+  description: |-
+    In this tutorial, you'll learn how to use dbt seeds to import lookup tables and create reusable logic with dbt macros. By the end of this video, you'll understand how to enrich dimensional data using CSV files, implement macros as SQL functions to maintain consistency, and apply these concepts to build proper dimension tables for your data warehouse.
+
+    🔗 Course materials: https://github.com/DataTalksClub/data-engineering-zoomcamp/tree/main/04-analytics-engineering
+    💬 Join the community: https://datatalks.club/slack
+
+    What You'll Learn:
+    - Understanding the need for lookup tables (vendor names, location details)
+    - Using dbt seeds to import CSV files into your data warehouse
+    - Creating dimension tables from seed data (dim_zones)
+    - Building macros to encapsulate reusable business logic
+    - Using macros as SQL functions with parameters
+    - Enriching dimension tables with descriptive attributes
+    - Best practices for seeds: size limitations and security considerations
+
+    Timestamps:
+  duration: 12:06
+  thumbnail: https://i.ytimg.com/vi/lT4fmTDEqVk/maxresdefault.jpg
+  tags:
+    - dbt
+    - Analytics Engineering
+- url: https://www.youtube.com/watch?v=UqoWyMjcqrA
+  title: DE Zoomcamp 4.5.1 - Documentation
+  date: 2026-01-13
+  description: |-
+    In this tutorial, you'll learn how to create comprehensive documentation for your dbt project using YAML files and dbt's built-in documentation features. By the end of this video, you'll understand how to document sources, models, and columns, add metadata tags for governance, and generate a visual lineage graph that shows how your data flows through transformations.
+
+    🔗 Course materials: https://github.com/DataTalksClub/data-engineering-zoomcamp/tree/main/04-analytics-engineering
+    💬 Join the community: https://datatalks.club/slack
+
+    What You'll Learn:
+    - Creating documentation in sources.yml and schema.yml files
+    - Adding descriptions for tables and columns (single and multi-line)
+    - Implementing metadata tags for governance (PII, ownership, importance)
+    - Documenting models, macros, and seeds
+    - Using dbt docs generate to create documentation JSON
+    - Using dbt docs serve to view documentation locally (dbt Core)
+    - Exploring the dbt documentation site: compiled SQL, lineage graphs, and dependencies
+    - Understanding the difference between technical documentation and data catalogs
+
+    Timestamps:
+  duration: 8:30
+  thumbnail: https://i.ytimg.com/vi/UqoWyMjcqrA/maxresdefault.jpg
+  tags:
+    - dbt
+    - Analytics Engineering
+- url: https://www.youtube.com/watch?v=bvZ-rJm7uMU
+  title: DE Zoomcamp 4.5.2 - dbt Tests
+  date: 2026-01-16
+  description: |-
+    In this tutorial, you'll learn how to implement comprehensive testing strategies in dbt to ensure data quality and catch errors before they reach production. By the end of this video, you'll understand the different types of tests available in dbt, from basic generic tests to advanced unit tests and model contracts, and how to use them to build reliable data pipelines.
+
+    🔗 Course materials: https://github.com/DataTalksClub/data-engineering-zoomcamp/tree/main/04-analytics-engineering
+    💬 Join the community: https://datatalks.club/slack
+
+    What You'll Learn:
+    - Understanding the two root causes of data quality issues (bad source data vs. SQL bugs)
+    - Writing singular tests for custom business logic validation
+    - Implementing source freshness tests to monitor data timeliness
+    - Using dbt's four built-in generic tests (unique, not_null, accepted_values, relationships)
+    - Creating custom generic tests for organization-specific validation rules
+    - Building unit tests to defensively test complex SQL logic
+    - Enforcing data contracts to validate data types and constraints
+
+    Timestamps:
+  duration: 8:29
+  thumbnail: https://i.ytimg.com/vi/bvZ-rJm7uMU/maxresdefault.jpg
+  tags:
+    - dbt
+    - Analytics Engineering
+- url: https://www.youtube.com/watch?v=KfhUA9Kfp8Y
+  title: DE Zoomcamp 4.5.3 - dbt Packages
+  date: 2026-01-18
+  description: |-
+    In this video, you'll discover the power of dbt packages - reusable dbt projects that extend your capabilities with pre-built macros, tests, and models. You'll learn about the most valuable community packages, how to find them on dbt Hub, and how to install and use them in your projects.
+
+    🔗 Course materials: https://github.com/DataTalksClub/data-engineering-zoomcamp/tree/main/04-analytics-engineering
+    💬 Join the community: https://datatalks.club/slack
+
+    What You'll Learn:
+    - What dbt packages are and how they work like Python libraries
+    - Essential packages: dbt utils for cross-database SQL functions
+    - Codegen for automatic YAML file generation (huge time-saver!)
+    - Audit helper for safe refactoring and model comparison
+    - dbt expectations with pre-built tests for almost any scenario
+    - How to install packages and integrate them into your project
+
+    Timestamps:
+
+    🔗 dbt Hub: https://hub.getdbt.com/
+  duration: 9:42
+  thumbnail: https://i.ytimg.com/vi/KfhUA9Kfp8Y/maxresdefault.jpg
+  tags:
+    - dbt
+    - Analytics Engineering
+- url: https://www.youtube.com/watch?v=t4OeWHW3SsA
+  title: DE Zoomcamp 4.6.1 - dbt Commands
+  date: 2026-01-18
+  description: |-
+    In this comprehensive video, you'll master all essential dbt commands and flags needed for daily analytics engineering work. You'll learn when to use each command, understand the powerful dbt build workflow, and discover how to efficiently work with specific models using selectors and state-based deployments.
+
+    🔗 Course materials: https://github.com/DataTalksClub/data-engineering-zoomcamp/tree/main/04-analytics-engineering
+    💬 Join the community: https://datatalks.club/slack
+
+    What You'll Learn:
+    - Setup commands: dbt init, debug, and deps for project initialization
+    - Feature-specific commands: seed, snapshot, source freshness, and docs
+    - Core workflow commands: compile, run, test, and the all-in-one dbt build
+    - Essential flags: full-refresh, fail-fast, target switching, and model selection
+    - Advanced selectors: upstream/downstream dependencies with + syntax
+    - State-based workflows for CI/CD: detecting modified and new models
+
+    Timestamps:
+  duration: 16:44
+  thumbnail: https://i.ytimg.com/vi/t4OeWHW3SsA/maxresdefault.jpg
+  tags:
+    - dbt
+    - Analytics Engineering
 - url: https://www.youtube.com/watch?v=35JelBDhvnE
   title: dbt-excel, the revolutionary dbt adapter that turns Spreadsheets into data
     warehouses
