@@ -5,8 +5,11 @@
  *
  * Uses the playlist's public Atom feed (no API key required), so it only
  * sees the ~15 most recently added videos. Title/description are raw
- * YouTube copy and duration is a best-effort scrape of the watch page —
- * all meant to be reviewed/edited in the resulting PR, not published as-is.
+ * YouTube copy and duration is a best-effort scrape of the watch page.
+ *
+ * The playlist is collaborative, so anything can end up in the feed (e.g.
+ * spam bots adding unrelated videos) — entries whose title doesn't contain
+ * "Data Hustle" are skipped rather than filed as an episode.
  */
 import { readFileSync, writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
@@ -98,6 +101,11 @@ async function main() {
 
   const newEntries = feedEntries
     .filter((e) => !existingVideoIds.has(e.videoId))
+    .filter((e) => {
+      const isEpisode = /data hustle/i.test(e.title);
+      if (!isEpisode) console.log(`Skipping non-episode playlist entry: ${e.title}`);
+      return isEpisode;
+    })
     .sort((a, b) => new Date(a.published) - new Date(b.published));
 
   if (newEntries.length === 0) {
