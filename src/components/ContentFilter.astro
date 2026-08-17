@@ -6,7 +6,7 @@ interface Props {
 }
 
 const { tags, gridId, cardClass } = Astro.props;
-const uniqueTags = Array.from(new Set(tags)).sort();
+const uniqueTags = Array.from(new Set(tags)).sort((a, b) => a.localeCompare(b));
 ---
 
 <div class="sidebar-filters">
