@@ -1,4 +1,24 @@
 data_hustle_podcast:
+- url: https://www.youtube.com/watch?v=djTLrlR2sSo
+  title: "How Sequentum Scrapes the Web at Scale - #11 Data Hustle"
+  date: 2026-08-14
+  podcast: The Data Hustle Podcast
+  episode: "12"
+  description: |-
+    AI is moving from generating answers to making decisions. That changes the stakes.
+
+    In this episode of The Data Hustle, we speak with Sarah McKenna, CEO of Sequentum, about why AI needs the equivalent of seatbelts: clear guardrails, acceptance criteria, audit trails, deterministic workflows and accountable human review.
+
+    Drawing on two decades across software test automation, DevOps, data quality and enterprise web extraction, Sarah explains why automation becomes fragile when teams optimise for speed without building in trust. We discuss reusable components, versioning, validation, low-code visibility, security reviews and the role of AI coding tools in maintaining large-scale data systems.
+
+    We also zoom out to the growing conflict around the open web: publishers, AI crawlers, web-scraping companies, bot identification, paid data access and agentic commerce. Sarah explains why regulated organisations often reject AI at runtime, even while using it aggressively to accelerate development and strengthen governance.
+
+    Find Sarah
+
+    LinkedIn: https://www.linkedin.com/in/sarahransommckenna/
+    Sequentum: https://www.sequentum.com/
+  thumbnail: https://i.ytimg.com/vi/djTLrlR2sSo/maxresdefault.jpg
+  tags: []
 - url: https://www.youtube.com/watch?v=BbWfELhzQRU
   title: "Taking Analytics by Storm with Agents - #10 Data Hustle"
   date: 2026-08-07
