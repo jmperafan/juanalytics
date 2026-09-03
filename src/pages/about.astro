@@ -248,7 +248,7 @@ const continentPanels = continentDefs.map(cont => {
                     aria-label={`Map of ${panel.label} with talk locations: ${panel.dots.map(d => d.location).join(', ') || 'none'}`}
                   >
                     {panel.paths.map((d) => (
-                      <path d={d} fill="#1a2d4a" stroke="#2d4a6f" stroke-width="0.5" />
+                      <path d={d} fill="rgba(var(--color-primary-rgb), 0.13)" stroke="rgba(var(--color-primary-rgb), 0.35)" stroke-width="0.5" />
                     ))}
                     {panel.dots.map((dot) => (
                       <circle
@@ -256,8 +256,8 @@ const continentPanels = continentDefs.map(cont => {
                         cx={dot.x}
                         cy={dot.y}
                         r="3.5"
-                        fill="#2563eb"
-                        stroke="#60a5fa"
+                        fill="var(--color-primary)"
+                        stroke="#7fa9f2"
                         stroke-width="1.5"
                         tabindex="0"
                         role="button"
