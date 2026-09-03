@@ -40,3 +40,6 @@ coverage/
 test-results/
 playwright-report/
 playwright/.cache/
+
+# Reference PDFs dropped into skills for local use — never publish (copyright)
+.claude/skills/**/*.pdf

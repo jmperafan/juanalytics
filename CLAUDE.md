@@ -34,6 +34,11 @@ skill** before writing a `tags` array on anything — tags are freeform
 strings that become filter-sidebar buttons, so casing drift or synonyms
 silently fragment that filter instead of erroring.
 
+For blog-post *prose* (not the frontmatter), **use the `humanize-writing`
+skill** — a mechanical sweep for AI-writing tells plus a developmental pass
+toward Juan's voice, anchored on a gold-standard book chapter. It skips code
+blocks, frontmatter, and embedded HTML/JS.
+
 ## Design
 
 Dark theme, blue/purple accent, Inter typeface — tokens in
