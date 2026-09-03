@@ -1,27 +1,26 @@
 /* Content Pages Styles */
 
 .content-section {
-  padding: 4rem 0;
+  padding: 3.25rem 0 4rem;
 }
 
 .content-header h1 {
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
 }
 
 /* Content Grid with Sidebar */
 .content-with-sidebar {
   display: flex;
+  flex-direction: column;
   gap: 2rem;
 }
 
 .sidebar-filters {
-  flex-shrink: 0;
-  width: 200px;
+  width: 100%;
 }
 
 .filters-sticky {
-  position: sticky;
-  top: 2rem;
+  position: static;
 }
 
 .filter-header {
@@ -30,12 +29,13 @@
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: var(--color-text-light);
-  margin-bottom: 1rem;
+  margin-bottom: 0.75rem;
 }
 
 .filter-buttons {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  flex-wrap: wrap;
   gap: 0.5rem;
 }
 
@@ -43,11 +43,11 @@
   background: var(--color-bg-secondary);
   color: var(--color-text);
   padding: 0.5rem 1rem;
-  border-radius: 0.5rem;
+  border-radius: var(--radius-sm);
   font-size: 0.875rem;
   border: 1px solid var(--color-border);
   cursor: pointer;
-  transition: all 0.2s;
+  transition: border-color var(--dur) var(--ease), color var(--dur) var(--ease), background-color var(--dur) var(--ease);
   text-align: left;
 }
 
@@ -58,7 +58,7 @@
 
 .filter-tag.active {
   background: var(--color-primary);
-  color: white;
+  color: var(--color-on-primary);
   border: none;
 }
 
@@ -66,7 +66,7 @@
   flex: 1;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: 1.5rem;
+  gap: 1.75rem;
 }
 
 /* Content Cards */
@@ -75,13 +75,13 @@
   flex-direction: column;
   padding: 0;
   overflow: hidden;
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
 }
 
 .content-card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 20px rgba(37, 99, 235, 0.15);
-  border-color: var(--color-primary);
+  box-shadow: var(--card-highlight), var(--shadow-card);
+  border-color: rgba(var(--color-primary-rgb), 0.45);
 }
 
 picture:has(.card-image) {
@@ -113,7 +113,7 @@ picture:has(.card-image) {
 }
 
 .card-content {
-  padding: 1.5rem;
+  padding: var(--card-pad);
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -156,16 +156,16 @@ picture:has(.card-image) {
   background: var(--color-bg-secondary);
   color: var(--color-text);
   padding: 0.25rem 0.75rem;
-  border-radius: 1rem;
+  border-radius: var(--radius-lg);
   font-size: 0.8125rem;
   border: 1px solid var(--color-border);
   cursor: pointer;
-  transition: all 0.2s;
+  transition: background-color var(--dur) var(--ease), color var(--dur) var(--ease), border-color var(--dur) var(--ease);
 }
 
 .tag:hover {
   background: var(--color-primary);
-  color: white;
+  color: var(--color-on-primary);
   border-color: var(--color-primary);
 }
 
@@ -203,7 +203,7 @@ picture:has(.card-image) {
   align-items: center;
   justify-content: center;
   pointer-events: none;
-  transition: all 0.2s;
+  transition: background-color var(--dur) var(--ease), transform var(--dur) var(--ease);
 }
 
 .play-button svg {
@@ -247,7 +247,7 @@ picture:has(.card-image) {
   max-width: 400px;
   height: auto;
   object-fit: contain;
-  border-radius: 0.5rem;
+  border-radius: var(--radius-sm);
   margin-bottom: 2rem;
   display: block;
   margin-left: auto;
@@ -275,9 +275,9 @@ picture:has(.card-image) {
 
 .blog-post-tag {
   background: var(--color-primary);
-  color: white;
+  color: var(--color-on-primary);
   padding: 0.25rem 0.75rem;
-  border-radius: 1rem;
+  border-radius: var(--radius-lg);
   font-size: 0.85rem;
 }
 
@@ -298,24 +298,6 @@ picture:has(.card-image) {
 
 /* Responsive */
 @media (max-width: 768px) {
-  .content-with-sidebar {
-    flex-direction: column;
-  }
-
-  .sidebar-filters {
-    width: 100%;
-  }
-
-  .filters-sticky {
-    position: static;
-  }
-
-  .filter-buttons {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 0.5rem;
-  }
-
   .content-grid {
     grid-template-columns: 1fr;
   }
@@ -328,9 +310,5 @@ picture:has(.card-image) {
 
   .card-content {
     padding: 1rem;
-  }
-
-  .filter-buttons {
-    grid-template-columns: 1fr;
   }
 }

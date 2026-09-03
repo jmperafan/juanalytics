@@ -207,18 +207,33 @@ const personStructuredData = {
     </main>
 
     <footer class="site-footer">
-      <div class="container footer-content">
-        <div class="footer-brand">
+      <div class="container footer-grid">
+        <div class="footer-col footer-col-brand">
           <span class="footer-name">Juan Manuel Perafan</span>
-          <span class="footer-tagline">Analytics Engineer · Connecticut, US</span>
+          <p class="footer-tagline">Analytics engineer, instructor, and author based in Connecticut.</p>
         </div>
-        <div class="footer-links">
+        <nav class="footer-col" aria-label="Navigation">
+          <span class="footer-col-title">Navigation</span>
+          <a href="/blog">Blog</a>
+          <a href="/books">Books</a>
+          <a href="/about">About</a>
+        </nav>
+        <nav class="footer-col" aria-label="Media">
+          <span class="footer-col-title">Media</span>
+          <a href="/videos">Videos</a>
+          <a href="/podcasts">Podcasts</a>
+          <a href="/talks">Conferences</a>
+        </nav>
+        <div class="footer-col">
+          <span class="footer-col-title">Connect</span>
           <a href="https://www.linkedin.com/in/jmperafan/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
           <a href="https://github.com/jmperafan" target="_blank" rel="noopener noreferrer">GitHub</a>
           <a href="https://youtube.com/@juanalytics" target="_blank" rel="noopener noreferrer">YouTube</a>
           <a href="/rss.xml" title="Subscribe to RSS Feed" aria-label="Subscribe to RSS Feed">RSS</a>
         </div>
-        <p class="footer-copy">&copy; {new Date().getFullYear()} All rights reserved.</p>
+      </div>
+      <div class="container footer-bottom">
+        <p class="footer-copy">&copy; {new Date().getFullYear()} Juan Manuel Perafan. All rights reserved.</p>
       </div>
     </footer>
   </body>

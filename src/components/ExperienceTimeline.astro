@@ -313,7 +313,7 @@ const durationMonths = (role: Role) =>
   .timeline-container {
     background: var(--color-bg-secondary);
     border: 1px solid var(--color-border);
-    border-radius: 0.75rem;
+    border-radius: var(--radius-md);
     padding: 2rem;
     overflow-x: auto;
     margin-bottom: 2rem;
@@ -326,7 +326,7 @@ const durationMonths = (role: Role) =>
   }
 
   .bar {
-    transition: opacity 0.2s, filter 0.2s;
+    transition: opacity var(--dur) var(--ease), filter var(--dur) var(--ease);
     cursor: pointer;
   }
 
@@ -338,7 +338,7 @@ const durationMonths = (role: Role) =>
 
   .role-item:hover,
   .role-item:focus {
-    filter: drop-shadow(0 4px 12px rgba(37, 99, 235, 0.15));
+    filter: drop-shadow(0 4px 12px rgba(var(--color-primary-rgb), 0.18));
     outline: none;
   }
 
