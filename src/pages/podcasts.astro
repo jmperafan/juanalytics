@@ -2,8 +2,10 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ContentFilter from '../components/ContentFilter.astro';
 import PodcastCard from '../components/PodcastCard.astro';
+import ThumbnailImage from '../components/ThumbnailImage.astro';
+import Icon from '../components/Icon.astro';
 import { getCollection } from 'astro:content';
-import { byDateDesc } from '../utils/format';
+import { byDateDesc, formatDate } from '../utils/format';
 
 const dataHustle = (await getCollection('dataHustle')).sort(byDateDesc);
 const guestAppearances = (await getCollection('guestAppearances')).sort(byDateDesc);
@@ -32,6 +34,41 @@ const allTags = [...dataHustle, ...guestAppearances, ...sqlLinguaFranca].flatMap
                 <h2 class="section-subtitle">The Data Hustle Podcast</h2>
               </div>
               <p class="section-description">Research in podcast form: Tony and I talk careers and consultancy with practitioners as we write our upcoming book on data.</p>
+
+              <a
+                href={dataHustle[0].data.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="featured-episode"
+              >
+                <span class="featured-episode-badge">Latest Episode</span>
+                <div class="featured-episode-media">
+                  {dataHustle[0].data.thumbnail ? (
+                    <ThumbnailImage
+                      src={dataHustle[0].data.thumbnail}
+                      alt={dataHustle[0].data.title}
+                      fit={dataHustle[0].data.thumbnail_fit}
+                    />
+                  ) : (
+                    <div class="card-image-placeholder">
+                      <Icon name="microphone" size={64} />
+                    </div>
+                  )}
+                </div>
+                <div class="featured-episode-body">
+                  <h3 class="featured-episode-title">{dataHustle[0].data.title}</h3>
+                  <p class="featured-episode-meta">
+                    {formatDate(dataHustle[0].data.date)}
+                    {dataHustle[0].data.episode && ` • Episode ${dataHustle[0].data.episode}`}
+                    {dataHustle[0].data.duration && ` • ${dataHustle[0].data.duration}`}
+                  </p>
+                  <p class="featured-episode-description">{dataHustle[0].data.description}</p>
+                  <span class="featured-episode-cta">
+                    Listen now <Icon name="arrow" size={14} />
+                  </span>
+                </div>
+              </a>
+
               <div class="content-grid">
                 {dataHustle.map((podcast) => (
                   <PodcastCard episode={podcast} sectionType="data-hustle" variant="series" />
@@ -47,7 +84,7 @@ const allTags = [...dataHustle, ...guestAppearances, ...sqlLinguaFranca].flatMap
                 <h2 class="section-subtitle">Guest Appearances</h2>
               </div>
               <p class="section-description">If you host a podcast about data or tech careers and want me on, I am always happy to join the conversation.</p>
-              <div class="content-grid">
+              <div class="content-grid content-grid--compact">
                 {guestAppearances.map((podcast) => (
                   <PodcastCard episode={podcast} sectionType="guest-appearance" variant="guest" />
                 ))}
@@ -62,7 +99,7 @@ const allTags = [...dataHustle, ...guestAppearances, ...sqlLinguaFranca].flatMap
                 <h2 class="section-subtitle">SQL Lingua Franca</h2>
               </div>
               <p class="section-description">My first podcast (2024–2025): intimate conversations with knowledgeable guests about data, analytics engineering, and strategy.</p>
-              <div class="content-grid">
+              <div class="content-grid content-grid--compact">
                 {sqlLinguaFranca.map((podcast) => (
                   <PodcastCard episode={podcast} sectionType="sql-lingua-franca" variant="series" />
                 ))}
@@ -200,6 +237,127 @@ const allTags = [...dataHustle, ...guestAppearances, ...sqlLinguaFranca].flatMap
     .show-more-btn:hover {
       border-color: var(--color-text);
       color: var(--color-text);
+    }
+
+    /* Denser grid for the two secondary shows, so the flagship show reads bigger */
+    .content-grid--compact {
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 1.25rem;
+    }
+
+    /* Featured newest episode spotlight */
+    .featured-episode {
+      display: flex;
+      align-items: stretch;
+      gap: 0;
+      position: relative;
+      background: var(--color-bg-secondary);
+      border: 1px solid var(--color-border);
+      border-radius: 12px;
+      overflow: hidden;
+      text-decoration: none;
+      margin-bottom: 2rem;
+      transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+    }
+
+    .featured-episode:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(37, 99, 235, 0.18);
+      border-color: var(--color-primary);
+    }
+
+    .featured-episode-badge {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      z-index: 2;
+      background: var(--color-primary);
+      color: white;
+      font-size: 0.6875rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 0.3rem 0.7rem;
+      border-radius: 2rem;
+    }
+
+    .featured-episode-media {
+      flex: 0 0 380px;
+      position: relative;
+    }
+
+    .featured-episode-media :global(.thumbnail-wrapper) {
+      height: 100%;
+      min-height: 240px;
+    }
+
+    .featured-episode-media .card-image-placeholder {
+      height: 100%;
+      min-height: 240px;
+    }
+
+    .featured-episode-body {
+      flex: 1;
+      min-width: 0;
+      padding: 1.75rem 1.75rem 1.75rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .featured-episode-title {
+      font-size: 1.5rem;
+      line-height: 1.3;
+      color: var(--color-text);
+      margin-bottom: 0.5rem;
+    }
+
+    .featured-episode-meta {
+      color: var(--color-primary);
+      font-weight: 600;
+      font-size: 0.875rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .featured-episode-description {
+      color: var(--color-text-light);
+      font-size: 0.9375rem;
+      line-height: 1.6;
+      margin-bottom: 1.25rem;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .featured-episode-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: var(--color-primary);
+      font-weight: 600;
+      font-size: 0.9375rem;
+      width: fit-content;
+    }
+
+    @media (max-width: 640px) {
+      .featured-episode {
+        flex-direction: column;
+      }
+
+      .featured-episode-media {
+        flex: none;
+      }
+
+      .featured-episode-media :global(.thumbnail-wrapper),
+      .featured-episode-media .card-image-placeholder {
+        min-height: 200px;
+      }
+
+      .featured-episode-body {
+        padding: 1.5rem;
+      }
     }
   </style>
 </BaseLayout>
