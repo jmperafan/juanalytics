@@ -286,6 +286,21 @@ picture:has(.card-image) {
   font-size: 1.1rem;
 }
 
+/* In-prose links are underlined so they're identifiable mid-sentence
+   without relying on the blue alone (it clears AA-large, not AA, on the
+   navy ground). */
+.blog-post-content a {
+  color: var(--color-primary);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.15em;
+}
+
+.blog-post-content a:hover {
+  text-decoration-thickness: 2px;
+  opacity: 1;
+}
+
 .blog-post-footer {
   margin-top: 4rem;
   padding-top: 2rem;
