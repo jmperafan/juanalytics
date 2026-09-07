@@ -7,7 +7,7 @@ import { geoMercator, geoPath, geoCentroid } from 'd3-geo';
 import { feature } from 'topojson-client';
 import { createRequire } from 'node:module';
 import { coordMap } from '../data/locations';
-import profilePhoto from '../assets/profile_photo.webp';
+import profilePhoto from '../assets/profile_about.webp';
 
 const talks = (await getCollection('talks')).map(t => t.data);
 
