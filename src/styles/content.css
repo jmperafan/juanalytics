@@ -11,12 +11,17 @@
 /* Content Grid with Sidebar */
 .content-with-sidebar {
   display: flex;
-  flex-direction: column;
-  gap: 2rem;
+  gap: 2.5rem;
+  align-items: flex-start;
 }
 
 .sidebar-filters {
-  width: 100%;
+  flex: 0 0 200px;
+  position: sticky;
+  top: 2rem;
+  align-self: flex-start;
+  max-height: calc(100vh - 4rem);
+  overflow-y: auto;
 }
 
 .filters-sticky {
@@ -398,6 +403,18 @@ picture:has(.card-image) {
 
 /* Responsive */
 @media (max-width: 768px) {
+  .content-with-sidebar {
+    flex-direction: column;
+  }
+
+  .sidebar-filters {
+    flex: none;
+    width: 100%;
+    position: static;
+    max-height: none;
+    overflow: visible;
+  }
+
   .content-grid {
     grid-template-columns: 1fr;
   }
