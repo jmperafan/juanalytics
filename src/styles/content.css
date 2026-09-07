@@ -301,6 +301,91 @@ picture:has(.card-image) {
   opacity: 1;
 }
 
+/* Inline code — a small chip, not the full block treatment. */
+.blog-post-content :not(pre) > code {
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  padding: 0.1em 0.34em;
+  font-size: 0.88em;
+}
+
+/* Fenced code blocks (Shiki output). `markdown.shikiConfig.wrap` in
+   astro.config.mjs makes long lines wrap instead of scrolling sideways;
+   these rules give the block padding, a palette-matched surface, and a
+   hanging indent so a wrapped shell command still reads as one command. */
+.blog-post-content pre.astro-code {
+  position: relative;
+  margin: 1.75rem 0;
+  padding: 1.15rem 1.35rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface) !important;
+  font-size: 0.94rem;
+  line-height: 1.65;
+  tab-size: 2;
+}
+
+/* "Copy" button, injected per block by the blog-post script. Hidden until
+   the block is hovered or something inside it has focus; always shown on
+   touch (no hover) and while it reads "Copied". */
+.blog-post-content .code-copy {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  padding: 0.3rem 0.6rem;
+  font-family: inherit;
+  font-size: 0.72rem;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  color: var(--color-text-light);
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity var(--dur) var(--ease), color var(--dur) var(--ease),
+    border-color var(--dur) var(--ease);
+}
+
+.blog-post-content pre.astro-code:hover .code-copy,
+.blog-post-content pre.astro-code:focus-within .code-copy {
+  opacity: 1;
+}
+
+.blog-post-content .code-copy:hover {
+  color: var(--color-text);
+  border-color: var(--color-primary);
+}
+
+.blog-post-content .code-copy[data-copied="true"] {
+  opacity: 1;
+  color: var(--color-secondary);
+  border-color: var(--color-secondary);
+}
+
+@media (hover: none) {
+  .blog-post-content .code-copy {
+    opacity: 1;
+  }
+}
+
+/* Grid rows collapse the whitespace-only text nodes Shiki emits between
+   `.line` spans, so each source line is exactly one row — which is what
+   keeps the per-line hanging indent aligned. */
+.blog-post-content pre.astro-code > code {
+  display: grid;
+}
+
+.blog-post-content pre.astro-code .line {
+  padding-left: 2ch;
+  text-indent: -2ch;
+}
+
+.blog-post-content pre.astro-code .line:empty::after {
+  content: "\00a0";
+}
+
 .blog-post-footer {
   margin-top: 4rem;
   padding-top: 2rem;

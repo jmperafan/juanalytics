@@ -130,4 +130,39 @@ const blogPostStructuredData = {
       }
     });
   </script>
+
+  <script>
+    // Add a "Copy" button to every fenced code block.
+    document.addEventListener('DOMContentLoaded', () => {
+      const blocks = document.querySelectorAll('.blog-post-content pre.astro-code');
+      blocks.forEach((pre) => {
+        const code = pre.querySelector('code');
+        if (!code) return;
+
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'code-copy';
+        btn.textContent = 'Copy';
+        btn.setAttribute('aria-label', 'Copy code to clipboard');
+
+        let resetTimer: number;
+        btn.addEventListener('click', async () => {
+          clearTimeout(resetTimer);
+          try {
+            await navigator.clipboard.writeText(code.textContent ?? '');
+            btn.textContent = 'Copied';
+            btn.dataset.copied = 'true';
+          } catch {
+            btn.textContent = 'Failed';
+          }
+          resetTimer = window.setTimeout(() => {
+            btn.textContent = 'Copy';
+            delete btn.dataset.copied;
+          }, 2000);
+        });
+
+        pre.appendChild(btn);
+      });
+    });
+  </script>
 </BaseLayout>
