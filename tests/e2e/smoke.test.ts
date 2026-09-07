@@ -31,7 +31,7 @@ test('404 page renders for unknown route', async ({ page }) => {
 
 test('navigation links are present on homepage', async ({ page }) => {
   await page.goto('/');
-  const nav = page.locator('nav');
+  const nav = page.locator('nav.site-nav');
   await expect(nav).toBeVisible();
 });
 
