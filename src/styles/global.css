@@ -48,6 +48,14 @@
   --ease: cubic-bezier(0.4, 0, 0.2, 1);
   --dur: 0.2s;
 
+  /* ── Texture ─────────────────────────────────────────────
+     Strength of the page-wide film grain (see body::after).
+     Flat dark fills read as plasticky; a few percent of
+     monochrome noise gives every surface some tooth without
+     any visible pattern. Keep it low — this should never be
+     something you consciously notice. */
+  --noise-opacity: 0.028;
+
   /* ── Spacing rhythm ──────────────────────────────────────
      One vertical scale for the whole page. Sections breathe
      on --section-gap; the space from a heading to its content
@@ -119,6 +127,28 @@ body {
   font-size: 17px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* Page-wide film grain. One fixed, non-interactive layer over
+   everything, sitting under the nav/menu chrome (z-index >= 1000)
+   but above every section fill. The noise is a tiled inline SVG —
+   no image request — desaturated to pure greyscale so it doesn't
+   tint the palette. Dropped for forced-colors and high-contrast. */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 4;
+  pointer-events: none;
+  opacity: var(--noise-opacity);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 140px 140px;
+}
+
+@media (prefers-contrast: more), (forced-colors: active) {
+  body::after {
+    display: none;
+  }
 }
 
 a {
