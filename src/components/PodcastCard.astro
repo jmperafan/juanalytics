@@ -25,7 +25,7 @@ const { data } = episode;
   data-type={sectionType}
 >
   {data.thumbnail ? (
-    <ThumbnailImage src={data.thumbnail} alt={data.title} fit={data.thumbnail_fit} />
+    <ThumbnailImage src={data.thumbnail} alt={data.title} fit={data.thumbnail_fit ?? 'cover'} />
   ) : (
     <div class="card-image-placeholder">
       <Icon name="microphone" size={64} />

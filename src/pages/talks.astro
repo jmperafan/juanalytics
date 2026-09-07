@@ -52,7 +52,7 @@ const talks = (await getCollection('talks')).sort(byDateDesc);
                       <div class="video-player"></div>
                     </>
                   ) : talk.data.thumbnail ? (
-                    <ThumbnailImage src={talk.data.thumbnail} alt={talk.data.title} />
+                    <ThumbnailImage src={talk.data.thumbnail} alt={talk.data.title} fit="cover" />
                   ) : (
                     <div class="card-image-placeholder">
                       <Icon name="presentation" size={64} />

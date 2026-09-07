@@ -15,7 +15,7 @@ const { src, alt, fit } = Astro.props;
     class="thumbnail-image"
     onload="
       const forced = this.parentElement.dataset.fit;
-      const cls = forced ?? 'contain';
+      const cls = forced ?? 'cover';
       this.parentElement.classList.add('fit-' + cls);
     "
   />
@@ -24,13 +24,14 @@ const { src, alt, fit } = Astro.props;
 <style>
   .thumbnail-wrapper {
     width: 100%;
-    height: 200px;
+    aspect-ratio: 16 / 9;
     position: relative;
     overflow: hidden;
   }
 
   .thumbnail-image {
-    position: relative;
+    position: absolute;
+    inset: 0;
     width: 100%;
     height: 100%;
     z-index: 1;

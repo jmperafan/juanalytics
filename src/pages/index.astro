@@ -226,7 +226,7 @@ const recentPodcasts = (await getCollection('guestAppearances')).sort(byDateDesc
           {recentBlogs.map((post) => (
             <a href={`/blog/${post.id}`} class="card media-card">
               {post.data.heroImage ? (
-                <ThumbnailImage src={post.data.heroImage} alt={post.data.title} />
+                <ThumbnailImage src={post.data.heroImage} alt={post.data.title} fit={post.data.heroImage.includes('logo') ? 'contain' : 'cover'} />
               ) : (
                 <div class="media-placeholder">
                   <p class="placeholder-text">Add heroImage in frontmatter</p>

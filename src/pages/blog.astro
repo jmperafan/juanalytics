@@ -38,6 +38,7 @@ const allTags = blogsWithReadingTime.flatMap(b => b.data.tags || []);
                   <ThumbnailImage
                     src={post.data.heroImage}
                     alt={post.data.title}
+                    fit={post.data.heroImage.includes('logo') ? 'contain' : 'cover'}
                   />
                 ) : (
                   <div class="card-image-placeholder">
