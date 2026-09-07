@@ -224,7 +224,7 @@ const continentPanels = continentDefs.map(cont => {
                     role="img"
                     aria-label={`Map silhouette of ${name}`}
                   >
-                    {countryPaths[key] && <path d={countryPaths[key]} fill="#2563eb" opacity="0.75" />}
+                    {countryPaths[key] && <path d={countryPaths[key]} fill="var(--color-primary)" opacity="0.75" />}
                   </svg>
                   <div class="country-label">
                     <strong>{name}</strong>
@@ -257,7 +257,7 @@ const continentPanels = continentDefs.map(cont => {
                         cy={dot.y}
                         r="3.5"
                         fill="var(--color-primary)"
-                        stroke="#7fa9f2"
+                        stroke="#cbb8ff"
                         stroke-width="1.5"
                         tabindex="0"
                         role="button"
@@ -416,7 +416,7 @@ const continentPanels = continentDefs.map(cont => {
   }
 
   .talk-tooltip-link {
-    color: #60a5fa;
+    color: var(--color-primary);
     text-decoration: none;
     font-weight: 600;
   }
@@ -462,7 +462,10 @@ const continentPanels = continentDefs.map(cont => {
   width: 315px;
   height: 315px;
   border-radius: 50%;
-  box-shadow: 0 0 0 4px var(--color-bg-secondary), 0 0 0 7px var(--color-border);
+  box-shadow:
+    0 0 0 1px rgba(var(--color-primary-rgb), 0.4),
+    0 0 0 10px rgba(var(--color-primary-rgb), 0.05),
+    0 24px 50px -18px rgba(2, 6, 16, 0.65);
 }
 
 /* ── Now grid ── */

@@ -9,24 +9,24 @@
 }
 
 :root {
-  /* ── Color ───────────────────────────────────────────────
-     One brand accent: --color-primary. The other two are
-     scoped, not general-purpose fills:
-       --color-secondary  decorative gradient on the 404 page only
-       --color-accent     alternate a11y focus outline only (kept
-                          distinct from the primary focus ring); never a fill */
-  --color-primary: #2f6be0;        /* Blue brand accent — the only brand accent */
-  --color-primary-hover: #245bc9;  /* darker blue for pressed / hover fills */
-  --color-primary-rgb: 47, 107, 224;
-  --color-on-primary: #ffffff;     /* text on blue fills */
-  --color-secondary: #7c3aed;      /* 404 gradient only */
-  --color-accent: #f59e0b;         /* focus-outline accent only */
-  --color-text: #f6f8fc;           /* Light text on dark background */
-  --color-text-light: #98a4bb;     /* Muted blue-gray for secondary text */
-  --color-bg: #0d1424;             /* Dark navy background */
-  --color-bg-secondary: #172132;   /* Section band background */
-  --color-border: #2d3a52;         /* Border color for dark theme */
-  --color-surface: #182234;        /* Raised card surface, a step above the page */
+  /* ── Color · "Violet & Teal" (round-3 palette trial) ─────
+     Violet leads: links, buttons, accent text, active states.
+     Teal (--color-secondary) answers: a sparing second hue for
+     topic tags, focus rings, and highlight moments.
+       --color-accent  a11y focus outline — teal, distinct from
+                       the violet accent it sits near */
+  --color-primary: #a98bff;        /* Violet accent — links / accent text */
+  --color-primary-hover: #7a52ec;  /* deeper violet for pressed / hover fills */
+  --color-primary-rgb: 169, 139, 255;
+  --color-on-primary: #ffffff;     /* text on violet fills */
+  --color-secondary: #2fd9c6;      /* Teal — the second hue: tags, highlights, 404 gradient */
+  --color-accent: #2fd9c6;         /* focus-outline accent (teal) */
+  --color-text: #f2f0fc;           /* Light text on dark background */
+  --color-text-light: #a49ecb;     /* Muted violet-grey for secondary text */
+  --color-bg: #0c0a1c;             /* Deep indigo-black background */
+  --color-bg-secondary: #12102a;   /* Section band background */
+  --color-border: #2f2a5c;         /* Border color for dark theme */
+  --color-surface: #171438;        /* Raised card surface, a step above the page */
 
   --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
 
@@ -52,8 +52,8 @@
      One vertical scale for the whole page. Sections breathe
      on --section-gap; the space from a heading to its content
      is --block-gap; cards share --card-pad. */
-  --section-gap: clamp(4rem, 4rem + 4vw, 6.5rem);
-  --block-gap: 3rem;
+  --section-gap: clamp(5rem, 3.5rem + 5vw, 8rem);
+  --block-gap: clamp(2.75rem, 2rem + 2.4vw, 3.75rem);
   --card-pad: 1.75rem;
 
   --max-width: 1160px;
@@ -116,7 +116,7 @@ body {
   line-height: 1.7;
   color: var(--color-text);
   background-color: var(--color-bg);
-  font-size: 16px;
+  font-size: 17px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -200,7 +200,7 @@ img {
   }
 
   body {
-    font-size: 15px;
+    font-size: 16px;
   }
 
   h1 { font-size: 2rem; }
@@ -225,7 +225,7 @@ img {
 /* Mobile phones */
 @media (max-width: 480px) {
   body {
-    font-size: 14px;
+    font-size: 15px;
   }
 
   h1 { font-size: 1.75rem; }

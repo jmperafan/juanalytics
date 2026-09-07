@@ -6,7 +6,7 @@ import Icon from '../components/Icon.astro';
 import { getCollection } from 'astro:content';
 import { Image } from 'astro:assets';
 import { formatDate, byDateDesc } from '../utils/format';
-import profilePhoto from '../assets/profile_photo.webp';
+import profilePhoto from '../assets/profile_cutout.webp';
 import speakingImage from '../assets/services/speaking.jpg';
 import trainingImage from '../assets/services/training.jpg';
 import consultingImage from '../assets/services/consulting.jpg';
@@ -30,8 +30,8 @@ const recentPodcasts = (await getCollection('guestAppearances')).sort(byDateDesc
           class="hero-image"
           loading="eager"
           fetchpriority="high"
-          width={400}
-          height={400}
+          width={846}
+          height={741}
         />
         <p class="hero-eyebrow">Analytics Engineer · Instructor · Author · Community Builder</p>
         <h1 class="hero-title">Juan Manuel Perafan</h1>
