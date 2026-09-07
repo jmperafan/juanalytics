@@ -17,10 +17,10 @@ describe('readingTime utils', () => {
     });
 
     it('should round up partial minutes', () => {
-      // 250 words should round to 2 minutes
+      // 250 words / 200 wpm = 1.25 -> rounds up to 2
       const text = 'word '.repeat(250);
       const time = calculateReadingTime(text);
-      expect(time).toBeGreaterThanOrEqual(1);
+      expect(time).toBe(2);
     });
 
     it('should handle empty string', () => {
@@ -29,15 +29,10 @@ describe('readingTime utils', () => {
     });
 
     it('should ignore markdown syntax in word count', () => {
-      const markdownText = `
-        # Heading
-        ## Subheading
-        **Bold text** and *italic text*
-        [Link](https://example.com)
-        \`code\`
-      `;
-      const time = calculateReadingTime(markdownText);
-      expect(time).toBeGreaterThan(0);
+      // Decorating every word with markdown must not inflate the count.
+      const plain = 'word '.repeat(400);
+      const decorated = '**word** '.repeat(400);
+      expect(calculateReadingTime(decorated)).toBe(calculateReadingTime(plain));
     });
   });
 

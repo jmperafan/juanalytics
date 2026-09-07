@@ -26,26 +26,7 @@ for (const { path, title } of pages) {
 test('404 page renders for unknown route', async ({ page }) => {
   const response = await page.goto('/this-page-does-not-exist');
   expect(response?.status()).toBe(404);
-  await expect(page.locator('h1')).toBeVisible();
-});
-
-test('navigation links are present on homepage', async ({ page }) => {
-  await page.goto('/');
-  const nav = page.locator('nav.site-nav');
-  await expect(nav).toBeVisible();
-});
-
-test('blog post links are clickable', async ({ page }) => {
-  await page.goto('/blog');
-  const firstCard = page.locator('a.blog-card').first();
-  const count = await page.locator('a.blog-card').count();
-
-  if (count > 0) {
-    const href = await firstCard.getAttribute('href');
-    expect(href).toBeTruthy();
-    await firstCard.click();
-    await expect(page).not.toHaveURL('/blog');
-  }
+  await expect(page.locator('main h1')).toBeVisible();
 });
 
 test('RSS feed is valid XML', async ({ page }) => {

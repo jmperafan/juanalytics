@@ -4,12 +4,13 @@ test.describe('Accessibility', () => {
   test('should have proper heading hierarchy on homepage', async ({ page }) => {
     await page.goto('/');
 
-    // Should have exactly one h1
-    const h1Count = await page.locator('h1').count();
+    // Count in the page's light DOM only. Playwright's `h1` locator also
+    // pierces shadow roots, which would pick up the Astro dev toolbar's
+    // own headings when this runs against `npm run dev`.
+    const h1Count = await page.evaluate(() => document.querySelectorAll('h1').length);
     expect(h1Count).toBe(1);
 
-    // H1 should be the name
-    await expect(page.locator('h1')).toContainText(/Juan Manuel Perafan/i);
+    await expect(page.locator('main h1')).toContainText(/Juan Manuel Perafan/i);
   });
 
   test('should have alt text on images', async ({ page }) => {
@@ -21,7 +22,8 @@ test.describe('Accessibility', () => {
     for (let i = 0; i < count; i++) {
       const img = images.nth(i);
       const alt = await img.getAttribute('alt');
-      expect(alt).toBeTruthy(); // All images should have alt text
+      // Every image needs an alt attribute; "" is valid for decorative images.
+      expect(alt).not.toBeNull();
     }
   });
 
@@ -36,12 +38,12 @@ test.describe('Accessibility', () => {
   test('should be keyboard navigable', async ({ page }) => {
     await page.goto('/');
 
-    // Tab through navigation links
-    await page.keyboard.press('Tab'); // Logo/home link
-    await page.keyboard.press('Tab'); // First nav link
+    // First Tab lands on the skip link, second on the logo/home link.
+    await page.keyboard.press('Tab');
+    await expect(page.locator('a.skip-to-content')).toBeFocused();
 
-    const focused = await page.evaluate(() => document.activeElement?.tagName);
-    expect(focused).toBeTruthy();
+    await page.keyboard.press('Tab');
+    await expect(page.locator('a.logo-container')).toBeFocused();
   });
 
   test('should have lang attribute on html', async ({ page }) => {

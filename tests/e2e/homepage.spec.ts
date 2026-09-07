@@ -1,11 +1,6 @@
 import { test, expect } from '@playwright/test';
 
 test.describe('Homepage', () => {
-  test('should load successfully', async ({ page }) => {
-    await page.goto('/');
-    await expect(page).toHaveTitle(/juanalytics/i);
-  });
-
   test('should display hero section', async ({ page }) => {
     await page.goto('/');
     await expect(page.getByRole('heading', { name: /Juan Manuel Perafan/i })).toBeVisible();
@@ -29,9 +24,24 @@ test.describe('Homepage', () => {
     await expect(page.getByRole('heading', { name: /About Me/i })).toBeVisible();
   });
 
-  test('should be mobile responsive', async ({ page }) => {
+  test('should collapse navigation behind a menu toggle on mobile', async ({ page }) => {
     await page.setViewportSize({ width: 375, height: 667 });
     await page.goto('/');
-    await expect(page.getByRole('heading', { name: /Juan Manuel Perafan/i })).toBeVisible();
+
+    const toggle = page.getByRole('button', { name: /toggle menu/i });
+    const navLinks = page.locator('#nav-links');
+    const collapsedHeight = () => navLinks.evaluate((el) => (el as HTMLElement).offsetHeight);
+
+    // Menu starts collapsed: toggle visible, link drawer clipped to nothing.
+    await expect(toggle).toBeVisible();
+    await expect(toggle).toHaveAttribute('aria-expanded', 'false');
+    expect(await collapsedHeight()).toBeLessThan(10);
+
+    await toggle.click();
+
+    // Menu open: drawer expands and reports its state to assistive tech.
+    await expect(toggle).toHaveAttribute('aria-expanded', 'true');
+    await expect.poll(collapsedHeight).toBeGreaterThan(100);
+    await expect(navLinks.getByRole('link', { name: /about/i })).toBeVisible();
   });
 });
