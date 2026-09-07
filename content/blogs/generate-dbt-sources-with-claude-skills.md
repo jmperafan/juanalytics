@@ -5,42 +5,44 @@ pubDate: 2026-09-02
 heroImage: '/images/logo_resized.webp'
 tags: ["dbt", "Analytics Engineering", "Artificial Intelligence"]
 ---
-Roughly half the teams I work with generate their dbt sources with `dbt-codegen`. The other half open an AI chat and ask for the YAML. Both ship working pipelines, so this isn't a post about which one is right.
+Roughly half the teams I work with generate their dbt sources with `dbt-codegen`. The other half open an AI chat and ask for the YAML.
 
-I've ended up somewhere in the middle. It's held up well enough across projects that I want to write it down.
+`dbt-codegen` is a [dbt Labs package](https://github.com/dbt-labs/dbt-codegen) that generates YAML and SQL from your warehouse. With `generate_columns` turned on, its `generate_source` macro reads `information_schema` and returns every column with its real name and type, the same result every run. It leaves every description blank rather than guess at one, and it adds no tests. That part is on you.
 
-Adding a raw table to a dbt project is really two jobs. One is mechanical: what columns does the table have, and what type is each one. The other takes judgment: what does each column mean, which one is the primary key, what deserves a `not_null` test. `dbt-codegen` is good at the first job and doesn't attempt the second. An AI is comfortable with the second and, if it has never seen your table, will quietly guess its way through the first.
+Asking an LLM is less work. One prompt gets you the YAML, the descriptions, and the tests too if you want them. The catch is consistency: it might invent a column that isn't there, write a description from nothing but the column name, or make an assumption where you'd rather it stopped to ask.
+
+Both have real gaps, so this isn't a post about which one is right. It's about splitting the work: codegen for the column list, the model for the descriptions and tests codegen won't touch.
 
 ## Where Each One Stops
 
 ### Codegen
 
-`dbt-codegen` is a dbt Labs package. Its `generate_source` and `generate_base_model` macros query `information_schema` directly, so the column list they return is the real one: right names, right types, nothing invented.
+Codegen's `generate_source` and `generate_base_model` macros query `information_schema` directly, so the column list they return is the real one: right names, right types, nothing invented.
 
 ```bash
 dbt --quiet run-operation generate_source \
   --args '{"schema_name": "raw", "database_name": "analytics", "generate_columns": true, "include_descriptions": true, "table_names": ["charges"]}'
 ```
 
-What comes back is a skeleton. Every column is there, every `description` is blank, and there are no tests and no `loaded_at_field`. Codegen did the part with a correct answer and left the rest. On a lot of teams the rest never gets done, and the source file ends up accurate but silent.
+What comes back is a skeleton: every column is present, every `description` is blank, no tests, no `loaded_at_field`. The descriptions and tests are left to you, and on many teams they never get added. The source file stays accurate but undocumented.
 
-### Just Asking the AI
+### Asking the AI
 
-An AI is happy to do the judgment pass. It writes a fair description for `order_total`, guesses that `customer_id` points at a customers table, and in a staging model it casts the timestamps and turns `'Y'`/`'N'` into a real boolean without being told to. That work is tedious and the model is good at it.
+An LLM will do the judgment pass. It writes a plausible description for `order_total`, infers that `customer_id` references a customers table, and in a staging model it casts timestamps and converts `'Y'`/`'N'` to a boolean without being asked. This is repetitive work, and the model handles it well.
 
-The soft spot is the column list. If the model has never seen your `charges` table, it fills in what a Stripe charges table usually has. Sometimes that is close. Sometimes `amount` is really `amount_captured`, the timestamp is epoch seconds, and a `balance_transaction_id` you needed is missing. The YAML parses. `dbt parse` is green. It reads fine in a pull request. You notice when a number looks wrong three models downstream.
+The weak point is the column list. If the model has never seen your `charges` table, it fills in the columns a Stripe charges table usually has. Sometimes that matches. Sometimes `amount` is actually `amount_captured`, the timestamp is epoch seconds, and a `balance_transaction_id` you needed is missing. The YAML parses and reads fine in review; the error surfaces later, when a downstream number looks wrong.
 
-There is a cost angle too. Handing over the whole task means the model writes the entire file token by token, and output tokens are the pricey ones.
+There's also a cost difference. If the model writes the whole file, every line is output tokens, which are billed higher than input tokens.
 
 ## The Split
 
-Codegen writes the skeleton, the model fills it in. **Structure from codegen, content from the model.** The column list stops being a guess, and the model spends its attention on the descriptions and tests, which is where a judgment call actually exists.
+Codegen runs first and writes the skeleton. The model then gets a file where every column is already correct, so its whole job is the part that takes judgment: what each column means, which one is the primary key, what deserves a `not_null` test. **Structure from codegen, content from the model.**
 
-One guideline for that pass: only write what the table in front of you supports. `order_id` is an ID, so it gets `not_null` and `unique`. `customer_id` is almost certainly a foreign key, and you can say so. `flag_3` means nothing to you, so its description stays blank or says "unknown." A blank description is honest. A confident wrong one is a bug that hides until it misleads someone months later.
+One rule for that pass: only write what the table in front of you supports. `order_id` is an identifier, so it gets `not_null` and `unique`. `customer_id` is most likely a foreign key, and the description can say so. `flag_3` has no clear meaning, so its description stays blank or says "unknown." A blank description is better than a confident wrong one, which is hard to catch in review.
 
 ## Pipe It Straight to a File
 
-Small thing, but it adds up when an agent is driving. Codegen wraps its YAML in a screen of `INFO` and `OK` log lines. None of it is useful to you, and reading it into the model's context costs tokens, more still if the model then re-types the YAML back out.
+Codegen wraps its YAML in `INFO` and `OK` log lines. Reading those into the model's context costs tokens, and more again if the model then re-types the YAML as output. When an agent runs codegen repeatedly, this adds up.
 
 Redirect it to the file and open the file instead:
 
@@ -50,11 +52,11 @@ dbt --quiet run-operation generate_source \
   > models/staging/stripe/stripe.yml
 ```
 
-Read the raw output only when you want to look over a big multi-table run before it lands on disk.
+Read the raw output only when you want to check a large multi-table run before it's written to disk.
 
 ## Staging Models Split the Same Way
 
-`generate_base_model` hands you a `select` with the source's raw column names, no casts, in the right CTE structure.
+`generate_base_model` returns a `select` with the source's raw column names, no casts, in a CTE structure.
 
 ```bash
 dbt --quiet run-operation generate_base_model \
@@ -62,19 +64,19 @@ dbt --quiet run-operation generate_base_model \
   > models/staging/stripe/stg_stripe__charges.sql
 ```
 
-From that skeleton, the staging model casts every column instead of trusting implicit typing, renames the bare `id` to `charge_id` so it still reads clearly three joins later, turns `'Y'`/`'N'` into a real boolean after checking the actual distinct values, lowercases emails while leaving people's names in title case, and trims only the columns that actually carry whitespace.
+From that skeleton, the staging model casts every column explicitly instead of relying on implicit typing, and renames the bare `id` to `charge_id` so it's unambiguous in a join. It converts `'Y'`/`'N'` to a boolean after checking the distinct values, lowercases emails while leaving names in title case, and trims only the columns that carry whitespace.
 
-None of that is difficult, and an AI moves through it fast. Codegen doesn't try. Done by hand it's the kind of chore that gets dropped under a deadline, which is how you get a staging layer people re-check every time they touch it.
+None of this is hard, and a model works through it quickly. Codegen doesn't do this part. By hand it's repetitive work that often gets skipped under time pressure.
 
 ## When I Reach For It
 
-This is one more step than either camp runs today. If your team already generates sources with codegen and reliably fills in the descriptions, or already trusts an AI with tables it can see, you probably don't need it. I use it when I'm onboarding a warehouse I don't know yet, which is most of the time.
+This adds a step that neither approach uses on its own. If your team already runs codegen and fills in the descriptions, or already relies on an LLM for tables it can see, you don't need it. I use it when onboarding a warehouse I don't know yet.
 
 ---
 
 ## The Skill
 
-Here's the workflow as a Claude Code skill: codegen first, judgment second, plus the file conventions, the diff-before-overwrite rule, and the staging refactors dbt Labs recommends. Save it to `.claude/skills/dbt-codegen/SKILL.md` and it fires whenever you ask Claude to add a source or stage a table.
+Here's the workflow as a [Claude Code skill](https://code.claude.com/docs/en/skills): codegen first, judgment pass second, plus the file conventions, the diff-before-overwrite rule, and the staging refactors from [dbt Labs' best-practices guide](https://docs.getdbt.com/best-practices/how-we-structure/2-staging). Save it to `.claude/skills/dbt-codegen/SKILL.md` and it runs whenever you ask Claude to add a source or stage a table.
 
 ````markdown
 ---
