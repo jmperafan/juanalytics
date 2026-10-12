@@ -1,4 +1,30 @@
 data_hustle_podcast:
+- url: https://www.youtube.com/watch?v=xNSIZ_hJQKI
+  title: "Data Work is a Listening Job - #12 Data Hustle"
+  date: 2026-08-20
+  podcast: The Data Hustle Podcast
+  episode: "12"
+  description: |-
+    Great data professionals do not just take requirements. They listen closely enough to understand the problem behind them.
+
+    In this episode of The Data Hustle, we speak with Gabriela Costa, an analytics engineer and team lead at Indicium AI, about why communication and discovery are as important to good data work as SQL, modeling or engineering.
+
+    Gabriela explains why immediately accepting “I need a dashboard” can send a data team in completely the wrong direction. Instead, she separates business discovery from data discovery: understanding how somebody works today, what decisions they are trying to make, what constraints they face and what problem they are actually trying to solve before deciding what should be built.
+
+    We discuss treating dashboards and other analytical outputs as living data products rather than one-off projects, measuring adoption, uncovering requirements stakeholders themselves may not know they have, and what to do when your professional judgment tells you that the solution a stakeholder is asking for is the wrong one.
+
+    We also get practical about stakeholder interviews. Gabriela shares how ideas from The Mom Test influence her discovery process, why scripted question lists can make junior consultants worse listeners, how she prepares teams for client conversations, and why understanding who actually owns a decision can prevent endless cycles of conflicting requirements.
+
+    Later, we get into one of the more uncomfortable questions facing junior data professionals today: are people becoming too dependent on AI? Gabriela talks about analysts presenting code they cannot explain beyond “ChatGPT told me to do it,” and why using AI effectively still requires understanding the logic well enough to question, validate and defend what it produces.
+
+    Finally, we talk about management, genuinely listening to the people you lead, and how Gabriela’s background in international relations shaped the way she approaches negotiation, different cultures, competing perspectives and consulting.
+
+    Find Gabriela:
+
+    LinkedIn: Gabriela Costa — @gabrieladados
+    Indicium AI: indicium.ai
+  thumbnail: https://i.ytimg.com/vi/xNSIZ_hJQKI/maxresdefault.jpg
+  tags: []
 - url: https://www.youtube.com/watch?v=djTLrlR2sSo
   title: "How Sequentum Scrapes the Web at Scale - #11 Data Hustle"
   date: 2026-08-14
