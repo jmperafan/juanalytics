@@ -1,4 +1,77 @@
 data_hustle_podcast:
+- url: https://www.youtube.com/watch?v=gPkikwFjJ0k
+  title: "AI Won't Fix Your Culture: Power Distance, Vibe Coding & Human Judgment - #15 Jimmy Pang"
+  date: 2026-10-07
+  podcast: The Data Hustle Podcast
+  episode: "15"
+  description: |-
+    Your data architecture ends up looking like your company's culture, whether you planned it or not.
+
+    In this episode of The Data Hustle, we speak with Jimmy Pang, founder of Data Biz and former data and analytics leader at Foodpanda, Delivery Hero, HelloFresh and Vestiaire Collective, about building data teams across Hong Kong, Berlin and Paris, and what eight years of doing that teaches you about culture, AI and data mesh.
+
+    Jimmy starts with payments and fraud at Foodpanda, where cash on delivery and bot attacks turned a finance topic into a data problem, then walks through how German, Chinese and French working cultures differ: meeting notes, power distance, work-life balance, and why a federal country like Germany produced a data landscape with eleven ways to answer one question while Hong Kong defaulted to a central model. His conclusion is that culture is the first thing to assess before any data or tech change.
+
+    We then move to the economics: why Jimmy thinks the future of data work is in Asia, why AI is the next bookkeeper-to-finance-team productivity leap rather than the end of the profession, and the difference between an Apple approach and a Google approach to shipping with AI, including the comprehension debt you take on when the model does the thinking for you. On communication, he takes the Culture Map as his guide and keeps everything explicit: one-on-ones, written retrospectives, and a documented way of working that survives a two-city team.
+
+    Finally, Juan and Jimmy dig into data mesh: why it is a big-company problem, why German companies can agree on the principle and fail on execution, what monolithic repos, Impala and two-hour CI runs did to his day, and why you should take data mesh as a principle, never word for word.
+
+    Find Jimmy:
+
+    LinkedIn: https://www.linkedin.com/in/jimmy-pang-hk603/
+    Data Biz (Substack): https://jimmypang.substack.com/
+  duration: 47:44
+  thumbnail: https://i.ytimg.com/vi/gPkikwFjJ0k/maxresdefault.jpg
+  tags: []
+- url: https://www.youtube.com/watch?v=TUL9wAh9KEk
+  title: "Surviving the Mean Data Streets: Semantic Layers, Friction & Passion - #14 Chris Tabb"
+  date: 2026-10-01
+  podcast: The Data Hustle Podcast
+  episode: "14"
+  description: |-
+    Thirty years in data and the same mistakes keep coming back with new names.
+
+    In this episode of The Data Hustle, we speak with Chris Tabb, co-founder and Chief Commercial Officer of LEIT DATA and self-appointed mayor of the Mean Data Streets, about what three decades in BI, data and consulting teach you about the industry's habit of reinventing itself.
+
+    Chris started in the back office at Cognos in the 1990s, went independent as a BI consultant in 1998, and has been hands-on through databases, ETL, BI and big data ever since. He explains why the semantic layer was born with Business Objects universes and Cognos catalogs, why "context layer" is his umbrella for graphs, ontologies, semantic layers and vector databases, and why the one-person modelling bottleneck that killed the old semantic layer is finally being automated away.
+
+    We get honest about consulting as a lifestyle: why you should not go into it if you want a nine-to-five and your weekends, why passion is a hiring filter Chris can spot in minutes, and why the extra money on a day rate comes at a cost. Chris lays out his definition of business value as an evidenceable positive effect on company objectives, why ROI is a word he hates, and his three kinds of friction: delivery, business and operational.
+
+    We also cover AI and scale: why rolling Claude out to every developer without structure produces piles of code nobody understands, why TOGAF-style architecture artefacts are suddenly worth maintaining again as the spine for agents, and how Chris ran a whole demo pipeline on a few cents of tokens.
+
+    Finally, Chris walks through the journey from freelancer to founding LEIT DATA: picking a specialism (early Snowflake), running lean until you can afford the first hire, growing to a hundred people and back, HR and bench forecasting, what he looks for when hiring, and why community only works when you show up without an agenda.
+
+    Find Chris:
+
+    LinkedIn: https://www.linkedin.com/in/chris-tabb-datatips/
+    LEIT DATA: https://www.leit-data.com/
+  duration: 47:08
+  thumbnail: https://i.ytimg.com/vi/TUL9wAh9KEk/maxresdefault.jpg
+  tags: []
+- url: https://www.youtube.com/watch?v=PfQ3Ao5oIU8
+  title: "Scaling a Data Consultancy: Pricing, Branding & Clients - #13 David Cohen"
+  date: 2026-09-25
+  podcast: The Data Hustle Podcast
+  episode: "13"
+  description: |-
+    Most data consultants are great at the technical work and bad at everything that turns it into a business.
+
+    In this episode of The Data Hustle, we speak with David Cohen, founder of Superposition, a consultancy for data and AI consultancy founders, about what it actually takes to build and scale a boutique consultancy: positioning, pricing, go-to-market, hiring, discovery and scoping.
+
+    David explains why most founders come to him after brute-forcing their way to a ceiling, why consultancies are bad at marketing and lose the attention game, and why his first piece of advice is simply to take more risks and be less boring. We get into pricing in depth: why hourly billing is easy but does not scale, how fixed, retainer and value-based models let you control margin, why the work costs what it costs regardless of where your team sits, and who ends up bearing the risk when a client's Terraform admin disappears for three weeks.
+
+    We also discuss why a generic "we build insights and AI solutions" message reaches nobody, how to define an ideal customer profile and the personas inside it, how to qualify and say no to prospects, why it is okay to fire a client, and why a founder's first responsibility is to their team rather than to the client.
+
+    Finally, David walks us through the white-labelled, gamified discovery workshops he runs for consultancies: getting the actual decision makers into one room, letting stakeholders fight it out early, and turning ambiguous client conversations into scoped work people actually buy.
+
+    Find David:
+
+    LinkedIn: https://www.linkedin.com/in/davcohen06/
+    Superposition: https://www.superpositionstrat.com/
+    Newsletter: https://superpositionstrat.beehiiv.com
+    YouTube: https://www.youtube.com/@Superpositionstrat
+  duration: 54:14
+  thumbnail: https://i.ytimg.com/vi/PfQ3Ao5oIU8/maxresdefault.jpg
+  tags: []
 - url: https://www.youtube.com/watch?v=xNSIZ_hJQKI
   title: "Data Work is a Listening Job - #12 Data Hustle"
   date: 2026-08-20

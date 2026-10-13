@@ -8,8 +8,10 @@
  * YouTube copy and duration is a best-effort scrape of the watch page.
  *
  * The playlist is collaborative, so anything can end up in the feed (e.g.
- * spam bots adding unrelated videos) — entries whose title doesn't contain
- * "Data Hustle" are skipped rather than filed as an episode.
+ * spam bots adding unrelated videos) — entries not uploaded by the show's
+ * host channel are skipped rather than filed as an episode. (Not filtered
+ * by title: that broke once episode titles stopped containing the literal
+ * phrase "Data Hustle".)
  */
 import { readFileSync, writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
@@ -17,6 +19,8 @@ import { parse, stringify } from 'yaml';
 
 const PLAYLIST_ID = 'PL6PtmCevAVx_jRJ3HpBabEhwCiE0oD6ps';
 const FEED_URL = `https://www.youtube.com/feeds/videos.xml?playlist_id=${PLAYLIST_ID}`;
+// Tony Zeljkovic, co-host — every real episode is uploaded from this channel.
+const HOST_CHANNEL_ID = 'UCIjpSGnA11s5xsou_c_44Fg';
 const YAML_PATH = fileURLToPath(new URL('../content/data_hustle_podcast.yml', import.meta.url));
 const YAML_KEY = 'data_hustle_podcast';
 const PODCAST_NAME = 'The Data Hustle Podcast';
@@ -49,12 +53,14 @@ function parseFeedEntries(xml) {
     const title = block.match(/<title>([^<]*)<\/title>/)?.[1];
     const published = block.match(/<published>([^<]+)<\/published>/)?.[1];
     const description = block.match(/<media:description>([\s\S]*?)<\/media:description>/)?.[1] ?? '';
+    const channelId = block.match(/<yt:channelId>([^<]+)<\/yt:channelId>/)?.[1];
     if (!videoId || !title || !published) continue;
     entries.push({
       videoId,
       title: decodeXmlEntities(title),
       published,
       description: decodeXmlEntities(description),
+      channelId,
     });
   }
   return entries;
@@ -102,7 +108,7 @@ async function main() {
   const newEntries = feedEntries
     .filter((e) => !existingVideoIds.has(e.videoId))
     .filter((e) => {
-      const isEpisode = /data hustle/i.test(e.title);
+      const isEpisode = e.channelId === HOST_CHANNEL_ID;
       if (!isEpisode) console.log(`Skipping non-episode playlist entry: ${e.title}`);
       return isEpisode;
     })
