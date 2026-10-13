@@ -21,7 +21,10 @@ data_hustle_podcast:
     Data Biz (Substack): https://jimmypang.substack.com/
   duration: 47:44
   thumbnail: https://i.ytimg.com/vi/gPkikwFjJ0k/maxresdefault.jpg
-  tags: []
+  tags:
+  - Data Strategy
+  - Data Maturity
+  - Artificial Intelligence
 - url: https://www.youtube.com/watch?v=TUL9wAh9KEk
   title: "Surviving the Mean Data Streets: Semantic Layers, Friction & Passion - #14 Chris Tabb"
   date: 2026-10-01
@@ -46,7 +49,10 @@ data_hustle_podcast:
     LEIT DATA: https://www.leit-data.com/
   duration: 47:08
   thumbnail: https://i.ytimg.com/vi/TUL9wAh9KEk/maxresdefault.jpg
-  tags: []
+  tags:
+  - Data Consulting
+  - Data Strategy
+  - Artificial Intelligence
 - url: https://www.youtube.com/watch?v=PfQ3Ao5oIU8
   title: "Scaling a Data Consultancy: Pricing, Branding & Clients - #13 David Cohen"
   date: 2026-09-25
@@ -71,7 +77,10 @@ data_hustle_podcast:
     YouTube: https://www.youtube.com/@Superpositionstrat
   duration: 54:14
   thumbnail: https://i.ytimg.com/vi/PfQ3Ao5oIU8/maxresdefault.jpg
-  tags: []
+  tags:
+  - Data Consulting
+  - Marketing
+  - Career Development
 - url: https://www.youtube.com/watch?v=xNSIZ_hJQKI
   title: "Data Work is a Listening Job - #12 Data Hustle"
   date: 2026-08-20
@@ -97,7 +106,10 @@ data_hustle_podcast:
     LinkedIn: Gabriela Costa — @gabrieladados
     Indicium AI: indicium.ai
   thumbnail: https://i.ytimg.com/vi/xNSIZ_hJQKI/maxresdefault.jpg
-  tags: []
+  tags:
+  - Requirements
+  - Analytics Engineering
+  - Career Development
 - url: https://www.youtube.com/watch?v=djTLrlR2sSo
   title: "How Sequentum Scrapes the Web at Scale - #11 Data Hustle"
   date: 2026-08-14
@@ -117,7 +129,10 @@ data_hustle_podcast:
     LinkedIn: https://www.linkedin.com/in/sarahransommckenna/
     Sequentum: https://www.sequentum.com/
   thumbnail: https://i.ytimg.com/vi/djTLrlR2sSo/maxresdefault.jpg
-  tags: []
+  tags:
+  - Artificial Intelligence
+  - Data Governance
+  - Data Engineering
 - url: https://www.youtube.com/watch?v=BbWfELhzQRU
   title: "Taking Analytics by Storm with Agents - #10 Data Hustle"
   date: 2026-08-07
@@ -139,7 +154,10 @@ data_hustle_podcast:
     - https://www.linkedin.com/in/claire-gouze/
     - https://www.linkedin.com/in/christopheblefari/
   thumbnail: https://i.ytimg.com/vi/BbWfELhzQRU/maxresdefault.jpg
-  tags: []
+  tags:
+  - Artificial Intelligence
+  - Analytics Engineering
+  - Data Strategy
 - url: https://www.youtube.com/watch?v=JSroznqpuAU
   title: "Data Superstars are a Trap - #9 Data Hustle"
   date: 2026-08-05
