@@ -90,6 +90,27 @@ function extractVideoId(url) {
   return url.match(/[?&]v=([\w-]+)/)?.[1];
 }
 
+// YouTube's Atom feed endpoint intermittently 404s for reasons unrelated to
+// the playlist itself (seen across unrelated playlists/channels too) —
+// retry with backoff before treating it as a real failure.
+async function fetchFeedWithRetry(url, { attempts = 4, delayMs = 3000 } = {}) {
+  let lastError;
+  for (let attempt = 1; attempt <= attempts; attempt++) {
+    try {
+      const res = await fetch(url);
+      if (res.ok) return res;
+      lastError = new Error(`HTTP ${res.status}`);
+    } catch (err) {
+      lastError = err;
+    }
+    if (attempt < attempts) {
+      console.log(`Fetch attempt ${attempt} failed (${lastError.message}), retrying...`);
+      await new Promise((resolve) => setTimeout(resolve, delayMs * 2 ** (attempt - 1)));
+    }
+  }
+  throw new Error(`Failed to fetch playlist feed after ${attempts} attempts: ${lastError.message}`);
+}
+
 async function main() {
   const rawText = readFileSync(YAML_PATH, 'utf-8');
   const existingFile = parse(rawText);
@@ -101,8 +122,7 @@ async function main() {
   const existingVideoIds = new Set(existingEpisodes.map((e) => extractVideoId(e.url)).filter(Boolean));
   const maxEpisode = Math.max(0, ...existingEpisodes.map((e) => Number(e.episode) || 0));
 
-  const res = await fetch(FEED_URL);
-  if (!res.ok) throw new Error(`Failed to fetch playlist feed: HTTP ${res.status}`);
+  const res = await fetchFeedWithRetry(FEED_URL);
   const feedEntries = parseFeedEntries(await res.text());
 
   const newEntries = feedEntries
