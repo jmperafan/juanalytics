@@ -1,4 +1,89 @@
 data_hustle_podcast:
+- url: https://www.youtube.com/watch?v=6eoBeiz1uQ8
+  title: "How Agents Get Access to Production Data - #18 Ciro Greco"
+  date: 2026-11-09
+  podcast: The Data Hustle Podcast
+  episode: "18"
+  description: |-
+    AI agents need data infrastructure built for the way they work: fast iteration, parallel execution, and room to make mistakes without changing production tables.
+
+    Ciro Greco, co-founder and CEO of Bauplan, joins The Data Hustle to explain how Bauplan is building next-generation data infrastructure for AI agents. We explore how agents can work with real production data in isolated branches, test their changes, and bring results into production through review and merge.
+
+    From Git-style data versioning to simple APIs agents can reason about, Ciro lays out the infrastructure needed to turn AI-generated code into useful data work—and why concurrency, efficient execution, and human oversight matter.
+
+    Ciro tells the story behind Bauplan: a PhD in cognitive science, a search-and-product-discovery startup (Tooso) built in Italy and sold to Coveo in 2019, the AI platform he built there through to an IPO on the Canadian stock exchange, and why he started again. He explains what selling AI looked like before ChatGPT, when "not another chatbot" was the standard reaction, and why the hard problems in data were never the model but the last mile: semantics, curated data and the tension between self-serve and a platform team behind a Jira ticket.
+
+    From there the conversation turns to agents. Why long-running agents fall into doom loops when every step is a tool call, why data pipelines are not transactional the way a database table is, and why the answer is branches: write, audit, publish using isolated, zero-copy data branches. Ciro walks through what Bauplan customers actually struggle with, how frequent branch creation changes infrastructure requirements, what differential caching does for hundreds of similar concurrent queries, and why warehouses built for OLAP were never designed for this workload.
+
+    Finally, Ciro makes the case that an agent is just another user: give it a branch, a role and a sandbox, the same way you would a new engineer, and review its changes before merging them into production.
+
+    Connect with Ciro and explore Bauplan:
+
+    LinkedIn: https://www.linkedin.com/in/cirogreco/
+    Bauplan: https://bauplanlabs.com
+    GitHub: https://github.com/BauplanLabs
+    Documentation: https://docs.bauplanlabs.com/
+    Talks and demos: https://bauplanlabs.com/videos
+    Webinars and events: https://luma.com/user/bauplan
+
+    Chapters
+  thumbnail: https://i.ytimg.com/vi/6eoBeiz1uQ8/maxresdefault.jpg
+  tags: []
+- url: https://www.youtube.com/watch?v=atv3n2Lia78
+  title: "T-Shaped Analytics Engineers, Curiosity and Proving Impact - #17 Oleg Agapov"
+  date: 2026-11-06
+  podcast: The Data Hustle Podcast
+  episode: "17"
+  description: |-
+    Good analytics engineering is about structure, curiosity and impact, and AI rewards all three.
+
+    In this episode of The Data Hustle, we speak with Oleg Agapov, Senior Analytics Engineer at Clarity.com, about what analytics engineering is, how AI is changing the role, and what he looks for when hiring and measuring impact.
+
+    Oleg tells how years of ad hoc SQL and scripts as a data analyst led him to analytics engineering, and how Snowflake and dbt finally closed the gap between engineering and analysis for him. He explains the role as the bridge between data engineers, who prepare the data, and data analysts, who find the insights. With AI blurring the lines between roles, he makes the case for the T-shaped analytics engineer: AI multiplies your output in your core skills and lets you go horizontal, into CI/CD or Snowflake permissions, without depending on others. He also explains why engineering culture still matters: because his team had written conventions for SQL, YAML, documentation and pull requests, feeding them to an agent gave a first draft that is often 70 to 80 percent of what the team would write itself.
+
+    We also discuss hiring from intern to senior: why curiosity is the strongest signal, what basic literacy he expects from juniors, why handing back raw AI output is useless while a processed one or two sentence summary is not, and how take-home assignments and project questions show whether someone is ready to lead. Oleg then walks through impact at every level, from automating a weekly report that cost him three to four hours a week, to analysis that changed a product decision, to rolling out Omni as a self-serve BI tool and growing its weekly active users about 2.5 times.
+
+    Finally, Oleg explains why not every kind of impact should be translated into dollars, and shares what is next: a new bootcamp on becoming a full stack analytics engineer with AI and modern tools.
+
+    Find Oleg:
+
+    LinkedIn: https://www.linkedin.com/in/oleg-agapov/
+    Clarity: https://clarity.com
+    Substack: https://dbtips.substack.com
+    GitHub: https://github.com/oleg-agapov
+    Website: https://olegagapov.com
+  thumbnail: https://i.ytimg.com/vi/atv3n2Lia78/maxresdefault.jpg
+  tags: []
+- url: https://www.youtube.com/watch?v=1yvcoI8pwWo
+  title: "Resumes Are Obsolete, the SaaSpocalypse and Going Freelance - #16 Ian Allison"
+  date: 2026-11-03
+  podcast: The Data Hustle Podcast
+  episode: "16"
+  description: |-
+    The best data and AI people combine curiosity with the discipline to see value, and AI only widens the gap between them and everyone else.
+
+    In this episode of The Data Hustle, we speak with Ian Allison, founder of Salient Insights, a data and AI recruiting and consulting firm, about what separates the top one percent of candidates, where the freelance market is heading, and why the resume has stopped telling hiring managers anything.
+
+    Ian explains how he tests for curiosity by asking about life outside work, and for value by asking what one user actually changed because of your last dashboard. We talk about freelancing for senior people (start by moonlighting, and expect the work in small and medium businesses rather than in large corporations that are not backfilling), how he built a single-source data mart in under a week with a proper AI harness, why AI augments whatever quality you already deliver, and why he thinks the SaaSpocalypse is real and custom builds will replace canned software for the next few years.
+
+    We also discuss what it means to have woken up to AI: knowing what it cannot do, where the quality gates sit, and how to answer an executive who vibe coded an app over a weekend and now asks why IT cannot move that fast. Ian shares what he hears from chief data and AI officers about running their own models as token subsidies end, and why the knowledge gap for entry-level engineers may become hard to bridge.
+
+    Finally, Ian walks us through how Salient Insights pre-screens candidates and often presents a single person for a role, why he did not even read the resume for his last placement, and how to get found: tap your network, post about your work, and network with the people who will hire you, not only with your peers.
+
+    Find Ian:
+
+    LinkedIn: https://www.linkedin.com/in/ian-allison-cdo/
+    Salient Insights: https://salientinsights.com
+    Salient Insights on LinkedIn: https://www.linkedin.com/company/salient-insights
+    Data Heads, Ian's podcast: https://podcasts.apple.com/us/podcast/data-heads/id1790801631
+    Data Heads on Spotify: https://open.spotify.com/show/1iT2QDuxTIarU6ZhXm4OQB
+    Salient Insights on YouTube: https://www.youtube.com/@SalientInsights
+
+    Mentioned in the episode:
+
+    CDO Magazine on Salient Insights (Dec 2025): https://www.cdomagazine.tech/talent-development/how-this-startup-helps-enterprises-overcome-the-data-talent-hiring-problem
+  thumbnail: https://i.ytimg.com/vi/1yvcoI8pwWo/maxresdefault.jpg
+  tags: []
 - url: https://www.youtube.com/watch?v=gPkikwFjJ0k
   title: "AI Won't Fix Your Culture: Power Distance, Vibe Coding & Human Judgment - #15 Jimmy Pang"
   date: 2026-10-07
