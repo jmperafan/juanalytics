@@ -1,4 +1,35 @@
 data_hustle_podcast:
+- url: https://www.youtube.com/watch?v=CrZcm-vwkaA
+  title: "Building Data Platforms From Nigeria, Luck Surface Area and AI's Hidden Costs - #19 Joy Victor"
+  date: 2026-11-13
+  podcast: The Data Hustle Podcast
+  episode: "19"
+  description: |-
+    Data engineering is sold as moving data from point A to point B, but the real job is cost, security, networking and keeping it all running when nobody is watching.
+
+    In this episode of The Data Hustle, we speak with Joy Victor, data platform engineer at Federated Engineers, about moving from research data analyst to owning a data platform end to end, building an international career from a small city in Nigeria, and what AI data centers are doing to the communities around them.
+
+    Joy walks us through a platform she built from scratch: data landing in S3, dbt models and Snowflake infrastructure managed as code, a CI/CD pipeline that packages models into images on AWS ECR, Airflow on Kubernetes and ECS running the transformations, and role-based access control so nobody can see more than they need. She explains why platform work is a thankless job, how to sell it to stakeholders in terms of money, trust and risk (including what can happen when an AI agent gets root access in production), and how she won international clients by being very good, being public and building a network, or as she puts it, increasing your luck surface area.
+
+    We also discuss what people misunderstand about data engineering, why job titles like data engineer and AI engineer now cover completely different jobs, and why AI writing SQL and dbt models pushes engineers toward infrastructure as code, streaming, monitoring and containers. Her learning path: start with Linux, then Python, SQL, one cloud provider, Terraform, Airbyte, Airflow and dbt, and give yourself much more than three months.
+
+    Finally, Joy shares her research on AI data centers in Georgia: subsidized electricity while residents pay more, cooling water that leaves the facility with chemicals in it, and, by her count, six wastewater facilities in Fulton County against more than fifty data centers.
+
+    Find Joy:
+
+    LinkedIn: https://www.linkedin.com/in/jhoie/
+    X (Twitter): https://x.com/jhoie__
+    TikTok: https://www.tiktok.com/@thejoyvictor
+    Website: https://www.joyvictor.site
+    Federated Engineers: https://www.federatedengineers.com
+    Data Engineering Community: https://dataengineeringcommunity.com
+
+    Mentioned in the episode:
+
+    The AI Data Center Water Management Challenge: A Georgia Case Study (Allgood, Victor and Marshall): https://static1.squarespace.com/static/67705998083c01238a15e96c/t/6a43631e37a7401d00e484a4/1782801182724/%5BFinal%5D+The+AI+Data+Center+Water+Management+Challenge+-+A+Georgia+Case+Study.pdf
+    Generative AI in Data Analysis, Joy's course at the Open Visualization Academy: https://openvisualizationacademy.org/courses/generative-ai-in-data-analysis/introduction/introduction/
+  thumbnail: https://i.ytimg.com/vi/CrZcm-vwkaA/maxresdefault.jpg
+  tags: []
 - url: https://www.youtube.com/watch?v=6eoBeiz1uQ8
   title: "How Agents Get Access to Production Data - #18 Ciro Greco"
   date: 2026-11-09
