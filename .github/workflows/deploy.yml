@@ -12,7 +12,9 @@ permissions:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    # Pinned below ubuntu-latest: Playwright 1.57 doesn't support ubuntu26.04's
+    # deps yet, which broke `playwright install --with-deps` here.
+    runs-on: ubuntu-24.04
     steps:
       - name: Checkout your repository using git
         uses: actions/checkout@v5
