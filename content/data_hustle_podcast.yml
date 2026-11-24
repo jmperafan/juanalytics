@@ -1,4 +1,78 @@
 data_hustle_podcast:
+- url: https://www.youtube.com/watch?v=ASsAi5TsSO0
+  title: "Make Yourself Replaceable, Selling Simple Solutions and Freelance Rates - #21 Jody Hesch"
+  date: 2026-11-20
+  podcast: The Data Hustle Podcast
+  episode: "21"
+  description: |-
+    The fastest way to become indispensable is to make yourself easy to replace.
+
+    In this episode of The Data Hustle, we speak with Jody Hesch, founder of Hesch Consulting, about the economics of data consulting: getting promoted, pricing your work, finding clients without becoming an influencer, and building a staffing practice.
+
+    Jody explains costly signaling, the idea from evolutionary biology behind his advice to document, automate and share everything you do, and why it only works when your leader actually sees the impact. He describes how giving away his secret sauce while at SAP brought him work as an independent consultant, why overly complex proposals sell more easily than simple, elegant solutions, and how to compete anyway by selling outcomes instead of architecture. To get a refactor approved, he translates performance into compute cost and a payback period the business understands.
+
+    We then get into his case that you can outsource sales and marketing to staffing agencies, as long as you pick small agencies that niche by technology, industry or capability. Jody breaks down the margins: consulting firms typically bill about 3x what their consultants are paid, staffing agencies target 20 to 40 percent, and an agency working with big-budget clients can still pay you more than chasing small local businesses yourself. He also gives a back-of-the-napkin starting rate for new freelancers: your salary as an hourly rate times 1.5 to 1.75, adjusted for the leverage you have.
+
+    Finally, Jody talks about moving from consultant to staffing firm placing independent consultants, why his best customers turned out to be niche solo consultants without a technical network, and what changes when you are brought in as the tip of the spear and have to explain engineering to leadership, which is where his engineering maturity matrix came from.
+
+    Find Jody:
+    LinkedIn: https://www.linkedin.com/in/jodyhesch/
+    Website: https://www.heschconsulting.com/
+    Substack: https://jodyhesch.substack.com
+    GitHub: https://github.com/jchesch
+
+    Mentioned in the episode:
+    Make Yourself Fungible (give away your secret sauce): https://jodyhesch.substack.com/p/make-yourself-fungible
+    The Engineering Maturity Matrix: https://jodyhesch.substack.com/p/fundamentals-of-engineering-part-1d4
+    SAP hierarchy flattener (open source): https://github.com/jchesch/sap-hierarchy-flattener
+
+    More from Jody:
+    A Technology Leader's Guide to Hiring Consulting Firms and Freelancers: https://jodyhesch.substack.com/p/a-technology-leaders-guide-to-hiring
+  thumbnail: https://i.ytimg.com/vi/ASsAi5TsSO0/maxresdefault.jpg
+  tags: []
+- url: https://www.youtube.com/watch?v=DzLBi13O0CE
+  title: "Don't Build a Data Science Career, Community and Vibe Coding - #20 Alexey Grigorev"
+  date: 2026-11-17
+  podcast: The Data Hustle Podcast
+  episode: "20"
+  description: |-
+    Technologies change every few years, but people's problems do not, so build your career around solving them.
+
+    In this episode of The Data Hustle, we speak with Alexey Grigorev, founder of DataTalks.Club and creator of the Zoomcamp series, about careers in data, learning in the age of AI, building a community that lasts, and running a business with coding agents.
+
+    Alexey tells us how he went from Java developer to data scientist in Berlin, why career-advice calls that did not scale turned into DataTalks.Club during COVID, and how a sabbatical and a first sponsor let him leave OLX and run the community solo. He explains why he would tell people not to build a data science career at all, and to be a generalist who starts from users' problems instead of a technology stack. We also discuss why AI has not reduced demand for his free and paid courses, why beginners still want a structured path someone already walked, and how ChatGPT now sends people to DataTalks.Club because of years of organic discussion on Reddit.
+
+    We then get into what it takes to build a community that survives: motivation, consistency through events where nobody shows up, and why giving value away for free, from answering questions on a Java forum in 2010 onwards, became his biggest career multiplier. Alexey also shares the story of a colleague who turned down a promotion, and why he admires people who choose to stay and do one job really well.
+
+    Finally, Alexey explains why his GitHub commit count exploded: he dictates ideas from his phone to a team of coding agents, keeps a graveyard of experiments, and has replaced Slido, Zapier and Airtable with his own tools while rewriting Mailchimp next. We close on why agentic coding can feel like a slot machine.
+
+    Find Alexey:
+
+    LinkedIn: https://www.linkedin.com/in/agrigorev/
+    X: https://x.com/Al_Grigor
+    Website: https://alexeygrigorev.com/
+    GitHub: https://github.com/alexeygrigorev
+    Substack (Alexey On Data): https://aishippingblog.com/
+    AI Shipping Labs: https://aishippinglabs.com/
+    From RAG to Agents course: https://maven.com/alexey-grigorev/from-rag-to-agents
+    Machine Learning Bookcamp (book): https://mlbookcamp.com/
+    Kaggle: https://www.kaggle.com/agrigorev
+
+    DataTalks.Club:
+
+    Website: https://datatalks.club/
+    Free courses (Zoomcamps): https://datatalks.club/blog/guide-to-free-online-courses-at-datatalks-club.html
+    Slack community: https://datatalks.club/slack.html
+    Podcast: https://datatalks.club/podcast.html
+    YouTube: https://www.youtube.com/@DataTalksClub
+    GitHub: https://github.com/DataTalksClub
+
+    Mentioned in the episode:
+
+    Data Engineering Zoomcamp: https://github.com/DataTalksClub/data-engineering-zoomcamp
+    AI Dev Tools Zoomcamp: https://github.com/DataTalksClub/ai-dev-tools-zoomcamp
+  thumbnail: https://i.ytimg.com/vi/DzLBi13O0CE/maxresdefault.jpg
+  tags: []
 - url: https://www.youtube.com/watch?v=CrZcm-vwkaA
   title: "Building Data Platforms From Nigeria, Luck Surface Area and AI's Hidden Costs - #19 Joy Victor"
   date: 2026-11-13
