@@ -1,4 +1,19 @@
 talks:
+- url: https://www.meetup.com/nyc-dbt-meetup/events/317303493
+  title: 'AI Guardrails for dbt: Congratulations, Data Teams Now Run the AI Infra'
+  date: '2026-12-10'
+  description: AI is producing code faster than we can review it. A one-person
+    dbt team can now ship what used to take a 20-person data team, and it quickly
+    runs into the same scale problems - models nobody has read, tests that pass
+    for the wrong reasons, and metrics that drift between dashboards. The guardrails
+    that make AI work at scale come from open protocols and practices anybody can
+    start implementing today, including MCP servers, skills, AGENTS.md, prompt
+    engineering, CI/CD, hooks, and sub-agents. In this talk, we will explain each
+    of these techniques with a real dbt example.
+  thumbnail: https://placehold.co/600x400/1e293b/94a3b8?text=New+York+dbt+Meetup
+  tags: [dbt, Artificial Intelligence, Data Governance]
+  event: New York dbt Meetup
+  location: New York, NY
 - url: https://coalesce.getdbt.com/event/21662b38-2c17-4c10-9dd7-964fd652ab44/agenda?session=bdc32ba0-e8c3-4a28-bae4-9f97ef75713a
   title: Onboarding Junior Analytics Engineers
   description: Sharing insights and strategies for effectively onboarding junior analytics
